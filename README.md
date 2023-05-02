@@ -5,13 +5,13 @@
     <img src='https://img.shields.io/badge/Status-Em progresso-F8EE77?style=for-the-badge&logo=appveyor' alt='Badge. Retângulo dividido em duas partes: no lado esquerdo, o retângulo possui a cor cinza, um círculo azul com vazados e o texto "STATUS"; no lado direito, o retângulo é amarelo e contém o texto "Em progresso".'>
 </p>
 
-### Tópicos 
+### Sumário 
 
 :small_blue_diamond: [Sobre o projeto](#sobre-o-projeto)
 
 :small_blue_diamond: [Funcionalidades](#funcionalidades)
 
-:small_blue_diamond: [Como acessar os scripts](#como-executar)
+:small_blue_diamond: [Como executar](#como-executar)
 
 :small_blue_diamond: [Tecnologias](#tecnologias)
 
@@ -20,7 +20,7 @@
 
 ## Funcionalidades
 
-## Como acessar os scripts
+## Como executar
 
 ## Tecnologias
 
