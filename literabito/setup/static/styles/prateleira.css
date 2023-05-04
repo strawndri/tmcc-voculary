@@ -11,10 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .5s all;
 }
 
-.prateleiras__criar, .prateleiras__criar img:hover {
+.prateleiras__criar:hover, .prateleiras__criar img:hover {
     cursor: pointer;
+    opacity: 0.9;
 }
 
 .prateleiras__prateleira img {
