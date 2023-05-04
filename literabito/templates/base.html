@@ -21,7 +21,7 @@
 
 <body>
 <div class="pagina-inicial">
-    {% if request.path != '/' and request.path != '/apresentacao' %}
+    {% if request.path not in ['/home', '/apresentacao', '/cadastro', '/login'] %}
     {% include 'partials/_header.html' %}
     {% endif %}
     <main class="principal">
