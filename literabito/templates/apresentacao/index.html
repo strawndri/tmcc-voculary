@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/apresentacao.css' %}">
+</head>
+<section class="conteudo">
+    <section class="apresentacao">
+        <h1 class="apresentacao__titulo logo-nome"><img src="{% static '/assets/logo/literabito.svg'%}"></h1>
+        <h2 class="apresentacao__subtitulo">Boas vindas ao Literábito</h2>
+        <p class="apresentacao__paragrafo">
+            Mais que um lugar para avaliar e organizar leituras, uma segunda casa para leitores, leitoras e simpatizantes.
+        </p>
+        <p class="apresentacao__paragrafo">
+            Aqui, você será capaz de organizar suas experiências literárias de forma rápida, intuitiva e confortável. Crie prateleiras, adicione novas leituras e descubra o seu gosto literário por meio de gráficos e avaliações. Crie o hábito de leitura.
+        </p>
+    </section>
+</section>
+{% endblock %}
