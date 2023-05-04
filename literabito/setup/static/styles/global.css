@@ -1,0 +1,20 @@
+:root {
+
+    --primary-light: #D9E4FF;
+    --primary-medium: #748CA3;
+    --primary-dark: #383E54;
+    --primary-extra-dark: #1C2135;
+
+    --secondary: #3CBD7B;
+
+    --link: #395AAC;
+
+    --default-extra-light: #F9F9F9;
+    --default-light: #EBEBEB;
+    --default-medium: #525C65;
+    --default-dark: #333;
+}
+
+body {
+    background-color: var(--default-extra-light);
+}
