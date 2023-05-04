@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<section class="conteudo">
+    <section class="estante">
+        <h1 class="estante__titulo conteudo__titulo">Estante</h1>
+    <section class="prateleiras">
+        <div class="prateleiras__prateleira prateleiras__criar">
+            <button type="submit" style="background-color: transparent; border:none">
+                <img src="{% static '/assets/icones/adicionar.svg' %}" alt="Ícone de pesquisa">
+            </button>
+        </div>
+    </section>
+    </section>
+</section>
+{% endblock %}

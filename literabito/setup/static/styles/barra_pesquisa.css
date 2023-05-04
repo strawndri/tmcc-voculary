@@ -1,12 +1,10 @@
 .form-pesquisa {
-    align-items: center;
     border-radius: 40px;
     display: flex;
     height: auto;
+    width: 500px;
     justify-content: space-between;
     padding: 2px;
-    width: auto; 
-    align-items: center;
     background: var(--default-light);
     border: 1px solid var(--primary-medium);
 }
@@ -22,6 +20,11 @@
     width: 500px;
     background: var(--default-light);
     color: var(--default-medium);
+}
+
+.grande {
+    width: auto; 
+    align-items: center;
 }
 
 .pesquisa__input:focus{

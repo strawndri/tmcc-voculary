@@ -1,0 +1,22 @@
+.prateleiras__prateleira {
+    width: 12rem;
+    height: 16rem;
+    background-color: var(--default-light);
+    border: 1px solid var(--default-medium);
+    border-radius: 10px;
+    margin: 0 1em 2em 0;
+}
+
+.prateleiras__criar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prateleiras__criar, .prateleiras__criar img:hover {
+    cursor: pointer;
+}
+
+.prateleiras__prateleira img {
+    width: 5rem;
+}

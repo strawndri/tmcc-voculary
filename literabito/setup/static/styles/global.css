@@ -32,8 +32,14 @@ h1, h2, h3 {
     font-family: var(--font-titulo);
 }
 
+.conteudo__titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1em 0 2em 0;
+}
+
 .conteudo {
-    padding-left: 4rem;
+    padding-left: 6rem;
 }
 
 .home {
