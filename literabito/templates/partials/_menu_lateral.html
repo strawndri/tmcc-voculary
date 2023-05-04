@@ -1,10 +1,17 @@
 {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literábito</title>
+    <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
+</head>
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
-        <a href=""><img src="{% static '/assets/icones/perfil.svg'%}">Perfil</a>
-        <a href=""><img src="{% static '/assets/icones/home.svg'%}">Home</a>
-        <a href=""><img src="{% static '/assets/icones/estante.svg'%}">Estante</a>
-        <a href=""><img src="{% static '/assets/icones/dashboard.svg'%}">Dashboard</a>
-        <a href=""><img src="{% static '/assets/icones/logout.svg'%}">Logout</a>
+        <a class="menu-lateral__navegacao__link" href=""><img src="{% static '/assets/icones/perfil.svg'%}"></a>
+        <a class="menu-lateral__navegacao__link" href=""><img src="{% static '/assets/icones/home.svg'%}"></a>
+        <a class="menu-lateral__navegacao__link" href=""><img src="{% static '/assets/icones/estante.svg'%}"></a>
+        <a class="menu-lateral__navegacao__link" href=""><img src="{% static '/assets/icones/dashboard.svg'%}"></a>
+        <a class="menu-lateral__navegacao__link" href=""><img src="{% static '/assets/icones/logout.svg'%}"></a>
     </nav>
 </section>
