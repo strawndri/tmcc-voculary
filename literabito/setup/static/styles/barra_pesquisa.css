@@ -1,0 +1,36 @@
+.form-pesquisa {
+    align-items: center;
+    border-radius: 40px;
+    display: flex;
+    height: auto;
+    justify-content: space-between;
+    padding: 2px;
+    width: auto; 
+    align-items: center;
+    background: var(--default-light);
+    border: 1px solid var(--primary-medium);
+}
+
+.pesquisa__input {
+    align-items: center;
+    background-color: transparent;
+    border-radius: 40px;
+    border: none;
+    font-size: 1rem;
+    height: 24px;
+    padding: 10px;
+    width: 500px;
+    background: var(--default-light);
+    color: var(--default-medium);
+}
+
+.pesquisa__input:focus{
+    outline: none;
+}
+
+.pesquisa__icone {
+    padding: .5em;
+    cursor: pointer;
+    width: 1.5rem;
+    /* height: 2rem; */
+}
