@@ -38,10 +38,23 @@ h1, h2, h3 {
 
 .home {
     display: flex;
-    height: 90vh;
+    height: 80vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.botao {
+    padding: .8em 1em;
+    margin: 1rem 0 2rem 0;
+    background-color: var(--secondary);
+    color: var(--primary-extra-dark);
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.botao:hover {
+    cursor: pointer;
 }
 
 .home__paragrafo {

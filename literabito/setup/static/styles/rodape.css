@@ -1,0 +1,13 @@
+.rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-dark);
+    height: 20vh;
+}
+
+.rodape__texto {
+    color: var(--default-light);
+    padding-top: 2rem;
+}
