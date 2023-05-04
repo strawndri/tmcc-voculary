@@ -6,10 +6,12 @@ body {
     display: flex;
     justify-content: left;
     align-items: center;
+    padding: 1em 4em 1em 4em;
+    height: 100vh;
 }
 
 .apresentacao {
-    width: 60%;
+    width: 70%;
 }
 
 .apresentacao__subtitulo {
@@ -19,10 +21,50 @@ body {
     margin: 1rem 0 2rem 0;
 }
 
-
 .apresentacao__paragrafo {
     font-size: 1.2rem;
     color: var(--default-medium);
     line-height: 2rem;
     margin-bottom: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--default-extra-light);
+    margin: 0 0 1rem 2rem;
+    width: 20rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.formulario__label {
+    color: var(--default-medium);
+}
+
+.formulario__input {
+    margin: 1rem 0 1rem 0;
+    padding: .6rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--default-light);
+    color: var(--default-medium);
+    border: 1px solid #525c651f;
+    width: 94%;
+    font-size: 16px;
+}
+
+.formulario input:focus {
+    outline: none;
+} 
+
+.formulario__link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--link);
+    font-size: 14px;
+}
+
+.formulario__link:hover {
+    text-decoration: underline;
 }

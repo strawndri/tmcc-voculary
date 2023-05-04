@@ -21,11 +21,11 @@
 
 <body>
 <div class="pagina-inicial">
-    {% if request.path not in ['/home', '/apresentacao', '/cadastro', '/login'] %}
+    {% if request.path != '/' and request.path != '/home' and request.path != '/cadastro' and request.path != '/login' %}
     {% include 'partials/_header.html' %}
     {% endif %}
     <main class="principal">
-        {% if request.path != '/apresentacao' %}
+        {% if request.path != '/' and request.path != '/cadastro' and request.path != '/login' %}
             {% include 'partials/_menu_lateral.html' %}
         {% endif %}
         {% block conteudo %}

@@ -1,0 +1,22 @@
+{% extends 'usuario/index.html' %}
+{% load static %}
+{% block conteudo1 %}
+    <h2 class="apresentacao__subtitulo">Boas vindas novamente!</h2>
+    <p class="apresentacao__paragrafo">
+        Continue a ter novas experiências literárias, a avaliá-las e organizá-las. Assim, você será capaz de conhecer melhor os seus gostos e de desenvolver o hábito de leitura.
+    </p>
+{% endblock %}
+{% block conteudo2 %}
+    <form class="formulario">
+        <label class="formulario__label">
+            E-mail:
+            <input class="formulario__input" type="email" id="email" name="email">
+        </label>
+        <label class="formulario__label">
+            Senha:
+            <input class="formulario__input" type="password" id="senha" name="senha">
+        </label>
+        <input class="formulario__botao botao" type="submit" value="Entrar">
+        <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
+    </form>
+{% endblock %}

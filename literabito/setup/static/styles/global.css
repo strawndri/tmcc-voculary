@@ -8,7 +8,8 @@
     --primary-medium-svg: invert(55%) sepia(14%) saturate(632%) hue-rotate(168deg) brightness(95%) contrast(93%);
     --primary-extra-dark-svg: invert(20%) sepia(8%) saturate(2272%) hue-rotate(190deg) brightness(96%) contrast(85%);
 
-    --secondary: #3CBD7B;
+    --secondary-light: #4bcd8a;
+    --secondary-dark: #3CBD7B;
 
     --link: #395AAC;
 
@@ -28,8 +29,18 @@ body {
     color: var(--default-dark)
 }
 
+input {
+    font-family: var(--font-conteudo);
+}
+
 h1, h2, h3 {
     font-family: var(--font-titulo);
+}
+
+.pagina-principal {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
 
 .conteudo__titulo {
@@ -57,16 +68,19 @@ h1, h2, h3 {
 }
 
 .botao {
-    padding: .8em 1em;
+    padding: .8em 1.8em;
     margin: 1rem 0 2rem 0;
-    background-color: var(--secondary);
+    background-color: var(--secondary-dark);
     color: var(--primary-extra-dark);
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: 500;
+    border: none;
+    transition: .5s all;
 }
 
 .botao:hover {
     cursor: pointer;
+    background-color: var(--secondary-light);
 }
 
 

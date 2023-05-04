@@ -1,10 +1,33 @@
-{% extends 'apresentacao/index.html' %}
+{% extends 'usuario/index.html' %}
 {% load static %}
+{% block conteudo1 %}
+    <h2 class="apresentacao__subtitulo">Boas vindas ao Literábito</h2>
+    <p class="apresentacao__paragrafo">
+        Mais que um lugar para avaliar e organizar leituras, uma segunda casa para leitores, leitoras e simpatizantes.
+    </p>
+    <p class="apresentacao__paragrafo">
+        Aqui, você será capaz de organizar suas experiências literárias de forma rápida, intuitiva e confortável. Crie prateleiras, adicione novas leituras e descubra o seu gosto literário por meio de gráficos e avaliações. Crie o hábito de leitura.
+    </p>
+{% endblock %}
 {% block conteudo2 %}
-<form class="form">
-    <input type="text" placeholder="E-mail">
-    <input type="password" placeholder="Senha">
-    <input type="submit" value="Entrar">
-    <a href="#">Ainda não tem uma conta? Cadastre-se aqui.</a>
-</form>
+    <form class="formulario">
+        <label class="formulario__label">
+            Nome:
+            <input class="formulario__input" type="text" id="nome" name="nome">
+        </label>
+        <label class="formulario__label">
+            E-mail:
+            <input class="formulario__input" type="email" id="email" name="email">
+        </label>
+        <label class="formulario__label">
+            Senha:
+            <input class="formulario__input" type="password" id="senha" name="senha">
+        </label>
+        <label class="formulario__label">
+            Confirmação de senha:
+            <input class="formulario__input" type="password" id="confirmacao_senha" name="confirmacao_senha">
+        </label>
+        <input class="formulario__botao botao" type="submit" value="Cadastrar">
+        <a class="formulario__link" href="{% url 'login' %}">Já tem uma conta? Faça login!</a>
+    </form>
 {% endblock %}
