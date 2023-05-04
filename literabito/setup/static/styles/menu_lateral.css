@@ -3,9 +3,8 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 6rem;
+    width: 4rem;
     background-color: var(--primary-light);
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +14,6 @@
 }
 
 .menu-lateral__navegacao {
-    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,15 +21,22 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 .menu-lateral__navegacao {
     margin-bottom: 10px;
 }
 .menu-lateral__navegacao a img{
-    fill: var(--primary-dark);
-    width: 3em;
+    filter: var(--primary-medium-svg);
+    width: 2em;
     margin-bottom: 2em;
+    transition: .5s all;
 }
+
+.menu-lateral__navegacao .ativo img{
+    filter: var(--primary-extra-dark-svg);
+}
+
 .menu-lateral__navegacao a img:hover {
-    fill: var(--primary-extra-dark);
+    opacity: 0.8;
 }

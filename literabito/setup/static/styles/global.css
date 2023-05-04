@@ -5,6 +5,9 @@
     --primary-dark: #383E54;
     --primary-extra-dark: #1C2135;
 
+    --primary-medium-svg: invert(55%) sepia(14%) saturate(632%) hue-rotate(168deg) brightness(95%) contrast(93%);
+    --primary-extra-dark-svg: invert(20%) sepia(8%) saturate(2272%) hue-rotate(190deg) brightness(96%) contrast(85%);
+
     --secondary: #3CBD7B;
 
     --link: #395AAC;
