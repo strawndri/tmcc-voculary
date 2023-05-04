@@ -16,8 +16,19 @@
     --default-light: #EBEBEB;
     --default-medium: #525C65;
     --default-dark: #333;
+
+    --font-titulo: 'Quicksand', sans-serif;
+    --font-conteudo: 'IBM Plex Sans KR', sans-serif;
+
 }
 
 body {
     background-color: var(--default-extra-light);
+    font-family: var(--font-conteudo);
+    color: var(--default-dark)
 }
+
+h1, h2, h3 {
+    font-family: var(--font-titulo);
+}
+
