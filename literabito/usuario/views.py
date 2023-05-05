@@ -11,7 +11,7 @@ def cadastro(request):
     return render(request, 'usuario/cadastro.html', {'form': form})
 
 def login(request):
-    form = CadastroForms()
+    form = LoginForms()
 
     if request.method == 'POST':
         form = LoginForms(request.POST)
