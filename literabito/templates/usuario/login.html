@@ -7,15 +7,13 @@
     </p>
 {% endblock %}
 {% block conteudo2 %}
-    <form class="formulario">
+    <form class="formulario" action="{% url 'login' %}" method="POST">
+        {% for field in form.visible_fields %}
         <label class="formulario__label">
-            E-mail:
-            <input class="formulario__input" type="email" id="email" name="email">
+            {{ field.label }}
+            {{ field }}
         </label>
-        <label class="formulario__label">
-            Senha:
-            <input class="formulario__input" type="password" id="senha" name="senha">
-        </label>
+        {% endfor %}
         <input class="formulario__botao botao" type="submit" value="Entrar">
         <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
     </form>
