@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--primary-dark);
+    padding-left: 4rem
 }
 
 .rodape__texto {
