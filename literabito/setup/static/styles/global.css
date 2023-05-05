@@ -50,8 +50,8 @@ h1, h2, h3 {
 }
 
 .conteudo {
-    padding-left: 6rem;
-    padding-bottom: 5rem;
+    padding: 1em 1em 1em 6em;
+    height: 100vh;
 }
 
 .home {
