@@ -1,6 +1,5 @@
 .cabecalho {
     display: flex;
     padding: 1em;
-    justify-content: right;
-    box-shadow: 1px 1px 3px 0px #0000002b;
+    justify-content: center;
 }

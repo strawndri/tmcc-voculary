@@ -1,39 +1,31 @@
 .form-pesquisa {
-    border-radius: 40px;
     display: flex;
-    height: auto;
-    width: 500px;
-    justify-content: space-between;
-    padding: 2px;
-    background: var(--default-light);
-    border: 1px solid var(--primary-medium);
-}
-
-.pesquisa__input {
     align-items: center;
-    background-color: transparent;
-    border-radius: 40px;
-    border: none;
+    width: 600px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--default-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .pesquisa__input {
+    flex: 1;
+    height: 100%;
+    padding: 0 1.2rem;
     font-size: 1rem;
-    height: 24px;
-    padding: 10px;
-    width: 500px;
-    background: var(--default-light);
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
     color: var(--default-medium);
-}
-
-.grande {
-    width: auto; 
-    align-items: center;
-}
-
-.pesquisa__input:focus{
+  }
+  
+  .pesquisa__input:focus {
     outline: none;
-}
-
-.pesquisa__icone {
+  }
+  
+  .pesquisa__icone {
     padding: .5em;
     cursor: pointer;
-    width: 1.5rem;
-    /* height: 2rem; */
-}
+    width: 1.2rem;
+    height: 1.5rem;
+  }

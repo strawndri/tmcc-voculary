@@ -1,26 +1,24 @@
 :root {
 
-    --primary-light: #D9E4FF;
-    --primary-medium: #748CA3;
-    --primary-dark: #383E54;
-    --primary-extra-dark: #1C2135;
+  --preto-50: #F9F9F9;
+  --preto-100: #EEEEEE;
+  --preto-200: #E3E3E3;
+  --preto-500: #8B8B8B;
+  --preto-600: #646464;
+  --preto-800: #333333;
 
-    --primary-medium-svg: invert(55%) sepia(14%) saturate(632%) hue-rotate(168deg) brightness(95%) contrast(93%);
-    --primary-extra-dark-svg: invert(20%) sepia(8%) saturate(2272%) hue-rotate(190deg) brightness(96%) contrast(85%);
+  -verde-50: #58CCC9;
+  -verde-100: #89DBDA;
+  -verde-200: #B8E8E8;
+  -verde-300: #E3F6F6;
+  -verde-800: #16827A;
 
-    --secondary-light: #4bcd8a;
-    --secondary-dark: #3CBD7B;
+  --azul-50: #F6E3F6;
+  --azul-100: #E8B9E9;
+  --azul-600: #9B00AA;
 
-    --link: #395AAC;
-
-    --default-extra-light: #F9F9F9;
-    --default-light: #EBEBEB;
-    --default-medium: #525C65;
-    --default-dark: #333;
-
-    --font-titulo: 'Quicksand', sans-serif;
-    --font-conteudo: 'IBM Plex Sans KR', sans-serif;
-
+  --font-titulo: 'Quicksand', sans-serif;
+  --font-conteudo: 'Inter', sans-serif;
 }
 
 body {
@@ -35,6 +33,7 @@ input {
 
 h1, h2, h3 {
     font-family: var(--font-titulo);
+    color: var(--primary-extra-dark)
 }
 
 .pagina-principal {
@@ -82,5 +81,102 @@ h1, h2, h3 {
     cursor: pointer;
     background-color: var(--secondary-light);
 }
+
+.minhas-leituras {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .minhas-leituras__titulo {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .minhas-leituras__livros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .minhas-leituras__livro {
+    background-color: var(--default-light);
+    width: 15rem;
+    height: 22rem;
+    margin: 1.5rem;
+    border-radius: 1rem;
+    position: relative;
+  }
+  
+  .minhas-leituras__livro:hover .minhas-leituras__livro-opcoes {
+    opacity: 1;
+  }
+  
+  .minhas-leituras__livro-imagem {
+    width: 100%;
+    height: 70%;
+    background-size: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  
+  .minhas-leituras__livro-nome {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .minhas-leituras__livro-autor {
+    font-size: 1rem;
+    color: var(--default-medium);
+    text-align: center;
+  }
+  
+  .minhas-leituras__livro-opcoes {
+    opacity: 0;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .minhas-leituras__livro-opcoes button {
+    background-color: transparent;
+    border: none;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .minhas-caixas {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .minhas-caixas__caixa {
+    background-color: var(--default-light);
+    width: 10rem;
+    height: 10rem;
+    margin: 0 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .minhas-caixas__caixa-titulo {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .minhas-caixas__caixa-quantidade {
+    font-size: 2rem;
+    font-weight: bold;
+  }
 
 

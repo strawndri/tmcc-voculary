@@ -1,8 +1,9 @@
 .menu-lateral {
     position: fixed;
     left: 0;
-    top: 0;
-    height: 100vh;
+    top: 10px;
+    bottom: 10px;
+    height: auto;
     width: 4rem;
     background-color: var(--primary-light);
     display: flex;
@@ -11,8 +12,11 @@
     justify-content: space-between;
     padding: 20px 10px;
     box-sizing: border-box;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
+    
 .menu-lateral__navegacao {
     margin: 0;
     padding: 0;

@@ -3,11 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-dark);
+    /* background-color: var(--primary-dark); */
     padding-left: 4rem
 }
 
 .rodape__texto {
-    color: var(--default-light);
+    color: var(--default-medium);
     padding-top: 2rem;
 }

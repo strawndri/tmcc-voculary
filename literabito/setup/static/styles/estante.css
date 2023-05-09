@@ -6,7 +6,8 @@
     width: 12rem;
     height: 16rem;
     background-color: var(--default-light);
-    border: 1px solid var(--default-medium);
+    /* border: 1px solid var(--default-medium); */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border-radius: 10px;
     margin: 0 1em 2em 0;
 }
@@ -25,4 +26,5 @@
 
 .prateleiras__prateleira img {
     width: 5rem;
+    
 }
