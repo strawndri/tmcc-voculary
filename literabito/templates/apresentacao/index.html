@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/apresentacao.css' %}">
+</head>
+<section class="conteudo">
+    <section class="conteudo__inicio">
+        <p>
+            Organize suas leituras de forma simples e construa um hábito de pessoa leitora.
+        </p>
+        <img src="{% static '/assets/desenhos/apresentacao.svg' %}">
+    </section>
+    <section class="conteudo__sobre-nos">
+        <h2>
+            Sobre nós
+        </h2>
+        <p>
+            Na Literábito, acreditamos que a leitura é uma das mais poderosas ferramentas para o desenvolvimento pessoal e intelectual. Uma leitura prazerosa e agregadora não depende apenas da pessoa e do seu livro, mas também de um hábito sólido e consistente, que pode ser construído por meio de uma organização eficaz.
+        </p>
+        <p>
+            Aqui na Literábito, você poderá organizar suas leituras de forma personalizada e adaptada às suas necessidades e gostos literários.
+        </p>
+    </section>
+    <section class="conteudo__contato">
+        <h2>Contato</h2>
+        <p>
+            A Literábito está ansiosa para ouvir você! Seja para tirar dúvidas, fazer uma sugestão, relatar um problema ou simplesmente dizer olá, estamos sempre prontos para uma boa conversa. Nós valorizamos muito o feedback da nossa comunidade e estamos empenhados em fornecer o melhor atendimento possível.
+        </p>
+        <p>
+            Quer conhecer a Andrieli Gonçalves, pessoa desenvolvedora da Literábito? Acesse ao lado as suas principais formas de contato!
+        </p>
+    </section>
+</section>
+{% endblock %}

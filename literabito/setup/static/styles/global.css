@@ -38,8 +38,10 @@ input {
 
 h1, h2, h3 {
     font-family: var(--font-titulo);
-    color: var(--azul-900)
+    color: var(--azul-900);
+    font-weight: 700;
 }
+
 
 .pagina-principal {
     display: flex;

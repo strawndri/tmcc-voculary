@@ -20,9 +20,7 @@
 
 <body>
 <div class="pagina-inicial">
-    {% if request.path != '/' and request.path != '/cadastro' and request.path != '/login' %}
     {% include 'partials/_header.html' %}
-    {% endif %}
     <main class="principal">
         {% if request.path != '/' and request.path != '/cadastro' and request.path != '/login' %}
             {% include 'partials/_menu_lateral.html' %}
