@@ -13,18 +13,23 @@
   -verde-300: #E3F6F6;
   -verde-800: #16827A;
 
-  --azul-50: #F6E3F6;
-  --azul-100: #E8B9E9;
-  --azul-600: #9B00AA;
+  --azul-50: #EBEBF9;
+  --azul-100: #CCCCF0;
+  --azul-800: #403582;
+  --azul-900: #312656;
+
+  --roxo-50: #F6E3F6;
+  --roxo-100: #E8B9E9;
+  --roxo-600: #9B00AA;
 
   --font-titulo: 'Quicksand', sans-serif;
   --font-conteudo: 'Inter', sans-serif;
 }
 
 body {
-    background-color: var(--default-extra-light);
+    background-color: var(--preto-50);
     font-family: var(--font-conteudo);
-    color: var(--default-dark)
+    color: var(--preto-800);
 }
 
 input {
@@ -33,7 +38,7 @@ input {
 
 h1, h2, h3 {
     font-family: var(--font-titulo);
-    color: var(--primary-extra-dark)
+    color: var(--azul-900)
 }
 
 .pagina-principal {
