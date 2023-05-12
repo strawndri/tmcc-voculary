@@ -12,5 +12,5 @@ O Literábito foi pensado para facilitar a forma como leitores e leitoras organi
 
 ## Feito com carinho por:
 
-| [<img src="https://avatars.githubusercontent.com/u/62841828?v=4" width=115><br><sub>Andrieli Luci Gonçalves</sub>](https://github.com/strawndri) | [<img src="https://i.imgur.com/ujdDQge.png" width=115><br><sub>Mauricio Mateus dos Santos Leal</sub>](https://github.com/mauriciosleal) |
-| --- | --- |
+| [<img src="https://avatars.githubusercontent.com/u/62841828?v=4" width=115><br><sub>Andrieli Luci Gonçalves</sub>](https://github.com/strawndri) |
+| --- |
