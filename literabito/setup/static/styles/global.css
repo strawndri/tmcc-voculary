@@ -7,11 +7,11 @@
   --preto-600: #646464;
   --preto-800: #333333;
 
-  -verde-50: #58CCC9;
-  -verde-100: #89DBDA;
-  -verde-200: #B8E8E8;
-  -verde-300: #E3F6F6;
-  -verde-800: #16827A;
+  --verde-50: #E3F6F6;
+  --verde-100: #B8E8E8;
+  --verde-200: #89DBDA;
+  --verde-300: #58CCC9;
+  --verde-800: #16827A;
 
   --azul-50: #EBEBF9;
   --azul-100: #CCCCF0;
@@ -21,6 +21,7 @@
   --roxo-50: #F6E3F6;
   --roxo-100: #E8B9E9;
   --roxo-600: #9B00AA;
+  --roxo-800: #76009C;
 
   --font-titulo: 'Quicksand', sans-serif;
   --font-conteudo: 'Inter', sans-serif;
@@ -28,8 +29,8 @@
 
 body {
     background-color: var(--preto-50);
-    font-family: var(--font-conteudo);
     color: var(--preto-800);
+    font-family: var(--font-conteudo);
 }
 
 input {
@@ -40,8 +41,8 @@ h1, h2, h3 {
     font-family: var(--font-titulo);
     color: var(--azul-900);
     font-weight: 700;
+    margin: 4rem 0 3rem 0;
 }
-
 
 .pagina-principal {
     display: flex;
@@ -49,44 +50,38 @@ h1, h2, h3 {
     min-height: 100vh; 
 }
 
-.conteudo__titulo {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 1em 0 2em 0;
-}
-
-.conteudo {
-    padding: 1em 1em 1em 6em;
-    height: 100vh;
-}
-
-.home {
-    display: flex;
-    height: 80vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.home__paragrafo {
-    margin: 1rem 0 2rem 0;
-    color: var(--default-medium)
-}
-
 .botao {
-    padding: .8em 1.8em;
-    margin: 1rem 0 2rem 0;
-    background-color: var(--secondary-dark);
-    color: var(--primary-extra-dark);
-    border-radius: 10px;
-    font-weight: 500;
-    border: none;
-    transition: .5s all;
+  display: flex;
+  padding: .8em 1.8em;
+  margin: 1rem 0 2rem 0;
+  background-color: var(--verde-200);
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: 1s all;
+  color: var(--black-800)
 }
 
 .botao:hover {
     cursor: pointer;
-    background-color: var(--secondary-light);
+    background-color: var(--verde-100);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo__desenho {
+  width: 1.6rem;
+}
+
+.logo__texto {
+  width: 10rem;
 }
 
 .minhas-leituras {

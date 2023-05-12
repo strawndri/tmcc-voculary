@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="288"
+   height="54"
+   viewBox="0 0 76.199991 14.287505"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="logo-2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.842284"
+     inkscape:cx="255.66091"
+     inkscape:cy="73.821409"
+     inkscape:window-width="1366"
+     inkscape:window-height="697"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="282.49207"
+       y="184.23395"
+       width="168.88112"
+       height="47.759232"
+       id="rect17849" />
+  </defs>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.9333px;line-height:1.05;font-family:sans-serif;letter-spacing:-1.05833px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-1.69333"
+       y="14.219767"
+       id="text17795"><tspan
+         sodipodi:role="line"
+         id="tspan17793"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa Bold';stroke-width:0.264583"
+         x="-1.69333"
+         y="14.219767"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa Bold';fill:#312656;fill-opacity:1"
+           id="tspan18333">Liter</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa Bold';fill:#58ccc9;fill-opacity:1"
+           id="tspan19061">ábito</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text17847"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect17849);display:inline;fill:#000000;fill-opacity:1;stroke:none" />
+  </g>
+</svg>

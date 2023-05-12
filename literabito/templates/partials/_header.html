@@ -1,8 +1,11 @@
 <header class="cabecalho">
     {% if request.path == '/' or request.path == '/apresentacao' %}
-        <nav class="header__nav">
-            <a class="header__nav__link" href="">Sobre nós</a>
-            <a class="header__nav__link" href="">Contato</a>
+    <nav class="header__nav">
+            {% include 'partials/_logo.html' %}
+            <div class="header__nav__group">
+                <a class="header__nav__link" href="#sobre-nos">Sobre nós</a>
+                <a class="header__nav__link" href="#contato">Contato</a>
+            </div>
             <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
         </nav>
     {% else %}

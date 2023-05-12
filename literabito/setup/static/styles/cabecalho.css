@@ -1,5 +1,19 @@
 .cabecalho {
+    padding: 1rem 8rem;
+}
+
+.header__nav {
     display: flex;
-    padding: 1em;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__nav__group a {
+    margin-left: 0.5rem;
+    color: var(--azul-900);
+    font-weight: 500;
+}
+
+.header__nav__link {
+    text-decoration: none;
 }
