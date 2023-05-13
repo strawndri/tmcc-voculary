@@ -58,11 +58,14 @@
 } 
 
 .formulario__link {
-    text-align: center;
     text-decoration: none;
     color: var(--azul-500);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+.senha {
+    margin-left: auto;
 }
 
 .formulario__link:hover {
@@ -70,7 +73,7 @@
 }
 
 .botao {
-    margin: .5rem 0;
+    margin: 4rem 0 1rem 0;
     width: 100%;
 }
 

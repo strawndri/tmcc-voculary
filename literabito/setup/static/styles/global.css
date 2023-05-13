@@ -13,7 +13,7 @@
   --verde-300: #58CCC9;
   --verde-800: #16827A;
 
-  --azul-50: #EBEBF9;
+  --azul-50: #E3E3F3;
   --azul-100: #CCCCF0;
   --azul-500: #5C54C7;
   --azul-800: #403582;
@@ -48,8 +48,9 @@ h1, h2, h3 {
 }
 
 .vetor {
-  /* filter: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%); */
-  filter: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
+  filter: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
+  /* filter: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%); */
+  /* filter: invert(41%) sepia(0%) saturate(2549%) hue-rotate(316deg) brightness(91%) contrast(86%); */
   width: 18rem;
 }
 

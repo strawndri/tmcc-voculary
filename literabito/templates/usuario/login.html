@@ -8,12 +8,15 @@
     <section class="conteudo__formulario">
         <form class="formulario" action="{% url 'login' %}" 
         method="POST">
-            <h2>Crie uma nova conta</h2>
+            <h2>Boas vindas de volta!</h2>
             {% for field in form.visible_fields %}
             <label class="formulario__label {field.}">
                 {{ field.label }}
                 {{ field }}
             </label>
+            {% if field.label == 'Senha' %}
+                <a class="formulario__link senha" href="">Esqueci minha senha</a>
+            {% endif %}
             {% endfor %}
             <input class="formulario__botao botao" type="submit" value="Entrar">
             <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
