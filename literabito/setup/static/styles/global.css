@@ -15,6 +15,7 @@
 
   --azul-50: #EBEBF9;
   --azul-100: #CCCCF0;
+  --azul-500: #5C54C7;
   --azul-800: #403582;
   --azul-900: #312656;
 
@@ -22,6 +23,8 @@
   --roxo-100: #E8B9E9;
   --roxo-600: #9B00AA;
   --roxo-800: #76009C;
+
+  --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   --font-titulo: 'Quicksand', sans-serif;
   --font-conteudo: 'Inter', sans-serif;
@@ -42,6 +45,12 @@ h1, h2, h3 {
     color: var(--azul-900);
     font-weight: 700;
     margin: 4rem 0 3rem 0;
+}
+
+.vetor {
+  /* filter: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%); */
+  filter: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
+  width: 18rem;
 }
 
 .pagina-principal {

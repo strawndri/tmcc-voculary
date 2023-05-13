@@ -1,28 +1,56 @@
-.formulario {
+.cabecalho {
+    width: 2rem;
+    position: absolute;
+}
+
+.conteudo {
     display: flex;
-    flex-direction: column;
-    background-color: var(--default-extra-light);
-    margin: 0 0 1rem 2rem;
-    width: 20rem;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    align-items: center;
+}
+
+.conteudo__formulario {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo__formulario form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem 2rem 2rem 8rem;
+    width: 24rem;
+}
+
+.conteudo__formulario h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
+    margin-bottom: 1.2em;
 }
 
 .formulario__label {
-    color: var(--default-medium);
+    display: flex;
+    flex-direction: column;
+    color: var(--preto-800);
+    font-size: 0.9rem;
+    width: 100rem;
 }
 
 .formulario__label input {
-    margin: 1rem 0 1rem 0;
+    margin: .5rem 0 1rem 0;
     padding: .6rem;
     border: none;
-    border-radius: 10px;
-    background-color: var(--default-light);
-    color: var(--default-medium);
-    border: 1px solid #525c651f;
-    width: 94%;
+    border-radius: 5px;
+    background-color: var(--preto-100);
+    color: var(--preto-500);
+    box-shadow: var(--sombra);
     font-size: 16px;
+    flex-grow: 1;
+    display: inline;
 }
 
 .formulario input:focus {
@@ -32,10 +60,30 @@
 .formulario__link {
     text-align: center;
     text-decoration: none;
-    color: var(--link);
-    font-size: 14px;
+    color: var(--azul-500);
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .formulario__link:hover {
     text-decoration: underline;
+}
+
+.botao {
+    margin: .5rem 0;
+    width: 100%;
+}
+
+.conteudo__imagem {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    background-color: var(--azul-50);
+    border-radius: 40px 0 0 40px;
+    padding: 0 8rem 0 10rem;
+    width: 50%;
+    height: 100%;
 }

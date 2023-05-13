@@ -1,23 +1,26 @@
-{% extends 'usuario/index.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block conteudo1 %}
-    <h2 class="apresentacao__subtitulo">Boas vindas ao Literábito</h2>
-    <p class="apresentacao__paragrafo">
-        Mais que um lugar para avaliar e organizar leituras, uma segunda casa para leitores, leitoras e simpatizantes.
-    </p>
-    <p class="apresentacao__paragrafo">
-        Aqui, você será capaz de organizar suas experiências literárias de forma rápida, intuitiva e confortável. Crie prateleiras, adicione novas leituras e descubra o seu gosto literário por meio de gráficos e avaliações. Crie o hábito de leitura.
-    </p>
-{% endblock %}
-{% block conteudo2 %}
-    <form class="formulario" action="{% url 'cadastro' %}" method="POST">
-        {% for field in form.visible_fields %}
-        <label class="formulario__label">
-            {{ field.label }}
-            {{ field }}
-        </label>
-        {% endfor %}
-        <input class="formulario__botao botao" type="submit" value="Cadastrar">
-        <a class="formulario__link" href="{% url 'login' %}">Já tem uma conta? Faça login!</a>
-    </form>
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
+</head>
+<section class="conteudo">
+    <section class="conteudo__formulario">
+        <form class="formulario" action="{% url 'cadastro' %}" 
+        method="POST">
+            <h2>Crie uma nova conta</h2>
+            {% for field in form.visible_fields %}
+            <label class="formulario__label {field.}">
+                {{ field.label }}
+                {{ field }}
+            </label>
+            {% endfor %}
+            <input class="formulario__botao botao" type="submit" value="Entrar">
+            <a class="formulario__link" href="{% url 'login' %}">Já tem uma conta? Faça login agora!</a>
+        </form>
+    </section>
+    <secion class="conteudo__imagem">
+        <img class="vetor" src="{% static 'assets/desenhos/cadastro.svg' %}">
+    </secion>
+</section>
 {% endblock %}

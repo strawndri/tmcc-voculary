@@ -1,20 +1,26 @@
-{% extends 'usuario/index.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block conteudo1 %}
-    <h2 class="apresentacao__subtitulo">Boas vindas novamente!</h2>
-    <p class="apresentacao__paragrafo">
-        Continue a ter novas experiências literárias, a avaliá-las e organizá-las. Assim, você será capaz de conhecer melhor os seus gostos e de desenvolver o hábito de leitura.
-    </p>
-{% endblock %}
-{% block conteudo2 %}
-    <form class="formulario" action="{% url 'login' %}" method="POST">
-        {% for field in form.visible_fields %}
-        <label class="formulario__label">
-            {{ field.label }}
-            {{ field }}
-        </label>
-        {% endfor %}
-        <input class="formulario__botao botao" type="submit" value="Entrar">
-        <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
-    </form>
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
+</head>
+<section class="conteudo">
+    <section class="conteudo__formulario">
+        <form class="formulario" action="{% url 'login' %}" 
+        method="POST">
+            <h2>Crie uma nova conta</h2>
+            {% for field in form.visible_fields %}
+            <label class="formulario__label {field.}">
+                {{ field.label }}
+                {{ field }}
+            </label>
+            {% endfor %}
+            <input class="formulario__botao botao" type="submit" value="Entrar">
+            <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
+        </form>
+    </section>
+    <secion class="conteudo__imagem">
+        <img class="vetor" src="{% static 'assets/desenhos/login.svg' %}">
+    </secion>
+</section>
 {% endblock %}

@@ -28,7 +28,9 @@
         {% block conteudo %}
         {% endblock %}
     </main>
+    {% if request.path == '/' or request.path == '/apresentacao' %}
     {% include 'partials/_rodape.html' %}
+    {% endif %}
 </div>
 </body>
 </html>

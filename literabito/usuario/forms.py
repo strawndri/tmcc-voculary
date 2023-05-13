@@ -15,10 +15,22 @@ class LoginForms(forms.Form):
     )
 
 class CadastroForms(forms.Form):
-    nome_cadastro = forms.CharField(
-        label='Nome',
+    primeiro_nome = forms.CharField(
+        label='Primeino nome',
         required = True,
-        max_length = 100
+        max_length = 100,
+        widget=forms.TextInput(
+            attrs={'class':'nome'}
+        )
+    )
+
+    ultimo_nome = forms.CharField(
+        label='Último nome',
+        required = True,
+        max_length = 100,
+        widget=forms.TextInput(
+            attrs={'class':'nome'}
+        )
     )
 
     email = forms.EmailField(
@@ -40,7 +52,7 @@ class CadastroForms(forms.Form):
         max_length = 255,
         widget=forms.PasswordInput()
     )
-            
+
     def clean_senha_2(self):
         senha_1 = self.cleaned_data.get('senha_1')
         senha_2 = self.cleaned_data.get('senha_2')

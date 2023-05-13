@@ -23,11 +23,6 @@ h2 {
     line-height: 3.5rem;
 }
 
-.conteudo__desenho{
-    filter: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
-    width: 18rem;
-}
-
 .conteudo__titulo {
     text-align: center;
 }
