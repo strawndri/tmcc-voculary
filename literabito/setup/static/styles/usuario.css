@@ -33,6 +33,7 @@
 }
 
 .formulario__label {
+    position: relative;
     display: flex;
     flex-direction: column;
     color: var(--preto-800);
@@ -70,6 +71,25 @@
 
 .formulario__link:hover {
     text-decoration: underline;
+}
+
+.formulario__botao--senha {
+    position: absolute;
+    top: 2rem;
+    right: .5rem;
+    background-image: url('../assets/icones/olho.svg');
+    opacity: 0.6;
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.formulario__botao--senha-ativo {
+    background-image: url('../assets/icones/olho-ativo.svg');
+
 }
 
 .botao {
