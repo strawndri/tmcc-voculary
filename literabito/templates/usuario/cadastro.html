@@ -10,10 +10,18 @@
         method="POST">
             <h2>Crie uma nova conta</h2>
             {% for field in form.visible_fields %}
-            <label class="formulario__label {field.}">
+
+            <!-- Verifica se o total de fields é menor que dois -->
+            {% if forloop.counter < 2 %}
+            <field class="formulario__group">
+            {% endif %}
+            <label class="formulario__label {{ field.name }}">
                 {{ field.label }}
                 {{ field }}
             </label>
+            {% if forloop.counter == 2 %}
+            </field>
+            {% endif %}
             {% endfor %}
             <input class="formulario__botao botao" type="submit" value="Entrar">
             <a class="formulario__link" href="{% url 'login' %}">Já tem uma conta? Faça login agora!</a>

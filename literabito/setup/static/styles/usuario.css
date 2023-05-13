@@ -87,3 +87,16 @@
     width: 50%;
     height: 100%;
 }
+
+.formulario__group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 24rem;
+    gap: 1rem;
+}
+
+.formulario__group input {
+    width: 10.3rem;
+}
