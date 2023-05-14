@@ -1,12 +1,7 @@
 h2 {
     font-size: 2rem;
     display: block;
-}
-
-.conteudo {
-    padding: 0 8rem;
-    display: flex;
-    flex-direction: column;
+    margin: 2rem 1rem;
 }
 
 .conteudo__inicio {
@@ -35,64 +30,37 @@ h2 {
 
 .conteudo__paragrafo {
     line-height: 2rem;
-    margin-bottom: 2rem;
+    margin: 0 2rem 2rem 0;
 }
 
 .conteudo__sobre-nos__textos {
     display: flex;
 }
 
+
 .conteudo__sobre-nos__funcionalidades__item {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
 }
 
 .conteudo__sobre-nos__funcionalidades__item img {
-    width: 1.5rem;
-    padding: .5rem;
-    border-radius: 5px;
+    width: 2.5rem;
+    filter: var(--preto-800-filtro);
+    transition: all .5s;
+}
+
+.conteudo__sobre-nos__funcionalidades__item img:hover {
+    scale: 1.2
 }
 
 .conteudo__sobre-nos__funcionalidades__item p {
-    padding: 0.8rem;
-    border-radius: 5px;
-    width: 20rem;
-    margin: 0 0 2.8rem 0;
+    width: 16rem;
+    line-height: 1.5rem;
     font-size: 0.9rem;
-}
-
-.conteudo__sobre-nos__funcionalidades__item img {
-    padding: .4rem;
-    position: absolute;
-    top: -.6rem;
-    right: -21rem;
-    z-index: 1;
-}
-
-#pesquisar img {
-    background-color: var(--verde-100);
-}
-
-#pesquisar p {
-    color: var(--verde-800);
-    background-color: var(--verde-50);
-}
-
-#estante img {
-    background-color: var(--azul-100);
-}
-
-#estante p {
-    color: var(--azul-800);
-    background-color: var(--azul-50);
-}
-
-#dashboard img {
-    background-color: var(--roxo-100);
-}
-
-#dashboard p {
-    color: var(--roxo-800);
-    background-color: var(--roxo-50);
+    margin: 0 0 .5rem 1rem;
 }
 
 .botao {

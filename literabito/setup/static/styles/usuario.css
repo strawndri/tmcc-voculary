@@ -6,10 +6,12 @@
 .conteudo {
     display: flex;
     align-items: center;
+    height: 100vh;
+    position: fixed;
+
 }
 
 .conteudo__formulario {
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +23,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 2rem 2rem 2rem 8rem;
+    padding: 2rem 2rem 2rem 0;
     width: 24rem;
 }
 
