@@ -9,5 +9,6 @@ urlpatterns = [
     path('', include('estante.urls')),
     path('', include('usuario.urls')),
     path('', include('apresentacao.urls')),
+    path('', include('dashboard.urls')),
     path('admin/', admin.site.urls)
 ] + static( settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

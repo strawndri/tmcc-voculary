@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}">
+</head>
+<section class="conteudo">
+    <h2 class="conteudo__titulo-principal">Dashboard</h2>
+    <p class="conteudo__descricao">Veja sua produtividade de leitura.</p>
+    <section class="conteudo__dashboard">
+        <div class="dashboard__card">
+            <div class="dashboard__card__footer">
+                <h3>Quantidade de leituras por ano</h3>
+            </div>
+        </div>
+        <div class="dashboard__card">
+            <div class="dashboard__card__footer">
+                <h3>Quantidade de leituras por ano</h3>
+            </div>
+        </div>
+        <div class="dashboard__card">
+            <div class="dashboard__card__footer">
+                <h3>Quantidade de leituras por ano</h3>
+            </div>
+        </div>
+        <div class="dashboard__card">
+            <div class="dashboard__card__footer">
+                <h3>Quantidade de leituras por ano</h3>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}
