@@ -5,15 +5,40 @@
     <link rel="stylesheet" href="{% static 'styles/estante.css' %}">
 </head>
 <section class="conteudo">
-    <section class="estante">
-        <h1 class="estante__titulo conteudo__titulo">Estante</h1>
-    <section class="prateleiras">
-        <div class="prateleiras__prateleira prateleiras__criar" title="Criar nova prateleira">
-            <button type="submit" style="background-color: transparent; border:none">
-                <img src="{% static '/assets/icones/adicionar.svg' %}" alt="Ícone de pesquisa">
-            </button>
-        </div>
-    </section>
-    </section>
+    <h2 class="conteudo__titulo-principal">Estante</h2>
+    <p class="conteudo__descricao">Espaço único para você guardar e organizar suas prateleiras.</p>
+    <button class="botao">Criar prateleira</button>
+    <table class="prateleiras">
+        <thead class="prateleiras__header">
+            <tr>
+                <th class="nome-prateleira">Nome da prateleira</td>
+                <th class="data-criacao">Data de criação</td>
+                <th class="renomear">Renomear</td>
+                <th class="excluir">Excluir</td>
+            </tr>
+        </thead>
+        <tbody class="prateleiras__body">
+            <tr>
+                <td class="nome-prateleira">Favoritos de abril</td>
+                <td class="data-criacao">14/05/2023</td>
+                <td class="renomear">
+                    <button></button>
+                </td>
+                <td class="excluir">
+                    <button></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="nome-prateleira">Favoritos de abril</td>
+                <td class="data-criacao">14/05/2023</td>
+                <td class="renomear">
+                    <button></button>
+                </td>
+                <td class="excluir">
+                    <button></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 {% endblock %}

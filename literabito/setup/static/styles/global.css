@@ -30,29 +30,39 @@
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  --font-titulo: 'Quicksand', sans-serif;
-  --font-conteudo: 'Inter', sans-serif;
+  --fonte-titulo: 'Quicksand', sans-serif;
+  --fonte-conteudo: 'Inter', sans-serif;
 }
 
 body {
     background-color: var(--preto-50);
     color: var(--preto-800);
-    font-family: var(--font-conteudo);
+    font-family: var(--fonte-conteudo);
 }
 
 input {
-    font-family: var(--font-conteudo);
+    font-family: var(--fonte-conteudo);
 }
 
 h1, h2, h3 {
-    font-family: var(--font-titulo);
+    font-family: var(--fonte-titulo);
     color: var(--azul-900);
     font-weight: 700;
-    margin: 4rem 0 3rem 0;
+    /* margin: 4rem 0 3rem 0; */
+}
+
+.conteudo {
+  padding: 2rem 8rem;
 }
 
 .conteudo__titulo-principal {
   font-size: 1.8rem;
+}
+
+.conteudo__descricao {
+  color: var(--preto-500);
+  font-size: 0.9rem;
+  margin: .5rem 0 4rem 0;
 }
 
 .vetor {
@@ -77,7 +87,8 @@ h1, h2, h3 {
   justify-content: center;
   font-weight: 500;
   transition: 1s all;
-  color: var(--black-800)
+  color: var(--preto-800);
+  font-family: var(--font-conteudo);
 }
 
 .botao:hover {

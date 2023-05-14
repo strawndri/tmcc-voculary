@@ -1,30 +1,79 @@
 .conteudo {
     height: auto;
+    position: relative;
 }
 
-.prateleiras__prateleira {
-    width: 12rem;
-    height: 16rem;
-    background-color: var(--default-light);
-    /* border: 1px solid var(--default-medium); */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    margin: 0 1em 2em 0;
+.botao {
+    position: absolute;
+    top: 0;
+    right: 8rem;
 }
 
-.prateleiras__criar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .5s all;
+.prateleiras {
+    width: 100%;
+    background-color: var(--preto-50);
+    border: 1px solid var(--preto-200)
 }
 
-.prateleiras__criar:hover, .prateleiras__criar img:hover {
+.prateleiras__header {
+    font-weight: 700;
+}
+
+.prateleiras__header th {
+    text-align: left;
+    background-color: var(--preto-100);
+    padding: 1rem;
+    font-family: var(--fonte-titulo);
+}
+
+.prateleiras__body {
+    color: var(--preto-600);
+}
+
+.prateleiras__body tr {
+    border-bottom: 1px solid var(--preto-200)
+}
+
+.prateleiras__body td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.prateleiras__body tr:last-of-type {
+    border-bottom: none;
+}
+
+.prateleiras__body button {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.6;
+    border: none;
+    background-color: transparent;
+}
+
+.prateleiras__body button:hover {
     cursor: pointer;
-    opacity: 0.9;
 }
 
-.prateleiras__prateleira img {
-    width: 5rem;
-    
+.prateleiras__body .renomear button {
+    background-image: url('../assets/icones/renomear.svg');
+    background-size: cover;
+}
+
+.prateleiras__body .excluir button {
+    background-image: url('../assets/icones/excluir.svg');
+    background-size: cover;
+}
+
+.nome-prateleira {
+    width: 50%;
+}
+
+.data-criacao {
+    width: 25%;
+}
+
+.renomear, .excluir {
+    width: 5%;
+    text-align: center;
 }
