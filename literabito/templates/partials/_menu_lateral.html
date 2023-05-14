@@ -1,10 +1,11 @@
 {% load static %}
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
+        <a class="menu-lateral__navegacao__link-icone" href=""><img src="{% static '/assets/logo/logo-1.svg'%}" title="Logo Literábito"></a>
         <a class="menu-lateral__navegacao__link {% if request.path == '/perfil' %}ativo{% endif %}" href=""><img src="{% static '/assets/icones/perfil.svg'%}" title="Perfil"></a>
         <a class="menu-lateral__navegacao__link {% if request.path == '/home' %}ativo{% endif %}" href="{% url 'home' %}"><img src="{% static '/assets/icones/home.svg'%}" title="Home"></a>
         <a class="menu-lateral__navegacao__link {% if request.path == '/estante' %}ativo{% endif %}" href="{% url 'estante' %}"><img src="{% static '/assets/icones/estante.svg'%}" title="Dashboard"></a>
         <a class="menu-lateral__navegacao__link {% if request.path == '/dashboard' %}ativo{% endif %}" href=""><img src="{% static '/assets/icones/dashboard.svg'%}"></a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/logout' %}ativo{% endif %}" href=""><img src="{% static '/assets/icones/logout.svg'%}" title="Logout"></a>
+        <a class="menu-lateral__navegacao__link menu-lateral__navegacao__link-logout {% if request.path == '/logout' %}ativo{% endif %}" href=""><img src="{% static '/assets/icones/logout.svg'%}" title="Logout"></a>
     </nav>
 </section>

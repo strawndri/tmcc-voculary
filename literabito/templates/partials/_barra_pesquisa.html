@@ -1,7 +1,7 @@
 {% load static %}
 <form class="form-pesquisa {% if request.path == '/' %}grande{% endif %}" action="">
-    <input class="pesquisa__input" type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar título de um livro">
     <button type="submit" class="busca__botao" style="background-color: transparent; border:none">
         <img class="pesquisa__icone" src="{% static '/assets/icones/pesquisar.svg' %}" alt="Ícone de pesquisa">
     </button>
+    <input class="pesquisa__input" type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar título de um livro">
 </form>

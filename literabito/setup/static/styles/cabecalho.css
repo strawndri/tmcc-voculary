@@ -18,3 +18,9 @@
 .header__nav__link {
     text-decoration: none;
 }
+
+.pesquisa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

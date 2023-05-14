@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+</head>
 <section class="conteudo">
-    <section class="home">
-        <h1 class="home__titulo logo-nome"><img src="{% static '/assets/logo/literabito.svg'%}"></h1>
-    <p class="home__paragrafo">Tem interesse em um livro? Pesquise agora mesmo e inicie uma nova experiência literária.</p>
-    {% include 'partials/_barra_pesquisa.html' %}
+    <section class="conteudo__minhas-leituras">
+        <h2 class="conteudo__titulo-principal">Minhas Leituras</h2>
+        <a class="minhas-leituras__ver-mais">
+            Ver mais
+            <img src="{% static 'assets/icones/seta.svg' %}">
+        </a>
+        <div class="minhas-leituras__item">
+        </div>
+    </section>
+    <section class="conteudo__status">
+        <div class="status__item">
+            <img class="status__item__imagem" src="{% static 'assets/icones/livro.svg' %}">
+            <div class="staus__item__textos">
+                <p class="staus__item__textos__texto">90</p>
+                <p class="staus__item__textos__texto">Livros lidos</p>
+            </div>
+        </div>
     </section>
 </section>
 {% endblock %}

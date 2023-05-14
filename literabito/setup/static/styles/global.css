@@ -24,6 +24,10 @@
   --roxo-600: #9B00AA;
   --roxo-800: #76009C;
 
+  --azul-100-filtro: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
+  --azul-900-filtro: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
+  --azul-50-filtro: invert(63%) sepia(10%) saturate(1982%) hue-rotate(201deg) brightness(89%) contrast(92%);
+
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   --font-titulo: 'Quicksand', sans-serif;
@@ -47,10 +51,12 @@ h1, h2, h3 {
     margin: 4rem 0 3rem 0;
 }
 
+.conteudo__titulo-principal {
+  font-size: 1.8rem;
+}
+
 .vetor {
-  filter: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
-  /* filter: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%); */
-  /* filter: invert(41%) sepia(0%) saturate(2549%) hue-rotate(316deg) brightness(91%) contrast(86%); */
+  filter: var(--azul-100-filtro);
   width: 18rem;
 }
 

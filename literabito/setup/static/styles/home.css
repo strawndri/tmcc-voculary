@@ -1,0 +1,58 @@
+.conteudo {
+    position: relative;
+    padding: 0 8rem;
+}
+
+.conteudo__minhas-leituras {
+    margin-bottom: 6rem;
+}
+
+.minhas-leituras__ver-mais {
+    position: absolute;
+    top: 0;
+    right: 8rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--azul-900);
+    font-weight: 500;
+}
+
+.minhas-leituras__ver-mais img{
+    width: 1.5rem;
+    filter: var(--azul-900-filtro);
+}
+
+.minhas-leituras__ver-mais:hover {
+    cursor: pointer;
+}
+
+.minhas-leituras__item {
+    background-color: var(--azul-50);
+    color: var(--azul-900);
+    border-radius: 5px;
+    height: 12rem;
+    width: 18rem;
+}
+
+.status__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 12rem;
+    height: 4rem; 
+    padding: 1rem 1.5rem;
+    background-color: var(--azul-50);
+    margin: 2rem 2rem 2rem 0 ;
+}
+
+.staus__item__textos__texto:first-child {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.status__item__imagem {
+    width: 4rem;
+}
