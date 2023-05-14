@@ -24,9 +24,11 @@
   --roxo-600: #9B00AA;
   --roxo-800: #76009C;
 
-  --azul-100-filtro: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
-  --azul-900-filtro: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
   --azul-50-filtro: invert(63%) sepia(10%) saturate(1982%) hue-rotate(201deg) brightness(89%) contrast(92%);
+  --azul-100-filtro: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
+  --azul-400-filtro: invert(45%) sepia(93%) saturate(392%) hue-rotate(202deg) brightness(86%) contrast(90%);
+  --azul-800-filtro: invert(21%) sepia(44%) saturate(1749%) hue-rotate(222deg) brightness(92%) contrast(94%);;
+  --azul-900-filtro: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 

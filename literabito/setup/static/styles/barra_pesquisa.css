@@ -19,6 +19,10 @@
   color: var(--preto-500);
 }
 
+*::placeholder {
+  color: var(--preto-600);
+}
+
 .pesquisa__input:focus {
   outline: none;
 }

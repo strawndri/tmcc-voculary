@@ -5,7 +5,7 @@
     bottom: 10px;
     height: auto;
     width: 4rem;
-    background-color: var(--azul-50);
+    background-color: var(--preto-100);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,23 +32,34 @@
     margin-bottom: 10px;
 }
 
+.menu-lateral__navegacao a {
+    margin-bottom: 1em;
+    padding: .5rem;
+}
+
 .menu-lateral__navegacao a img {
     width: 2em;
-    margin-bottom: 2em;
 }
 
 .menu-lateral__navegacao__link-icone{
-    margin-bottom: 4rem;
+    position: absolute;
+    top: 2rem;
 }
 
 .menu-lateral__navegacao__link-logout {
-    margin-top: 4rem;
+    position: absolute;
+    bottom: 2rem;
 }
 
 .menu-lateral__navegacao__link img{
-    filter: var(--azul-50-filtro);
+    filter: var(--azul-400-filtro);
+}
+
+.menu-lateral__navegacao .ativo {
+    background-color: var(--azul-100);
+    border-radius: 5px;
 }
 
 .menu-lateral__navegacao .ativo img{
-    filter: var(--azul-900-filtro);
+    filter: var(--azul-800-filtro);
 }

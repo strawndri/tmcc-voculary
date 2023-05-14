@@ -1,18 +1,14 @@
-.conteudo {
-    position: relative;
-    padding: 0 8rem;
-}
-
 .conteudo__minhas-leituras {
+    position: relative;
     margin-bottom: 6rem;
 }
 
 .minhas-leituras__ver-mais {
     position: absolute;
     top: 0;
-    right: 8rem;
+    right: 0;
     display: flex;
-    align-items: center;
+    align-cards: center;
     gap: .5rem;
     color: var(--azul-900);
     font-weight: 500;
@@ -27,7 +23,7 @@
     cursor: pointer;
 }
 
-.minhas-leituras__item {
+.minhas-leituras__card{
     background-color: var(--azul-50);
     color: var(--azul-900);
     border-radius: 5px;
@@ -35,7 +31,7 @@
     width: 18rem;
 }
 
-.status__item {
+.status__card{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,12 +43,13 @@
     margin: 2rem 2rem 2rem 0 ;
 }
 
-.staus__item__textos__texto:first-child {
+.staus__card__textos__texto:first-child {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: .5rem;
 }
 
-.status__item__imagem {
+.status__card__imagem {
     width: 4rem;
+    filter: var(--azul-400-filtro)
 }
