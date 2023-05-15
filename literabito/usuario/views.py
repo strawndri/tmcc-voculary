@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from usuario.forms import LoginForms, CadastroForms
+from usuario.forms import LoginForms, CadastroForms, PerfilForms
 
 def cadastro(request):
     form = CadastroForms()
@@ -17,3 +17,11 @@ def login(request):
         form = LoginForms(request.POST)
 
     return render(request, 'usuario/login.html', {'form': form})
+
+def perfil(request):
+    form = PerfilForms()
+
+    if request.method == 'POST':
+        form = PerfilForms(request.POST)
+
+    return render(request, 'usuario/perfil.html', {'form': form})

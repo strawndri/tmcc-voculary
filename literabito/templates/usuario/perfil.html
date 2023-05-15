@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}">
+</head>
+<section class="conteudo">
+    <h2 class="conteudo__titulo-principal">Meu perfil</h2>
+    <p class="conteudo__descricao">Visualize suas informações e as edite quando achar necesssário</p>
+    <section class="conteudo__formulario">
+        <div class="perfil__imagem ">
+            <img class="vetor" src="{% static 'assets/desenhos/perfil.svg' %}">
+        </div>
+        <form class="formulario" action="{% url 'perfil' %}" 
+        method="POST">
+            {% for field in form.visible_fields %}
+            <label class="formulario__label">
+                {{ field.label }}
+                {{ field }}
+                {% if field.label == 'Senha' %}
+                <button type="button" class="formulario__botao--senha">
+                </button>
+            {% endif %}
+            </label>
+            {% endfor %}
+        </form>
+    </section>
+    <div class="perfil__botoes grupo__botoes">
+        <button class="botao">Excluir conta</button>
+        <button class="botao">Salvar alterações</button>
+    </div>
+</section>
+<script src="{% static 'js/visualizarSenha.js' %}"></script>
+{% endblock %}
