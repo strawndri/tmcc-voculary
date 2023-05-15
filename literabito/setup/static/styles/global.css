@@ -38,6 +38,20 @@
   --fonte-conteudo: 'Inter', sans-serif;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;              
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--preto-100);        
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--azul-500);   
+  border-radius: 20px;       
+  border: 3px solid var(--preto-100);  
+}
+
 body {
     background-color: var(--preto-50);
     color: var(--preto-800);
