@@ -1,4 +1,4 @@
-<h1 align="center"> 📚 Literábito: sistema de controle de leituras 📚</h1>
+<h1 align="center"> 👁️ Voculary: sistema de reconhecimento de textos com visão computacional </h1>
 
 <p align="center">
     <img src='https://img.shields.io/badge/License-MIT-f2a2b7?style=for-the-badge&logo=appveyor' alt='Badge. Retângulo dividido em duas partes: no lado esquerdo, o retângulo possui a cor cinza, um círculo azul com vazados e o texto "LICENSE"; no lado direito, o retângulo é cor-de-rosa e contém o texto "MIT".'>
@@ -8,7 +8,7 @@
 ---
 ## Sobre o projeto
 
-O Literábito foi pensado para facilitar a forma como leitores e leitoras organizam suas leituras e para incentivar a criação do hábito de leitura. Sendo assim, nada faz mais sentido do que o seu nome: “Literábito”, que é justamente a junção das palavras “Literário” e “Hábito”. 
+A Voculary tem como objetivo facilitar a forma com que pessoas utilizam informações textuais contidas em imagens. Geralmente, necessita-se destes dados e nem sempre eles estão de fácil acesso, como em um arquivo de texto ou parar colarmos e copiarmos em outro lugar. 
 
 ## Feito com carinho por:
 
