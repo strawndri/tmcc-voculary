@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="282"
-   height="52"
-   viewBox="0 0 74.612493 13.758339"
+   width="252"
+   height="65"
+   viewBox="0 0 66.675003 17.197918"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    sodipodi:docname="logo-2.1.svg"
+   inkscape:export-filename="logo-2.2.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.842284"
-     inkscape:cx="186.18194"
-     inkscape:cy="75.449822"
+     inkscape:zoom="0.921142"
+     inkscape:cx="76.535431"
+     inkscape:cy="137.87234"
      inkscape:window-width="1366"
      inkscape:window-height="697"
      inkscape:window-x="-8"
@@ -48,19 +51,17 @@
      id="layer1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16.9333px;line-height:0.75;font-family:sans-serif;letter-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="-0.54186559"
-       y="13.504333"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;line-height:0.75;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Medium';letter-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="0"
+       y="13.758333"
        id="text17795"><tspan
          sodipodi:role="line"
          id="tspan17793"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;font-family:'Bree Serif';-inkscape-font-specification:'Bree Serif';stroke-width:0.264583"
-         x="-0.54186559"
-         y="13.504333"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;font-family:'Bree Serif';-inkscape-font-specification:'Bree Serif';fill:#312656;fill-opacity:1"
-           id="tspan18333">Liter</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;font-family:'Bree Serif';-inkscape-font-specification:'Bree Serif';fill:#58ccc9;fill-opacity:1"
-           id="tspan19061">ábito</tspan></tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Medium';fill:#312656;fill-opacity:1;stroke-width:0.264583"
+         x="0"
+         y="13.758333"><tspan
+   style="fill:#1db2ab;fill-opacity:1"
+   id="tspan9028">v</tspan>oculary</tspan></text>
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"
