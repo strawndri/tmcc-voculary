@@ -43,24 +43,20 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
 }
 
-.conteudo__sobre-nos__funcionalidades__item img {
-    width: 2.5rem;
-    filter: var(--preto-800-filtro);
-    transition: all .5s;
+.conteudo__sobre-nos__funcionalidades__item .numero {
+    font-size: 2rem;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
 }
 
-.conteudo__sobre-nos__funcionalidades__item img:hover {
-    scale: 1.2
-}
-
-.conteudo__sobre-nos__funcionalidades__item p {
+.conteudo__sobre-nos__funcionalidades__item .texto {
     width: 16rem;
     line-height: 1.5rem;
     font-size: 0.9rem;
-    margin: 0 0 .5rem 1rem;
+    margin-left: 1rem;
 }
 
 .botao {
