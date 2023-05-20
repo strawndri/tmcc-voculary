@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EstanteConfig(AppConfig):
+class MinhasPastasConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'estante'
+    name = 'minhas_pastas'
