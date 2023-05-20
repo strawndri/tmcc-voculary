@@ -6,23 +6,37 @@
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 </head>
 <section class="conteudo">
-    <section class="conteudo__minhas-leituras">
-        <h2 class="conteudo__titulo-principal">Olá, Emilia!</h2>
-        <p class="conteudo__descricao">Acesse suas leituras e tenha uma visão geral do seu progresso.</p>
-        <a class="minhas-leituras__ver-mais">
-            Ver mais leituras
-            <img src="{% static 'assets/icones/seta.svg' %}">
-        </a>
-        <div class="minhas-leituras__card">
+    <section class="conteudo__reconhecimento-texto">
+        <h2 class="conteudo__titulo-principal">Novo reconhecimento de texto</h2>
+        <p class="conteudo__descricao">Envie uma imagem, extraia o texto contido nela e salve como preferir!</p>
+        <div class="reconhecimento-texto__grupo">
+            <div class="reconhecimento-texto__card">
+                <div class="reconhecimento-texto__imagem sem-imagem"></div>
+                <form class="form" action="">
+                    <img class="form__icone" src="{% static '/assets/icones/link.svg' %}" alt="Ícone de link">
+                    <input class="form__input" type="text" id="link" name="link" placeholder="Inserir link de imagem">
+                </form>
+                <button class="botao">Extrair texto</button>
+            </div>
+            <div class="reconhecimento-texto__card">
+                <div class="texto">
+                </div>
+                <div class="botoes">
+                    <button class="botao2">Download</button>
+                    <button class="botao2">Copiar</button>
+                </div>
+                <button class="botao">Extrair texto</button>
+            </div>
         </div>
     </section>
-    <section class="conteudo__status">
-        <div class="status__card">
-            <img class="status__card__imagem" src="{% static 'assets/icones/livro.svg' %}">
-            <div class="staus__card__textos">
-                <p class="staus__card__textos__texto">90</p>
-                <p class="staus__card__textos__texto">Livros lidos</p>
-            </div>
+    <section class="conteudo__meus-textos">
+        <h2 class="conteudo__titulo-principal">Meus últimos textos</h2>
+        <p class="conteudo__descricao">Veja aqui os últimos textos extraídos.</p>
+        <a class="meus-textos__ver-mais">
+            Ver mais
+            <img src="{% static 'assets/icones/seta.svg' %}">
+        </a>
+        <div class="meus-textos__card">
         </div>
     </section>
 </section>
