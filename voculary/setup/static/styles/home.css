@@ -1,9 +1,91 @@
-.conteudo__minhas-leituras {
+.reconhecimento-texto__grupo {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.reconhecimento-texto__card {
+    width: 50vw;
+}
+
+.reconhecimento-texto__imagem {
+    height: 20rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-300);
+    background-color: var(--preto-200);
+    transition: 1s all;
+}
+
+.reconhecimento-texto__imagem:hover {
+    cursor: pointer;
+}
+
+.sem-imagem {
+    background-image: url('../assets/icones/adicionar-imagem.svg');
+    background-repeat: no-repeat;
+    background-size: 5rem 5rem;
+    background-position: center;
+    opacity: 0.6;
+}
+
+.texto {
+    height: 20rem;
+    background-color: var(--preto-100);
+    border: 1px solid var(--preto-200);
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.2); */
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding: .12em 1.8em .12rem 0;
+    background-color: var(--preto-100);
+    border: 1px solid var(--preto-300);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.form__icone {
+    filter: var(--preto-600-filtro)
+}
+
+.form:hover {
+    border: 1px solid var(--preto-400);
+}
+  
+.form__input {
+    flex: 1;
+    height: 100%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--preto-500);
+}
+
+*::placeholder {
+    color: var(--preto-600);
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__icone {
+    padding: .5em;
+    cursor: pointer;
+    width: 1.2rem;
+    height: 1.5rem;
+}
+
+.conteudo__meus-textos {
     position: relative;
     margin-bottom: 4rem;
 }
 
-.minhas-leituras__ver-mais {
+.meus-textos__ver-mais {
     position: absolute;
     top: 0;
     right: 0;
@@ -14,42 +96,23 @@
     font-weight: 500;
 }
 
-.minhas-leituras__ver-mais img{
+.meus-textos__ver-mais img{
     width: 1.5rem;
     filter: var(--azul-900-filtro);
 }
 
-.minhas-leituras__ver-mais:hover {
+.meus-textos__ver-mais:hover {
     cursor: pointer;
 }
 
-.minhas-leituras__card{
-    background-color: var(--azul-50);
-    color: var(--azul-900);
-    border-radius: 5px;
-    height: 12rem;
-    width: 18rem;
-}
-
-.status__card{
+.reconhecimento-texto__card {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 1rem;
-    width: 12rem;
-    height: 4rem; 
-    padding: 1rem 1.5rem;
-    background-color: var(--azul-50);
-    margin: 2rem 2rem 2rem 0 ;
-}
-
-.staus__card__textos__texto:first-child {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: .5rem;
-}
-
-.status__card__imagem {
-    width: 4rem;
-    filter: var(--azul-400-filtro)
 }
