@@ -3,11 +3,13 @@
   --preto-50: #F9F9F9;
   --preto-100: #EEEEEE;
   --preto-200: #E3E3E3;
+  --preto-300: #D1D1D1;
+  --preto-400: #ACACAC;
   --preto-500: #8B8B8B;
   --preto-600: #646464;
   --preto-800: #333333;
 
-  --verde-50: #E3F6F6;
+  --verde-50: #cbeded;
   --verde-100: #B8E8E8;
   --verde-200: #89DBDA;
   --verde-300: #58CCC9;
@@ -30,7 +32,8 @@
   --azul-800-filtro: invert(21%) sepia(44%) saturate(1749%) hue-rotate(222deg) brightness(92%) contrast(94%);
   --azul-900-filtro: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
 
-  --preto-800-filtro: invert(16%) sepia(61%) saturate(27%) hue-rotate(320deg) brightness(99%) contrast(93%);;
+  --preto-600-filtro: invert(41%) sepia(15%) saturate(12%) hue-rotate(60deg) brightness(90%) contrast(92%);
+  --preto-800-filtro: invert(16%) sepia(61%) saturate(27%) hue-rotate(320deg) brightness(99%) contrast(93%);
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -80,7 +83,7 @@ h1, h2, h3 {
 .conteudo__descricao {
   color: var(--preto-500);
   font-size: 0.9rem;
-  margin: .5rem 0 4rem 0;
+  margin: .5rem 0 3rem 0;
 }
 
 .vetor {
@@ -94,11 +97,9 @@ h1, h2, h3 {
     min-height: 100vh; 
 }
 
-.botao {
+.botao, .botao2 {
   display: flex;
   padding: .8em 1.8em;
-  margin: 1rem 0 2rem 0;
-  background-color: var(--verde-200);
   border-radius: 5px;
   border: none;
   align-items: center;
@@ -109,10 +110,27 @@ h1, h2, h3 {
   font-family: var(--font-conteudo);
 }
 
+.botao {
+  background-color: var(--verde-200);
+  margin: 1rem 0 2rem 0;
+}
+
 .botao:hover {
     cursor: pointer;
     background-color: var(--verde-100);
 }
+
+.botao2 {
+  width: 50%;
+  background-color: var(--verde-100);
+  margin: 1rem 0 0 0;
+}
+
+.botao2:hover {
+  cursor: pointer;
+  background-color: var(--verde-50);
+}
+
 
 .logo {
   display: flex;
