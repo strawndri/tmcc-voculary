@@ -24,6 +24,8 @@ A Voculary é uma continuação do [Tsi.py](https://github.com/strawndri/tca-tsi
 
 O projeto ainda está em desenvolvimento e nem todas as bibliotecas foram adicionadas. Portanto, ainda não é possível executar, aguarde mais um pouquinho!
 
+Caso queira ver o andamento do projeto, dê uma olhada nas branches do repositório!
+
 ## Feito com carinho por:
 
 | [<img src="https://avatars.githubusercontent.com/u/62841828?v=4" width=115><br><sub>Andrieli Luci Gonçalves</sub>](https://github.com/strawndri) |
