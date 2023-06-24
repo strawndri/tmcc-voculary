@@ -9,17 +9,17 @@
   --preto-600: #646464;
   --preto-800: #333333;
 
-  --verde-50: #cbeded;
-  --verde-100: #B8E8E8;
-  --verde-200: #89DBDA;
-  --verde-300: #58CCC9;
-  --verde-800: #16827A;
+  --verde-50: #E5FDEA;
+  --verde-100: #C0FACB;
+  --verde-200: #92F7A8;
+  --verde-300: #4EF480;
+  --verde-800: #00AF1B;
 
-  --azul-50: #E3E3F3;
-  --azul-100: #CCCCF0;
-  --azul-500: #5C54C7;
-  --azul-800: #403582;
-  --azul-900: #312656;
+  --azul-50: #E6E9F0;
+  --azul-100: #C0C7DA;
+  --azul-500: #344D87;
+  --azul-800: #1F3467;
+  --azul-900: #152450;
 
   --roxo-50: #F6E3F6;
   --roxo-100: #E8B9E9;
@@ -111,24 +111,22 @@ h1, h2, h3 {
 }
 
 .botao {
-  background-color: var(--verde-200);
+  background-color: var(--verde-300);
   margin: 1rem 0 2rem 0;
 }
 
 .botao:hover {
     cursor: pointer;
-    background-color: var(--verde-100);
 }
 
 .botao2 {
   width: 50%;
-  background-color: var(--verde-100);
+  background-color: var(--verde-200);
   margin: 1rem 0 0 0;
 }
 
 .botao2:hover {
   cursor: pointer;
-  background-color: var(--verde-50);
 }
 
 
@@ -138,14 +136,6 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-}
-
-.logo__desenho {
-  width: 2.5rem;
-}
-
-.logo__texto {
-  width: 8rem;
 }
 
 .conteudo__formulario {
