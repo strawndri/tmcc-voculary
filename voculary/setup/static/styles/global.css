@@ -181,6 +181,7 @@ h1, h2, h3 {
   border-radius: 5px;
   background-color: var(--preto-100);
   color: var(--preto-400);
+  border: 1px solid var(--preto-100);
   box-shadow: var(--sombra);
   font-size: 16px;
   flex-grow: 1;
@@ -195,6 +196,7 @@ h1, h2, h3 {
 .formulario input:focus,
 .formulario textarea:focus {
   outline: none;
+  border: 1px solid var(--verde-300);
 } 
 
 .formulario__link {
