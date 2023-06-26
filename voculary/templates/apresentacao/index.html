@@ -12,7 +12,7 @@
         </h2>
         <img class="vetor" src="{% static '/assets/desenhos/apresentacao.svg' %}">
     </section>
-    <section id="sobre-nos" class="conteudo__sobre-nos">
+    <section id="sobre-nos" class="conteudo__sobre-nos padding">
         <h2 class="conteudo__titulo">
             Sobre nós
         </h2>
@@ -41,26 +41,34 @@
             </div>
         </div>
     </section>
-    <section id="contato" class="conteudo__contato">
-        <h2 class="conteudo__titulo">Contato</h2>
-        <div class="conteudo__contato__textos">
-            <div class="conteudo__paragrafos">
-                <p class="conteudo__paragrafo">
-                    A Voculary está ansiosa para ouvir você! Seja para tirar dúvidas, fazer uma sugestão, relatar um problema ou simplesmente dizer olá, estamos sempre prontos para uma boa conversa. Nós valorizamos muito o feedback da nossa comunidade e estamos empenhados em fornecer o melhor atendimento possível.
-                </p>
-                <p class="conteudo__paragrafo">
-                    Quer conhecer a Andrieli Gonçalves, pessoa desenvolvedora da Voculary? Acesse ao lado as suas principais formas de contato!
-                </p>
-            </div>
-            <div class="conteudo__botoes">
-                <a class="botao">Mande um e-mail para a Voculary</a>
-                <h3>Andrieli Gonçalves</h3>
-                <div>
-                    <a class="botao">Github</a>
-                    <a class="botao">E-mail</a>
+    <section id="contato" class="conteudo__contato padding">
+        <div class="conteudo__contato__box">
+            <h2 class="conteudo__titulo">Contato</h2>
+            <div class="conteudo__contato__textos">
+                <div class="conteudo__paragrafos">
+                    <p class="conteudo__contato__paragrafo">
+                        A Voculary está pronta para te ouvir! Dúvidas, sugestões, problemas ou só um "olá", estamos aqui para conversar. Seu feedback é importante para nós, buscamos oferecer um excelente experiência. Contate-nos!
+                    </p>
                 </div>
+                <section class="conteudo__formulario">
+                    <form class="formulario" action="">
+                        <label class="formulario__label">
+                            E-mail:
+                            <input placeholder="exemplo@exemplo.com" required>
+                        </label>
+                        <label class="formulario__label">
+                            Como podemos te ajudar?
+                            <textarea placeholder="Escreva aqui a sua mensagem!"></textarea>
+                        </label>
+                        <input class="formulario__botao botao" type="submit" value="Enviar">
+                    </form>
+                    <div class="img">
+                        <img class="" src="{% static '/assets/desenhos/voculary.svg' %}">
+                        <img class="" src="{% static '/assets/logo/logo-2.svg' %}">
+                    </div>
+                </section>
             </div>
-    </div>
+        </div>
     </section>
 </section>
 {% endblock %}
