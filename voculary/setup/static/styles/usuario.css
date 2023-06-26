@@ -1,13 +1,19 @@
 .cabecalho {
-    width: 2rem;
-    position: absolute;
+    position: relative; /* Adiciona posição relativa ao cabeçalho */
+    z-index: 1; /* Define uma camada de z-index para o cabeçalho */
+}
+
+.centralize {
+    width: 25rem;
+    display: flex;
+    justify-content: center;
 }
 
 .conteudo {
     display: flex;
     align-items: center;
-    height: 100vh;
-    position: fixed;
+    position: relative;
+    overflow: hidden; 
 }
 
 .botao {
@@ -16,17 +22,14 @@
 }
 
 .conteudo__imagem {
-    position: fixed;
+    position: fixed; 
     display: flex;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    background-color: var(--azul-50);
-    border-radius: 40px 0 0 40px;
+    top: 0; 
+    right: 0; 
+    background: var(--gradient);
     padding: 0 8rem 0 10rem;
-    width: 50%;
     height: 100%;
+    z-index: 0; 
 }
 
 .formulario__group{

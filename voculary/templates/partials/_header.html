@@ -9,9 +9,11 @@
         <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
     </nav>
     {% elif request.path == '/login' or request.path == '/cadastro'%}
-        <a href="{% url 'apresentacao' %}">
-            {% include 'partials/_logo.html' %}
-        </a>
+        <div class="centralize">
+            <a href="{% url 'apresentacao' %}">
+                {% include 'partials/_logo.html' %}
+            </a>
+        </div>
     {% else %}
     {% endif %}
 </header>

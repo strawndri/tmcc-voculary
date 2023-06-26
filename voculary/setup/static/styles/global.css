@@ -27,6 +27,8 @@
   --roxo-600: #9B00AA;
   --roxo-800: #76009C;
 
+  --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
+
   --azul-50-filtro: invert(63%) sepia(10%) saturate(1982%) hue-rotate(201deg) brightness(89%) contrast(92%);
   --azul-100-filtro: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
   --azul-400-filtro: invert(45%) sepia(93%) saturate(392%) hue-rotate(202deg) brightness(86%) contrast(90%);
@@ -74,7 +76,7 @@ h1, h2, h3 {
 }
 
 .padding {
-  padding: 2rem 8rem;
+  padding: 0 8rem;
 }
 
 .conteudo__titulo-principal {
@@ -153,7 +155,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 2rem 2rem 2rem 0;
+  padding: 1rem 2rem 2rem 0;
   width: 24rem;
 }
 
