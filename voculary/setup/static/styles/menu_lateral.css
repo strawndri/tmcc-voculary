@@ -52,7 +52,7 @@
 }
 
 .menu-lateral__navegacao__link img{
-    filter: var(--azul-400-filtro);
+    filter: var(--azul-500-filtro);
 }
 
 .menu-lateral__navegacao .ativo {
@@ -61,5 +61,5 @@
 }
 
 .menu-lateral__navegacao .ativo img{
-    filter: var(--azul-800-filtro);
+    filter: var(--azul-900-filtro);
 }

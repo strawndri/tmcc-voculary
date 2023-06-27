@@ -29,14 +29,8 @@
 
   --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
 
-  --azul-50-filtro: invert(63%) sepia(10%) saturate(1982%) hue-rotate(201deg) brightness(89%) contrast(92%);
-  --azul-100-filtro: invert(63%) sepia(6%) saturate(3727%) hue-rotate(201deg) brightness(90%) contrast(89%);
-  --azul-400-filtro: invert(45%) sepia(93%) saturate(392%) hue-rotate(202deg) brightness(86%) contrast(90%);
-  --azul-800-filtro: invert(21%) sepia(44%) saturate(1749%) hue-rotate(222deg) brightness(92%) contrast(94%);
-  --azul-900-filtro: invert(14%) sepia(21%) saturate(2686%) hue-rotate(221deg) brightness(101%) contrast(93%);
-
-  --preto-600-filtro: invert(41%) sepia(15%) saturate(12%) hue-rotate(60deg) brightness(90%) contrast(92%);
-  --preto-800-filtro: invert(16%) sepia(61%) saturate(27%) hue-rotate(320deg) brightness(99%) contrast(93%);
+  --azul-500-filtro: invert(26%) sepia(48%) saturate(768%) hue-rotate(183deg) brightness(96%) contrast(87%);
+  --azul-900-filtro: invert(10%) sepia(64%) saturate(1849%) hue-rotate(207deg) brightness(91%) contrast(94%);
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -179,11 +173,11 @@ h1, h2, h3 {
 .formulario__label textarea {
   margin: .5rem 0 1rem 0;
   padding: .6rem;
-  border: none;
   border-radius: 5px;
   background-color: var(--preto-100);
   color: var(--preto-400);
   border: 1px solid var(--preto-100);
+  transition: all 1s;
   box-shadow: var(--sombra);
   font-size: 16px;
   flex-grow: 1;
@@ -195,8 +189,13 @@ h1, h2, h3 {
   height: 8rem;
 }
 
-.formulario input:focus,
-.formulario textarea:focus {
+.formulario__label input:hover,
+.formulario__label textarea:hover {
+  border: 1px solid var(--verde-200);
+}
+
+.formulario__label input:focus,
+.formulario__label textarea:focus {
   outline: none;
   border: 1px solid var(--verde-300);
 } 
