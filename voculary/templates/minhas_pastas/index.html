@@ -3,16 +3,16 @@
 {% block conteudo %}
 <head>
     <title>Minhas pastas | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/estante.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/arquivos.css' %}">
 </head>
-<section class="conteudo">
-    <h2 class="conteudo__titulo-principal">Minhas pastas</h2>
+<section class="conteudo padding">
+    <h2 class="conteudo__titulo-principal">Meus arquivos</h2>
     <p class="conteudo__descricao">Espaço único para você guardar e organizar suas pastas com textos e imagens.</p>
-    <button class="botao">Criar pasta</button>
     <table class="prateleiras">
         <thead class="prateleiras__header">
             <tr>
-                <th class="nome-prateleira">Nome da pasta</td>
+                <th class="imagem"></th>
+                <th class="nome-prateleira">Nome do arquivo</td>
                 <th class="data-criacao">Data de criação</td>
                 <th class="renomear">Renomear</td>
                 <th class="excluir">Excluir</td>
@@ -20,26 +20,7 @@
         </thead>
         <tbody class="prateleiras__body">
             <tr>
-                <td class="nome-prateleira">Imagens do livro X</td>
-                <td class="data-criacao">14/05/2023</td>
-                <td class="renomear">
-                    <button></button>
-                </td>
-                <td class="excluir">
-                    <button></button>
-                </td>
-            </tr>
-            <tr>
-                <td class="nome-prateleira">Imagens do livro X</td>
-                <td class="data-criacao">14/05/2023</td>
-                <td class="renomear">
-                    <button></button>
-                </td>
-                <td class="excluir">
-                    <button></button>
-                </td>
-            </tr>
-            <tr>
+                <td class="imagem"><img src=""></td>
                 <td class="nome-prateleira">Imagens do livro X</td>
                 <td class="data-criacao">14/05/2023</td>
                 <td class="renomear">
