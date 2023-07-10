@@ -1,0 +1,137 @@
+h2 {
+    font-size: 3rem;
+    margin: 2rem 0;
+}
+
+.conteudo__inicio {
+    display: flex;
+    gap: 5rem;
+    height: 85vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient);
+    padding: 0 10rem;
+}
+
+.conteudo__inicio__destaque {
+    font-size: 4rem;
+    color: var(--preto-50);
+    font-weight: 700;
+    line-height: 4rem;
+    text-shadow: var(--sombra);
+}
+
+.conteudo__titulo {
+    text-align: center;
+}
+
+.conteudo__sobre-nos,
+.conteudo__contato {
+    margin-top: 5rem;
+}
+
+.conteudo__sobre-nos__textos,
+.conteudo__contato__textos {
+    display: flex;
+    gap: 2rem;
+}
+
+.conteudo__paragrafo {
+    line-height: 2rem;
+    margin: 0 6rem 2rem 0;
+}
+
+.conteudo__sobre-nos__textos {
+    display: flex;
+    margin-top: 4rem;
+    align-items: flex-start;
+}
+
+.conteudo__sobre-nos__funcionalidades__item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+}
+
+.conteudo__sobre-nos__funcionalidades__item .numero {
+    font-size: 3.5rem;
+    font-family: var(--fonte-titulo);
+    color: var(--azul-900);
+    font-weight: 700;
+}
+
+.conteudo__sobre-nos__funcionalidades__item .texto {
+    width: 18rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.conteudo__contato {
+    background: linear-gradient(180deg, var(--verde-200) 90%, var(--azul-400) 80%);
+    overflow: visible;
+    padding-top: 5rem;
+}
+
+.conteudo__contato__box {
+    background-color: var(--preto-50);
+    border-radius: 5px;
+    padding: 2rem 4rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.conteudo__contato__textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.conteudo__contato__paragrafo {
+    color: var(--azul-900);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.25rem;
+}
+
+.conteudo__formulario form {
+    width: 30rem;
+}
+
+.conteudo__formulario .botao {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 1.2rem 2rem;
+}
+
+.img {
+    position: absolute;
+    top: 30rem;
+    right: -20rem;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.img img:first-child {
+    width: 30rem;
+    animation: rotate 32s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.img img:last-child {
+    width: 16rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}

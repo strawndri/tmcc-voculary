@@ -1,0 +1,25 @@
+.cabecalho {
+    padding: 1rem 8rem;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__nav__group a {
+    margin-left: 0.5rem;
+    color: var(--azul-500);
+    font-weight: 500;
+}
+
+.header__nav__link {
+    text-decoration: none;
+}
+
+.pesquisa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

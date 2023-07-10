@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <title>Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/apresentacao.css' %}">
+</head>
+<section class="conteudo">
+    <section class="conteudo__inicio">
+        <h2 class="conteudo__inicio__destaque">
+            Explore palavras em suas imagens, extraia textos com precisão e facilidade!
+        </h2>
+        <img class="vetor" src="{% static '/assets/desenhos/apresentacao.svg' %}">
+    </section>
+    <section id="sobre-nos" class="conteudo__sobre-nos padding">
+        <h2 class="conteudo__titulo">
+            Sobre nós
+        </h2>
+        <div class="conteudo__sobre-nos__textos">
+            <div class="conteudo__paragrafos">
+                <p class="conteudo__paragrafo">
+                    A Voculary tem como objetivo facilitar a forma com que pessoas utilizam informações textuais contidas em imagens. Geralmente, necessita-se destes dados e nem sempre eles estão de fácil acesso, como em um arquivo de texto ou parar colarmos e copiarmos em outro lugar.
+                </p>
+                <p class="conteudo__paragrafo">
+                    Com a Voculary, você pode realizar a conversão de imagem para texto de forma simples e intuitiva. Basta fazer o upload da imagem desejada e deixar nossa tecnologia inteligente fazer o trabalho pesado. Em questão de segundos, você terá acesso ao conteúdo textual extraído, pronto para ser copiado, salvo ou compartilhado conforme sua necessidade.
+                </p>
+            </div>
+            <div class="conteudo__sobre-nos__funcionalidades">
+                <span class="conteudo__sobre-nos__funcionalidades__item" id="pesquisar">
+                    <p class="numero">01</p>
+                    <p class="texto">Fazer upload e compartilhar links de arquivos de imagem</p>
+                </span>
+                <span class="conteudo__sobre-nos__funcionalidades__item" id="estante">
+                    <p class="numero">02</p>
+                    <p class="texto">Visualizar conversões dos conteúdos de imagens em texto</p>
+                </span>
+                <span class="conteudo__sobre-nos__funcionalidades__item" id="dashboard">
+                    <p class="numero">03</p>
+                    <p class="texto">Salvar em pastas, realizar download e copiar textos extraídos de imagens</p>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section id="contato" class="conteudo__contato padding">
+        <div class="conteudo__contato__box">
+            <h2 class="conteudo__titulo">Contato</h2>
+            <div class="conteudo__contato__textos">
+                <div class="conteudo__paragrafos">
+                    <p class="conteudo__contato__paragrafo">
+                        A Voculary está pronta para te ouvir! Dúvidas, sugestões, problemas ou só um "olá", estamos aqui para conversar. Seu feedback é importante para nós, buscamos oferecer um excelente experiência. Contate-nos!
+                    </p>
+                </div>
+                <section class="conteudo__formulario">
+                    <form class="formulario" action="">
+                        <label class="formulario__label">
+                            E-mail:
+                            <input placeholder="exemplo@exemplo.com" required>
+                        </label>
+                        <label class="formulario__label">
+                            Como podemos te ajudar?
+                            <textarea placeholder="Escreva aqui a sua mensagem!"></textarea>
+                        </label>
+                        <input class="formulario__botao botao" type="submit" value="Enviar">
+                    </form>
+                    <div class="img">
+                        <img class="" src="{% static '/assets/desenhos/voculary.svg' %}">
+                        <img class="" src="{% static '/assets/logo/logo-2.svg' %}">
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}

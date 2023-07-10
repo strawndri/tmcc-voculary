@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <title>Cadastro | Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
+</head>
+<section class="conteudo padding">
+    <section class="conteudo__formulario">
+        <form class="formulario" action="{% url 'cadastro' %}" 
+        method="POST">
+            <h2>Crie uma nova conta</h2>
+            {% for field in form.visible_fields %}
+
+            <!-- Verifica se o total de fields é menor que dois -->
+            {% if forloop.counter < 2 %}
+            <field class="formulario__group">
+            {% endif %}
+            <label class="formulario__label {{ field.name }}">
+                {{ field.label }}
+                {{ field }}
+                {% if field.label == 'Senha' or field.label == 'Confirmação de senha' %}
+                <button type="button" class="formulario__botao--senha field.id">
+                </button>
+                {% endif %}
+            </label>
+            {% if forloop.counter == 2 %}
+            </field>
+            {% endif %}
+            {% endfor %}
+            <input class="formulario__botao botao" type="submit" value="Entrar">
+            <a class="formulario__link" href="{% url 'login' %}">Já tem uma conta? Faça login agora!</a>
+        </form>
+    </section>
+    <secion class="conteudo__imagem">
+        <img class="vetor" src="{% static 'assets/desenhos/cadastro.svg' %}">
+    </secion>
+</section>
+<script src="{% static 'js/visualizarSenha.js' %}"></script>
+{% endblock %}

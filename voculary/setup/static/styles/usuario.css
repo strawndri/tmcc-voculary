@@ -1,0 +1,47 @@
+.cabecalho {
+    position: relative; /* Adiciona posição relativa ao cabeçalho */
+    z-index: 1; /* Define uma camada de z-index para o cabeçalho */
+}
+
+.centralize {
+    width: 25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden; 
+}
+
+.botao {
+    margin: 4rem 0 1rem 0;
+    width: 100%;
+}
+
+.conteudo__imagem {
+    position: fixed; 
+    display: flex;
+    top: 0; 
+    right: 0; 
+    background: var(--gradient);
+    padding: 0 8rem 0 10rem;
+    height: 100%;
+    z-index: 0; 
+}
+
+.formulario__group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 24rem;
+    gap: 1rem;
+}
+
+.formulario__group input {
+    width: 10.3rem;
+}
+

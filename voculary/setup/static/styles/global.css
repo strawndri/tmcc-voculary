@@ -1,0 +1,240 @@
+:root {
+
+  --preto-50: #F9F9F9;
+  --preto-100: #EEEEEE;
+  --preto-200: #E3E3E3;
+  --preto-300: #D1D1D1;
+  --preto-400: #ACACAC;
+  --preto-500: #8B8B8B;
+  --preto-600: #646464;
+  --preto-800: #333333;
+
+  --verde-50: #E5FDEA;
+  --verde-100: #C0FACB;
+  --verde-200: #92F7A8;
+  --verde-300: #4EF480;
+  --verde-800: #00AF1B;
+
+  --azul-50: #E6E9F0;
+  --azul-100: #C0C7DA;
+  --azul-400: #526697;
+  --azul-500: #344D87;
+  --azul-800: #1F3467;
+  --azul-900: #152450;
+
+  --roxo-50: #F6E3F6;
+  --roxo-100: #E8B9E9;
+  --roxo-600: #9B00AA;
+  --roxo-800: #76009C;
+
+  --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
+
+  --azul-500-filtro: invert(26%) sepia(48%) saturate(768%) hue-rotate(183deg) brightness(96%) contrast(87%);
+  --azul-900-filtro: invert(10%) sepia(64%) saturate(1849%) hue-rotate(207deg) brightness(91%) contrast(94%);
+
+  --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  --fonte-titulo: 'Quicksand', sans-serif;
+  --fonte-conteudo: 'Inter', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;              
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--preto-100);        
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--azul-500);   
+  border-radius: 20px;       
+  border: 3px solid var(--preto-100);  
+}
+
+body {
+    background-color: var(--preto-50);
+    color: var(--preto-800);
+    font-family: var(--fonte-conteudo);
+}
+
+input {
+    font-family: var(--fonte-conteudo);
+}
+
+h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--azul-900);
+    font-weight: 700;
+    /* margin: 4rem 0 3rem 0; */
+}
+
+.padding {
+  padding: 0 8rem;
+}
+
+.conteudo__titulo-principal {
+  font-size: 1.8rem;
+}
+
+.conteudo__descricao {
+  color: var(--preto-500);
+  font-size: 0.9rem;
+  margin: .5rem 0 3rem 0;
+}
+
+.vetor {
+  width: 24rem;
+}
+
+.pagina-principal {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.botao, .botao2 {
+  display: flex;
+  padding: .8em 1.8em;
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: 1s all;
+  color: var(--preto-800);
+  font-family: var(--font-conteudo);
+}
+
+.botao {
+  background-color: var(--verde-300);
+  margin: 1rem 0 2rem 0;
+}
+
+.botao:hover {
+    cursor: pointer;
+}
+
+.botao2 {
+  width: 50%;
+  background-color: var(--verde-200);
+  margin: 1rem 0 0 0;
+}
+
+.botao2:hover {
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  justify-self: unset;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo__completa {
+  width: 5rem;
+}
+
+.conteudo__formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteudo__formulario form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem 2rem 2rem 0;
+  width: 24rem;
+}
+
+.conteudo__formulario h2 {
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 1.2em;
+}
+
+.formulario__label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: var(--preto-800);
+  font-size: 0.9rem;
+  width: 100rem;
+}
+
+.formulario__label input,
+.formulario__label textarea {
+  margin: .5rem 0 1rem 0;
+  padding: .6rem;
+  border-radius: 5px;
+  background-color: var(--preto-100);
+  color: var(--preto-400);
+  border: 1px solid var(--preto-100);
+  transition: all 1s;
+  box-shadow: var(--sombra);
+  font-size: 16px;
+  flex-grow: 1;
+  display: inline;
+  font-family: var(--font-conteudo);
+}
+
+.formulario__label textarea {
+  height: 8rem;
+}
+
+.formulario__label input:hover,
+.formulario__label textarea:hover {
+  border: 1px solid var(--verde-200);
+}
+
+.formulario__label input:focus,
+.formulario__label textarea:focus {
+  outline: none;
+  border: 1px solid var(--verde-300);
+} 
+
+.formulario__link {
+  text-decoration: none;
+  color: var(--azul-500);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.senha {
+  margin-left: auto;
+}
+
+.formulario__link:hover {
+  text-decoration: underline;
+}
+
+.formulario__botao--senha {
+  position: absolute;
+  top: 2rem;
+  right: .5rem;
+  background-image: url('../assets/icones/olho.svg');
+  opacity: 0.6;
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.formulario__botao--senha-ativo {
+  background-image: url('../assets/icones/olho-ativo.svg');
+}
+
+.grupo__botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem
+}
