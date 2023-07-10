@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'usuario',
-    'minhas_pastas',
+    'meus_arquivos',
     'apresentacao',
 ]
 

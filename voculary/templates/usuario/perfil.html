@@ -9,9 +9,6 @@
     <h2 class="conteudo__titulo-principal">Meu perfil</h2>
     <p class="conteudo__descricao">Visualize suas informações e as edite quando achar necesssário</p>
     <section class="conteudo__formulario">
-        <div class="perfil__imagem ">
-            <img class="vetor" src="{% static 'assets/desenhos/perfil.svg' %}">
-        </div>
         <form class="formulario" action="{% url 'perfil' %}" 
         method="POST">
             {% for field in form.visible_fields %}
