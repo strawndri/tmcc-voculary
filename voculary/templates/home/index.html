@@ -11,8 +11,13 @@
         <p class="conteudo__descricao">Envie uma imagem, extraia o texto contido nela e salve como preferir!</p>
         <div class="reconhecimento-texto__grupo">
             <div class="reconhecimento-texto__card">
-                <div class="reconhecimento-texto__imagem sem-imagem sem-imagem-gradient">
-                    <img src="{% static '/assets/icones/adicionar-imagem.svg' %}">
+                <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
+                    <button id="btnZoomIn" type="button">+</button>
+                    <button id="btnZoomOut" type="button">-</button>
+                </div>
+                <div class="reconhecimento-texto__imagem sem-imagem" class="selecionar-imagem" id="selecionarImagem">
+                    <img class="imagem" src="{% static '/assets/icones/adicionar-imagem.svg' %}">
+                    <input type="file" id="imagem-upload" style="display: none;" accept="image/png, image/jpeg, image/jpg, image/gif, image/tiff">
                 </div>
                 <form class="form" action="">
                     <img class="form__icone" src="{% static '/assets/icones/link.svg' %}" alt="Ícone de link">
@@ -48,4 +53,5 @@
         </div>
     </section>
 </section>
+<script src="{% static 'js/carregarImagem.js' %}"></script>
 {% endblock %}
