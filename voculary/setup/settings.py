@@ -64,6 +64,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'setup.wsgi.application'
 
+# conexão com o banco de dados local
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

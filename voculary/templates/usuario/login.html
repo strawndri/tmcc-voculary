@@ -9,6 +9,7 @@
     <section class="conteudo__formulario">
         <form class="formulario" action="{% url 'login' %}" 
         method="POST">
+            {% csrf_token %} <!--proteção!-->
             <h2>Boas vindas de volta!</h2>
             {% for field in form.visible_fields %}
             <label class="formulario__label">
