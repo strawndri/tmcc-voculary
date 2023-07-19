@@ -11,6 +11,29 @@ def cadastro(request):
     if request.method == 'POST':
         form = CadastroForms(request.POST)
 
+        if form.is_valid():
+           
+            primeiro_nome = form['primeiro_nome'].value()
+            ultimo_nome = form['ultimo_nome'].value()
+            email = form['email'].value()
+            senha = form['senha_1'].value()
+
+            if User.objects.filter(email='email').exists():
+                messages.error(request, 'Usuário já existente.')
+                return redirect('cadastro')
+            
+            usuario = User.objects.create_user(
+                username = primeiro_nome + ultimo_nome,
+                first_name = primeiro_nome,
+                last_name = ultimo_nome,
+                email = email,
+                password = senha
+            )
+
+            usuario.save()
+            messages.success(request, f'Boas vindas! O cadastro foi realizado com sucesso.')
+            return redirect('login')
+
     return render(request, 'usuario/cadastro.html', {'form': form})
 
 def login(request):
