@@ -23,16 +23,12 @@ def login(request):
             email = form['email_login'].value()
             senha = form['senha'].value()
 
-            nome_login = User.objects.get(email=email).username
-        
-            usuario = auth.authenticate(
-                username = nome_login,
-                password = senha
-            )
+            User = auth.get_user_model()
+            usuario = User.objects.filter(email=email).first()
 
-            if usuario is not None:
+            if usuario is not None and usuario.check_password(senha):
                 auth.login(request, usuario)
-                # messages.success(request, f'Olá! O login foi realizado com sucesso.')
+                messages.success(request, f'Olá! O login foi realizado com sucesso.')
                 return redirect('home')
             else:
                 # messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
