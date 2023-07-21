@@ -76,6 +76,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'usuario.CustomUser'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

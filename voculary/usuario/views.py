@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from usuario.forms import LoginForms, CadastroForms, PerfilForms
 
-from django.contrib.auth.models import User
+from usuario.models import CustomUser
 from django.contrib import auth, messages
 
 def cadastro(request):
@@ -18,12 +18,11 @@ def cadastro(request):
             email = form['email'].value()
             senha = form['senha_1'].value()
 
-            if User.objects.filter(email='email').exists():
+            if CustomUser.objects.filter(email='email').exists():
                 messages.error(request, 'Usuário já existente.')
                 return redirect('cadastro')
             
-            usuario = User.objects.create_user(
-                username = primeiro_nome + ultimo_nome,
+            usuario = CustomUser.objects.create_user(
                 first_name = primeiro_nome,
                 last_name = ultimo_nome,
                 email = email,
