@@ -22,7 +22,7 @@
 <div class="pagina-inicial">
     {% include 'partials/_header.html' %}
     <main class="principal">
-        {% if request.path != '/' and request.path != '/cadastro' and request.path != '/login' %}
+        {% if request.path != '/' and request.path != '/apresentacao' and request.path != '/cadastro' and request.path != '/login' %}
             {% include 'partials/_menu_lateral.html' %}
         {% endif %}
         {% block conteudo %}

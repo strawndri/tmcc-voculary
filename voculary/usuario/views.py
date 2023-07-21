@@ -59,9 +59,15 @@ def login(request):
     return render(request, 'usuario/login.html', {'form': form})
 
 def perfil(request):
+
     form = PerfilForms()
 
     if request.method == 'POST':
         form = PerfilForms(request.POST)
 
     return render(request, 'usuario/perfil.html', {'form': form})
+
+def logout(request):
+    messages.success(request, f'Até mais! O logout foi efetuado com sucesso.')
+    auth.logout(request)
+    return redirect('/apresentacao')
