@@ -24,7 +24,15 @@
     <main class="principal">
         {% if request.path != '/' and request.path != '/apresentacao' and request.path != '/cadastro' and request.path != '/login' %}
             {% include 'partials/_menu_lateral.html' %}
+            {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mensagem" {% if message.tags %} id="{{ message.tags }}"{% endif %}>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
         {% endif %}
+
         {% block conteudo %}
         {% endblock %}
     </main>

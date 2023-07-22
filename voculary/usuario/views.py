@@ -20,8 +20,8 @@ def cadastro(request):
             email = form['email'].value()
             senha = form['senha_1'].value()
 
-            if CustomUser.objects.filter(email='email').exists():
-                messages.error(request, 'Usuário já existente.')
+            if CustomUser.objects.filter(email=email).exists():
+                messages.error(request, 'Ops, parece que este e-mail já existente! Tente novamente.')
                 return redirect('cadastro')
             
             usuario = CustomUser.objects.create_user(
@@ -32,7 +32,7 @@ def cadastro(request):
             )
 
             usuario.save()
-            messages.success(request, f'Boas vindas! O cadastro foi realizado com sucesso.')
+            messages.success(request, f'Boas vindas, {primeiro_nome}! O cadastro foi realizado com sucesso.')
             return redirect('login')
 
     return render(request, 'usuario/cadastro.html', {'form': form})
@@ -52,10 +52,10 @@ def login(request):
 
             if usuario is not None and usuario.check_password(senha):
                 auth.login(request, usuario)
-                messages.success(request, f'Olá! O login foi realizado com sucesso.')
+                messages.success(request, f'Olá, {usuario.first_name}! O login foi realizado com sucesso.')
                 return redirect('home')
             else:
-                # messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
+                messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
                 return redirect('login')
 
     return render(request, 'usuario/login.html', {'form': form})

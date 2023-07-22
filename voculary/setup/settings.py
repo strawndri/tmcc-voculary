@@ -116,3 +116,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuração para armazenar as mensagens na sessão com um tempo de expiração de 5 segundos
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+MESSAGE_TIMEOUT = 15
