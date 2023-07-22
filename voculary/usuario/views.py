@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from usuario.forms import LoginForms, CadastroForms, PerfilForms
 
 from usuario.models import CustomUser
+
+from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
 
 def cadastro(request):
@@ -58,6 +60,7 @@ def login(request):
 
     return render(request, 'usuario/login.html', {'form': form})
 
+@login_required(login_url='/login')
 def perfil(request):
 
     form = PerfilForms()
@@ -67,6 +70,7 @@ def perfil(request):
 
     return render(request, 'usuario/perfil.html', {'form': form})
 
+@login_required(login_url='/login')
 def logout(request):
     messages.success(request, f'Até mais! O logout foi efetuado com sucesso.')
     auth.logout(request)
