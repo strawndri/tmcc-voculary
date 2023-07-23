@@ -27,12 +27,11 @@
             {% endif %}
         {% if messages %}
             {% for message in messages %}
-                <div class="mensagem" {% if message.tags %} id="{{ message.tags }}"{% endif %}>
+                <div class="mensagem {% if message.tags %}{{ message.tags }}{% endif %}" id="django-messages">
                     <p>{{ message }}</p>
                 </div>
             {% endfor %}
         {% endif %}
-
         {% block conteudo %}
         {% endblock %}
     </main>
@@ -40,5 +39,6 @@
     {% include 'partials/_rodape.html' %}
     {% endif %}
 </div>
+<script src="{% static 'js/temporizarMensagem.js' %}"></script>
 </body>
 </html>
