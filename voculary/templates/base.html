@@ -22,8 +22,15 @@
 <div class="pagina-inicial">
     {% include 'partials/_header.html' %}
     <main class="principal">
-        {% if request.path != '/' and request.path != '/cadastro' and request.path != '/login' %}
+        {% if request.path != '/' and request.path != '/apresentacao' and request.path != '/cadastro' and request.path != '/login' %}
             {% include 'partials/_menu_lateral.html' %}
+            {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mensagem {% if message.tags %}{{ message.tags }}{% endif %}" id="django-messages">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
         {% endif %}
         {% block conteudo %}
         {% endblock %}
@@ -32,5 +39,6 @@
     {% include 'partials/_rodape.html' %}
     {% endif %}
 </div>
+<script src="{% static 'js/temporizarMensagem.js' %}"></script>
 </body>
 </html>
