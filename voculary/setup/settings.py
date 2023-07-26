@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'usuario',
     'meus_arquivos',
     'apresentacao',
+    'reconhecimento_texto'
 ]
 
 MIDDLEWARE = [
