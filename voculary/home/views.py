@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import UploadImagemForm
 
+from .utils.extrair_texto import extrair_texto
+
 @login_required(login_url='/login')
 def home(request):
     if request.method == 'POST':
@@ -11,8 +13,16 @@ def home(request):
             imagem = form.save(commit=False)
             imagem.usuario = request.user
             imagem.save()
+            texto = extrair_texto(imagem.imagem.path)
+            imagem_url = imagem.imagem.url
 
     else:
         form = UploadImagemForm()
     
-    return render(request, 'home/index.html', {'form' : form})
+    context = {
+        'form' : form,
+        'texto': texto,   # Aqui passamos o texto como contexto
+        'imagem_url': imagem_url
+    }
+
+    return render(request, 'home/index.html', context)
