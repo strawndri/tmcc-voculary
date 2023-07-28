@@ -8,11 +8,11 @@ let tamanhoImagem = 100
 let limiteZoom = 5;
 
 imagemDiv.addEventListener('click', function() {
-    document.getElementById('imagem-upload').click()
+    document.getElementById('id_imagem').click()
     
 });
 
-document.getElementById('imagem-upload').addEventListener('change', function(event) {
+document.getElementById('id_imagem').addEventListener('change', function(event) {
     
     let arquivo = event.target.files[0]
     

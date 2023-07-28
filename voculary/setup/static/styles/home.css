@@ -141,3 +141,7 @@
     justify-content: space-between;
     gap: 1rem;
 }
+
+#id_imagem {
+    display: none;
+}

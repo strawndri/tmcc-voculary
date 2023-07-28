@@ -3,21 +3,24 @@
     <h2 class="conteudo__titulo-principal">Novo reconhecimento de texto</h2>
     <p class="conteudo__descricao">Envie uma imagem, extraia o texto contido nela e salve como preferir!</p>
     <div class="reconhecimento-texto__grupo">
-        <div class="reconhecimento-texto__card">
+        <form class="reconhecimento-texto__card" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
                 <button id="btnZoomIn" type="button">+</button>
                 <button id="btnZoomOut" type="button">-</button>
             </div>
             <div class="reconhecimento-texto__imagem sem-imagem" class="selecionar-imagem" id="selecionarImagem">
                 <img class="imagem" src="{% static '/assets/icones/adicionar-imagem.svg' %}">
-                <input type="file" id="imagem-upload" style="display: none;" accept="image/png, image/jpeg, image/jpg, image/gif, image/tiff">
+                {% for field in form.visible_fields %}
+                {{ field }}
+                {% endfor %}
             </div>
-            <form class="form" action="">
+            <div class="form">
                 <img class="form__icone" src="{% static '/assets/icones/link.svg' %}" alt="Ícone de link">
                 <input class="form__input" type="text" id="link" name="link" placeholder="Inserir link de imagem">
-            </form>
+            </div>
             <button class="botao">Extrair texto</button>
-        </div>
+        </form>
         <div class="reconhecimento-texto__card">
             <div class="texto">
             </div>
@@ -25,7 +28,7 @@
                 <button class="botao2">Download</button>
                 <button class="botao2">Copiar</button>
             </div>
-            <button class="botao">Extrair texto</button>
+            <button class="botao">Salvar</button>
         </div>
     </div>
 </section>
