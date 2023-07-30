@@ -1,9 +1,11 @@
 .cabecalho {
     padding: 1rem 8rem;
+}
+
+.cabecalho-apresentacao {
+    background-color: var(--preto-50);
     position: sticky;
     top: 0;
-    background-color: var(--preto-50);
-    /* box-shadow: var(--sombra); */
     z-index: 1;
 }
 

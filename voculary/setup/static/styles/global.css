@@ -95,7 +95,7 @@ h1, h2, h3 {
 .botao, .botao-vazado, .botao2 {
   display: flex;
   padding: .8em 1.8em;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   align-items: center;
   justify-content: center;
@@ -170,7 +170,7 @@ h1, h2, h3 {
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--preto-800);
+  color: var(--preto-700);
   font-size: 0.9rem;
   width: 100rem;
 }
@@ -179,16 +179,15 @@ h1, h2, h3 {
 .formulario__label textarea {
   margin: .5rem 0 1rem 0;
   padding: .6rem;
-  border-radius: 5px;
-  background-color: var(--preto-100);
-  color: var(--preto-400);
-  border: 1px solid var(--preto-100);
-  transition: all 1s;
-  box-shadow: var(--sombra);
-  font-size: 16px;
+  border-radius: 10px;
+  background-color: var(--preto-50);
+  color: var(--preto-700);
+  border: 1px solid var(--preto-300);
+  font-size: 14px;
   flex-grow: 1;
   display: inline;
   font-family: var(--font-conteudo);
+  transition: all .5s;
 }
 
 .formulario__label textarea {
@@ -197,7 +196,7 @@ h1, h2, h3 {
 
 .formulario__label input:hover,
 .formulario__label textarea:hover {
-  border: 1px solid var(--verde-200);
+  border: 1px solid var(--preto-500);
 }
 
 .formulario__label input:focus,

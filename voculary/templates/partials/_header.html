@@ -1,5 +1,5 @@
-<header class="cabecalho">
-    {% if request.path == '/' or request.path == '/apresentacao' %}
+{% if request.path == '/' or request.path == '/apresentacao' %}
+<header class="cabecalho cabecalho-apresentacao">
     <nav class="header__nav">
         {% include 'partials/_logo.html' %}
         <div class="header__nav__group">
@@ -12,12 +12,14 @@
             <a class="header__nav__link botao-vazado" href="{% url 'cadastro' %}">Cadastrar</a>
         </div>
     </nav>
-    {% elif request.path == '/login' or request.path == '/cadastro'%}
+</header>
+{% elif request.path == '/login' or request.path == '/cadastro'%}
+<header class="cabecalho">
     <div class="centralize">
         <a href="{% url 'apresentacao' %}">
             {% include 'partials/_logo.html' %}
         </a>
     </div>
-    {% else %}
-    {% endif %}
 </header>
+{% else %}
+{% endif %}
