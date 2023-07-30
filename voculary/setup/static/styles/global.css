@@ -7,6 +7,7 @@
   --preto-400: #ACACAC;
   --preto-500: #8B8B8B;
   --preto-600: #646464;
+  --preto-700: #515151
   --preto-800: #333333;
 
   --verde-50: #E5FDEA;
@@ -27,6 +28,7 @@
 
   --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
 
+  --azul-200-filtro: invert(82%) sepia(5%) saturate(1769%) hue-rotate(187deg) brightness(80%) contrast(87%);
   --azul-500-filtro: invert(26%) sepia(48%) saturate(768%) hue-rotate(183deg) brightness(96%) contrast(87%);
   --azul-900-filtro: invert(10%) sepia(64%) saturate(1849%) hue-rotate(207deg) brightness(91%) contrast(94%);
 
@@ -79,10 +81,6 @@ h1, h2, h3 {
   color: var(--preto-500);
   font-size: 0.9rem;
   margin: .5rem 0 3rem 0;
-}
-
-.vetor {
-  width: 24rem;
 }
 
 .pagina-principal {

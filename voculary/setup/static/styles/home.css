@@ -22,7 +22,7 @@
 
 .sem-imagem {
     align-items: center;
-    background-image: linear-gradient(to right, var(--azul-400), var(--verde-300));
+    background-color: var(--azul-100);
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,7 +41,6 @@
 .reconhecimento-texto__imagem, .texto {
     border-radius: 5px;
     height: 20rem;
-    background-color: var(--preto-100);
     border: 1px solid var(--preto-200);
 }
 
@@ -62,17 +61,16 @@
     display: flex;
     align-items: center;
     height: 2rem;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 1rem;
     padding: .12em 1.8em .12rem 0;
-    background-color: var(--preto-100);
-    border: 1px solid var(--preto-100);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background-color: var(--preto-50);
+    border: 1px solid var(--preto-300);
     transition: all 1s;
 }
 
 .form:hover {
-    border: 1px solid var(--verde-300);
+    border: 1px solid var(--preto-500);
 }
 
 .form__icone {
@@ -87,7 +85,7 @@
     border: none;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--preto-500);
+    color: var(--preto-700);
 }
 
 *::placeholder {
