@@ -4,16 +4,20 @@
         {% include 'partials/_logo.html' %}
         <div class="header__nav__group">
             <a class="header__nav__link" href="#sobre-nos">Sobre nós</a>
+            <a class="header__nav__link" href="#servicos">Serviços</a>
             <a class="header__nav__link" href="#contato">Contato</a>
         </div>
-        <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
+        <div class="header__nav__botoes">
+            <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
+            <a class="header__nav__link botao-vazado" href="{% url 'cadastro' %}">Cadastrar</a>
+        </div>
     </nav>
     {% elif request.path == '/login' or request.path == '/cadastro'%}
-        <div class="centralize">
-            <a href="{% url 'apresentacao' %}">
-                {% include 'partials/_logo.html' %}
-            </a>
-        </div>
+    <div class="centralize">
+        <a href="{% url 'apresentacao' %}">
+            {% include 'partials/_logo.html' %}
+        </a>
+    </div>
     {% else %}
     {% endif %}
 </header>

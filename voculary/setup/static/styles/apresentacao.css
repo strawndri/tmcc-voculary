@@ -1,23 +1,24 @@
 h2 {
-    font-size: 3rem;
-    margin: 2rem 0;
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
 }
 
 .conteudo__inicio {
     display: flex;
-    gap: 5rem;
-    height: 85vh;
+    gap: 4rem;
+    height: 78vh;
     align-items: center;
-    justify-content: center;
-    background: var(--gradient);
-    padding: 0 10rem;
+    background: url('../assets/backgrounds/bg-apresentacao.svg') no-repeat center center;
+    background-size: cover;
+    padding: 0 8rem;
 }
 
 .conteudo__inicio__destaque {
-    font-size: 4rem;
-    color: var(--preto-50);
-    font-weight: 700;
-    line-height: 4rem;
+    font-size: 3.8rem;
+    color: var(--azul-900);
+    width: 40rem;
+    font-weight: 500;
+    line-height: 4.5rem;
     text-shadow: var(--sombra);
 }
 
@@ -25,59 +26,88 @@ h2 {
     text-align: center;
 }
 
-.conteudo__sobre-nos,
-.conteudo__contato {
-    margin-top: 5rem;
+.conteudo__secao {
+    margin-top: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.conteudo__sobre-nos__textos,
-.conteudo__contato__textos {
-    display: flex;
-    gap: 2rem;
+.conteudo__sobre-nos {
+    background-color: var(--preto-100);
 }
 
 .conteudo__paragrafo {
-    line-height: 2rem;
-    margin: 0 6rem 2rem 0;
+    line-height: 1.8rem;
+    text-align: center;
+    margin: 0 2rem 2rem 2rem;
 }
 
-.conteudo__sobre-nos__textos {
-    display: flex;
+.conteudo__servicos__itens {
     margin-top: 4rem;
-    align-items: flex-start;
-}
-
-.conteudo__sobre-nos__funcionalidades__item {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 4rem;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.conteudo__sobre-nos__funcionalidades__item .numero {
-    font-size: 3.5rem;
-    font-family: var(--fonte-titulo);
-    color: var(--azul-900);
-    font-weight: 700;
+.conteudo__servicos__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 24rem;
 }
 
-.conteudo__sobre-nos__funcionalidades__item .texto {
-    width: 18rem;
+.conteudo__servicos__item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 1rem var(--verde-200);
+}
+
+.numero, .texto {
+    border: 1px solid var(--verde-300);
+    box-sizing: border-box;
+    text-align: center;
+    transition: width 2s ease-in-out, box-shadow .5s ease; /* Adicionei box-shadow à transição */
+    color: var(--preto-600);
+}
+
+.texto {
+    border-radius: 5px;
+    padding: 2rem .5rem;
     line-height: 1.5rem;
-    font-size: 1rem;
-    margin-left: 1rem;
+    font-size: .95rem;
+}
+
+.numero {
+    position: absolute;
+    top: -2rem;
+    font-size: 2rem;
+    padding: .9rem .5rem;
+    width: 4rem;
+    border-radius: 200px;
+    font-weight: 500;
+    background-color: var(--preto-50);
+    font-family: var(--fonte-titulo);
 }
 
 .conteudo__contato {
-    background: linear-gradient(180deg, var(--verde-200) 90%, var(--azul-400) 80%);
-    overflow: visible;
-    padding-top: 5rem;
+    background: url('../assets/backgrounds/bg-contato.svg') no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    padding-top: 7rem;
 }
 
 .conteudo__contato__box {
     background-color: var(--preto-50);
-    border-radius: 5px;
-    padding: 2rem 4rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 2rem 3rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
@@ -89,33 +119,33 @@ h2 {
 
 .conteudo__contato__paragrafo {
     color: var(--azul-900);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
     font-weight: 500;
-    line-height: 2.25rem;
+    line-height: 2rem;
 }
 
 .conteudo__formulario form {
-    width: 30rem;
+    width: 28rem;
 }
 
 .conteudo__formulario .botao {
     width: 100%;
-    font-size: 1.2rem;
-    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    padding: 1rem 1.8rem;
 }
 
 .img {
     position: absolute;
-    top: 30rem;
-    right: -20rem;
+    top: 28rem;
+    right: -16rem;
     transform: translate(-50%, -50%);
     overflow: hidden;
 }
 
 .img img:first-child {
-    width: 30rem;
-    animation: rotate 32s linear infinite;
+    width: 24rem;
+    animation: rotate 30s linear infinite;
 }
 
 @keyframes rotate {
@@ -128,7 +158,7 @@ h2 {
 }
 
 .img img:last-child {
-    width: 16rem;
+    width: 15rem;
     position: absolute;
     top: 50%;
     left: 50%;

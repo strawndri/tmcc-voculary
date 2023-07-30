@@ -92,10 +92,10 @@ h1, h2, h3 {
     min-height: 100vh; 
 }
 
-.botao, .botao2 {
+.botao, .botao-vazado, .botao2 {
   display: flex;
   padding: .8em 1.8em;
-  border-radius: 5px;
+  border-radius: 20px;
   border: none;
   align-items: center;
   justify-content: center;
@@ -105,12 +105,23 @@ h1, h2, h3 {
   font-family: var(--font-conteudo);
 }
 
-.botao {
-  background-color: var(--verde-300);
+.botao,
+.botao-vazado {
   margin: 1rem 0 2rem 0;
 }
 
-.botao:hover {
+.botao {
+  background-color: var(--verde-300);
+}
+
+.botao-vazado {
+  color: var(--verde-400);
+  border: 1px solid var(--verde-300);
+}
+
+.botao:hover,
+.botao-vazado,
+.botao2 {
     cursor: pointer;
 }
 
@@ -118,10 +129,6 @@ h1, h2, h3 {
   width: 50%;
   background-color: var(--verde-200);
   margin: 1rem 0 0 0;
-}
-
-.botao2:hover {
-  cursor: pointer;
 }
 
 .logo {
