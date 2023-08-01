@@ -16,6 +16,10 @@ A obtenção de textos presentes em imagens é um processo que desempenha um pap
 
 A Voculary é uma continuação do [Tsi.py](https://github.com/strawndri/tca-tsi.py), projeto desenvolvido em 2022 para a disciplina de Linguagem de Programação.
 
+Para visualizar o layout do projeto, acesse o link abaixo: 
+
+* [Layout da Voculary no Figma](https://www.figma.com/file/JwB58YmC2m3m94hesgOZK1/Voculary?type=design&node-id=603%3A158&mode=design&t=Bck9ZXaS4JUd4292-1)
+
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Consulte o arquivo `LICENSE` para obter mais informações sobre os termos de licenciamento.
