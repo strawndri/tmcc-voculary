@@ -9,68 +9,77 @@
     right: 8rem;
 }
 
-.prateleiras {
+.tabela {
     width: 100%;
-    background-color: var(--preto-50);
-    border: 1px solid var(--preto-200)
+    background-color: #FFF;
+    overflow:hidden;
+    border-collapse:separate;
+    border: 1px solid var(--preto-200);
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
 }
 
-.prateleiras__header {
+.tabela__header {
     font-weight: 700;
 }
 
-.prateleiras__header th {
+.tabela__header th {
     text-align: left;
     background-color: var(--preto-100);
     padding: 1rem;
     font-family: var(--fonte-titulo);
+    color: var(--preto-700)
 }
 
-.prateleiras__body {
+.tabela__body {
     color: var(--preto-600);
 }
 
-.prateleiras__body tr {
+.tabela__body tr {
     border-bottom: 1px solid var(--preto-200)
 }
 
-.prateleiras__body td {
+.tabela__body td {
     padding: 1rem;
     vertical-align: middle;
 }
 
-.prateleiras__body tr:last-of-type {
+.tabela__body tr:last-of-type {
     border-bottom: none;
 }
 
-.prateleiras__body button {
+.tabela__body button {
     width: 1.5rem;
     height: 1.5rem;
-    opacity: 0.6;
     border: none;
     background-color: transparent;
 }
 
-.prateleiras__body button:hover {
+.tabela__body button:hover {
     cursor: pointer;
 }
 
-.prateleiras__body .renomear button {
+.tabela__body .renomear button {
     background-image: url('../assets/icones/renomear.svg');
     background-size: cover;
 }
 
-.prateleiras__body .excluir button {
+.tabela__body .excluir button {
     background-image: url('../assets/icones/excluir.svg');
     background-size: cover;
 }
 
-.nome-prateleira {
-    width: 50%;
+.checkbox {
+    width: 5%;
+}
+
+.nome-arquivo {
+    width: 40%;
 }
 
 .data-criacao {
-    width: 25%;
+    width: 40%;
 }
 
 .renomear, .excluir {
