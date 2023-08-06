@@ -10,15 +10,15 @@
 }
 
 .tabela {
-    width: 100%;
     background-color: #FFF;
     margin-bottom: 4rem;
     overflow:hidden;
     border-collapse:separate;
     border: 1px solid var(--preto-200);
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+    box-shadow: var(--sombra);
 }
 
 .tabela__header {
@@ -44,8 +44,8 @@
 }
 
 .tabela__body button {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     border: none;
     background-color: transparent;
 }
@@ -64,36 +64,29 @@
     background-size: cover;
 }
 
-.checkbox {
-    width: 1rem;
+.tabela__body .data-criacao {
+    font-size: .8rem;
+    color: var(--preto-500)
 }
 
 .imagem img {
     border: 1px solid var(--preto-300);
     border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;
 }
 
-.nome-arquivo {
-    width: 60%;
-}
-
-.data-criacao {
-    width: 40%;
-}
-
-.renomear, .excluir {
-    width: 2rem;
-    text-align: center;
+.tabela__footer tr {
+    display: flex;
 }
 
 .tabela__footer td {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
 }
 
 .botao-paginacao {
+    position: absolute;
     border: 1px solid var(--preto-300);
     padding: .5rem 1rem;
     text-decoration: none;
@@ -115,25 +108,118 @@
     color: var(--preto-700);
 }
 
-.anterior img {
+.anterior .botao-paginacao img {
     transform: rotate(180deg);
-}
-
-.paginas .nav-outer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.nav-outer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 .paginas__numero {
     text-decoration: none;
-    color: var(--preto-500)
+    color: var(--preto-500);
+    font-size: 0.8rem;
+}
+
+.atual {
+    color: var(--azul-500);
+    font-weight: 600;
+}
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-300)
+}
+  
+.custom-checkbox:hover input ~ .checkmark {
+    background-color: var(--preto-50);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--preto-100);
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--preto-400);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.tabela {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tabela .checkbox {
+    width: 2%; /* ajuste conforme necessário */
+}
+
+.tabela .imagem {
+    width: 5%; /* ajuste conforme necessário */
+}
+
+.tabela .nome-arquivo {
+    width: 70%; /* ajuste conforme necessário */
+}
+
+.tabela .data-criacao {
+    width: 15%; /* ajuste conforme necessário */
+}
+
+.tabela .excluir,
+.tabela .renomear {
+    width: 3%; /* ajuste conforme necessário */
+} 
+
+
+.anterior,
+.proximo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.anterior {
+    justify-content: flex-start; /* Alinha à esquerda */
+}
+
+.proximo {
+    justify-content: flex-end; /* Alinha à direita */
+}
+
+.paginas {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-width: 74vw;
 }
