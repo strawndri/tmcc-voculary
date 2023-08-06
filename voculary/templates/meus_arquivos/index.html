@@ -2,12 +2,12 @@
 {% load static %}
 {% block conteudo %}
 <head>
-    <title>Minhas pastas | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/arquivos.css' %}">
+<title>Minhas pastas | Voculary</title>
+<link rel="stylesheet" href="{% static 'styles/arquivos.css' %}">
 </head>
 <section class="conteudo padding">
-    <h2 class="conteudo__titulo-principal">Meus arquivos</h2>
-    <p class="conteudo__descricao">Espaço único para você guardar e organizar seus arquivos com textos e imagens.</p>
+<h2 class="conteudo__titulo-principal">Meus arquivos</h2>
+<p class="conteudo__descricao">Espaço único para você guardar e organizar seus arquivos com textos e imagens.</p>
     <table class="tabela">
         <thead class="tabela__header">
             <tr>
@@ -20,10 +20,11 @@
             </tr>
         </thead>
         <tbody class="tabela__body">
+            {% for imagem in imagens %}
             <tr>
                 <td class="checkbox"><input type="checkbox" /></td> <!-- Checkbox -->
-                <td class="imagem"><img src=""></td>
-                <td class="nome-arquivo">Imagens do livro X</td>
+                <td class="imagem"><img src="../media/{{ imagem.imagem }}"></td>
+                <td class="nome-arquivo"></td>
                 <td class="data-criacao">14/05/2023</td>
                 <td class="excluir">
                     <button></button>
@@ -32,18 +33,44 @@
                     <button></button>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
+        <tfoot class="tabela__footer">
+            <tr>
+                <td>
+                    <div class="nav-outer">
+                        <a class="botao-paginacao anterior" href="{% if imagens.has_previous %}?page={{ imagens.previous_page_number }}{% endif %}">
+                            <img src="{% static 'assets/icones/seta.svg' %}">
+                            <p>Anterior</p>
+                        </a>
+                    </div>
+                </td>
+                <td class="paginas" colspan="4">
+                    <div class="nav-outer">
+                        {% for i in imagens.paginator.page_range %}
+                            {% if forloop.first or forloop.last or forloop.counter <= 2 or forloop.counter > imagens.paginator.num_pages|add:"-2" or imagens.number == i %}
+                                {% if imagens.number == i %}
+                                    <span class="paginas__numero">{{ i }}</span>
+                                {% else %}
+                                    <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
+                                {% endif %}
+                            {% elif forloop.counter == 4 or forloop.counter == imagens.paginator.num_pages|add:"-2" %}
+                                <span class="paginas__numero">...</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </td>
+                
+                <td>
+                    <div class="nav-outer">
+                        <a class="botao-paginacao próximo" href="{% if imagens.has_next %}?page={{ imagens.next_page_number }}{% endif %}">
+                            <p>Próximo</p>
+                            <img src="{% static 'assets/icones/seta.svg' %}">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>        
     </table>
-    <!-- Início da paginação -->
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">&raquo;</a>
-    </div>
-    <!-- Fim da paginação -->
 </section>
 {% endblock %}

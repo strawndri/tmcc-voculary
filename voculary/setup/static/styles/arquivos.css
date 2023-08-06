@@ -12,6 +12,7 @@
 .tabela {
     width: 100%;
     background-color: #FFF;
+    margin-bottom: 4rem;
     overflow:hidden;
     border-collapse:separate;
     border: 1px solid var(--preto-200);
@@ -36,17 +37,10 @@
     color: var(--preto-600);
 }
 
-.tabela__body tr {
-    border-bottom: 1px solid var(--preto-200)
-}
-
 .tabela__body td {
     padding: 1rem;
     vertical-align: middle;
-}
-
-.tabela__body tr:last-of-type {
-    border-bottom: none;
+    border-bottom: 1px solid var(--preto-200);
 }
 
 .tabela__body button {
@@ -71,11 +65,19 @@
 }
 
 .checkbox {
-    width: 5%;
+    width: 1rem;
+}
+
+.imagem img {
+    border: 1px solid var(--preto-300);
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
 }
 
 .nome-arquivo {
-    width: 40%;
+    width: 60%;
 }
 
 .data-criacao {
@@ -83,6 +85,55 @@
 }
 
 .renomear, .excluir {
-    width: 5%;
+    width: 2rem;
     text-align: center;
+}
+
+.tabela__footer td {
+    padding: 1rem;
+}
+
+.botao-paginacao {
+    border: 1px solid var(--preto-300);
+    padding: .5rem 1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    transition: all .25s;
+}
+
+.botao-paginacao:hover {
+    background-color: var(--preto-100);
+}
+
+.botao-paginacao p {
+    color: var(--preto-700);
+}
+
+.anterior img {
+    transform: rotate(180deg);
+}
+
+.paginas .nav-outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-outer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.paginas__numero {
+    text-decoration: none;
+    color: var(--preto-500)
 }
