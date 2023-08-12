@@ -10,18 +10,20 @@ def home(request):
     texto = ''
     imagem = ''
     if request.method == 'POST':
-        form = UploadImagemForm(request.POST, request.FILES)
-        if form.is_valid():
-            imagem = form.save(commit=False)
-            imagem.usuario = request.user
-            imagem.save()
-            texto = extrair_texto(imagem.imagem.path)
+        # form = UploadImagemForm(request.POST, request.FILES)
+        # if form.is_valid():
+            # imagem = form.save(commit=False)
+            # imagem.usuario = request.user
+            # imagem.save()
+            # texto = extrair_texto(imagem.imagem.path)
+            # print(imagem.imagem.path)
+        texto = extrair_texto("C:/Users/andri/OneDrive/Documentos/ESCOLA/2023/TMD/tmcc-voculary/voculary/media/imagens/artigo_gV1B7TP.png")
 
-    else:
-        form = UploadImagemForm()
+    # else:
+        # form = UploadImagemForm()
     
     context = {
-        'form' : form,
+        # 'form' : form,
         'texto': texto,   # Aqui passamos o texto como contexto
     }
 

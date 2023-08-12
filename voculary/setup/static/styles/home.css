@@ -44,6 +44,16 @@
     border: 1px solid var(--preto-200);
 }
 
+.texto {
+    background-color: #fff;
+    overflow:auto; 
+}
+
+.texto p {
+    margin: .5rem;
+    line-height: 1.4rem;
+}
+
 .reconhecimento-texto__imagem-zoom {
     position: absolute;
     margin: 5px 5px;
@@ -138,3 +148,5 @@
 #id_imagem {
     display: none;
 }
+
+
