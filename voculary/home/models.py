@@ -12,8 +12,8 @@ class ArquivoDigitalizado(models.Model):
     id_arquivo = models.AutoField(primary_key=True)
     data_geracao = models.DateTimeField(default=datetime.now, blank=False)
     tempo_processamento = models.FloatField(blank=False)
-    acuracia = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
     nome_arquivo = models.CharField(max_length=150, blank=False)
+    texto = models.TextField(blank=False)
 
     usuario = models.ForeignKey(
         to = CustomUser,
