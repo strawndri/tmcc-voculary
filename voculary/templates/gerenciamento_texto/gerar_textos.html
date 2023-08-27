@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <title>Gerar textos | Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}">
+</head>
+<section class="conteudo padding">
+    {% include 'partials/_reconhecimento_texto.html' %}
+    <section class="conteudo__meus-textos">
+        <h2 class="conteudo__titulo-principal">Histórico</h2>
+        <p class="conteudo__descricao">Veja aqui os últimos textos extraídos.</p>
+        <div class="meus-textos__card">
+        </div>
+    </section>
+    <section class="conteudo__meus-textos">
+        <h2 class="conteudo__titulo-principal">Meus textos</h2>
+        <p class="conteudo__descricao">Acesse agora os textos que você já salvou.</p>
+        <a class="meus-textos__ver-mais">
+            Ver mais
+            <img src="{% static 'assets/icones/seta.svg' %}">
+        </a>
+        <div class="meus-textos__card">
+        </div>
+    </section>
+</section>
+<script src="{% static 'js/carregarImagem.js' %}"></script>
+{% endblock %}

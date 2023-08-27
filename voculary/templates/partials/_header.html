@@ -1,5 +1,5 @@
-{% if request.path == '/' or request.path == '/apresentacao' %}
-<header class="cabecalho cabecalho-apresentacao">
+{% if request.path == '/' or request.path == '/home' %}
+<header class="cabecalho cabecalho-home">
     <nav class="header__nav">
         {% include 'partials/_logo.html' %}
         <div class="header__nav__group">
@@ -16,7 +16,7 @@
 {% elif request.path == '/login' or request.path == '/cadastro'%}
 <header class="cabecalho">
     <div class="centralize">
-        <a href="{% url 'apresentacao' %}">
+        <a href="{% url 'home' %}">
             {% include 'partials/_logo.html' %}
         </a>
     </div>

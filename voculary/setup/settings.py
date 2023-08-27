@@ -30,8 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'usuario',
-    'meus_arquivos',
-    'apresentacao',
+    'gerenciamento_texto',
+    'ajuda',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +76,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'usuario.CustomUser'
+AUTH_USER_MODEL = 'usuario.Usuario'
 
 
 AUTH_PASSWORD_VALIDATORS = [

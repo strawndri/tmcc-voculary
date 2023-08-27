@@ -2,49 +2,54 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, password=None):
+    def create_user(self, email, primeiro_nome, ultimo_nome, senha=None):
         if not email:
             raise ValueError('O usuário deve ter um endereço de e-mail.')
-        if not first_name:
+        if not primeiro_nome:
             raise ValueError('O usuário deve ter um primeiro nome.')
-        if not last_name:
+        if not ultimo_nome:
             raise ValueError('O usuário deve ter um último nome.')
 
         email = self.normalize_email(email)
-        user = self.model(
+        usuario = self.model(
             email=email,
-            first_name=first_name,
-            last_name=last_name
+            primeiro_nome=primeiro_nome,
+            ultimo_nome=ultimo_nome
         )
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
 
-    def create_superuser(self, email, first_name, last_name, password=None):
-        user = self.create_user(
+        usuario.set_password(senha)
+        usuario.save(using=self._db)
+        return usuario
+
+    def create_superuser(self, email, primeiro_nome, ultimo_nome, senha=None):
+
+        usuario = self.create_usuario(
             email=email,
-            first_name=first_name,
-            last_name=last_name,
-            password=password
+            primeiro_nome=primeiro_nome,
+            ultimo_nome=ultimo_nome,
+            senha=senha
         )
-        user.is_admin = True
-        user.is_staff = True
-        user.save(using=self._db)
-        return user
+
+        usuario.staff = True
+        usuario.admin = True
+        usuario.save(using=self._db)
+        return usuario
 
 
-class CustomUser(AbstractBaseUser):
-    email = models.EmailField(verbose_name='Endereço de e-mail', max_length=255, unique=True)
-    first_name = models.CharField(verbose_name='Primeiro Nome', max_length=100)
-    last_name = models.CharField(verbose_name='Último Nome', max_length=100)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
+class Usuario(AbstractBaseUser):
+    primeiro_nome = models.CharField(max_length=100)
+    ultimo_nome = models.CharField(max_length=100)
+    email = models.EmailField(max_length=255, unique=True)
+    ativo = models.BooleanField(default=True)
+    data_registro = models.DateTimeField(auto_now_add=True, null=False)
+    ultimo_login = models.DateTimeField(blank=True, null=True)
+    staff = models.BooleanField(default=False)
+    admin = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['primeiro_nome', 'ultimo_nome']
 
     def __str__(self):
         return self.email
@@ -54,3 +59,6 @@ class CustomUser(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+    class Meta:
+        db_table = 'usuario'

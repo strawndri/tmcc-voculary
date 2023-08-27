@@ -4,4 +4,4 @@ from .models import Imagem
 class UploadImagemForm(forms.ModelForm):
     class Meta:
         model = Imagem
-        fields = ['imagem']
+        fields = ['arquivo']

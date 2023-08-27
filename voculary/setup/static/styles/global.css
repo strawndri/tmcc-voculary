@@ -35,7 +35,7 @@
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   --fonte-titulo: 'Quicksand', sans-serif;
-  --fonte-conteudo: 'Inter', sans-serif;
+  --fonte-conteudo: 'Poppins', sans-serif;
 }
 
 body::-webkit-scrollbar,
@@ -242,43 +242,4 @@ h1, h2, h3 {
   display: flex;
   flex-direction: row;
   gap: 2rem
-}
-
-.mensagem {
-  position: fixed;
-  top: 2rem;
-  box-shadow: var(--sombra);
-  background-color: var(--preto-50);
-  border-radius: 5px;
-  z-index: 1;
-  padding: 1rem 1rem;
-  width: 20rem;
-  line-height: 1.5rem;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-#django-messages {
-  position: fixed;
-  right: 2rem;
-  animation: slideIn .5s ease-out;
-}
-
-.success {
-  color: var(--verde-400);
-  border: 1px solid var(--verde-300);
-  border-left: 10px solid var(--verde-300);
-}
-
-.error {
-  color: var(--rosa-400);
-  border: 1px solid var(--rosa-300);
-  border-left: 10px solid var(--rosa-300);
 }

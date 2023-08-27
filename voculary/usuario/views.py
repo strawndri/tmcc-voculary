@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 
 from usuario.forms import LoginForms, CadastroForms, PerfilForms
+from usuario.models import Usuario
 
-from usuario.models import CustomUser
+from datetime import datetime
 
-from django.contrib.auth.decorators import login_required
-from django.contrib import auth, messages
-
-def cadastro(request):
+def CadastroView(request):
     form = CadastroForms()
 
     if request.method == 'POST':
@@ -20,15 +20,15 @@ def cadastro(request):
             email = form['email'].value()
             senha = form['senha_1'].value()
 
-            if CustomUser.objects.filter(email=email).exists():
+            if Usuario.objects.filter(email=email).exists():
                 messages.error(request, 'Ops, parece que este e-mail já existe! Tente novamente.')
                 return redirect('cadastro')
             
-            usuario = CustomUser.objects.create_user(
-                first_name = primeiro_nome,
-                last_name = ultimo_nome,
+            usuario = Usuario.objects.create_user(
+                primeiro_nome = primeiro_nome,
+                ultimo_nome = ultimo_nome,
                 email = email,
-                password = senha
+                senha = senha
             )
 
             usuario.save()
@@ -37,7 +37,7 @@ def cadastro(request):
 
     return render(request, 'usuario/cadastro.html', {'form': form})
 
-def login(request):
+def LoginView(request):
     form = LoginForms()
 
     if request.method == 'POST':
@@ -47,13 +47,16 @@ def login(request):
             email = form['email_login'].value()
             senha = form['senha'].value()
 
-            User = auth.get_user_model()
-            usuario = User.objects.filter(email=email).first()
+            Usuario = auth.get_user_model()
+            usuario = Usuario.objects.filter(email=email).first()
 
             if usuario is not None and usuario.check_password(senha):
+                usuario.ultimo_login = datetime.now()
+                usuario.save()
+
                 auth.login(request, usuario)
-                messages.success(request, f'Olá, {usuario.first_name}! O login foi realizado com sucesso.')
-                return redirect('home')
+                messages.success(request, f'Olá, {usuario.primeiro_nome}! O login foi realizado com sucesso.')
+                return redirect('/gerar-textos')
             else:
                 messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
                 return redirect('login')
@@ -61,7 +64,7 @@ def login(request):
     return render(request, 'usuario/login.html', {'form': form})
 
 @login_required(login_url='/login')
-def perfil(request):
+def PerfilView(request):
 
     form = PerfilForms()
 
@@ -71,7 +74,7 @@ def perfil(request):
     return render(request, 'usuario/perfil.html', {'form': form})
 
 @login_required(login_url='/login')
-def logout(request):
+def LogoutView(request):
     messages.success(request, f'Até mais! O logout foi efetuado com sucesso.')
     auth.logout(request)
-    return redirect('/apresentacao')
+    return redirect('/home')
