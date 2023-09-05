@@ -6,7 +6,7 @@ from datetime import datetime
 class Imagem(models.Model):
     id_imagem = models.AutoField(primary_key=True)
     arquivo = models.ImageField(upload_to='imagens/', null=False)
-    ativo = models.BooleanField(null=False)
+    ativo = models.BooleanField(default=True, null=False)
 
     usuario = models.ForeignKey(
         to = Usuario,
@@ -24,7 +24,7 @@ class TextoDigitalizado(models.Model):
     nome = models.CharField(max_length=255, null=False)
     tempo_processamento = models.FloatField(null=False)
     idioma = models.CharField(max_length=10, null=False)
-    ativo = models.BooleanField(null=False)
+    ativo = models.BooleanField(default=True, null=False)
 
     usuario = models.ForeignKey(
         to = Usuario,

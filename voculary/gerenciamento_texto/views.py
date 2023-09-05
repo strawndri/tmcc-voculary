@@ -20,18 +20,20 @@ def GeracaoTextoView(request):
             imagem.save()
             
             inicio_tempo = time.time()
-            texto = extrair_texto(imagem.imagem.path)
+            texto, idioma = extrair_texto(imagem.arquivo.path)
             tempo_processamento = time.time() - inicio_tempo
             
-            arquivo_digitalizado = ArquivoDigitalizado(
-                nome_arquivo=imagem.imagem.path,
+            texto_digitalizado = TextoDigitalizado(
+                nome=imagem.arquivo.path,
                 texto=texto,
                 tempo_processamento=tempo_processamento,
                 usuario=request.user,
-                imagem=imagem
+                imagem=imagem,
+                idioma=idioma,
+                ativo=True,
             )
             
-            arquivo_digitalizado.save()
+            texto_digitalizado.save()
 
     else:
         form = UploadImagemForm()

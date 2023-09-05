@@ -1,14 +1,11 @@
-from langdetect import detect
 import pytesseract as pt
-import cv2
-import numpy as np
 
 from .detectar_caracteristicas import *
 from .tratar_imagem import *
 
 pt.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
 
-def extrair_texto(imagem):
+def extrair_texto(img_original):
 
     min_conf = 50
     
@@ -30,4 +27,4 @@ def extrair_texto(imagem):
     texto_filtrado = [resultado['text'][i] for i in range(len(resultado['conf'])) if int(resultado['conf'][i] >= min_conf)]
     texto = ' '.join(texto_filtrado)
 
-    return texto
+    return texto, cod_idioma

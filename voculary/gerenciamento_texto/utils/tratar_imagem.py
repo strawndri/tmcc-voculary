@@ -1,3 +1,4 @@
+import cv2
 from .detectar_caracteristicas import *
 
 def realcar_detalhes(imagem):
@@ -6,6 +7,8 @@ def realcar_detalhes(imagem):
     img_detalhes = 12 * cv2.subtract(img_redimensionada, img_suavizada)
 
     return cv2.add(img_redimensionada, img_detalhes)
+import cv2
+import numpy as np
 
 def ajustar_brilho(imagem, threshold=128, alpha=1.5, beta=50):
     if np.mean(imagem) < threshold:
@@ -52,11 +55,11 @@ def ajustar_orientacao(imagem):
     qualidade_desejada = 50.0
     tentativas = 0
     angulo = calcula_angulo(imagem_rotacionada)
-    max_qualidade = dc.avaliar_qualidade_ocr(imagem_rotacionada)
+    max_qualidade = avaliar_qualidade_ocr(imagem_rotacionada)
 
     while (max_qualidade < qualidade_desejada):
       imagem_rotacionada = rotaciona_imagem(imagem_rotacionada, angulo)
-      max_qualidade = dc.avaliar_qualidade_ocr(imagem_rotacionada)
+      max_qualidade = avaliar_qualidade_ocr(imagem_rotacionada)
       tentativas += 1
       angulo += 90
 
