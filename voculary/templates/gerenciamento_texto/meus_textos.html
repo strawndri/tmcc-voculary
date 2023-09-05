@@ -13,14 +13,14 @@
             <tr>
                 <th class="checkbox"></th> <!-- Coluna de checkbox -->
                 <th class="imagem"></th>
-                <th class="nome-arquivo">Nome do arquivo</td>
+                <th class="nome-arquivo">Nome do texto</td>
                 <th class="data-criacao">Data de criação</td>
                 <th class="excluir"></td>
                 <th class="renomear"></td>
             </tr>
         </thead>
         <tbody class="tabela__body">
-            {% for imagem in imagens %}
+            {% for texto in textos %}
             <tr>
                 <td class="checkbox">
                     <label class="custom-checkbox">
@@ -28,9 +28,9 @@
                         <span class="checkmark"></span>
                       </label>
                 </td> <!-- Checkbox -->
-                <td class="imagem"><img src="../media/{{ imagem.imagem }}"></td>
-                <td class="nome-arquivo"></td>
-                <td class="data-criacao">14/05/2023</td>
+                <td class="imagem"><img src="../media/{{ texto.imagem.arquivo }}"></td>
+                <td class="nome-arquivo">{{texto.nome}}</td>
+                <td class="data-criacao">{{texto.data_geracao|date:"d/m/Y"}}</td>
                 <td class="excluir">
                     <button></button>
                 </td>

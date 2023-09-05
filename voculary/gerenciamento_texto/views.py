@@ -7,6 +7,7 @@ from .models import Imagem, TextoDigitalizado
 
 from .utils.extrair_texto import extrair_texto
 import time
+import os
 
 @login_required(login_url='/login')
 def GeracaoTextoView(request):
@@ -24,7 +25,7 @@ def GeracaoTextoView(request):
             tempo_processamento = time.time() - inicio_tempo
             
             texto_digitalizado = TextoDigitalizado(
-                nome=imagem.arquivo.path,
+                nome= os.path.basename(imagem.arquivo.path),
                 texto=texto,
                 tempo_processamento=tempo_processamento,
                 usuario=request.user,
@@ -49,12 +50,16 @@ def GeracaoTextoView(request):
 @login_required(login_url='/login')
 def MeusTextosView(request):
 
-    imagens = Imagem.objects.all()
-    textos = TextoDigitalizado.objects.all()
+    # imagens = Imagem.objects.all()
+    # textos = TextoDigitalizado.objects.all()
+    textos = TextoDigitalizado.objects.select_related('imagem').all()
 
     # paginação
-    paginator = Paginator(imagens, 5)
+    paginator = Paginator(textos, 5)
     page = request.GET.get('page')
     imagens = paginator.get_page(page)
 
-    return render(request, 'gerenciamento_texto/meus_textos.html', {'imagens': imagens})
+    # pares = zip(imagens, textos)
+
+
+    return render(request, 'gerenciamento_texto/meus_textos.html', {'textos': textos})
