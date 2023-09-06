@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
     <link rel="stylesheet" href="{% static 'styles/cabecalho.css' %}">
     <link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/spinner.css' %}">
 </head>
 
 <body>
@@ -24,8 +25,11 @@
     {% include 'partials/_header.html' %}
     <main class="principal">
         {% if request.path != '/' and request.path != '/home' and request.path != '/cadastro' and request.path != '/login' %}
-            {% include 'partials/_menu_lateral.html' %}
-            {% endif %}
+        {% include 'partials/_menu_lateral.html' %}
+        {% endif %}
+        <div class="overlay">
+            <div class="spinner"></div>
+        </div>
         {% if messages %}
             {% for message in messages %}
                 <div class="mensagem {% if message.tags %}ativo {{ message.tags }}{% endif %}">
@@ -49,5 +53,6 @@
     {% endif %}
 </div>
 <script src="{% static 'js/temporizarMensagem.js' %}"></script>
+<script src="{% static 'js/aguardarExtracaoTexto.js' %}"></script>
 </body>
 </html>

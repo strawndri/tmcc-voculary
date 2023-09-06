@@ -1,0 +1,20 @@
+.spinner {
+    border: 8px solid var(--verde-300); 
+    border-bottom: 8px solid var(--preto-50);
+    border-radius: 40px;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s ease-in-out infinite;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease; 
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -50,16 +50,14 @@ def GeracaoTextoView(request):
 @login_required(login_url='/login')
 def MeusTextosView(request):
 
-    # imagens = Imagem.objects.all()
-    # textos = TextoDigitalizado.objects.all()
-    textos = TextoDigitalizado.objects.select_related('imagem').all()
+    textos = TextoDigitalizado.objects.select_related('imagem').filter(usuario=request.user)
 
-    # paginação
-    paginator = Paginator(textos, 5)
-    page = request.GET.get('page')
-    imagens = paginator.get_page(page)
+    if len(textos) == 0:
+        mensagem = 'Puxa! Parece que você ainda não salvou nenhum texto.'
+        return render(request, 'partials/_aviso.html', {'mensagem': mensagem})
+    else:
+        paginator = Paginator(textos, 5)
+        page = request.GET.get('page')
+        imagens = paginator.get_page(page)
 
-    # pares = zip(imagens, textos)
-
-
-    return render(request, 'gerenciamento_texto/meus_textos.html', {'textos': textos})
+        return render(request, 'gerenciamento_texto/meus_textos.html', {'textos': textos})

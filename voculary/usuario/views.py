@@ -40,8 +40,12 @@ def CadastroView(request):
 def LoginView(request):
     form = LoginForms()
 
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        return redirect('gerar-textos')
+
+    elif request.method == 'POST':
         form = LoginForms(request.POST)
+
 
         if form.is_valid():
             email = form['email_login'].value()
