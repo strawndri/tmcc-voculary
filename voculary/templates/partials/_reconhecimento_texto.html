@@ -3,28 +3,35 @@
     <h2 class="conteudo__titulo-principal">Novo reconhecimento de texto</h2>
     <p class="conteudo__descricao">Envie uma imagem, extraia o texto contido nela e salve como preferir!</p>
     <div class="reconhecimento-texto__grupo">
-        <form class="reconhecimento-texto__card" action="" method="POST" enctype="multipart/form-data">
+        <section class="conteudo__formulario">
+        <form class="formulario reconhecimento-texto__card" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
                 <button id="btnZoomIn" type="button">+</button>
                 <button id="btnZoomOut" type="button">-</button>
             </div>
-            <div class="reconhecimento-texto__imagem sem-imagem" class="selecionar-imagem" id="selecionarImagem">
-                <img class="imagem" src="{% static '/assets/icones/adicionar-imagem.svg' %}">
-                {% for field in form.visible_fields %}
-                {{ field }}
-                {% endfor %}
-            </div>
-            <div class="form">
-                <img class="form__icone" src="{% static '/assets/icones/link.svg' %}" alt="Ícone de link">
-                <input class="form__input" type="text" id="link" name="link" placeholder="Inserir link de imagem">
-            </div>
+                <!-- <div class="reconhecimento-texto__imagem sem-imagem" class="selecionar-imagem" id="selecionarImagem"> -->
+                    <!-- <img class="imagem" src="{% static '/assets/icones/adicionar-imagem.svg' %}"> -->
+                    
+                    {% for field in form.visible_fields %}
+                    <label class="formulario__label {{ field.name }}">
+                        {{ field.label }}
+                        {{ field }}
+                    </label>
+                    {% endfor %}
+                <!-- </div> -->
+
+                <!-- <img class="form__icone" src="{% static '/assets/icones/link.svg' %}" alt="Ícone de link"> -->
+                <!-- <input class="form__input" type="text" id="link" name="link" placeholder="Inserir link de imagem"> -->
             <button class="botao">Extrair texto</button>
         </form>
+        </section>
         <div class="reconhecimento-texto__card">
             <div class="texto">
                 <p>
-                    {{ texto }}
+                    {% if texto %}
+                        {{ texto }}
+                    {% endif %}
                 </p>
             </div>
             <div class="botoes">

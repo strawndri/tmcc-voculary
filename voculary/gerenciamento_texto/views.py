@@ -1,13 +1,18 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.core.files.base import ContentFile
+from django.utils import timezone
 
 from .forms import UploadImagemForm
 from .models import Imagem, TextoDigitalizado
 
 from .utils.extrair_texto import extrair_texto
-import time
+
+import datetime
 import os
+import requests
 
 @login_required(login_url='/login')
 def GeracaoTextoView(request):
@@ -18,23 +23,39 @@ def GeracaoTextoView(request):
         if form.is_valid():
             imagem = form.save(commit=False)
             imagem.usuario = request.user
+
+            if form.cleaned_data['url']:
+                url = form.cleaned_data['url']
+                response = requests.get(url)
+            
+                if response.status_code == 200:
+                    nome_arquivo = os.path.basename(url)
+                    imagem_temporaria = ContentFile(response.content)
+                    imagem.arquivo.save(nome_arquivo, imagem_temporaria)
+
+            nome_arquivo = os.path.basename(imagem.arquivo.path)
             imagem.save()
             
-            inicio_tempo = time.time()
-            texto, idioma = extrair_texto(imagem.arquivo.path)
-            tempo_processamento = time.time() - inicio_tempo
-            
-            texto_digitalizado = TextoDigitalizado(
-                nome= os.path.basename(imagem.arquivo.path),
-                texto=texto,
-                tempo_processamento=tempo_processamento,
-                usuario=request.user,
-                imagem=imagem,
-                idioma=idioma,
-                ativo=True,
-            )
-            
-            texto_digitalizado.save()
+            inicio_tempo = datetime.datetime.now(tz=timezone.utc)
+            imagem, texto, idioma = extrair_texto(imagem.arquivo.path)
+            fim_tempo = datetime.datetime.now(tz=timezone.utc)
+            tempo_processamento = (fim_tempo - inicio_tempo).seconds
+
+            if texto:
+                print('texto!!!!')
+                # texto_digitalizado = TextoDigitalizado(
+                #     nome=nome_arquivo,
+                #     texto=texto,
+                #     tempo_processamento=tempo_processamento,
+                #     usuario=request.user,
+                #     imagem=imagem,
+                #     idioma=idioma,
+                #     ativo=True,
+                # )
+                
+                # texto_digitalizado.save()
+            else: 
+                messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
 
     else:
         form = UploadImagemForm()

@@ -19,12 +19,17 @@ def extrair_texto(img_original):
     psm_valor = determinar_psm(img_final)
     cod_idioma = detectar_idioma(img_final)
 
-    resultado = pt.image_to_data(img_final,
-                               lang=cod_idioma,
-                               config=f'--psm {psm_valor}',
-                               output_type=pt.Output.DICT)
+    resultado_qualidade = avaliar_qualidade_ocr(img_final)
+    print(resultado_qualidade)
 
-    texto_filtrado = [resultado['text'][i] for i in range(len(resultado['conf'])) if int(resultado['conf'][i] >= min_conf)]
-    texto = ' '.join(texto_filtrado)
+    if resultado_qualidade >= 50:
+        resultado = pt.image_to_data(img_final,
+                                lang=cod_idioma,
+                                config=f'--psm {psm_valor}',
+                                output_type=pt.Output.DICT)
+        texto_filtrado = [resultado['text'][i] for i in range(len(resultado['conf'])) if int(resultado['conf'][i] >= min_conf)]
+        texto = ' '.join(texto_filtrado)
+        return img_final, texto, cod_idioma
 
-    return texto, cod_idioma
+    else:
+        return None, None, None

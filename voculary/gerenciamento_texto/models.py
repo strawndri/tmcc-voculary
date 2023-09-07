@@ -1,11 +1,12 @@
 from django.db import models
 from usuario.models import Usuario
 
-from datetime import datetime
+from django.utils import timezone
 
 class Imagem(models.Model):
     id_imagem = models.AutoField(primary_key=True)
-    arquivo = models.ImageField(upload_to='imagens/', null=False)
+    arquivo = models.ImageField(upload_to='imagens/', null=True, blank=True)
+    url = models.URLField(blank=True, null=True)
     ativo = models.BooleanField(default=True, null=False)
 
     usuario = models.ForeignKey(
@@ -19,7 +20,7 @@ class Imagem(models.Model):
         db_table = 'imagem'
 
 class TextoDigitalizado(models.Model):
-    data_geracao = models.DateTimeField(default=datetime.now, null=False)
+    data_geracao = models.DateTimeField(default=timezone.now, null=False)
     texto = models.TextField(null=False)
     nome = models.CharField(max_length=255, null=False)
     tempo_processamento = models.FloatField(null=False)
