@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody class="tabela__body">
-            {% for texto in textos %}
+            {% for texto in paginados %}
             <tr>
                 <td class="checkbox">
                     <label class="custom-checkbox">
@@ -43,27 +43,27 @@
         <tfoot class="tabela__footer">
             <tr>
                 <td class="anterior">
-                    <a class="botao-paginacao anterior" href="{% if imagens.has_previous %}?page={{ imagens.previous_page_number }}{% endif %}">
+                    <a class="botao-paginacao anterior" href="{% if paginados.has_previous %}?page={{ paginados.previous_page_number }}{% endif %}">
                         <img src="{% static 'assets/icones/seta.svg' %}">
                         <p>Anterior</p>
                     </a>
                 </td>
                 <td class="paginas" colspan="4">
-                        {% for i in imagens.paginator.page_range %}
-                            {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > imagens.paginator.num_pages|add:"-3" or imagens.number == i %}
-                                {% if imagens.number == i %}
+                        {% for i in paginados.paginator.page_range %}
+                            {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > paginados.paginator.num_pages|add:"-3" or paginados.number == i %}
+                                {% if paginados.number == i %}
                                     <span class="paginas__numero atual">{{ i }}</span>
                                 {% else %}
                                     <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
                                 {% endif %}
-                            {% elif forloop.counter == 4 or forloop.counter == imagens.paginator.num_pages|add:"-2" %}
+                            {% elif forloop.counter == 4 or forloop.counter == paginados.paginator.num_pages|add:"-2" %}
                                 <span class="paginas__numero">...</span>
                             {% endif %}
                         {% endfor %}
                 </td>
             
                 <td class="proximo">
-                    <a class="botao-paginacao" href="{% if imagens.has_next %}?page={{ imagens.next_page_number }}{% endif %}">
+                    <a class="botao-paginacao" href="{% if paginados.has_next %}?page={{ paginados.next_page_number }}{% endif %}">
                         <p>Próximo</p>
                         <img src="{% static 'assets/icones/seta.svg' %}">
                     </a>

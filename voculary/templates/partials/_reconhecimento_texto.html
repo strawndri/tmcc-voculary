@@ -27,16 +27,14 @@
         </form>
         </section>
         <div class="reconhecimento-texto__card">
-            <div class="texto">
-                <p>
-                    {% if texto %}
-                        {{ texto }}
-                    {% endif %}
+            <div class="texto-field">
+                <p class="texto">
+                {% if texto %}{{ texto }}{% endif %}
                 </p>
             </div>
             <div class="botoes">
-                <button class="botao2">Download</button>
-                <button class="botao2">Copiar</button>
+                <button class="botao2" id="baixarTexto">Download</button>
+                <button class="botao2" id="copiarTexto">Copiar</button>
             </div>
             <button class="botao">Salvar</button>
         </div>

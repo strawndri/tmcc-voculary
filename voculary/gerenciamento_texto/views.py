@@ -37,23 +37,22 @@ def GeracaoTextoView(request):
             imagem.save()
             
             inicio_tempo = datetime.datetime.now(tz=timezone.utc)
-            imagem, texto, idioma = extrair_texto(imagem.arquivo.path)
+            texto, idioma = extrair_texto(imagem.arquivo.path)
             fim_tempo = datetime.datetime.now(tz=timezone.utc)
             tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
             if texto:
-                print('texto!!!!')
-                # texto_digitalizado = TextoDigitalizado(
-                #     nome=nome_arquivo,
-                #     texto=texto,
-                #     tempo_processamento=tempo_processamento,
-                #     usuario=request.user,
-                #     imagem=imagem,
-                #     idioma=idioma,
-                #     ativo=True,
-                # )
+                texto_digitalizado = TextoDigitalizado(
+                    nome=nome_arquivo,
+                    texto=texto,
+                    tempo_processamento=tempo_processamento,
+                    usuario=request.user,
+                    imagem=imagem,
+                    idioma=idioma,
+                    ativo=True,
+                )
                 
-                # texto_digitalizado.save()
+                texto_digitalizado.save()
             else: 
                 messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
 
@@ -79,6 +78,6 @@ def MeusTextosView(request):
     else:
         paginator = Paginator(textos, 5)
         page = request.GET.get('page')
-        imagens = paginator.get_page(page)
+        paginados = paginator.get_page(page)
 
-        return render(request, 'gerenciamento_texto/meus_textos.html', {'textos': textos})
+        return render(request, 'gerenciamento_texto/meus_textos.html', {'paginados': paginados})

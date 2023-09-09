@@ -38,18 +38,18 @@
     transform: translateY(-10px);
 }
 
-.reconhecimento-texto__imagem, .texto {
+.reconhecimento-texto__imagem, .texto-field {
     border-radius: 5px;
     height: 20rem;
     border: 1px solid var(--preto-200);
 }
 
-.texto {
+.texto-field {
     background-color: #fff;
     overflow:auto; 
 }
 
-.texto p {
+.texto {
     margin: .5rem;
     line-height: 1.4rem;
 }

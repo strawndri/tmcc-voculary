@@ -29,7 +29,7 @@ def extrair_texto(img_original):
                                 output_type=pt.Output.DICT)
         texto_filtrado = [resultado['text'][i] for i in range(len(resultado['conf'])) if int(resultado['conf'][i] >= min_conf)]
         texto = ' '.join(texto_filtrado)
-        return img_final, texto, cod_idioma
+        return texto, cod_idioma
 
     else:
-        return None, None, None
+        return None, None
