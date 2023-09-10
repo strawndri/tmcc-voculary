@@ -1,11 +1,8 @@
-let btnCopiar = document.getElementById("copiarTexto");
-let btnDownload = document.getElementById("baixarTexto");
-
-// Selecionando o elemento
+let btnCopiar = document.getElementById("btnCopiar");
+let btnDownload = document.getElementById("btnBaixar");
 let textoElement = document.querySelector(".texto");
 let texto = textoElement.innerHTML;
 
-// Criando uma função para lidar com as mutações
 function handleMutations(mutationsList, observer) {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -15,10 +12,8 @@ function handleMutations(mutationsList, observer) {
     }
 }
 
-// Inicializando o MutationObserver
 const observer = new MutationObserver(handleMutations);
 
-// Configuração para observar apenas mudanças de filhos do elemento
 observer.observe(textoElement, { childList: true });
 
 btnCopiar.addEventListener('click', () => {

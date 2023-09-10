@@ -94,7 +94,7 @@ h1, h2, h3 {
 
 .botao, .botao-vazado, .botao2 {
   display: flex;
-  padding: .8em 1.8em;
+  padding: 1em 1.8em;
   border-radius: 10px;
   border: none;
   align-items: center;
@@ -177,8 +177,8 @@ h1, h2, h3 {
 
 .formulario__label input,
 .formulario__label textarea {
-  margin: .5rem 0 1rem 0;
   padding: .6rem;
+  margin: .5rem 0 0 0;
   border-radius: 10px;
   background-color: var(--preto-50);
   color: var(--preto-700);
@@ -190,7 +190,8 @@ h1, h2, h3 {
   transition: all .5s;
 }
 
-.formulario__label textarea {
+
+.formulario__label .mensagem {
   height: 8rem;
 }
 
@@ -210,6 +211,12 @@ h1, h2, h3 {
   color: var(--azul-500);
   font-weight: 500;
   font-size: 0.9rem;
+}
+
+.formulario button[disabled] {
+  color: var(--preto-600);
+  background-color: var(--preto-200);
+  cursor:not-allowed;
 }
 
 .senha {
@@ -241,6 +248,7 @@ h1, h2, h3 {
 .grupo__botoes {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 2rem
 }
 
