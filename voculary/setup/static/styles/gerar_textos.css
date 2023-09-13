@@ -29,7 +29,7 @@
     position: relative
 }
 
-.imagem-padrao {
+.imagem-display{
     background-color: var(--preto-200);
     border-radius: 5px;
     background-repeat: no-repeat;
@@ -40,9 +40,13 @@
     left: 0;
     width: 100%;
     height: 89%;
+    background-size: auto 100%;
+    z-index: 1;
+}
+
+.icone-padrao {
     background-image: url('../assets/icones/adicionar-imagem.svg');
     background-size: 5rem 5rem;
-    z-index: 1;
 }
 
 .texto {
@@ -99,7 +103,7 @@
 
 .conteudo__meus-textos {
     position: relative;
-    margin-bottom: 4rem;
+    margin: 4rem 0;
 }
 
 .meus-textos__ver-mais {
@@ -111,6 +115,7 @@
     gap: .5rem;
     color: var(--preto-700);
     font-weight: 500;
+    text-decoration: none;
 }
 
 .meus-textos__ver-mais:hover {
@@ -131,6 +136,61 @@
 
 #id_imagem {
     display: none;
+}
+
+.meus-textos__group {
+    display: flex;
+    justify-content: space-between; 
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 10px; 
+}
+
+.meus-textos__card {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.meus-textos__card img {
+    height: 8rem;
+    overflow: hidden;
+    object-fit: cover; 
+    object-position: center;
+    border-radius: 10px 10px 0 0;
+
+    filter: brightness(90%)
+}
+
+.meus-textos__card h3 {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    max-width: 10rem; 
+    font-family: var(--fonte-conteudo);
+    font-weight: 500;
+    color: var(--preto-900)
+}
+
+.meus-textos__card p {
+    color: var(--preto-500)
+}
+
+.meus-textos__card h3,
+.meus-textos__card p {
+    padding: .2rem;
+}
+
+.meus-textos__descricao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem .5rem;
+    font-size: 0.8rem;
 }
 
 

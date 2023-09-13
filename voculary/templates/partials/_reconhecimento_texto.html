@@ -10,11 +10,19 @@
                 <label class="formulario__label {{ field.name }}">
                     {{ field.label }}
                     {% if field.label == 'Imagem' %}
-                        <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
-                            <button id="btnZoomIn" type="button">+</button>
-                            <button id="btnZoomOut" type="button">-</button>
-                        </div>
-                        <div class="imagem-padrao"></div>
+                    {% if imagem_url %}
+                    <div class="reconhecimento-texto__imagem-zoom">
+                        <button id="btnZoomIn" type="button">+</button>
+                        <button id="btnZoomOut" type="button">-</button>
+                    </div>
+                    <div class="imagem-display" style="background-image: url('{{ imagem_url }}');"></div>
+                {% else %}
+                    <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
+                        <button id="btnZoomIn" type="button">+</button>
+                        <button id="btnZoomOut" type="button">-</button>
+                    </div>
+                    <div class="imagem-display icone-padrao"></div>
+                {% endif %}
                     {% endif %}
                     {{ field }}
                 </label>

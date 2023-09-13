@@ -8,19 +8,22 @@
 <section class="conteudo padding">
     {% include 'partials/_reconhecimento_texto.html' %}
     <section class="conteudo__meus-textos">
-        <h2 class="conteudo__titulo-principal">Histórico</h2>
-        <p class="conteudo__descricao">Veja aqui os últimos textos extraídos.</p>
-        <div class="meus-textos__card">
-        </div>
-    </section>
-    <section class="conteudo__meus-textos">
         <h2 class="conteudo__titulo-principal">Meus textos</h2>
         <p class="conteudo__descricao">Acesse agora os textos que você já salvou.</p>
-        <a class="meus-textos__ver-mais">
+        <a class="meus-textos__ver-mais" href="{% url 'meus-textos' %}">
             Ver mais
             <img src="{% static 'assets/icones/seta.svg' %}">
         </a>
+        <div class="meus-textos__group">
+            {% for texto in textos %}
         <div class="meus-textos__card">
+            <img src="../media/{{ texto.imagem.arquivo }}">
+            <div class="meus-textos__descricao">
+                <h3>{{texto.nome}}</h3>
+                <p>{{texto.data_geracao|date:"d/m/Y"}}</p>
+            </div>
+            </div>
+        {% endfor %}
         </div>
     </section>
 </section>

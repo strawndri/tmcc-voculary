@@ -1,5 +1,5 @@
 let inputImagem = document.querySelector('.input-imagem');
-let inputImagemPadrao = document.querySelector('.imagem-padrao');
+let inputImagemDisplay = document.querySelector('.imagem-display');
 
 let zoomImagemElementos = document.querySelector('.reconhecimento-texto__imagem-zoom')
 let zoomInBotao = document.getElementById('btnZoomIn')
@@ -11,12 +11,14 @@ let limiteZoom = 5;
 inputImagem.addEventListener('change', function() {
     if (this.files && this.files[0]) {
 
-        zoomImagemElementos.classList.toggle("zoom-inativo");
+        zoomImagemElementos.classList.remove("zoom-inativo");
+        inputImagemDisplay.classList.remove("icone-padrao");
+
         let reader = new FileReader();
 
         reader.onload = function(e) {
-            inputImagemPadrao.style.backgroundImage = `url('${e.target.result}')`;
-            inputImagemPadrao.style.backgroundSize = `auto 100%`;
+            inputImagemDisplay.style.backgroundImage = `url('${e.target.result}')`;
+            inputImagemDisplay.style.backgroundSize = `auto 100%`;
         }
 
         // Este é o código que faltava para iniciar a leitura do arquivo
@@ -28,10 +30,10 @@ inputImagem.addEventListener('change', function() {
 
 zoomInBotao.addEventListener('click', function() {
     alturaImagem += 10
-    inputImagemPadrao.style.backgroundSize = `auto ${alturaImagem}%`;
+    inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
 });
 
 zoomOutBotao.addEventListener('click', function() {
     alturaImagem -= 10
-    inputImagemPadrao.style.backgroundSize = `auto ${alturaImagem}%`;
+    inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
 });

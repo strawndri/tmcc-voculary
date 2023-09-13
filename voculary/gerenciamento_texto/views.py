@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.core.files.base import ContentFile
+from django.core.cache import cache
 from django.utils import timezone
 
 from .forms import UploadImagemForm
@@ -16,15 +17,18 @@ import requests
 
 @login_required(login_url='/login')
 def GeracaoTextoView(request):
-    texto = ''
-    imagem = None
+    cache_key = f"{request.user.id}_texto_e_imagem"
+    cached_data = cache.get(cache_key, {})
+    
+    texto = cached_data.get("texto", "")
+    imagem = cached_data.get("imagem")
+
     form = UploadImagemForm()
 
     if request.method == 'POST':
         form = UploadImagemForm(request.POST, request.FILES)
         if form.is_valid():
             if 'extrair' in request.POST:  
-                print('extrair')
                 imagem = form.save(commit=False)
                 imagem.usuario = request.user
 
@@ -45,9 +49,12 @@ def GeracaoTextoView(request):
                 fim_tempo = datetime.datetime.now(tz=timezone.utc)
                 tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
-            elif 'salvar' in request.POST:  
-                print('salvar')
-                if texto:
+                cache.set(cache_key, {"texto": texto, "imagem": imagem}, 3600)
+
+            elif 'salvar' in request.POST:
+                if not texto:
+                    messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
+                else:
                     texto_digitalizado = TextoDigitalizado(
                         nome=nome_arquivo,
                         texto=texto,
@@ -57,16 +64,19 @@ def GeracaoTextoView(request):
                         idioma=idioma,
                         ativo=True,
                     )
-                    
                     texto_digitalizado.save()
-                else: 
-                    messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
+
+                    cache.delete(cache_key)
     else:
-        form = UploadImagemForm()
+        imagem, texto = None, None
+
+    textos = TextoDigitalizado.objects.select_related('imagem').filter(usuario=request.user)
 
     context = {
         'form' : form,
-        'texto': texto
+        'texto': texto,
+        'textos': textos,
+        'imagem_url': imagem.arquivo.url if imagem else None
     }
 
     return render(request, 'gerenciamento_texto/gerar_textos.html', context)
