@@ -22,6 +22,7 @@ def GeracaoTextoView(request):
     
     texto = cached_data.get("texto", "")
     imagem = cached_data.get("imagem")
+    nome_arquivo = cached_data.get("nome_arquivo", "")
 
     form = UploadImagemForm()
 
@@ -29,8 +30,8 @@ def GeracaoTextoView(request):
         form = UploadImagemForm(request.POST, request.FILES)
         if form.is_valid():
             if 'extrair' in request.POST:  
-                imagem = form.save(commit=False)
-                imagem.usuario = request.user
+                imagem_instance = form.save(commit=False)
+                imagem_instance.usuario = request.user
 
                 if form.cleaned_data['url']:
                     url = form.cleaned_data['url']
@@ -39,22 +40,32 @@ def GeracaoTextoView(request):
                     if response.status_code == 200:
                         nome_arquivo = os.path.basename(url)
                         imagem_temporaria = ContentFile(response.content)
-                        imagem.arquivo.save(nome_arquivo, imagem_temporaria)
+                        imagem_instance.arquivo.save(nome_arquivo, imagem_temporaria)
 
-                nome_arquivo = os.path.basename(imagem.arquivo.path)
-                imagem.save()
+                nome_arquivo = os.path.basename(imagem_instance.arquivo.path)
+                imagem_instance.save()
                 
                 inicio_tempo = datetime.datetime.now(tz=timezone.utc)
-                texto, idioma = extrair_texto(imagem.arquivo.path)
+                texto, idioma = extrair_texto(imagem_instance.arquivo.path)
                 fim_tempo = datetime.datetime.now(tz=timezone.utc)
                 tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
-                cache.set(cache_key, {"texto": texto, "imagem": imagem}, 3600)
+                cache_data = {
+                    "texto": texto,
+                    "imagem": imagem_instance,
+                    "nome_arquivo": nome_arquivo,
+                    "tempo_processamento": tempo_processamento,
+                    "idioma": idioma
+                }
+                cache.set(cache_key, cache_data, 3600)
 
             elif 'salvar' in request.POST:
                 if not texto:
                     messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
                 else:
+                    tempo_processamento = cached_data.get("tempo_processamento")
+                    idioma = cached_data.get("idioma")
+
                     texto_digitalizado = TextoDigitalizado(
                         nome=nome_arquivo,
                         texto=texto,
@@ -65,74 +76,18 @@ def GeracaoTextoView(request):
                         ativo=True,
                     )
                     texto_digitalizado.save()
-
                     cache.delete(cache_key)
-    else:
-        imagem, texto = None, None
 
-    textos = TextoDigitalizado.objects.select_related('imagem').filter(usuario=request.user)
+    textos = TextoDigitalizado.objects.select_related('imagem').order_by('-data_geracao').filter(usuario=request.user)[:4]
 
     context = {
-        'form' : form,
+        'form': form,
         'texto': texto,
         'textos': textos,
         'imagem_url': imagem.arquivo.url if imagem else None
     }
 
     return render(request, 'gerenciamento_texto/gerar_textos.html', context)
-
-# @login_required(login_url='/login')
-# def GeracaoTextoView(request):
-#     texto = ''
-#     imagem = ''
-
-#     if request.method == 'POST':
-#         form = UploadImagemForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             imagem = form.save(commit=False)
-#             imagem.usuario = request.user
-
-#             if form.cleaned_data['url']:
-#                 url = form.cleaned_data['url']
-#                 response = requests.get(url)
-            
-#                 if response.status_code == 200:
-#                     nome_arquivo = os.path.basename(url)
-#                     imagem_temporaria = ContentFile(response.content)
-#                     imagem.arquivo.save(nome_arquivo, imagem_temporaria)
-
-#             nome_arquivo = os.path.basename(imagem.arquivo.path)
-#             imagem.save()
-            
-#             inicio_tempo = datetime.datetime.now(tz=timezone.utc)
-#             texto, idioma = extrair_texto(imagem.arquivo.path)
-#             fim_tempo = datetime.datetime.now(tz=timezone.utc)
-#             tempo_processamento = (fim_tempo - inicio_tempo).seconds
-
-#             if texto:
-#                 texto_digitalizado = TextoDigitalizado(
-#                     nome=nome_arquivo,
-#                     texto=texto,
-#                     tempo_processamento=tempo_processamento,
-#                     usuario=request.user,
-#                     imagem=imagem,
-#                     idioma=idioma,
-#                     ativo=True,
-#                 )
-                
-#                 texto_digitalizado.save()
-#             else: 
-#                 messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
-
-#     else:
-#         form = UploadImagemForm()
-    
-#     context = {
-#         'form' : form,
-#         'texto': texto
-#     }
-
-#     return render(request, 'gerenciamento_texto/gerar_textos.html', context)
 
 
 @login_required(login_url='/login')

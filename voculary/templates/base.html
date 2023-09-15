@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
     <link rel="stylesheet" href="{% static 'styles/cabecalho.css' %}">
     <link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/spinner.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/loading.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 
@@ -28,9 +28,10 @@
         {% if request.path != '/' and request.path != '/home' and request.path != '/cadastro' and request.path != '/login' %}
         {% include 'partials/_menu_lateral.html' %}
         {% endif %}
-        <div class="overlay">
-            <div class="spinner"></div>
-        </div>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+          </div>
+          
         {% if messages %}
             {% for message in messages %}
                 <div class="mensagem {% if message.tags %}ativo {{ message.tags }}{% endif %}">

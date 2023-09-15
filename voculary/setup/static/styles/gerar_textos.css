@@ -156,6 +156,10 @@
     border-radius: 10px;
 }
 
+.meus-textos__card:hover {
+    cursor: pointer;
+}
+
 .meus-textos__card img {
     height: 8rem;
     overflow: hidden;

@@ -1,0 +1,16 @@
+#progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ccc; /* Cor de fundo da barra */
+  }
+  
+  #progress-bar {
+    height: 100%;
+    width: 0; /* Inicialmente, a barra está vazia */
+    background-color: #007bff; /* Cor da barra de progresso */
+    transition: width 0.3s ease-in-out; /* Animação de preenchimento da barra */
+  }
+  
