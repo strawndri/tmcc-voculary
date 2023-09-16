@@ -27,9 +27,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener("click", function(event) {
-        if (!abaLateral.contains(event.target) && !event.target.matches(".meus-textos__card, .tabela__body__item") && event.target !== fechar) {
+        if (!abaLateral.contains(event.target) &&
+            !event.target.matches(".meus-textos__card, .tabela__body__item, #btnExtrair") &&
+            event.target !== fechar) {
+            
             document.querySelector('.overlay').style.display = 'none';
             abaLateral.classList.remove("mostrar");
         }
     });
+    
 });
+
+
