@@ -5,10 +5,6 @@
     gap: 2rem;
 }
 
-.formulario__label {
-    width: auto;
-}
-
 .reconhecimento-texto__card {
     width: 50%;
 }
@@ -21,27 +17,13 @@
     transition: 1s all;
 }
 
-.imagem {
-    height: 20rem;
-    opacity: 0; 
+.reconhecimento-texto__card .imagem {
     cursor: pointer;
-    z-index: 2;
-    position: relative
+    opacity: 0;
 }
 
-.imagem-display{
-    background-color: var(--preto-200);
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-    position: absolute;
-    top: 24px;
-    left: 0;
-    width: 100%;
-    height: 89%;
-    background-size: auto 100%;
-    z-index: 1;
+.reconhecimento-texto__card .imagem-display {
+  top: 24px;
 }
 
 .icone-padrao {
@@ -49,41 +31,9 @@
     background-size: 5rem 5rem;
 }
 
-.texto {
+.reconhecimento-texto__card .texto {
     height: 20rem;
     cursor: default;
-}
-
-.reconhecimento-texto__imagem-zoom {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    margin: 5px 5px;
-    border-radius: 5px;
-    padding: 8px 12px;
-    background-color: #33333326;
-    z-index: 3;
-    border-radius: 20px;
-}
-
-.reconhecimento-texto__imagem-zoom button{
-    padding: .5rem .5rem;
-    font-family: var(--fonte-titulo);
-    background-color: var(--preto-700);
-    color: var(--preto-50);
-    border: none;
-    border-radius: 100px;
-}
-
-.reconhecimento-texto__imagem-zoom button:hover {
-    cursor: pointer;
-}
-
-.zoom-inativo {
-    display: none;
 }
 
 *::placeholder {
@@ -125,13 +75,6 @@
 .reconhecimento-texto__card {
     display: flex;
     flex-direction: column;
-}
-
-.botoes {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
 }
 
 #id_imagem {

@@ -13,8 +13,8 @@
     <link rel="shortcut icon" type="image/jpg" href="{% static 'assets/favicon/favicon.png' %}"/>
     <link rel="stylesheet" href="{% static 'styles/reset.css' %}">
     <link rel="stylesheet" href="{% static 'styles/global.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/mensagem.css' %}">
     <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/mensagem.css' %}">
     <link rel="stylesheet" href="{% static 'styles/cabecalho.css' %}">
     <link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
     <link rel="stylesheet" href="{% static 'styles/loading.css' %}">
@@ -28,10 +28,13 @@
         {% if request.path != '/' and request.path != '/home' and request.path != '/cadastro' and request.path != '/login' %}
         {% include 'partials/_menu_lateral.html' %}
         {% endif %}
-        <div id="progress-bar-container">
-            <div id="progress-bar"></div>
-          </div>
-          
+        <div class="overlay">
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>          
+            </div> 
+        </div>     
         {% if messages %}
             {% for message in messages %}
                 <div class="mensagem {% if message.tags %}ativo {{ message.tags }}{% endif %}">
@@ -58,5 +61,6 @@
 <script src="{% static 'js/aguardarExtracaoTexto.js' %}"></script>
 <script src="{% static 'js/obterTexto.js' %}"></script>
 <script src="{% static 'js/habilitarBotoes.js' %}"></script>
+<script src="{% static 'js/expandirAbaLateral.js' %}"></script>
 </body>
 </html>

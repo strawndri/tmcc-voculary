@@ -39,16 +39,19 @@
 }
 
 body::-webkit-scrollbar,
-.texto::-webkit-scollbar {
+.texto::-webkit-scollbar,
+.aba-lateral::-webkit-scollbar {
   width: 12px;              
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+.aba-lateral::-webkit-scrollbar-track{
   background: var(--preto-100);        
 }
 
 body::-webkit-scrollbar-thumb,
-.texto::-webkit-scrollbar-thumb {
+.texto::-webkit-scrollbar-thumb,
+.aba-lateral::-webkit-scrollbar-thumb {
   background-color: var(--preto-500);   
   border-radius: 20px;       
   border: 3px solid var(--preto-100);  
@@ -277,6 +280,90 @@ h1, h2, h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); 
+  background-color: rgba(0, 0, 0, 0.3); 
   z-index: 2; 
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.fechar:before {
+  content: 'x';
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.fechar:hover {
+  opacity: 1;
+}
+
+.reconhecimento-texto__imagem-zoom {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  padding: 8px 12px;
+  background-color: #33333326;
+  z-index: 3;
+  border-radius: 20px;
+}
+
+.reconhecimento-texto__imagem-zoom button{
+  padding: .5rem .5rem;
+  font-family: var(--fonte-titulo);
+  background-color: var(--preto-700);
+  color: var(--preto-50);
+  border: none;
+  border-radius: 100px;
+}
+
+.reconhecimento-texto__imagem-zoom button:hover {
+  cursor: pointer;
+}
+
+.zoom-inativo {
+  display: none;
+}
+
+.formulario__label {
+  width: auto;
+}
+
+.imagem {
+  height: 20rem;
+  z-index: 2;
+  position: relative;
+}
+
+.imagem-display{
+  background-color: var(--preto-200);
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 89%;
+  background-size: auto 100%;
+  z-index: 1;
+}
+
+.reconhecimento-texto__card .botoes,
+.aba-lateral .botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
 }

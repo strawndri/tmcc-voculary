@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.botao {
+.tabela .botao {
     position: absolute;
     top: 0;
     right: 8rem;
@@ -43,6 +43,10 @@
     border-bottom: 1px solid var(--preto-200);
 }
 
+.tabela__body .tabela__nome-arquivo {
+    cursor: pointer;
+}
+
 .tabela__body button {
     width: 1.2rem;
     height: 1.2rem;
@@ -54,22 +58,22 @@
     cursor: pointer;
 }
 
-.tabela__body .renomear button {
+.tabela__body .tabela__renomear button {
     background-image: url('../assets/icones/renomear.svg');
     background-size: cover;
 }
 
-.tabela__body .excluir button {
+.tabela__body .tabela__excluir button {
     background-image: url('../assets/icones/excluir.svg');
     background-size: cover;
 }
 
-.tabela__body .data-criacao {
+.tabela__body .tabela__data-criacao {
     font-size: .8rem;
     color: var(--preto-500)
 }
 
-.imagem img {
+.tabela__imagem img {
     border: 1px solid var(--preto-300);
     border-radius: 50%;
     width: 3rem;
@@ -178,25 +182,25 @@
     table-layout: fixed;
 }
 
-.tabela .checkbox {
-    width: 2%; /* ajuste conforme necessário */
+.tabela .tabela__checkbox {
+    width: 2%;
 }
 
-.tabela .imagem {
-    width: 5%; /* ajuste conforme necessário */
+.tabela .tabela__imagem {
+    width: 5%;
 }
 
-.tabela .nome-arquivo {
-    width: 70%; /* ajuste conforme necessário */
+.tabela .tabela__nome-arquivo {
+    width: 70%;
 }
 
-.tabela .data-criacao {
-    width: 15%; /* ajuste conforme necessário */
+.tabela .tabela__data-criacao {
+    width: 15%;
 }
 
-.tabela .excluir,
-.tabela .renomear {
-    width: 3%; /* ajuste conforme necessário */
+.tabela .tabela__excluir,
+.tabela .tabela__renomear {
+    width: 3%;
 } 
 
 
@@ -208,11 +212,11 @@
 }
 
 .anterior {
-    justify-content: flex-start; /* Alinha à esquerda */
+    justify-content: flex-start;
 }
 
 .proximo {
-    justify-content: flex-end; /* Alinha à direita */
+    justify-content: flex-end;
 }
 
 .paginas {

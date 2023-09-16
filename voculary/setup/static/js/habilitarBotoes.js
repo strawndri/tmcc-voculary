@@ -1,8 +1,12 @@
 let imagemInputs = document.querySelectorAll('.input-imagem');
 let textoElemento = document.querySelector('.texto');
-let botoes = [document.getElementById('btnBaixar'), 
-              document.getElementById('btnCopiar'), 
-              document.getElementById('btnSalvar')];
+let cardFieldElement = document.querySelector('[data-origin="card-field"]');
+
+let btnBaixar = cardFieldElement.querySelector('.btn-baixar');
+let btnCopiar = cardFieldElement.querySelector('.btn-copiar');
+let btnSalvar = cardFieldElement.querySelector('#btnSalvar');
+
+let botoes = [btnBaixar, btnCopiar, btnSalvar];
 
 function atualizaEstadoDosBotoes() {
     if (textoElemento.textContent.trim()) {
@@ -20,4 +24,3 @@ imagemInputs.forEach(function(input) {
         document.getElementById('btnExtrair').disabled = !this.value;
     });
 });
-
