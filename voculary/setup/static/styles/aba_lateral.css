@@ -25,6 +25,7 @@
 .aba-lateral .fechar {
     top: 1rem;
     left: 0;
+    width: 1rem;
 }
 
 .aba-lateral .fechar::before {
@@ -47,7 +48,7 @@
 .aba-lateral.mostrar {
     padding: 0 2rem 5rem 2rem;
     right: 0;
-    z-index: 100;
+    z-index: 3;
     overflow: auto;
 }
 

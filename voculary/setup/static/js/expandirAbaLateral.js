@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     cards.forEach(card => {
         card.addEventListener("click", function() {
             let id_imagem = card.getAttribute('data-texto');
+            abaLateral.setAttribute('data-texto', id_imagem)
             
             fetch(`/obter-info-texto/${id_imagem}/`)
                 .then(response => response.json())
@@ -27,14 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener("click", function(event) {
-        if (!abaLateral.contains(event.target) &&
-            !event.target.matches(".meus-textos__card, .tabela__body__item, #btnExtrair") &&
-            event.target !== fechar) {
-            
+        if (
+            !abaLateral.contains(event.target) && // Se o clique não foi na aba lateral
+            !event.target.matches(".meus-textos__card, .tabela__body__item, button") && // Se o clique não foi em um card, item ou botão
+            event.target.closest('button') === null && // Se o clique não foi dentro de um botão
+            event.target !== fechar // Se o clique não foi no elemento fechar
+        ) {
             document.querySelector('.overlay').style.display = 'none';
             abaLateral.classList.remove("mostrar");
         }
     });
+    
     
 });
 

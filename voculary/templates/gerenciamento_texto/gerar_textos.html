@@ -18,12 +18,13 @@
                     <label class="formulario__label {{ field.name }}">
                         {{ field.label }}
                         {% if field.label == 'Imagem' %}
-                        {% if imagem_url %}
+                        {% if imagem_base64 %}
                         <div class="reconhecimento-texto__imagem-zoom">
                             <button id="btnZoomIn" type="button">+</button>
                             <button id="btnZoomOut" type="button">-</button>
                         </div>
-                        <div class="imagem-display" style="background-image: url('{{ imagem_url }}');"></div>
+                        
+                        <div class="imagem-display" style="background-image: url('{{ imagem_base64 }}');"></div>
                     {% else %}
                         <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
                             <button id="btnZoomIn" type="button">+</button>
@@ -39,7 +40,7 @@
                 <button class="botao" id="btnExtrair" name="extrair" value="extrair" disabled>Extrair texto</button>
             </field>
             <field class="reconhecimento-texto__card" data-origin="card-field">
-                {% include 'partials/_obter_texto.html' with btn_disabled="True"%}
+                {% include 'partials/_obter_texto.html'%}
                 <button class="botao" name="salvar" id="btnSalvar" value="salvar" disabled>Salvar</button>
             </field>
         </form>
@@ -53,12 +54,12 @@
         </a>
         <div class="meus-textos__group">
             {% for texto in textos %}
-        <div data-texto="{{ texto.imagem.id_imagem }}" class="meus-textos__card">
-            <img src="../media/{{ texto.imagem.arquivo }}">
-            <div class="meus-textos__descricao">
-                <h3>{{texto.nome}}</h3>
-                <p>{{texto.data_geracao|date:"d/m/Y"}}</p>
-            </div>
+            <div data-texto="{{ texto.id }}" class="meus-textos__card">
+                <img src="../media/{{ texto.imagem.arquivo }}">
+                <div class="meus-textos__descricao">
+                    <h3>{{texto.nome}}</h3>
+                    <p>{{texto.data_geracao|date:"d/m/Y"}}</p>
+                </div>
             </div>
         {% endfor %}
         </div>

@@ -83,7 +83,7 @@
 
 .meus-textos__group {
     display: flex;
-    justify-content: space-between; 
+    justify-content: start; 
     flex-direction: row;
     align-items: flex-start;
     gap: 1rem;

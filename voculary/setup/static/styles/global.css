@@ -120,6 +120,7 @@ h1, h2, h3 {
 .botao-vazado {
   color: var(--verde-400);
   border: 1px solid var(--verde-300);
+  background-color: var(--preto-50);
 }
 
 .botao:hover,
@@ -280,8 +281,19 @@ h1, h2, h3 {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3); 
-  z-index: 5; 
+  z-index: 3; 
 }
+
+/* .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 2;
+} */
 
 .fechar {
   position: absolute;
