@@ -1,0 +1,229 @@
+.conteudo {
+    height: auto;
+    position: relative;
+}
+
+.tabela .botao {
+    position: absolute;
+    top: 0;
+    right: 8rem;
+}
+
+.tabela {
+    background-color: #FFF;
+    margin-bottom: 4rem;
+    overflow:hidden;
+    border-collapse:separate;
+    border: 1px solid var(--preto-200);
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+    box-shadow: var(--sombra);
+}
+
+.tabela__header {
+    font-weight: 700;
+}
+
+.tabela__header th {
+    text-align: left;
+    background-color: var(--preto-100);
+    padding: 1rem;
+    font-family: var(--fonte-titulo);
+    color: var(--preto-700)
+}
+
+.tabela__body {
+    color: var(--preto-600);
+}
+
+.tabela__body td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--preto-200);
+}
+
+.tabela__body .tabela__nome-arquivo {
+    cursor: pointer;
+}
+
+.tabela__body button {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: none;
+    background-color: transparent;
+}
+
+.tabela__body button:hover {
+    cursor: pointer;
+}
+
+.tabela__body .tabela__renomear button {
+    background-image: url('../assets/icones/renomear.svg');
+    background-size: cover;
+}
+
+.tabela__body .tabela__excluir button {
+    background-image: url('../assets/icones/excluir.svg');
+    background-size: cover;
+}
+
+.tabela__body .tabela__data-criacao {
+    font-size: .8rem;
+    color: var(--preto-500)
+}
+
+.tabela__imagem img {
+    border: 1px solid var(--preto-300);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+}
+
+.tabela__footer tr {
+    display: flex;
+}
+
+.tabela__footer td {
+    padding: 1.5rem 1rem;
+}
+
+.botao-paginacao {
+    position: absolute;
+    border: 1px solid var(--preto-300);
+    padding: .5rem 1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    transition: all .25s;
+}
+
+.botao-paginacao:hover {
+    background-color: var(--preto-100);
+}
+
+.botao-paginacao p {
+    color: var(--preto-700);
+}
+
+.anterior .botao-paginacao img {
+    transform: rotate(180deg);
+}
+
+.paginas__numero {
+    text-decoration: none;
+    color: var(--preto-500);
+    font-size: 0.8rem;
+}
+
+.atual {
+    color: var(--azul-500);
+    font-weight: 600;
+}
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-300)
+}
+  
+.custom-checkbox:hover input ~ .checkmark {
+    background-color: var(--preto-50);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--preto-100);
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--preto-400);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.tabela {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tabela .tabela__checkbox {
+    width: 2%;
+}
+
+.tabela .tabela__imagem {
+    width: 5%;
+}
+
+.tabela .tabela__nome-arquivo {
+    width: 70%;
+}
+
+.tabela .tabela__data-criacao {
+    width: 15%;
+}
+
+.tabela .tabela__excluir,
+.tabela .tabela__renomear {
+    width: 3%;
+} 
+
+
+.anterior,
+.proximo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.anterior {
+    justify-content: flex-start;
+}
+
+.proximo {
+    justify-content: flex-end;
+}
+
+.paginas {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-width: 74vw;
+}

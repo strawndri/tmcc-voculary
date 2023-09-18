@@ -7,13 +7,14 @@
   --preto-400: #ACACAC;
   --preto-500: #8B8B8B;
   --preto-600: #646464;
+  --preto-700: #515151;
   --preto-800: #333333;
 
   --verde-50: #E5FDEA;
   --verde-100: #C0FACB;
   --verde-200: #92F7A8;
   --verde-300: #4EF480;
-  --verde-800: #00AF1B;
+  --verde-400: #29CB61;
 
   --azul-50: #E6E9F0;
   --azul-100: #C0C7DA;
@@ -22,32 +23,36 @@
   --azul-800: #1F3467;
   --azul-900: #152450;
 
-  --roxo-50: #F6E3F6;
-  --roxo-100: #E8B9E9;
-  --roxo-600: #9B00AA;
-  --roxo-800: #76009C;
+  --rosa-300: #EA6387;
+  --rosa-400: #E4436E;
 
   --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
 
+  --azul-200-filtro: invert(82%) sepia(5%) saturate(1769%) hue-rotate(187deg) brightness(80%) contrast(87%);
   --azul-500-filtro: invert(26%) sepia(48%) saturate(768%) hue-rotate(183deg) brightness(96%) contrast(87%);
   --azul-900-filtro: invert(10%) sepia(64%) saturate(1849%) hue-rotate(207deg) brightness(91%) contrast(94%);
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   --fonte-titulo: 'Quicksand', sans-serif;
-  --fonte-conteudo: 'Inter', sans-serif;
+  --fonte-conteudo: 'Poppins', sans-serif;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.texto::-webkit-scollbar,
+.aba-lateral::-webkit-scollbar {
   width: 12px;              
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+.aba-lateral::-webkit-scrollbar-track{
   background: var(--preto-100);        
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: var(--azul-500);   
+body::-webkit-scrollbar-thumb,
+.texto::-webkit-scrollbar-thumb,
+.aba-lateral::-webkit-scrollbar-thumb {
+  background-color: var(--preto-500);   
   border-radius: 20px;       
   border: 3px solid var(--preto-100);  
 }
@@ -83,20 +88,17 @@ h1, h2, h3 {
   margin: .5rem 0 3rem 0;
 }
 
-.vetor {
-  width: 24rem;
-}
-
 .pagina-principal {
     display: flex;
+    position: relative;
     flex-direction: column;
     min-height: 100vh; 
 }
 
-.botao, .botao2 {
+.botao, .botao-vazado, .botao2 {
   display: flex;
-  padding: .8em 1.8em;
-  border-radius: 5px;
+  padding: 1em 1.8em;
+  border-radius: 10px;
   border: none;
   align-items: center;
   justify-content: center;
@@ -106,12 +108,24 @@ h1, h2, h3 {
   font-family: var(--font-conteudo);
 }
 
-.botao {
-  background-color: var(--verde-300);
+.botao,
+.botao-vazado {
   margin: 1rem 0 2rem 0;
 }
 
-.botao:hover {
+.botao {
+  background-color: var(--verde-300);
+}
+
+.botao-vazado {
+  color: var(--verde-400);
+  border: 1px solid var(--verde-300);
+  background-color: var(--preto-50);
+}
+
+.botao:hover,
+.botao-vazado,
+.botao2 {
     cursor: pointer;
 }
 
@@ -119,10 +133,6 @@ h1, h2, h3 {
   width: 50%;
   background-color: var(--verde-200);
   margin: 1rem 0 0 0;
-}
-
-.botao2:hover {
-  cursor: pointer;
 }
 
 .logo {
@@ -164,34 +174,34 @@ h1, h2, h3 {
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--preto-800);
+  color: var(--preto-700);
   font-size: 0.9rem;
   width: 100rem;
 }
 
 .formulario__label input,
 .formulario__label textarea {
-  margin: .5rem 0 1rem 0;
   padding: .6rem;
-  border-radius: 5px;
-  background-color: var(--preto-100);
-  color: var(--preto-400);
-  border: 1px solid var(--preto-100);
-  transition: all 1s;
-  box-shadow: var(--sombra);
-  font-size: 16px;
+  margin: .5rem 0 0 0;
+  border-radius: 10px;
+  background-color: var(--preto-50);
+  color: var(--preto-700);
+  border: 1px solid var(--preto-300);
+  font-size: 14px;
   flex-grow: 1;
   display: inline;
   font-family: var(--font-conteudo);
+  transition: all .5s;
 }
 
-.formulario__label textarea {
+
+.formulario__label .mensagem {
   height: 8rem;
 }
 
 .formulario__label input:hover,
 .formulario__label textarea:hover {
-  border: 1px solid var(--verde-200);
+  border: 1px solid var(--preto-500);
 }
 
 .formulario__label input:focus,
@@ -205,6 +215,12 @@ h1, h2, h3 {
   color: var(--azul-500);
   font-weight: 500;
   font-size: 0.9rem;
+}
+
+.formulario button[disabled] {
+  color: var(--preto-600);
+  background-color: var(--preto-200);
+  cursor:not-allowed;
 }
 
 .senha {
@@ -236,5 +252,129 @@ h1, h2, h3 {
 .grupo__botoes {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 2rem
+}
+
+.aviso {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--azul-900);
+  width: 40rem;
+  line-height: 3rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); 
+  z-index: 3; 
+}
+
+/* .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 2;
+} */
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.fechar:before {
+  content: 'x';
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.fechar:hover {
+  opacity: 1;
+}
+
+.reconhecimento-texto__imagem-zoom {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  padding: 8px 12px;
+  background-color: #33333326;
+  z-index: 3;
+  border-radius: 20px;
+}
+
+.reconhecimento-texto__imagem-zoom button{
+  padding: .5rem .5rem;
+  font-family: var(--fonte-titulo);
+  background-color: var(--preto-700);
+  color: var(--preto-50);
+  border: none;
+  border-radius: 100px;
+}
+
+.reconhecimento-texto__imagem-zoom button:hover {
+  cursor: pointer;
+}
+
+.zoom-inativo {
+  display: none;
+}
+
+.formulario__label {
+  width: auto;
+}
+
+.imagem {
+  height: 20rem;
+  z-index: 2;
+  position: relative;
+}
+
+.imagem-display{
+  background-color: var(--preto-200);
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 89%;
+  background-size: auto 100%;
+  z-index: 1;
+}
+
+.reconhecimento-texto__card .botoes,
+.aba-lateral .botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
 }

@@ -2,6 +2,13 @@
     padding: 1rem 8rem;
 }
 
+.cabecalho-apresentacao {
+    background-color: var(--preto-50);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .header__nav {
     display: flex;
     justify-content: space-between;
@@ -9,17 +16,21 @@
 }
 
 .header__nav__group a {
-    margin-left: 0.5rem;
+    margin-left: 2.5rem;
     color: var(--azul-500);
     font-weight: 500;
+}
+
+.header__nav__group a:hover {
+    border-bottom: 1px solid var(--azul-300);
 }
 
 .header__nav__link {
     text-decoration: none;
 }
 
-.pesquisa {
+.header__nav__botoes {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
 }

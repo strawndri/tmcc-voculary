@@ -1,19 +1,27 @@
-<header class="cabecalho">
-    {% if request.path == '/' or request.path == '/apresentacao' %}
+{% if request.path == '/' or request.path == '/home' %}
+<header class="cabecalho cabecalho-home">
     <nav class="header__nav">
         {% include 'partials/_logo.html' %}
         <div class="header__nav__group">
             <a class="header__nav__link" href="#sobre-nos">Sobre nós</a>
+            <a class="header__nav__link" href="#servicos">Serviços</a>
             <a class="header__nav__link" href="#contato">Contato</a>
         </div>
-        <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
-    </nav>
-    {% elif request.path == '/login' or request.path == '/cadastro'%}
-        <div class="centralize">
-            <a href="{% url 'apresentacao' %}">
-                {% include 'partials/_logo.html' %}
-            </a>
+        <div class="header__nav__botoes">
+            <a class="header__nav__link botao" href="{% url 'login' %}">Login</a>
+            <a class="header__nav__link botao-vazado" href="{% url 'cadastro' %}">Cadastrar</a>
         </div>
-    {% else %}
-    {% endif %}
+    </nav>
 </header>
+{% elif request.path == '/login' or request.path == '/cadastro'%}
+<header class="cabecalho">
+    <div class="centralize">
+        <a href="{% url 'home' %}">
+            {% include 'partials/_logo.html' %}
+        </a>
+    </div>
+</header>
+{% else %}
+<header class="cabecalho">
+</header>
+{% endif %}

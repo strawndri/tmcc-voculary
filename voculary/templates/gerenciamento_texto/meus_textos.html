@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+<title>Minhas pastas | Voculary</title>
+<link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}"> -->
+<link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
+</head>
+<section class="conteudo conteudo__meus-textos padding">
+<h2 class="conteudo__titulo-principal">Meus textos</h2>
+<p class="conteudo__descricao">Espaço único para você guardar e organizar seus textos e suas imagens.</p>
+    <table class="tabela">
+        <thead class="tabela__header">
+            <tr>
+                <th class="tabela__checkbox"></th> <!-- Coluna de checkbox -->
+                <th class="tabela__imagem"></th>
+                <th class="tabela__nome-arquivo">Nome do texto</td>
+                <th class="tabela__data-criacao">Data de criação</td>
+                <th class="tabela__excluir"></td>
+                <th class="tabela__renomear"></td>
+            </tr>
+        </thead>
+        <tbody class="tabela__body">
+            {% for texto in paginados %}
+            <tr>
+                <td class="tabela__checkbox">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </td> <!-- Checkbox -->
+                <td class="tabela__imagem"><img src="../media/{{ texto.imagem.arquivo }}"></td>
+                <td class="tabela__nome-arquivo tabela__body__item" data-texto="{{ texto.id }}" >{{texto.nome}}</td>
+                <td class="tabela__data-criacao">{{texto.data_geracao|date:"d/m/Y"}}</td>
+                <td class="tabela__excluir">
+                    <button class="botao-excluir" data-texto="{{ texto.id }}"></button>
+                </td>
+                <td class="tabela__renomear">
+                    <button></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot class="tabela__footer">
+            <tr>
+                <td class="anterior">
+                    <a class="botao-paginacao anterior" href="{% if paginados.has_previous %}?page={{ paginados.previous_page_number }}{% endif %}">
+                        <img src="{% static 'assets/icones/seta.svg' %}">
+                        <p>Anterior</p>
+                    </a>
+                </td>
+                <td class="paginas" colspan="4">
+                        {% for i in paginados.paginator.page_range %}
+                            {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > paginados.paginator.num_pages|add:"-3" or paginados.number == i %}
+                                {% if paginados.number == i %}
+                                    <span class="paginas__numero atual">{{ i }}</span>
+                                {% else %}
+                                    <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
+                                {% endif %}
+                            {% elif forloop.counter == 4 or forloop.counter == paginados.paginator.num_pages|add:"-2" %}
+                                <span class="paginas__numero">...</span>
+                            {% endif %}
+                        {% endfor %}
+                </td>
+            
+                <td class="proximo">
+                    <a class="botao-paginacao" href="{% if paginados.has_next %}?page={{ paginados.next_page_number }}{% endif %}">
+                        <p>Próximo</p>
+                        <img src="{% static 'assets/icones/seta.svg' %}">
+                    </a>
+                </td>
+            </tr>
+        </tfoot>        
+    </table>
+    {% include 'partials/_aba_lateral.html' %}
+</section>
+{% endblock %}

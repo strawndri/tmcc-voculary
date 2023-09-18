@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<head>
+    <title>Gerar textos | Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
+</head>
+<section class="conteudo padding">
+    <section class="conteudo__reconhecimento-texto">
+        <h2 class="conteudo__titulo-principal">Novo reconhecimento de texto</h2>
+        <p class="conteudo__descricao">Envie uma imagem, extraia o texto contido nela e salve como preferir!</p>
+        <form class="formulario" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <field class="reconhecimento-texto__card">
+                <div>
+                    {% for field in form.visible_fields %}
+                    <label class="formulario__label {{ field.name }}">
+                        {{ field.label }}
+                        {% if field.label == 'Imagem' %}
+                        {% if imagem_base64 %}
+                        <div class="reconhecimento-texto__imagem-zoom">
+                            <button id="btnZoomIn" type="button">+</button>
+                            <button id="btnZoomOut" type="button">-</button>
+                        </div>
+                        
+                        <div class="imagem-display" style="background-image: url('{{ imagem_base64 }}');"></div>
+                    {% else %}
+                        <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
+                            <button id="btnZoomIn" type="button">+</button>
+                            <button id="btnZoomOut" type="button">-</button>
+                        </div>
+                        <div class="imagem-display icone-padrao"></div>
+                    {% endif %}
+                        {% endif %}
+                        {{ field }}
+                    </label>
+                    {% endfor %}
+                </div>
+                <button class="botao" id="btnExtrair" name="extrair" value="extrair" disabled>Extrair texto</button>
+            </field>
+            <field class="reconhecimento-texto__card" data-origin="card-field">
+                {% include 'partials/_obter_texto.html'%}
+                <button class="botao" name="salvar" id="btnSalvar" value="salvar" disabled>Salvar</button>
+            </field>
+        </form>
+    </section>
+    <section class="conteudo__meus-textos">
+        <h2 class="conteudo__titulo-principal">Meus textos</h2>
+        <p class="conteudo__descricao">Acesse agora os textos que você já salvou.</p>
+        <a class="meus-textos__ver-mais" href="{% url 'meus-textos' %}">
+            Ver mais
+            <img src="{% static 'assets/icones/seta.svg' %}">
+        </a>
+        <div class="meus-textos__group">
+            {% for texto in textos %}
+            <div data-texto="{{ texto.id }}" class="meus-textos__card">
+                <img src="../media/{{ texto.imagem.arquivo }}">
+                <div class="meus-textos__descricao">
+                    <h3>{{texto.nome}}</h3>
+                    <p>{{texto.data_geracao|date:"d/m/Y"}}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% include 'partials/_aba_lateral.html' %}
+    </section>
+</section>
+<script src="{% static 'js/carregarImagem.js' %}"></script>
+{% endblock %}

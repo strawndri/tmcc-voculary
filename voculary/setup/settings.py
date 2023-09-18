@@ -30,8 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'usuario',
-    'meus_arquivos',
-    'apresentacao',
+    'gerenciamento_texto',
+    'ajuda',
 ]
 
 MIDDLEWARE = [
@@ -64,12 +64,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'setup.wsgi.application'
 
+# conexão com o banco de dados local
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', 'voculary'),
+        'USER': os.environ.get('DB_USER', 'adminvocs'),
+        'PASSWORD': os.environ.get('DB_PASS', 'Tmd#voculary23'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+AUTH_USER_MODEL = 'usuario.Usuario'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -85,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # definição de timezone (para o Brasil)
@@ -107,3 +116,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuração para armazenar as mensagens na sessão com um tempo de expiração de 5 segundos
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+MESSAGE_TIMEOUT = 15
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache'),
+    }
+}

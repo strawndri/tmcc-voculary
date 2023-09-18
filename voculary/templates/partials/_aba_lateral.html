@@ -1,0 +1,29 @@
+<section class="aba-lateral">
+    <div class="aba-lateral__header">
+        <div class="aba-lateral__botoes">
+            <button class="botao">Renomear</button>
+            <button class="botao botao-excluir">Excluir</button>
+        </div>
+        <i class="fechar"></i>
+    </div>
+    <div class="aba-lateral__secao">
+        <h4 class="aba-lateral__titulo"></h4>
+        <p class="aba-lateral__descricao"></p>
+    </div>
+    <div class="aba-lateral__secao">
+        <h5 class="aba-lateral__subtitulo">Imagem</h5>
+        <div class="imagem">
+            <div class="reconhecimento-texto__imagem-zoom">
+                <button id="btnZoomIn" type="button">+</button>
+                <button id="btnZoomOut" type="button">-</button>
+            </div>
+            <div class="imagem-display"></div>
+        </div>
+    </div>
+    <form class="aba-lateral__secao">
+        
+    <field data-origin="aba-lateral">
+        {% include 'partials/_obter_texto.html' %}
+    </field>
+    </form>
+</section>

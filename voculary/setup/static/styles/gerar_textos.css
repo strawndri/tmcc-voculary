@@ -1,0 +1,143 @@
+.formulario {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.reconhecimento-texto__card {
+    width: 50%;
+}
+
+.reconhecimento-texto__imagem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s all;
+}
+
+.reconhecimento-texto__card .imagem {
+    cursor: pointer;
+    opacity: 0;
+}
+
+.reconhecimento-texto__card .imagem-display {
+  top: 24px;
+}
+
+.icone-padrao {
+    background-image: url('../assets/icones/adicionar-imagem.svg');
+    background-size: 5rem 5rem;
+}
+
+.reconhecimento-texto__card .texto {
+    height: 20rem;
+    cursor: default;
+}
+
+*::placeholder {
+    color: var(--preto-600);
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__icone {
+    padding: .5em;
+    cursor: pointer;
+    width: 1.2rem;
+    height: 1.5rem;
+}
+
+.conteudo__meus-textos {
+    position: relative;
+    margin: 4rem 0;
+}
+
+.meus-textos__ver-mais {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--preto-700);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.meus-textos__ver-mais:hover {
+    cursor: pointer;
+}
+
+.reconhecimento-texto__card {
+    display: flex;
+    flex-direction: column;
+}
+
+#id_imagem {
+    display: none;
+}
+
+.meus-textos__group {
+    display: flex;
+    justify-content: start; 
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 10px; 
+}
+
+.meus-textos__card {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.meus-textos__card:hover {
+    cursor: pointer;
+}
+
+.meus-textos__card img {
+    height: 8rem;
+    overflow: hidden;
+    object-fit: cover; 
+    object-position: center;
+    border-radius: 10px 10px 0 0;
+
+    filter: brightness(90%)
+}
+
+.meus-textos__card h3 {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    max-width: 10rem; 
+    font-family: var(--fonte-conteudo);
+    font-weight: 500;
+    color: var(--preto-900)
+}
+
+.meus-textos__card p {
+    color: var(--preto-500)
+}
+
+.meus-textos__card h3,
+.meus-textos__card p {
+    padding: .2rem;
+}
+
+.meus-textos__descricao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem .5rem;
+    font-size: 0.8rem;
+}
+
+

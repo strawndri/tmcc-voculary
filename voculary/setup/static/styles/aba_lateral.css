@@ -1,0 +1,93 @@
+.aba-lateral {
+    position: fixed; /* Faz com que a aba lateral seja fixa */
+    top: 0;
+    right: -30rem; 
+    width: 30rem;
+    height: 100vh;
+    background-color: var(--preto-50);
+    transition: right 0.3s;
+    border-radius: 10px 0 10px 0;
+    overflow-y: hidden; /* Evita a rolagem da aba lateral como um todo */
+}
+
+.aba-lateral__header {
+    position: sticky;
+    top: 0; 
+    z-index: 10; 
+    background-color: var(--preto-50); 
+    height: 4rem;
+}
+
+.aba-lateral__secao {
+    margin-bottom: 2rem;
+}
+
+.aba-lateral .fechar {
+    top: 1rem;
+    left: 0;
+    width: 1rem;
+}
+
+.aba-lateral .fechar::before {
+    font-size: 1.5rem;
+}
+
+.aba-lateral__botoes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.aba-lateral__botoes .botao {
+    padding: .5rem 1rem;
+    border-radius: 20px;
+}
+
+.aba-lateral.mostrar {
+    padding: 0 2rem 5rem 2rem;
+    right: 0;
+    z-index: 3;
+    overflow: auto;
+}
+
+.aba-lateral .imagem {
+    opacity: 1;
+    height: 16rem;
+}
+
+.aba-lateral .texto {
+    min-height: 10rem;
+    cursor: default;
+}
+
+.aba-lateral__titulo {
+    color: var(--preto-800);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--fonte-titulo);
+}
+
+.aba-lateral__descricao {
+    font-size: .8rem;
+    color: var(--preto-500)
+}
+
+.aba-lateral__subtitulo {
+    color: var(--preto-700);
+    font-size: 0.9rem;
+}
+
+.aba-lateral__titulo, 
+.aba-lateral__subtitulo {
+    margin-bottom: .5rem;
+}
+
+.aba-lateral__secao {
+    margin-bottom: 1rem;
+}
+
+.aba-lateral__secao .botoes {
+    margin-top: 1rem;
+}
