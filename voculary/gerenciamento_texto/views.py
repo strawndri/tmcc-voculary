@@ -20,25 +20,28 @@ def GeracaoTextoView(request):
     cached_data = cache.get(cache_key, {})
 
     texto = cached_data.get("texto", "")
+    nome_arquivo = cached_data.get("nome_arquivo")
     imagem_data = cached_data.get("imagem_data") 
     tempo_processamento = cached_data.get("tempo_processamento")
     idioma = cached_data.get("idioma")
 
     if request.method == 'POST':
         form = UploadImagemForm(request.POST, request.FILES)
+
         if form.is_valid():
             if 'extrair' in request.POST:
-                imagem_data, texto, tempo_processamento, idioma = obter_extracao(form, request)
+                imagem_data, nome_arquivo, texto, tempo_processamento, idioma = obter_extracao(form, request)
 
                 cache.set(cache_key, {
                     "texto": texto, 
                     "imagem_data": imagem_data,  
+                    "nome_arquivo": nome_arquivo,
                     "tempo_processamento": tempo_processamento,
                     "idioma": idioma
                 }, 3600)
 
             elif 'salvar' in request.POST:
-                imagem_model_instance = salvar(imagem_data, texto, tempo_processamento, idioma, request) 
+                imagem_model_instance = salvar(imagem_data, nome_arquivo, texto, tempo_processamento, idioma, request) 
                 cache.delete(cache_key)
 
     else:
@@ -73,6 +76,7 @@ def obter_extracao(form, request):
     try:
         if form.cleaned_data['url']:
             url = form.cleaned_data['url']
+            nome_arquivo = os.path.basename(url)
             response = requests.get(url)
             if response.status_code == 200:
                 imagem_content = response.content
@@ -81,6 +85,12 @@ def obter_extracao(form, request):
         else:
             imagem_content = form.cleaned_data['arquivo'].read()
             texto, idioma = extrair_texto(io.BytesIO(imagem_content))
+            lista = []
+            for f in request.FILES.getlist('arquivo'):
+                nome_arquivo = f.name
+                lista.append(nome_arquivo)
+
+            nome_arquivo = lista[0]
 
         inicio_tempo = datetime.datetime.now(tz=timezone.utc)
         fim_tempo = datetime.datetime.now(tz=timezone.utc)
@@ -88,18 +98,18 @@ def obter_extracao(form, request):
 
         cache.set(f"{request.user.id}_imagem", imagem_content, 3600)
         print(texto)
-        return imagem_content, texto, tempo_processamento, idioma
+        return imagem_content, nome_arquivo, texto, tempo_processamento, idioma
     except Exception as e:
         print(e)  
         messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
-        return None, None, None, None  # Certifique-se de retornar valores que correspondam ao que sua função normalmente retornaria.
+        return None, None, None, None, None  
 
-def salvar(imagem, texto, tempo_processamento, idioma, request):
+def salvar(imagem, nome_arquivo, texto, tempo_processamento, idioma, request):
     time.sleep(1)
     imagem_content = cache.get(f"{request.user.id}_imagem")
 
     imagem = Imagem(usuario=request.user)  
-    imagem.arquivo.save('nome_da_imagem.jpg', ContentFile(imagem_content))
+    imagem.arquivo.save(nome_arquivo, ContentFile(imagem_content))
     imagem.save()
     
     texto_digitalizado = TextoDigitalizado(
