@@ -87,6 +87,7 @@ def obter_extracao(form, request):
         tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
         cache.set(f"{request.user.id}_imagem", imagem_content, 3600)
+        print(texto)
         return imagem_content, texto, tempo_processamento, idioma
     except Exception as e:
         print(e)  
