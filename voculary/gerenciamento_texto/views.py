@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -42,7 +42,7 @@ def GeracaoTextoView(request):
 
             elif 'salvar' in request.POST:
                 imagem_model_instance = salvar(imagem_data, nome_arquivo, texto, tempo_processamento, idioma, request) 
-                cache.delete(cache_key)
+                return redirect('/gerar-textos')
 
     else:
         cache.delete(cache_key)
@@ -81,10 +81,15 @@ def obter_extracao(form, request):
             if response.status_code == 200:
                 imagem_content = response.content
                 imagem_object = io.BytesIO(imagem_content)
+                inicio_tempo = datetime.datetime.now(tz=timezone.utc)
                 texto, idioma = extrair_texto(imagem_object)
+                fim_tempo = datetime.datetime.now(tz=timezone.utc)
+
         else:
             imagem_content = form.cleaned_data['arquivo'].read()
+            inicio_tempo = datetime.datetime.now(tz=timezone.utc)
             texto, idioma = extrair_texto(io.BytesIO(imagem_content))
+            fim_tempo = datetime.datetime.now(tz=timezone.utc)
             lista = []
             for f in request.FILES.getlist('arquivo'):
                 nome_arquivo = f.name
@@ -92,12 +97,10 @@ def obter_extracao(form, request):
 
             nome_arquivo = lista[0]
 
-        inicio_tempo = datetime.datetime.now(tz=timezone.utc)
         fim_tempo = datetime.datetime.now(tz=timezone.utc)
         tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
         cache.set(f"{request.user.id}_imagem", imagem_content, 3600)
-        print(texto)
         return imagem_content, nome_arquivo, texto, tempo_processamento, idioma
     except Exception as e:
         print(e)  
@@ -105,24 +108,27 @@ def obter_extracao(form, request):
         return None, None, None, None, None  
 
 def salvar(imagem, nome_arquivo, texto, tempo_processamento, idioma, request):
-    time.sleep(1)
-    imagem_content = cache.get(f"{request.user.id}_imagem")
+    try:
+        time.sleep(1)
+        imagem_content = cache.get(f"{request.user.id}_imagem")
 
-    imagem = Imagem(usuario=request.user)  
-    imagem.arquivo.save(nome_arquivo, ContentFile(imagem_content))
-    imagem.save()
-    
-    texto_digitalizado = TextoDigitalizado(
-        nome=os.path.basename(imagem.arquivo.path),
-        texto=texto,
-        tempo_processamento=tempo_processamento,
-        usuario=request.user,
-        imagem=imagem,
-        idioma=idioma,
-        ativo=True,
-    )
-    texto_digitalizado.save()
-    messages.success(request, f'Imagem salva com sucesso! Você pode visualizá-la indo em "Meus textos".')
+        imagem = Imagem(usuario=request.user)  
+        imagem.arquivo.save(nome_arquivo, ContentFile(imagem_content))
+        imagem.save()
+        
+        texto_digitalizado = TextoDigitalizado(
+            nome=os.path.basename(imagem.arquivo.path),
+            texto=texto,
+            tempo_processamento=tempo_processamento,
+            usuario=request.user,
+            imagem=imagem,
+            idioma=idioma,
+            ativo=True,
+        )
+        texto_digitalizado.save()
+        messages.success(request, f'Imagem salva com sucesso! Você pode visualizá-la indo em "Meus textos".')
+    except:
+        messages.error(request, "Ocorreu um erro ao salvar a imagem.")
 
 
 @login_required(login_url='/login')
@@ -159,15 +165,19 @@ from django.views.decorators.http import require_POST
 
 @require_POST
 def desativar_texto(request, texto_id):
-    messages.success(request, 'Texto excluído com sucesso!')
     try:
-        texto = TextoDigitalizado.objects.get(id=texto_id)
-        imagem = TextoDigitalizado.objects.get(id=texto_id)
-        texto.ativo, imagem.ativo = False, False
+        texto = TextoDigitalizado.objects.get(id=texto_id) 
+        
+        texto.ativo = False
         texto.save()
-        imagem.save()
+
+        if texto.imagem:  
+            imagem = texto.imagem
+            imagem.ativo = False
+            imagem.save()
+
+        messages.success(request, 'Texto excluído com sucesso!')
         return JsonResponse({"success": True, "message": "Texto excluído com sucesso!"})
-    except:
-        pass
-
-
+    except Exception as e:
+        print(e)
+        return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir o texto."})
