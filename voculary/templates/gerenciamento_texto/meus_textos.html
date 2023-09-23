@@ -29,7 +29,7 @@
                         <input type="checkbox">
                         <span class="checkmark"></span>
                       </label>
-                </td> <!-- Checkbox -->
+                </td> 
                 <td class="tabela__imagem"><img src="../media/{{ texto.imagem.arquivo }}"></td>
                 <td class="tabela__nome-arquivo tabela__body__item" data-texto="{{ texto.id }}" >{{texto.nome}}</td>
                 <td class="tabela__data-criacao">{{texto.data_geracao|date:"d/m/Y"}}</td>
@@ -54,7 +54,7 @@
                         {% for i in paginados.paginator.page_range %}
                             {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > paginados.paginator.num_pages|add:"-3" or paginados.number == i %}
                                 {% if paginados.number == i %}
-                                    <span class="paginas__numero atual">{{ i }}</span>
+                                    <span class="paginas__numro atual">{{ i }}</span>
                                 {% else %}
                                     <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
                                 {% endif %}
@@ -76,3 +76,4 @@
     {% include 'partials/_aba_lateral.html' %}
 </section>
 {% endblock %}
+e

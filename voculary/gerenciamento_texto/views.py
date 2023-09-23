@@ -181,3 +181,23 @@ def desativar_texto(request, texto_id):
     except Exception as e:
         print(e)
         return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir o texto."})
+
+from django.http import JsonResponse
+
+def alterar_nome_texto(request, texto_id):
+    if request.method == 'POST':
+        novo_nome = request.POST.get('novo_nome')
+        
+        if TextoDigitalizado.objects.filter(nome=novo_nome).exists():
+            messages.error(request, 'Nome já existe!')
+            return JsonResponse({'success': False})
+        
+        texto = TextoDigitalizado.objects.get(id=texto_id)
+        texto.nome = novo_nome
+        texto.save()
+
+        messages.success(request, 'Nome atualizado com sucesso!')
+        return JsonResponse({'success': True})
+
+    messages.warning(request, 'Método não suportado!')
+    return JsonResponse({'success': False})
