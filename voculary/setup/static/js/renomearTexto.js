@@ -14,7 +14,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const nomeCelula = document.querySelector(selector);
             const nomeAtual = nomeCelula.textContent;
             nomeCelula.innerHTML = `<input type="text" value="${nomeAtual}" onblur="salvarNome(this, ${textoId})">`;
-            nomeCelula.querySelector('input').focus();
+
+            const inputElement = nomeCelula.querySelector('input');
+            inputElement.focus();
+
+            inputElement.addEventListener('keypress', function(e) {
+                if (e.key == "Enter") {
+                    e.preventDefault();
+                    salvarNome(this, textoId);
+                }
+            });
+
+            const length = inputElement.value.length;
+            inputElement.selectionStart = length;
+            inputElement.selectionEnd = length;
         });
     });
 });
@@ -50,4 +63,3 @@ function salvarNome(inputElement, textoId) {
     })
     .catch(error => console.error('Erro ao atualizar o nome:', error));
 }
-
