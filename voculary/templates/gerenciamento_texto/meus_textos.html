@@ -31,13 +31,13 @@
                       </label>
                 </td> 
                 <td class="tabela__imagem"><img src="../media/{{ texto.imagem.arquivo }}"></td>
-                <td class="tabela__nome-arquivo tabela__body__item" data-texto="{{ texto.id }}" >{{texto.nome}}</td>
+                <td class="tabela__nome-arquivo tabela__body__item nome-arquivo" data-texto="{{ texto.id }}" >{{texto.nome}}</td>
                 <td class="tabela__data-criacao">{{texto.data_geracao|date:"d/m/Y"}}</td>
                 <td class="tabela__excluir">
                     <button class="botao-excluir" data-texto="{{ texto.id }}"></button>
                 </td>
                 <td class="tabela__renomear">
-                    <button class="botao-renomear" data-texto="{{ texto.id }}"></button>
+                    <button class="botao-renomear tabela__botao-renomear" data-texto="{{ texto.id }}"></button>
                 </td>                
             </tr>
             {% endfor %}

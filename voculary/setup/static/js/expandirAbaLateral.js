@@ -2,20 +2,25 @@ document.addEventListener("DOMContentLoaded", function() {
     let cards = document.querySelectorAll(".meus-textos__card, .tabela__body__item");
     let abaLateral = document.querySelector(".aba-lateral");
     let fechar = document.querySelector(".aba-lateral .fechar");
+    let overlay = document.querySelector('.overlay');
 
     cards.forEach(card => {
-        card.addEventListener("click", function() {
+        card.addEventListener("click", function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.closest('INPUT')) {
+                return; 
+            }
+
             let id_imagem = card.getAttribute('data-texto');
-            abaLateral.setAttribute('data-texto', id_imagem)
+            abaLateral.setAttribute('data-texto', id_imagem);
             
             fetch(`/obter-info-texto/${id_imagem}/`)
                 .then(response => response.json())
                 .then(data => {
-                    document.querySelector('.overlay').style.display = 'block';
-                    document.querySelector(".aba-lateral h4").textContent = data.nome;
-                    document.querySelector(".aba-lateral p").textContent = `Gerado em: ${data.data_geracao}`;
-                    document.querySelector(".aba-lateral .imagem-display").style.backgroundImage = `url(${data.imagem_url})`
-                    document.querySelector(".aba-lateral textarea").textContent = data.texto;
+                    overlay.style.display = 'block';
+                    abaLateral.querySelector("h4").textContent = data.nome;
+                    abaLateral.querySelector("p").textContent = `Gerado em: ${data.data_geracao}`;
+                    abaLateral.querySelector(".imagem-display").style.backgroundImage = `url(${data.imagem_url})`
+                    abaLateral.querySelector("textarea").textContent = data.texto;
 
                     abaLateral.classList.add("mostrar");
                 });
@@ -23,23 +28,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
     fechar.addEventListener("click", function() {
-        document.querySelector('.overlay').style.display = 'none';
+        overlay.style.display = 'none';
         abaLateral.classList.remove("mostrar");
     });
 
-    document.addEventListener("click", function(event) {
-        if (
-            !abaLateral.contains(event.target) && // Se o clique não foi na aba lateral
-            !event.target.matches(".meus-textos__card, .tabela__body__item, button") && // Se o clique não foi em um card, item ou botão
-            event.target.closest('button') === null && // Se o clique não foi dentro de um botão
-            event.target !== fechar // Se o clique não foi no elemento fechar
-        ) {
-            document.querySelector('.overlay').style.display = 'none';
+    overlay.addEventListener("click", function(event) {
+        if (event.target === overlay) {
+            overlay.style.display = 'none';
             abaLateral.classList.remove("mostrar");
         }
     });
-    
-    
 });
-
-

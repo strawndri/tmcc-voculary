@@ -187,17 +187,18 @@ from django.http import JsonResponse
 def alterar_nome_texto(request, texto_id):
     if request.method == 'POST':
         novo_nome = request.POST.get('novo_nome')
-        
-        if TextoDigitalizado.objects.filter(nome=novo_nome).exists():
-            messages.error(request, 'Nome já existe!')
-            return JsonResponse({'success': False})
-        
         texto = TextoDigitalizado.objects.get(id=texto_id)
+        
+        # nome não foi modificado - manter!
+        if novo_nome == texto.nome:
+            return JsonResponse({'success': True})
+        
+        elif TextoDigitalizado.objects.exclude(id=texto_id).filter(nome=novo_nome).exists():
+            return JsonResponse({'success': False, 'message_type': 'error', 'message': 'Nome já existe!'})
+
         texto.nome = novo_nome
         texto.save()
 
-        messages.success(request, 'Nome atualizado com sucesso!')
-        return JsonResponse({'success': True})
+        return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
 
-    messages.warning(request, 'Método não suportado!')
     return JsonResponse({'success': False})

@@ -1,13 +1,13 @@
 <section class="aba-lateral">
     <div class="aba-lateral__header">
         <div class="aba-lateral__botoes">
-            <button class="botao">Renomear</button>
+            <button class="botao botao-renomear aba-lateral__botao-renomear">Renomear</button>
             <button class="botao botao-excluir">Excluir</button>
         </div>
         <i class="fechar"></i>
     </div>
     <div class="aba-lateral__secao">
-        <h4 class="aba-lateral__titulo"></h4>
+        <h4 class="aba-lateral__titulo nome-arquivo"></h4>
         <p class="aba-lateral__descricao"></p>
     </div>
     <div class="aba-lateral__secao">
@@ -23,7 +23,7 @@
     <form class="aba-lateral__secao">
         
     <field data-origin="aba-lateral">
-        {% include 'partials/_obter_texto.html' %}
+        {% include 'partials/_obter_texto.html'%}
     </field>
     </form>
 </section>
