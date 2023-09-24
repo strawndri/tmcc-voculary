@@ -1,5 +1,26 @@
-function mostrarMensagem(mensagem, tipo='success') {
+document.addEventListener("DOMContentLoaded", function() {
+    const mensagensDjango = document.querySelectorAll('.mensagem');
+    mensagensDjango.forEach(iniciarTemporizadorMensagem);
+});
 
+function iniciarTemporizadorMensagem(mensagemElement) {
+    const iFechar = mensagemElement.querySelector('.fechar');
+    iFechar.addEventListener("click", () => {
+        mensagemElement.classList.remove('ativo');
+        setTimeout(() => {
+            mensagemElement.remove();
+        }, 300);
+    });
+
+    setTimeout(() => {
+        mensagemElement.classList.remove('ativo');
+        setTimeout(() => {
+            mensagemElement.remove();
+        }, 300);
+    }, 5000);
+}
+
+function mostrarMensagem(mensagem, tipo='success') {
     if (!mensagem) {
         return;  
     }
@@ -30,17 +51,5 @@ function mostrarMensagem(mensagem, tipo='success') {
 
     document.body.appendChild(divMensagem);
 
-    iFechar.addEventListener("click", () => {
-        divMensagem.classList.remove('ativo');
-        setTimeout(() => {
-            divMensagem.remove();
-        }, 300);
-    });
-
-    setTimeout(() => {
-        divMensagem.classList.remove('ativo');
-        setTimeout(() => {
-            divMensagem.remove();
-        }, 300);
-    }, 5000);
+    iniciarTemporizadorMensagem(divMensagem);
 }
