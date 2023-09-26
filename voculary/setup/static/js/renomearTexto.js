@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function salvarNome(inputElement, textoId) {
-    const novoNome = inputElement.value;
+    let novoNome = inputElement.value;
     csrftoken = getCookie('csrftoken');
     
     fetch(`/alterar_nome/${textoId}/`, {
@@ -48,10 +48,9 @@ function salvarNome(inputElement, textoId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Atualizar o nome na aba lateral
+            novoNome = novoNome === '' ? 'Sem título' : novoNome;
             inputElement.parentElement.textContent = novoNome;
             
-            // Atualizar o nome na tabela (opcional, se necessário)
             const nomeCelulaTabela = document.querySelector(`.tabela__nome-arquivo[data-texto="${textoId}"], .meus-textos__card[data-texto="${textoId}"] h3 `);
             if (nomeCelulaTabela) {
                 nomeCelulaTabela.textContent = novoNome;

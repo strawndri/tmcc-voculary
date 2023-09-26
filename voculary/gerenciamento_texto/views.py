@@ -192,13 +192,17 @@ def alterar_nome_texto(request, texto_id):
         # nome não foi modificado - manter!
         if novo_nome == texto.nome:
             return JsonResponse({'success': True})
+
+        elif novo_nome == '':
+            novo_nome = 'Sem título'
+            texto.nome = novo_nome
+            texto.save()
+            return JsonResponse({'success': True})
+        else:
         
-        elif TextoDigitalizado.objects.exclude(id=texto_id).filter(nome=novo_nome).exists():
-            return JsonResponse({'success': False, 'message_type': 'error', 'message': 'Nome já existe!'})
+            texto.nome = novo_nome
+            texto.save()
 
-        texto.nome = novo_nome
-        texto.save()
-
-        return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
+            return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
 
     return JsonResponse({'success': False})
