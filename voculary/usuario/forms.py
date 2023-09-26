@@ -63,33 +63,30 @@ class CadastroForms(forms.Form):
             else:
                 return senha_2
 
-class PerfilForms(forms.Form):
-    primeiro_nome = forms.CharField(
-        label='Primeino nome',
+from .models import Usuario
+
+class PerfilForms(forms.ModelForm):
+
+    class Meta:
+        model = Usuario
+        fields = ['primeiro_nome', 'ultimo_nome', 'email']
+
+    senha_antiga = forms.CharField(
+        label='Senha antiga',
         required = True,
-        max_length = 100,
-        widget=forms.TextInput(
-            attrs={'class':'nome'}
-        )
+        max_length = 255,
+        widget=forms.PasswordInput()
     )
 
-    ultimo_nome = forms.CharField(
-        label='Último nome',
+    senha_nova = forms.CharField(
+        label='Senha nova',
         required = True,
-        max_length = 100,
-        widget=forms.TextInput(
-            attrs={'class':'nome'}
-        )
+        max_length = 255,
+        widget=forms.PasswordInput()
     )
 
-    email = forms.EmailField(
-        label='Email',
-        required = True,
-        max_length = 255
-    )
-
-    senha_1 = forms.CharField(
-        label='Senha',
+    senha_nova_confirmacao = forms.CharField(
+        label='Confirmação da senha nova',
         required = True,
         max_length = 255,
         widget=forms.PasswordInput()

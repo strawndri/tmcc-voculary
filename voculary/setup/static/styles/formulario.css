@@ -1,0 +1,101 @@
+
+.conteudo__formulario {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.conteudo__formulario form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    padding: 1rem 2rem 2rem 0;
+    width: 24rem;
+}
+
+.conteudo__formulario h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
+    margin-bottom: 1.2em;
+}
+
+.formulario__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--preto-700);
+    font-size: 0.9rem;
+    width: 100rem;
+}
+
+.formulario__label input,
+.formulario__label textarea {
+    padding: .6rem;
+    margin: .5rem 0 0 0;
+    border-radius: 10px;
+    background-color: var(--preto-50);
+    color: var(--preto-700);
+    border: 1px solid var(--preto-300);
+    font-size: 14px;
+    flex-grow: 1;
+    display: inline;
+    font-family: var(--font-conteudo);
+    transition: all .5s;
+}
+
+.formulario__label .mensagem {
+    height: 8rem;
+}
+
+.formulario__label input:hover,
+.formulario__label textarea:hover {
+    border: 1px solid var(--preto-500);
+}
+
+.formulario__label input:focus,
+.formulario__label textarea:focus {
+    outline: none;
+    border: 1px solid var(--verde-300);
+} 
+
+.formulario__link {
+    text-decoration: none;
+    color: var(--azul-500);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.formulario button[disabled] {
+    color: var(--preto-600);
+    background-color: var(--preto-200);
+    cursor:not-allowed;
+}
+
+.senha {
+    margin-left: auto;
+}
+
+.formulario__link:hover {
+    text-decoration: underline;
+}
+
+.formulario__botao--senha {
+    position: absolute;
+    top: 2rem;
+    right: .5rem;
+    background-image: url('../assets/icones/olho.svg');
+    opacity: 0.6;
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.formulario__botao--senha-ativo {
+    background-image: url('../assets/icones/olho-ativo.svg');
+}

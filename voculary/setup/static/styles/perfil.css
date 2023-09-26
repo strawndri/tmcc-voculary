@@ -1,17 +1,19 @@
-.conteudo__formulario{
-    justify-content: left;
-    gap: 4rem;
+.formulario__label input,
+.formulario__label textarea {
+    margin: .5rem 0 .5rem 0;
 }
 
-.perfil__imagem {
-    padding: 4rem;
-    border-radius: 300px;
-    margin-right: 2rem;
-    background-color: var(--azul-50);
+.conteudo__secao-perfil {
+    width: 70vw;
+    margin-bottom: 1rem;
 }
 
-.perfil__imagem img {
-    width: 10rem;
+.conteudo__secao-perfil .conteudo__descricao {
+    padding-bottom: 1rem;
+    margin: .8rem 0;
+    border-bottom: 2px solid var(--preto-100);
 }
 
-
+.botao, .botao-vazado {
+    margin: .5rem 0 .5rem 0;
+}

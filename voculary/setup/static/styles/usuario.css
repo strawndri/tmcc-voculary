@@ -65,3 +65,8 @@
     width: 10.3rem;
 }
 
+.formulario__label input,
+.formulario__label textarea {
+    margin: .5rem 0 .5rem 0;
+}
+

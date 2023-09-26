@@ -69,11 +69,14 @@ def LoginView(request):
 
 @login_required(login_url='/login')
 def PerfilView(request):
+    usuario = Usuario.objects.get(email=request.user.email)
 
-    form = PerfilForms()
-
-    if request.method == 'POST':
-        form = PerfilForms(request.POST)
+    if request.method == "POST":
+        form = PerfilForms(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+    else:
+        form = PerfilForms(instance=usuario)
 
     return render(request, 'usuario/perfil.html', {'form': form})
 
