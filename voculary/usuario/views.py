@@ -91,7 +91,6 @@ def PerfilView(request):
                 else:
                     messages.error(request, 'Senha antiga incorreta.')
             else:
-                # Isto irá lidar com erros que surgem a partir do método 'clean'
                 for error in form_senha.non_field_errors():
                     messages.error(request, error)
 

@@ -104,7 +104,6 @@ class PerfilSenhaForms(forms.ModelForm):
         senha_nova = cleaned_data.get('senha_nova')
         senha_nova_confirmacao = cleaned_data.get('senha_nova_confirmacao')
         
-        # Verificar se as senhas correspondem
         if senha_nova != senha_nova_confirmacao:
             raise forms.ValidationError('Confirmação de senha não corresponde.')
 
