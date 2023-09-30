@@ -21,7 +21,7 @@ def CadastroView(request):
             email = form['email'].value()
             senha = form['senha_1'].value()
 
-            if Usuario.objects.filter(email=email).exists():
+            if Usuario.objects.filter(email=email, ativo=True).exists():
                 messages.error(request, 'Ops, parece que este e-mail já existe! Tente novamente.')
                 return redirect('cadastro')
             
@@ -53,7 +53,7 @@ def LoginView(request):
             senha = form['senha'].value()
 
             Usuario = auth.get_user_model()
-            usuario = Usuario.objects.filter(email=email).first()
+            usuario = Usuario.objects.filter(email=email, ativo=True).first()
 
             if usuario is not None and usuario.check_password(senha):
                 usuario.ultimo_login = datetime.now()
@@ -70,7 +70,7 @@ def LoginView(request):
 
 @login_required(login_url='/login')
 def PerfilView(request):
-    usuario = Usuario.objects.get(email=request.user.email)
+    usuario = Usuario.objects.get(id=request.user.id)
 
     form_gerais = PerfilForms(request.POST or None, instance=usuario)
     form_senha = PerfilSenhaForms(request.POST or None)
@@ -93,11 +93,22 @@ def PerfilView(request):
             else:
                 for error in form_senha.non_field_errors():
                     messages.error(request, error)
+        
+        elif tipo_form == 'excluir':
+            try:
+                usuario.ativo = False
+                usuario.save()
+            except:
+                pass
+            messages.success(request, 'Conta excluída com sucesso.')
+            auth.logout(request)
+            return redirect('/home')
 
     context = {
         'form_gerais': form_gerais,
         'form_senha': form_senha
     }
+
     return render(request, 'usuario/perfil.html', context)
 
 @login_required(login_url='/login')

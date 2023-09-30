@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, primeiro_nome, ultimo_nome, senha=None):
+    def create_user(self, email, primeiro_nome, ultimo_nome, password=None):
         if not email:
             raise ValueError('O usuário deve ter um endereço de e-mail.')
         if not primeiro_nome:
@@ -14,20 +14,20 @@ class CustomUserManager(BaseUserManager):
         usuario = self.model(
             email=email,
             primeiro_nome=primeiro_nome,
-            ultimo_nome=ultimo_nome
+            ultimo_nome=ultimo_nome,
         )
 
-        usuario.set_password(senha)
+        usuario.set_password(password)
         usuario.save(using=self._db)
         return usuario
 
-    def create_superuser(self, email, primeiro_nome, ultimo_nome, senha=None):
+    def create_superuser(self, email, primeiro_nome, ultimo_nome, password=None):
 
-        usuario = self.create_usuario(
+        usuario = self.create_user(
             email=email,
             primeiro_nome=primeiro_nome,
             ultimo_nome=ultimo_nome,
-            senha=senha
+            password=password
         )
 
         usuario.staff = True
@@ -59,6 +59,10 @@ class Usuario(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+    @property
+    def is_staff(self):
+        return self.staff
 
     class Meta:
         db_table = 'usuario'

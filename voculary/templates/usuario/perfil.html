@@ -48,7 +48,12 @@
     <div class="conteudo__secao-perfil">
         <h3 class="conteudo__titulo-secundario">Excluir minha conta</h3>
         <p class="conteudo__descricao">Depois de excluir sua conta, não há como voltar atrás. Por favor, tenha certeza.</p>
-        <button class="botao">Excluir conta</button>
+        <form class="formulario perfil-form" action="{% url 'perfil' %}" 
+            method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="tipo-form" value="excluir">
+        <button type="submit" class="botao botao-perfil-excluir" data-message="Deseja excluir sua conta? Lembre-se que esta ação é irreversível.">Excluir conta</button>
+        </form>
     </div>
 </div>
 </section>

@@ -15,7 +15,7 @@ function getCookie(name) {
 }
 
 const modal = document.getElementById('modalConfirmacao');
-const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config, .botao-perfil-senha');
+const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config, .botao-perfil-senha, .botao-perfil-excluir');
 const confirmarAcao = document.getElementById('confirmarAcao');
 const cancelarAcao = document.getElementById('cancelarAcao');
 let csrftoken = getCookie('csrftoken');
