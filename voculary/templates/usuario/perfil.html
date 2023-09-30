@@ -12,35 +12,36 @@
         <h3 class="conteudo__titulo-secundario">Configurações gerais</h3>
         <p class="conteudo__descricao">Faça modificações nas informações principais da sua conta e defina suas preferências</p>
         <div class="conteudo__formulario">
-            <form class="formulario" action="{% url 'perfil' %}" 
+            <form class="formulario perfil-form perfil-config" action="{% url 'perfil' %}" 
             method="POST">
-                {% for field in form.visible_fields %}
-                {% if field.field.widget.input_type != 'password' %}
+                <input type="hidden" name="tipo-form" value="info_geral">
+                {% csrf_token %}
+                {% for field in form_gerais.visible_fields %}
                 <label class="formulario__label">
                     {{ field.label }}
                     {{ field }}
                 </label>
-                {% endif %}
                 {% endfor %}
-                <button class="botao">Salvar alterações</button>
+                <button type="submit" class="botao botao-perfil-config" data-message="Deseja mesmo atualizar suas informações?">Salvar alterações</button>
             </form>
         </div>
     <div class="conteudo__secao-perfil">
         <h3 class="conteudo__titulo-secundario">Alterar senha</h3>
         <p class="conteudo__descricao">Se você acredita que sua senha pode ter sido comprometida ou apenas deseja atualizá-la, você pode fazê-lo aqui.</p>
         <div class="conteudo__formulario">
-            <form class="formulario" action="{% url 'perfil' %}" 
+            <form class="formulario perfil-form" action="{% url 'perfil' %}" 
             method="POST">
-                {% for field in form.visible_fields %}
-                {% if field.field.widget.input_type == 'password' %}
+                {% csrf_token %}
+                {% for field in form_senha.visible_fields %}
+                <input type="hidden" name="tipo-form" value="senha">
                 <label class="formulario__label">
                     {{ field.label }}
                     {{ field }}
+                    <button type="button" class="formulario__botao--senha">
+                    </button>
                 </label>
-                {% endif %}
                 {% endfor %}
-                <!-- <a class="formulario__link senha" href="">Esqueci minha senha</a> -->
-                <button class="botao">Alterar senha</button>
+                <button type="submit" class="botao botao-perfil-senha" data-message="Deseja mesmo atualizar a sua senha?">Alterar senha</button>
             </form>
         </div>
     </div>

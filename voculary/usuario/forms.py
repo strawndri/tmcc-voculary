@@ -71,23 +71,41 @@ class PerfilForms(forms.ModelForm):
         model = Usuario
         fields = ['primeiro_nome', 'ultimo_nome', 'email']
 
+
+class PerfilSenhaForms(forms.ModelForm):
+
     senha_antiga = forms.CharField(
         label='Senha antiga',
-        required = True,
-        max_length = 255,
+        required=True,
+        max_length=255,
         widget=forms.PasswordInput()
     )
 
     senha_nova = forms.CharField(
         label='Senha nova',
-        required = True,
-        max_length = 255,
+        required=True,
+        max_length=255,
         widget=forms.PasswordInput()
     )
 
     senha_nova_confirmacao = forms.CharField(
         label='Confirmação da senha nova',
-        required = True,
-        max_length = 255,
+        required=True,
+        max_length=255,
         widget=forms.PasswordInput()
     )
+
+    class Meta:
+        model = Usuario
+        fields = [] 
+
+    def clean(self):
+        cleaned_data = super().clean()
+        senha_nova = cleaned_data.get('senha_nova')
+        senha_nova_confirmacao = cleaned_data.get('senha_nova_confirmacao')
+        
+        # Verificar se as senhas correspondem
+        if senha_nova != senha_nova_confirmacao:
+            raise forms.ValidationError('Confirmação de senha não corresponde.')
+
+        return cleaned_data

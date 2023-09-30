@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
-from usuario.forms import LoginForms, CadastroForms, PerfilForms
+from usuario.forms import LoginForms, CadastroForms, PerfilForms, PerfilSenhaForms
 from usuario.models import Usuario
 
 from datetime import datetime
@@ -71,14 +72,34 @@ def LoginView(request):
 def PerfilView(request):
     usuario = Usuario.objects.get(email=request.user.email)
 
-    if request.method == "POST":
-        form = PerfilForms(request.POST, instance=usuario)
-        if form.is_valid():
-            form.save()
-    else:
-        form = PerfilForms(instance=usuario)
+    form_gerais = PerfilForms(request.POST or None, instance=usuario)
+    form_senha = PerfilSenhaForms(request.POST or None)
 
-    return render(request, 'usuario/perfil.html', {'form': form})
+    if request.method == "POST":
+        tipo_form = request.POST.get('tipo-form')
+
+        if tipo_form == 'info_geral' and form_gerais.is_valid():
+            form_gerais.save()
+            messages.success(request, 'Dados atualizados com sucesso.')
+
+        elif tipo_form == 'senha':
+            if form_senha.is_valid():
+                if usuario.check_password(form_senha.cleaned_data['senha_antiga']):
+                    usuario.set_password(form_senha.cleaned_data['senha_nova'])
+                    usuario.save()
+                    messages.success(request, 'Senha atualizada com sucesso.')
+                else:
+                    messages.error(request, 'Senha antiga incorreta.')
+            else:
+                # Isto irá lidar com erros que surgem a partir do método 'clean'
+                for error in form_senha.non_field_errors():
+                    messages.error(request, error)
+
+    context = {
+        'form_gerais': form_gerais,
+        'form_senha': form_senha
+    }
+    return render(request, 'usuario/perfil.html', context)
 
 @login_required(login_url='/login')
 def LogoutView(request):
