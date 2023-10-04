@@ -1,7 +1,7 @@
 :root {
 
   --preto-50: #F9F9F9;
-  --preto-100: #EEEEEE;
+  --preto-100: rgb(242, 242, 242);
   --preto-200: #E3E3E3;
   --preto-300: #D1D1D1;
   --preto-400: #ACACAC;

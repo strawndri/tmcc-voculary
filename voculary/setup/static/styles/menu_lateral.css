@@ -1,17 +1,16 @@
 .menu-lateral {
     position: fixed;
     left: 0;
-    top: 10px;
-    bottom: 10px;
+    top: 0;
+    bottom: 0;
     height: auto;
-    background-color: var(--preto-100);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border: 1px solid var(--preto-200);
+    background-color: var(--preto-100);
     z-index: 1;
 }
     
@@ -33,16 +32,27 @@
 .menu-lateral__navegacao a {
     margin-bottom: 1em;
     padding: .5rem 1rem;
+    text-decoration: none;
 }
 
-
 .menu-lateral__navegacao a img {
-    width: 2em;
+    width: 1.6em;
+}
+
+.menu-lateral__navegacao__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .menu-lateral__navegacao__link-icone{
     position: absolute;
     top: 2rem;
+    font-weight: 600;
+}
+
+.menu-lateral__navegacao__link-icone img {
+    width: 5rem;
 }
 
 .menu-lateral__navegacao__link-logout {
@@ -50,28 +60,49 @@
     bottom: 2rem;
 }
 
-.menu-lateral__navegacao__link img{
-    filter: var(--azul-200-filtro);
-}
-
 .menu-lateral__navegacao .ativo {
-    background-color: var(--preto-200);
     position: relative;
-    border-radius: 5px;
-}
-
-.menu-lateral__navegacao .ativo img{
-    filter: var(--azul-500-filtro);
 }
 
 .menu-lateral__navegacao .ativo::after {
     content: "";
     position: absolute;
-    top: 50%;  /* Posicionado no centro vertical do elemento pai */
-    transform: translateY(-50%);  /* Deslocar metade da altura para cima para centralizar */
+    top: 50%; 
+    transform: translateY(-50%);
     left: 0;
-    height: 70%;  /* 50% da altura do elemento pai */
+    height: 70%;
     width: 4px; 
     border-radius: 0 40px 40px 0;
-    background-color: var(--azul-400);
+    background-color: var(--preto-700);
+}
+
+.menu-lateral .toggle-button::before{
+    content: '»'
+}
+
+.menu-lateral.open .toggle-button::before{
+    content: '«'
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 2;
+    color: var(--preto-700);
+    font-family: var(--fonte-titulo);
+}
+
+.menu-label {
+    display: none;
+    margin-left: 0;
+    color: var(--preto-700);
+}
+
+.menu-lateral.open .menu-label {
+    display: inline-block;
 }

@@ -1,11 +1,34 @@
 {% load static %}
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
-        <a class="menu-lateral__navegacao__link-icone" href="{% url 'home' %}"><img src="{% static '/assets/logo/logo-2.svg'%}" title="Logo Voculary"></a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/perfil' %}ativo{% endif %}" href="{% url 'perfil' %}"><img src="{% static '/assets/icones/perfil.svg'%}" title="Perfil"></a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/gerar-textos' %}ativo{% endif %}" href="{% url 'gerar-textos' %}"><img src="{% static '/assets/icones/home.svg'%}" title="Home"></a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/meus-textos' %}ativo{% endif %}" href="{% url 'meus-textos' %}"><img src="{% static '/assets/icones/pasta.svg'%}" title="Meus textos"></a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/ajuda' %}ativo{% endif %}" href="{% url 'ajuda' %}"><img src="{% static '/assets/icones/ajuda.svg'%}" title="Ajuda"></a>
-        <a class="menu-lateral__navegacao__link menu-lateral__navegacao__link-logout" href="{% url 'logout' %}"><img src="{% static '/assets/icones/logout.svg'%}" title="Logout"></a>
+        <a class="menu-lateral__navegacao__link-icone" href="{% url 'home' %}">
+            <img src="{% static '/assets/logo/logo-2.svg'%}" title="Logo Voculary">
+            <span class="menu-label">Voculary</span>
+        </a>
+        <a class="menu-lateral__navegacao__link {% if request.path == '/admin/' %}ativo{% endif %}" href="{% url 'admin:index' %}">
+            <img src="{% static '/assets/icones/admin.svg'%}" title="Painel do Administrador">
+            <span class="menu-label">Painel do Administrador</span>
+        </a>
+        <a class="menu-lateral__navegacao__link {% if request.path == '/perfil' %}ativo{% endif %}" href="{% url 'perfil' %}">
+            <img src="{% static '/assets/icones/perfil.svg'%}" title="Perfil do Usuário">
+            <span class="menu-label">Perfil do Usuário</span>
+        </a>
+        <a class="menu-lateral__navegacao__link {% if request.path == '/gerar-textos' %}ativo{% endif %}" href="{% url 'gerar-textos' %}">
+            <img src="{% static '/assets/icones/home.svg'%}" title="Geração de textos">
+            <span class="menu-label">Geração de textos</span>
+        </a>
+        <a class="menu-lateral__navegacao__link {% if request.path == '/meus-textos' %}ativo{% endif %}" href="{% url 'meus-textos' %}">
+            <img src="{% static '/assets/icones/pasta.svg'%}" title="Meus textos">
+            <span class="menu-label">Meus textos</span>
+        </a>
+        <a class="menu-lateral__navegacao__link {% if request.path == '/ajuda' %}ativo{% endif %}" href="{% url 'ajuda' %}">
+            <img src="{% static '/assets/icones/ajuda.svg'%}" title="Ajuda">
+            <span class="menu-label">Ajuda</span>
+        </a>
+        <a class="menu-lateral__navegacao__link menu-lateral__navegacao__link-logout" href="{% url 'logout' %}">
+            <img src="{% static '/assets/icones/logout.svg'%}" title="Sair">
+            <span class="menu-label">Sair</span>
+        </a>
     </nav>
+    <button id="toggleMenu" class="toggle-button"></button>
 </section>
