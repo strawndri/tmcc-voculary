@@ -1,0 +1,46 @@
+{% extends 'admin/base_site.html' %}
+{% load static i18n %}
+{% block conteudo %}
+<head>
+    <title>Lista Administrativa | Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
+</head>
+<section class="conteudo conteudo__meus-textos padding">
+    <h2 class="conteudo__titulo-principal">Listagem Administrativa</h2>
+    <p class="conteudo__descricao">Visão geral dos registros do sistema.</p>
+
+    {% if results %}
+    <table class="tabela">
+        <thead class="tabela__header">
+            <tr>
+                {% for header in result_headers %}
+                <th class="tabela__{{ header.text|lower }}" scope="col"{{ header.class_attrib }}>
+                    <div class="text">
+                        {% if header.sortable %}
+                        <a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody class="tabela__body">
+            {% for result in results %}
+            {% if result.form and result.form.non_field_errors %}
+            <tr>
+                <td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                {% for item in result %}
+                <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load static i18n %}
+<head>
+    <title>Painel do Administrador | Voculary</title>
+    <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
+</head>
+{% if app_list %}
+    <div class="admin__app-list">
+        {% for app in app_list %}
+        <div class="app-{{ app.app_label }} module">
+            {% for model in app.models %}
+                <div class="botoes">
+                    <button class="botao" onclick="location.href='{{ model.add_url }}'">{% translate 'Add' %}</button>
+                    <button class="botao" onclick="location.href='{{ model.admin_url }}'">{% translate 'View' %}</button>
+                    <button class="botao" onclick="location.href='{{ model.admin_url }}'">{% translate 'Change' %}</button>
+                </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="admin__no-permission">{% translate 'You don’t have permission to view or edit anything.' %}</p>
+{% endif %}

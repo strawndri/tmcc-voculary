@@ -5,6 +5,7 @@ from .models import Usuario
 from gerenciamento_texto.models import TextoDigitalizado
 from django.db import models
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Count, F
 
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ('id', 'primeiro_nome', 'ultimo_nome', 'email', 'ativo', 'data_registro')
@@ -19,9 +20,17 @@ admin.site.register(Usuario, UsuarioAdmin)
 class CustomAdminSite(AdminSite):
     def index(self, request, extra_context=None):
         extra_context = extra_context or {}
-        extra_context['total_textos'] = TextoDigitalizado.objects.count()
-        extra_context['tempo_medio_processamento'] = TextoDigitalizado.objects.all().aggregate(models.Avg('tempo_processamento'))['tempo_processamento__avg']
-        extra_context['total_usuarios'] = Usuario.objects.count()
+        extra_context['total_textos'] = str(TextoDigitalizado.objects.count()).zfill(2)
+        extra_context['tempo_medio_processamento'] = str(round(TextoDigitalizado.objects.all().aggregate(models.Avg('tempo_processamento'))['tempo_processamento__avg'], 2)).zfill(2)
+        extra_context['total_usuarios'] = str(Usuario.objects.count()).zfill(2)
+        idioma_mais_comum = TextoDigitalizado.objects.values('idioma').annotate(total=Count('idioma')).order_by('-total').first()
+        if idioma_mais_comum:
+            extra_context['idioma_mais_comum'] = idioma_mais_comum['idioma']
+            extra_context['idioma_mais_comum_count'] = str(idioma_mais_comum['total']).zfill(2)
+        else:
+            extra_context['idioma_mais_comum'] = "N/A"
+            extra_context['idioma_mais_comum_count'] = '00'
+            
         return super().index(request, extra_context)
 
 admin.site = CustomAdminSite()

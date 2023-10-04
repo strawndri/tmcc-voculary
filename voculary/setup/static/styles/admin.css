@@ -1,0 +1,91 @@
+.conteudo {
+    width: 60rem;
+}
+.conteudo__admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.conteudo__admin-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.conteudo__app-lista {
+    display: flex;
+    flex-direction: row;
+}
+
+.usuarios__relatorio, .textos__relatorio {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.usuarios__relatorio {
+    flex-direction: column;
+    background-color: #FFF;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-200)
+}
+
+.usuarios__relatorio .relatorio__item {
+    display: flex;
+    border-bottom: 1px solid var(--preto-200);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 0;
+}
+
+.usuarios__relatorio .relatorio__item h3 {
+    color: var(--preto-900);
+}
+
+.usuarios__relatorio .relatorio__item p {
+    border: 2px solid var(--preto-200);
+    border-radius: 10px;
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.textos__relatorio .relatorio__item {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    width: 18rem;
+    height: 10rem;
+    background-color: #FFF;
+    border: 1px solid var(--azul-100);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.textos__relatorio  .relatorio__item h4 {
+    font-size: 2.5em;
+    font-weight: 600;
+    font-family: var(--fonte-titulo);
+    color: var(--preto-900);
+    margin-bottom: 10px;
+}
+
+.textos__relatorio  .relatorio__item p {
+    font-size: 1em;
+    color: var(--preto-700);
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.botoes .botao {
+    margin: 0;
+    padding: .5rem 3rem;
+}

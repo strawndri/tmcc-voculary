@@ -1,21 +1,50 @@
 {% extends "admin/base_site.html" %}
 {% load static %}
 
-<!-- {% block breadcrumbs %}{% endblock %} -->
-
 {% block sidebar %}
-{% include 'partials/_menu_lateral.html' %}
-<section class="conteudo conteudo__meus-textos padding">
-    {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+<section class="conteudo padding">
     <h2 class="conteudo__titulo-principal">Painel do Administrador</h2>
-    {% block teste %}
-    {{ block.super }}
-    <div>
-        <h2>Informações Adicionais</h2>
-        <p>Total de Textos: {{ total_textos }}</p>
-        <p>Tempo Médio de Processamento: {{ tempo_medio_processamento }}</p>
-        <p>Total de Usuários: {{ total_usuarios }}</p>
+    <p class="conteudo__descricao">Visão geral dos modelos disponíveis para administração.</p>
+    
+    <div class="conteudo__admin-usuarios">
+        <div class="conteudo__admin-header">
+            <h3 class="conteudo__titulo-secundario">Usuários</h3>
+            <div class="conteudo__app-lista">
+                {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+            </div>
+        </div>
+        <div class="usuarios__relatorio">
+            <div class="relatorio__item">
+                <h4>Usuários</h4>
+                <p>{{ total_usuarios }}</p>
+            </div>
+            <div class="relatorio__item">
+                <h4>Novos usuários neste mês</h4>
+                <p>{{ total_usuarios }}</p>
+            </div>
+            <div class="relatorio__item">
+                <h4>Novos usuários nesta semana</h4>
+                <p>{{ total_usuarios }}</p>
+            </div>
+        </div>
     </div>
-{% endblock %}
+
+    <div class="conteudo__admin-textos">
+        <h3 class="conteudo__titulo-secundario">Textos digitalizados</h3>
+        <div class="textos__relatorio">
+            <div class="relatorio__item">
+                <h4>{{ total_textos }}</h4>
+                <p>textos gerados</p>
+            </div>
+            <div class="relatorio__item">
+                <h4>{{ tempo_medio_processamento }}</h4>
+                <p>tempo médio de processamento</p>
+            </div>
+            <div class="relatorio__item">
+                <h4>{{ idioma_mais_comum }}</h4>
+                <p>idioma mais comum</p>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
