@@ -105,7 +105,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# referenciando a pasta de arquivos estáticos
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'setup/static')
 ]
