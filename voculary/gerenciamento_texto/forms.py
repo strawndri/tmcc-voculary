@@ -1,5 +1,5 @@
 from django import forms
-from .models import Imagem
+from .models import Image
 
 class UploadImagemForm(forms.ModelForm):
     arquivo = forms.ImageField(
@@ -15,5 +15,5 @@ class UploadImagemForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Imagem
+        model = Image
         fields = ['arquivo', 'url']

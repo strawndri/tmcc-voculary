@@ -1,45 +1,51 @@
 from django.db import models
-from usuario.models import Usuario
-
+from usuario.models import User
 from django.utils import timezone
 
-class Imagem(models.Model):
-    id_imagem = models.AutoField(primary_key=True)
-    arquivo = models.ImageField(upload_to='imagens/', null=True, blank=True)
-    url = models.URLField(blank=True, null=True)
-    ativo = models.BooleanField(default=True, null=False)
+class Image(models.Model):
+    image_id = models.AutoField(primary_key=True, verbose_name="ID da Imagem")
+    file = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Arquivo")
+    url = models.URLField(blank=True, null=True, verbose_name="URL")
+    is_active = models.BooleanField(default=True, verbose_name="Ativo")
 
-    usuario = models.ForeignKey(
-        to = Usuario,
-        on_delete = models.SET_NULL,
-        null = True,
-        related_name = 'imagem'
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='image',
+        verbose_name="Usuário"
     )
 
     class Meta:
-        db_table = 'imagem'
+        db_table = 'image'
+        verbose_name = "Imagem"
+        verbose_name_plural = "Imagens"
 
-class TextoDigitalizado(models.Model):
-    data_geracao = models.DateTimeField(default=timezone.now, null=False)
-    texto = models.TextField(null=False)
-    nome = models.CharField(max_length=255, null=False)
-    tempo_processamento = models.FloatField(null=False)
-    idioma = models.CharField(max_length=10, null=False)
-    ativo = models.BooleanField(default=True, null=False)
+class DigitizedText(models.Model):
+    creation_date = models.DateTimeField(default=timezone.now, verbose_name="Data de Geração")
+    text = models.TextField(verbose_name="Texto")
+    name = models.CharField(max_length=255, verbose_name="Nome")
+    processing_time = models.FloatField(verbose_name="Tempo de Processamento")
+    language = models.CharField(max_length=10, verbose_name="Idioma")
+    is_active = models.BooleanField(default=True, verbose_name="Ativo")
 
-    usuario = models.ForeignKey(
-        to = Usuario,
-        on_delete = models.SET_NULL,
-        null = True,
-        related_name = 'texto_digitalizado'
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='digitized_text',
+        verbose_name="Usuário"
     )
 
-    imagem = models.ForeignKey(
-        to = Imagem,
-        on_delete = models.SET_NULL,
-        null = True,
-        related_name = 'texto_digitalizado'
+    image = models.ForeignKey(
+        to=Image,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='digitized_text',
+        verbose_name="Imagem"
     )
 
     class Meta:
-        db_table = 'texto_digitalizado'
+        db_table = 'digitized_text'
+        verbose_name = "Texto Digitalizado"
+        verbose_name_plural = "Textos Digitalizados"

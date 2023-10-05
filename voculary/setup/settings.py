@@ -76,7 +76,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'usuario.Usuario'
+AUTH_USER_MODEL = 'usuario.User'
 
 
 AUTH_PASSWORD_VALIDATORS = [

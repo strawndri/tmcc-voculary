@@ -7,8 +7,7 @@ from django.core.cache import cache
 from django.utils import timezone
 
 from .forms import UploadImagemForm
-from .models import Imagem, TextoDigitalizado
-
+from .models import Image, DigitizedText
 from .utils.extrair_texto import extrair_texto
 
 import datetime, time, os, io, requests
@@ -48,7 +47,7 @@ def GeracaoTextoView(request):
         cache.delete(cache_key)
         imagem_data, texto = None, None
 
-    textos = TextoDigitalizado.objects.select_related('imagem').order_by('-data_geracao').filter(usuario=request.user, ativo=True)[:4]
+    textos = DigitizedText.objects.select_related('image').order_by('-creation_date').filter(user=request.user, is_active=True)[:4]
 
     imagem_base64 = None
     if imagem_data:
@@ -112,18 +111,18 @@ def salvar(imagem, nome_arquivo, texto, tempo_processamento, idioma, request):
         time.sleep(1)
         imagem_content = cache.get(f"{request.user.id}_imagem")
 
-        imagem = Imagem(usuario=request.user)  
-        imagem.arquivo.save(nome_arquivo, ContentFile(imagem_content))
+        imagem = Image(user=request.user)  
+        imagem.file.save(nome_arquivo, ContentFile(imagem_content))
         imagem.save()
         
-        texto_digitalizado = TextoDigitalizado(
-            nome=os.path.basename(imagem.arquivo.path),
-            texto=texto,
-            tempo_processamento=tempo_processamento,
-            usuario=request.user,
-            imagem=imagem,
-            idioma=idioma,
-            ativo=True,
+        texto_digitalizado = DigitizedText(
+            name=os.path.basename(imagem.file.path),
+            text=texto,
+            processing_time=tempo_processamento,
+            user=request.user,
+            image=imagem,
+            language=idioma,
+            is_active=True,
         )
         texto_digitalizado.save()
         messages.success(request, f'Imagem salva com sucesso! Você pode visualizá-la indo em "Meus textos".')
@@ -134,7 +133,7 @@ def salvar(imagem, nome_arquivo, texto, tempo_processamento, idioma, request):
 @login_required(login_url='/login')
 def MeusTextosView(request):
 
-    textos = TextoDigitalizado.objects.select_related('imagem').filter(usuario=request.user, ativo=True)
+    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True)
 
     if len(textos) == 0:
         mensagem = 'Puxa! Parece que você ainda não salvou nenhum texto.'
@@ -150,13 +149,13 @@ def MeusTextosView(request):
 from django.http import JsonResponse
 
 def obter_info_texto(request, id_imagem):
-    texto = TextoDigitalizado.objects.get(imagem__id_imagem=id_imagem)
+    texto = DigitizedText.objects.get(imagem__id_imagem=id_image)
     
     data = {
-        'nome': texto.nome,
-        'data_geracao': texto.data_geracao.strftime('%d/%m/%Y'),
-        'imagem_url': texto.imagem.arquivo.url,
-        'texto': texto.texto
+        'nome': texto.name,
+        'data_geracao': texto.creation_date.strftime('%d/%m/%Y'),
+        'imagem_url': texto.image.file.url,
+        'texto': texto.text
     }
     
     return JsonResponse(data)
@@ -166,14 +165,14 @@ from django.views.decorators.http import require_POST
 @require_POST
 def desativar_texto(request, texto_id):
     try:
-        texto = TextoDigitalizado.objects.get(id=texto_id) 
+        texto = DigitizedText.objects.get(id=texto_id) 
         
-        texto.ativo = False
+        texto.is_active = False
         texto.save()
 
         if texto.imagem:  
-            imagem = texto.imagem
-            imagem.ativo = False
+            imagem = texto.image
+            imagem.is_active = False
             imagem.save()
 
         messages.success(request, 'Texto excluído com sucesso!')
@@ -190,17 +189,17 @@ def alterar_nome_texto(request, texto_id):
         texto = TextoDigitalizado.objects.get(id=texto_id)
         
         # nome não foi modificado - manter!
-        if novo_nome == texto.nome:
+        if novo_nome == texto.name:
             return JsonResponse({'success': True})
 
         elif novo_nome == '':
             novo_nome = 'Sem título'
-            texto.nome = novo_nome
+            texto.name = novo_nome
             texto.save()
             return JsonResponse({'success': True})
         else:
         
-            texto.nome = novo_nome
+            texto.name = novo_nome
             texto.save()
 
             return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})

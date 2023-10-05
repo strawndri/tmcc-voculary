@@ -55,10 +55,10 @@
         <div class="meus-textos__group">
             {% for texto in textos %}
             <div data-texto="{{ texto.id }}" class="meus-textos__card">
-                <img src="../media/{{ texto.imagem.arquivo }}">
+                <img src="../media/{{ texto.image.file }}">
                 <div class="meus-textos__descricao">
-                    <h3>{{texto.nome}}</h3>
-                    <p>{{texto.data_geracao|date:"d/m/Y"}}</p>
+                    <h3>{{texto.name}}</h3>
+                    <p>{{texto.creation_date|date:"d/m/Y"}}</p>
                 </div>
             </div>
         {% endfor %}

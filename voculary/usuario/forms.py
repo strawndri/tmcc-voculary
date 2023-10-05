@@ -63,13 +63,13 @@ class CadastroForms(forms.Form):
             else:
                 return senha_2
 
-from .models import Usuario
+from .models import User
 
 class PerfilForms(forms.ModelForm):
 
     class Meta:
-        model = Usuario
-        fields = ['primeiro_nome', 'ultimo_nome', 'email']
+        model = User
+        fields = ['first_name', 'last_name', 'email']
 
 
 class PerfilSenhaForms(forms.ModelForm):
@@ -96,7 +96,7 @@ class PerfilSenhaForms(forms.ModelForm):
     )
 
     class Meta:
-        model = Usuario
+        model = User
         fields = [] 
 
     def clean(self):

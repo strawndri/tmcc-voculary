@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from usuario.forms import LoginForms, CadastroForms, PerfilForms, PerfilSenhaForms
-from usuario.models import Usuario
+from usuario.models import User
 
 from datetime import datetime
 
@@ -21,15 +21,15 @@ def CadastroView(request):
             email = form['email'].value()
             senha = form['senha_1'].value()
 
-            if Usuario.objects.filter(email=email, ativo=True).exists():
+            if User.objects.filter(email=email, is_active=True).exists():
                 messages.error(request, 'Ops, parece que este e-mail já existe! Tente novamente.')
                 return redirect('cadastro')
             
-            usuario = Usuario.objects.create_user(
-                primeiro_nome = primeiro_nome,
-                ultimo_nome = ultimo_nome,
+            usuario = User.objects.create_user(
+                first_name = primeiro_nome,
+                last_name = ultimo_nome,
                 email = email,
-                senha = senha
+                password = senha
             )
 
             usuario.save()
@@ -53,14 +53,14 @@ def LoginView(request):
             senha = form['senha'].value()
 
             Usuario = auth.get_user_model()
-            usuario = Usuario.objects.filter(email=email, ativo=True).first()
+            usuario = Usuario.objects.filter(email=email, is_active=True).first()
 
             if usuario is not None and usuario.check_password(senha):
                 usuario.ultimo_login = datetime.now()
                 usuario.save()
 
                 auth.login(request, usuario)
-                messages.success(request, f'Olá, {usuario.primeiro_nome}! O login foi realizado com sucesso.')
+                messages.success(request, f'Olá, {usuario.first_name}! O login foi realizado com sucesso.')
                 return redirect('/gerar-textos')
             else:
                 messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
@@ -70,7 +70,7 @@ def LoginView(request):
 
 @login_required(login_url='/login')
 def PerfilView(request):
-    usuario = Usuario.objects.get(id=request.user.id)
+    usuario = User.objects.get(id=request.user.id)
 
     form_gerais = PerfilForms(request.POST or None, instance=usuario)
     form_senha = PerfilSenhaForms(request.POST or None)
@@ -96,7 +96,7 @@ def PerfilView(request):
         
         elif tipo_form == 'excluir':
             try:
-                usuario.ativo = False
+                usuario.is_active = False
                 usuario.save()
             except:
                 pass

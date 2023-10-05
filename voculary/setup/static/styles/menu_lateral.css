@@ -57,7 +57,7 @@
 
 .menu-lateral__navegacao__link-logout {
     position: absolute;
-    bottom: 2rem;
+    bottom: 3rem;
 }
 
 .menu-lateral__navegacao .ativo {
@@ -91,10 +91,13 @@
     cursor: pointer;
     position: absolute;
     bottom: 1rem;
-    right: 1rem;
     z-index: 2;
     color: var(--preto-700);
     font-family: var(--fonte-titulo);
+}
+
+.menu-lateral.open .toggle-button {
+    right: 1rem;
 }
 
 .menu-label {

@@ -6,7 +6,7 @@ h2 {
 .conteudo__inicio {
     display: flex;
     gap: 4rem;
-    height: 78vh;
+    height: 80vh;
     align-items: center;
     background: url('../assets/backgrounds/bg-apresentacao.svg') no-repeat center center;
     background-size: cover;
