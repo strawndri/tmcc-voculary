@@ -7,29 +7,29 @@
 </head>
 <section class="conteudo padding">
     <section class="conteudo__formulario">
+        
         <form class="formulario" action="{% url 'login' %}" 
         method="POST">
-            {% csrf_token %} <!--proteção!-->
-            <h2>Boas vindas de volta!</h2>
-            {% for field in form.visible_fields %}
-            <label class="formulario__label">
-                {{ field.label }}
-                {{ field }}
-                {% if field.label == 'Senha' %}
-                    <button type="button" class="formulario__botao--senha">
-                    </button>
-                <a class="formulario__link senha" href="">Esqueci minha senha</a>
-                {% endif %}
-            </label>
-            {% endfor %}
-            <input class="formulario__botao botao" type="submit" value="Entrar">
-            <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
-        </form>
-    </section>
-    <secion class="conteudo__imagem imagem-login">
-        <h2 class="conteudo__imagem__titulo">Que bom que você está de volta!</h2>
-        <p class="conteudo__imagem__paragrafo">Faça login para acessar sua conta. Ainda não tem uma conta conosco? Cadastre-se e aproveite todos os benefícios que a Voculary proporciona.</p>
-    </secion>
+        <a href="{% url 'home' %}">
+            {% include 'partials/_logo.html' %}
+        </a>
+        {% csrf_token %} <!--proteção!-->
+        <h2>Boas vindas de volta!</h2>
+        {% for field in form.visible_fields %}
+        <label class="formulario__label">
+            {{ field.label }}
+            {{ field }}
+            {% if field.label == 'Senha' %}
+            <button type="button" class="formulario__botao--senha">
+            </button>
+            <a class="formulario__link senha" href="">Esqueci minha senha</a>
+            {% endif %}
+        </label>
+        {% endfor %}
+        <input class="formulario__botao botao" type="submit" value="Entrar">
+        <a class="formulario__link" href="{% url 'cadastro' %}">Ainda não tem uma conta? Cadastre-se!</a>
+    </form>
+</section>
 </section>
 <script src="{% static 'js/visualizarSenha.js' %}"></script>
 

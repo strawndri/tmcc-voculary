@@ -1,17 +1,18 @@
-
 .conteudo__formulario {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .conteudo__formulario form {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 1rem 2rem 2rem 0;
+    padding: 1rem 2rem 2rem 2rem;
     width: 24rem;
 }
 

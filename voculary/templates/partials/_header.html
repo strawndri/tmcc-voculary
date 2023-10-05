@@ -14,12 +14,12 @@
     </nav>
 </header>
 {% elif request.path == '/login' or request.path == '/cadastro'%}
-<header class="cabecalho">
-    <div class="centralize">
+<header class="">
+    <!-- <div class="centralize">
         <a href="{% url 'home' %}">
             {% include 'partials/_logo.html' %}
         </a>
-    </div>
+    </div> -->
 </header>
 {% else %}
 <header class="cabecalho">
