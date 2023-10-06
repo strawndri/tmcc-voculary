@@ -1,44 +1,30 @@
-{% extends "admin/base_site.html" %}
-{% load static %}
-
-{% block extrahead %}
-    <link rel="stylesheet" href="{% static 'styles/formulario.css' %}">
-{% endblock %}
-
 {% block sidebar %}
     <section class="conteudo__formulario">
-    <form class="form">
-        <fieldset class="module aligned {{ fieldset.classes }}">
-            {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
-            {% if fieldset.description %}
-                <div class="description">{{ fieldset.description|safe }}</div>
-            {% endif %}
-            {% for line in fieldset %}
-                <div class="form-row formulario__label{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
-                    {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
-                    {% for field in line %}
-                        <div{% if not line.fields|length_is:'1' %} class="fieldBox {% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
-                            {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-                            {% if field.is_checkbox %}
-                                {{ field.field }}{{ field.label_tag }}
-                            {% else %}
-                                <label class="formulario__label">{{ field.label_tag }}</label>
-                                {% if field.is_readonly %}
-                                    <div class="readonly">{{ field.contents }}</div>
+        <form class="formulario">
+            <fieldset class="module {{ fieldset.classes }}">
+                {% for line in fieldset %}
+                    <div class="formulario__label{% if line.errors %} errors{% endif %}">
+                        {% for field in line %}
+                                {% if field.is_checkbox %}
+                                <label class="custom-checkbox">
+                                    <!-- <input type="checkbox"> -->
+                                    {{ field.field }}
+                                    <span class="checkmark"></span>
+                                    {{ field.label_tag }}
+                                </label>
                                 {% else %}
+                                    {{ field.label_tag }}
                                     {{ field.field }}
                                 {% endif %}
-                            {% endif %}
-                            {% if field.field.help_text %}
-                                <div class="help"{% if field.field.id_for_label %} id="{{ field.field.id_for_label }}_helptext"{% endif %}>
-                                  {{ field.field.help_text|safe }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </fieldset>
-    </form>
+                                {% if field.field.help_text %}
+                                    <div class="help">
+                                      {{ field.field.help_text|safe }}
+                                    </div>
+                                {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </fieldset>
+        </form>
     </section>
 {% endblock %}

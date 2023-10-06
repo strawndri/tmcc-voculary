@@ -9,9 +9,8 @@
         <div class="app-{{ app.app_label }} module">
             {% for model in app.models %}
                 <div class="botoes">
-                    <button class="botao" onclick="location.href='{{ model.add_url }}'">{% translate 'Add' %}</button>
-                    <button class="botao" onclick="location.href='{{ model.admin_url }}'">{% translate 'View' %}</button>
-                    <button class="botao" onclick="location.href='{{ model.admin_url }}'">{% translate 'Change' %}</button>
+                    <button class="botao" onclick="location.href='{{ model.add_url }}'">Adicionar</button>
+                    <button class="botao" onclick="location.href='{{ model.admin_url }}'">Visualizar e editar</button>
                 </div>
             {% endfor %}
         </div>

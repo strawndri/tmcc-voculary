@@ -19,6 +19,7 @@
        -moz-border-radius: 10px;
             border-radius: 10px;
     box-shadow: var(--sombra);
+    width: 100%; 
 }
 
 .tabela__header {
@@ -128,9 +129,12 @@
 }
 
 .custom-checkbox {
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
   
 .custom-checkbox input {
@@ -140,9 +144,9 @@
 }
   
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
     height: 1.2rem;
     width: 1.2rem;
     border-radius: 5px;

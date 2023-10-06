@@ -34,7 +34,7 @@
 .formulario__label input,
 .formulario__label textarea {
     padding: .6rem;
-    margin: .5rem 0 0 0;
+    margin: .5rem 0 .5rem 0;
     border-radius: 10px;
     background-color: var(--preto-50);
     color: var(--preto-700);
