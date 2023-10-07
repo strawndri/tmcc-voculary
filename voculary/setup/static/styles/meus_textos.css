@@ -11,7 +11,7 @@
 
 .tabela {
     background-color: #FFF;
-    margin-bottom: 4rem;
+    margin-bottom: .5rem;
     overflow:hidden;
     border-collapse:separate;
     border: 1px solid var(--preto-200);
@@ -82,20 +82,21 @@
     object-fit: cover;
 }
 
-.tabela__footer td {
-    position: relative;
-    text-align: center;
-    padding: 1rem 1rem;
-    vertical-align: middle;
+.tabela__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-200);
 }
 
-.paginas a:not(:last-child) {
+.paginas__numero {
     margin-right: 2rem;
 }
 
-
 .botao-paginacao {
-    position: absolute;
     border: 1px solid var(--preto-300);
     padding: .5rem 1rem;
     text-decoration: none;
@@ -110,6 +111,18 @@
     transition: all .25s;
 }
 
+.botao-paginacao--habilitado:hover {
+    background-color: var(--preto-100);
+    
+    cursor: pointer;
+}
+
+.botao-paginacao--desabilitado {
+    background-color: var(--preto-100);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .anterior .botao-paginacao{
     left: 1rem;
 }
@@ -118,9 +131,6 @@
     right: 1rem;
 }
 
-.botao-paginacao:hover {
-    background-color: var(--preto-100);
-}
 
 .botao-paginacao p {
     color: var(--preto-700);

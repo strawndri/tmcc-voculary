@@ -335,9 +335,7 @@ ul.timelist, .timelist li {
 }
 
 .tabela {
-    border-collapse: collapse;
     table-layout: auto; 
-    margin: 20px 0;
 }
 
 .conteudo__admin {
@@ -356,7 +354,6 @@ ul.timelist, .timelist li {
     background-color: var(--preto-50); 
     border: 1px solid var(--preto-200);
     padding: 1rem;
-    margin-top: 20px;
     border-radius: 5px;
     width: 12rem;
     height: auto;

@@ -10,12 +10,12 @@ class UserAdmin(admin.ModelAdmin):
     formatar_data.admin_order_field = 'date_registered'
     formatar_data.short_description = 'Data de registro'
 
-    list_display = ('is_active', 'id', 'first_name', 'last_name', 'email', 'formatar_data')
+    list_display = ('is_active', 'id', 'email', 'first_name', 'last_name', 'formatar_data')
     list_display_links = None
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('is_active', 'is_staff', 'is_admin')
     list_editable = ('is_active',)
-    list_per_page = 2
+    list_per_page = 6
 
 
 class MyAdminSite(admin.AdminSite):
