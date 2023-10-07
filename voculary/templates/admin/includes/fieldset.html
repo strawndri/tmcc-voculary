@@ -3,24 +3,29 @@
         <form class="formulario">
             <fieldset class="module {{ fieldset.classes }}">
                 {% for line in fieldset %}
-                    <div class="formulario__label{% if line.errors %} errors{% endif %}">
+                    <div class="formulario__label{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
                         {% for field in line %}
-                                {% if field.is_checkbox %}
-                                <label class="custom-checkbox">
-                                    <!-- <input type="checkbox"> -->
-                                    {{ field.field }}
-                                    <span class="checkmark"></span>
-                                    {{ field.label_tag }}
-                                </label>
+                        {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+                        {% if field.is_checkbox %}
+                        <label class="custom-checkbox">
+                            {{ field.field }}
+                            <span class="checkmark"></span>
+                                        {{ field.label_tag }}
+                                    </label>
                                 {% else %}
                                     {{ field.label_tag }}
+                                    {% if field.is_readonly %}
+                                    <div class="readonly">{{ field.contents }}</div>
+                                    {% else %}
                                     {{ field.field }}
-                                {% endif %}
-                                {% if field.field.help_text %}
-                                    <div class="help">
-                                      {{ field.field.help_text|safe }}
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if field.field.help_text %}
+                                    <div class="help"{% if field.field.id_for_label %} id="{{ field.field.id_for_label }}_helptext"{% endif %}>
+                                        {{ field.field.help_text|safe }}
                                     </div>
-                                {% endif %}
+                                    {% endif %}
+                                    {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
                         {% endfor %}
                     </div>
                 {% endfor %}

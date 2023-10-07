@@ -27,7 +27,18 @@
                 </ul>
             {% endif %}
         {% endblock %}
-
+        {% if errors %}
+        <div class="mensagem ativo error">
+            <div class="mensagem__conteudo">
+                <i class="icon"></i>
+                <span class="mensagem__conteudo__texto">
+                    Puxa, parece que não foi possível criar um novo usuário. Tente novamente.
+                </span>
+            </div>
+            <i class="fechar"></i>
+            <div class="progresso"></div>
+        </div>
+        {% endif %}
         <form class="formulario" {% if has_file_field %}enctype="multipart/form-data"{% endif %} {% if form_url %}action="{{ form_url }}"{% endif %} method="post" id="{{ opts.model_name }}_form" novalidate>
             {% csrf_token %}
             {% block form_top %}{% endblock %}

@@ -345,3 +345,70 @@ ul.timelist, .timelist li {
     flex-direction: row;
     gap: 2rem;
 }
+
+.errorlist {
+    color: var(--rosa-400);
+    font-size: .8rem;
+    margin-bottom: 2rem;
+}
+
+.lista-filtros {
+    background-color: var(--preto-50); 
+    border: 1px solid var(--preto-200);
+    padding: 1rem;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 12rem;
+    height: auto;
+}
+
+.lista-filtros h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.lista-filtros__limpar {
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.lista-filtros__limpar a {
+    text-decoration: none; 
+    color: var(--preto-600); 
+    transition: color 0.3s ease;
+}
+
+.lista-filtros__limpar a:hover {
+    color: var(--preto-700); 
+}
+
+.lista-filtros summary {
+    margin-bottom: .5rem;
+} 
+
+.lista-filtros ul {
+    margin-bottom: 1rem;
+    border-top: 1px solid var(--preto-200)
+}
+
+
+.lista-filtros li a{
+    display: inline-block;
+    width: 100%;
+    padding: .2rem 0 .2rem .5rem; 
+    text-decoration: none;
+    color: var(--preto-600); 
+}
+
+.lista-filtros li a:hover{
+    background-color: var(--preto-100); 
+    color: var(--preto-700); 
+}
+
+.lista-filtros li.selected a{
+    background-color: var(--preto-100); 
+    color: var(--preto-700); 
+    font-weight: 600;
+}

@@ -4,12 +4,19 @@ from gerenciamento_texto.models import DigitizedText
 from django.db.models import Count, Avg
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('is_active', 'id', 'first_name', 'last_name', 'email', 'date_registered')
+    def formatar_data(self, obj):
+        return obj.date_registered.strftime('%d/%m/%Y')
+
+    formatar_data.admin_order_field = 'date_registered'
+    formatar_data.short_description = 'Data de registro'
+
+    list_display = ('is_active', 'id', 'first_name', 'last_name', 'email', 'formatar_data')
     list_display_links = None
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('is_active', 'is_staff', 'is_admin')
     list_editable = ('is_active',)
-    list_per_page = 10
+    list_per_page = 2
+
 
 class MyAdminSite(admin.AdminSite):
     site_header = "Painel do Administrador"

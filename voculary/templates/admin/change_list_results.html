@@ -1,3 +1,4 @@
+{% load static %}
 {% if results %}
 <table class="tabela">
     <thead class="tabela__header">
@@ -17,8 +18,37 @@
                 {{ item }}
             {% endfor %}
         </tr>
-        
         {% endfor %}
     </tbody>
+    <tfoot class="tabela__footer">
+        <tr>
+            <td class="anterior" colspan="2">
+                <a class="botao-paginacao anterior" href="{% if cl.has_previous %}?p={{ cl.previous_page_number }}{% endif %}">
+                    <img src="{% static 'assets/icones/seta.svg' %}">
+                    <p>Anterior</p>
+                </a>
+            </td>
+            <td class="paginas" colspan="4">
+                {% for i in cl.paginator.page_range %}
+                    {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > cl.paginator.num_pages|add:"-3" or cl.number == i %}
+                        {% if cl.page_num == i %}
+                            <span class="paginas__numero atual">{{ i }}</span>
+                        {% else %}
+                            <a class="paginas__numero" href="?p={{ i }}">{{ i }}</a>
+                        {% endif %}
+                    {% elif forloop.counter == 4 or forloop.counter == cl.paginator.num_pages|add:"-2" %}
+                        <span class="paginas__numero">...</span>
+                    {% endif %}
+                {% endfor %}
+            </td>
+
+            <td class="proximo">
+                <a class="botao-paginacao" href="{% if cl.has_next %}?p={{ cl.next_page_number }}{% endif %}">
+                    <p>Próximo</p>
+                    <img src="{% static 'assets/icones/seta.svg' %}">
+                </a>
+            </td>
+        </tr>
+    </tfoot>
 </table>
 {% endif %}

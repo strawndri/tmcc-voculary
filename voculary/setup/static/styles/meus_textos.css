@@ -18,8 +18,8 @@
     -webkit-border-radius: 10px;
        -moz-border-radius: 10px;
             border-radius: 10px;
-    box-shadow: var(--sombra);
-    width: 100%; 
+    /* box-shadow: var(--sombra); */
+    /* width: 100%;  */
 }
 
 .tabela__header {
@@ -82,13 +82,17 @@
     object-fit: cover;
 }
 
-.tabela__footer tr {
-    display: flex;
+.tabela__footer td {
+    position: relative;
+    text-align: center;
+    padding: 1rem 1rem;
+    vertical-align: middle;
 }
 
-.tabela__footer td {
-    padding: 1.5rem 1rem;
+.paginas a:not(:last-child) {
+    margin-right: 2rem;
 }
+
 
 .botao-paginacao {
     position: absolute;
@@ -101,8 +105,17 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
+    top: .5rem;
 
     transition: all .25s;
+}
+
+.anterior .botao-paginacao{
+    left: 1rem;
+}
+
+.proximo .botao-paginacao{
+    right: 1rem;
 }
 
 .botao-paginacao:hover {
@@ -144,9 +157,6 @@
 }
   
 .checkmark {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
     height: 1.2rem;
     width: 1.2rem;
     border-radius: 5px;
@@ -206,28 +216,3 @@
 .tabela .tabela__renomear {
     width: 3%;
 } 
-
-
-.anterior,
-.proximo {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.anterior {
-    justify-content: flex-start;
-}
-
-.proximo {
-    justify-content: flex-end;
-}
-
-.paginas {
-    flex: 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    min-width: 74vw;
-}

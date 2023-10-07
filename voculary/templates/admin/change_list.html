@@ -38,6 +38,7 @@
 
 {% block sidebar %}
   <div class="padding">
+    
     <h2 class="conteudo__titulo-principal">Painel do Administrador</h2>
     <p class="conteudo__descricao">Visão geral dos modelos disponíveis para administração.</p>
     <div class="conteudo__admin module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
@@ -55,10 +56,7 @@
             {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
           {% endblock %}
           
-          {% block pagination %}
-            {% pagination cl %}
-          {% endblock %}
-          
+          {% block pagination %}{% endblock %}
         </form>
       </div>
       
@@ -68,7 +66,7 @@
             <h2>{% translate 'Filter' %}</h2>
             
             {% if cl.has_active_filters %}
-              <h3 id="changelist-filter-clear">
+              <h3 class="lista-filtros__limpar" id="changelist-filter-clear">
                 <a href="{{ cl.clear_all_filters_qs }}">&#10006; {% translate "Clear all filters" %}</a>
               </h3>
             {% endif %}
