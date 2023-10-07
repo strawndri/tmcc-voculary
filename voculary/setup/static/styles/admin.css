@@ -409,3 +409,53 @@ ul.timelist, .timelist li {
     color: var(--preto-700); 
     font-weight: 600;
 }
+
+.acoes {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.acoes label {
+    color: var(--preto-700);
+    margin-right: 10px;
+}
+
+.acoes .botao {
+    padding: .5rem 2rem;
+    margin: 0;
+}
+
+.acoes select {
+    background-color: var(--preto-100);
+    border: 1px solid var(--preto-300);
+    border-radius: 5px;
+    padding: 8px 10px;
+    color: var(--preto-700);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.acoes select:hover {
+    border-color: var(--preto-500);
+    outline: none;
+}
+
+.acoes select:focus {
+    background-color: var(--preto-50);
+    border-color: var(--verde-300);
+    outline: none;
+}
+
+.acoes select option {
+    background-color: var(--preto-100);
+    color: var(--preto-800);
+}
+
+.acoes select option:hover, 
+.acoes select option:focus {
+    background-color: var(--azul-50);
+    color: var(--azul-800);
+}

@@ -42,6 +42,14 @@
     <h2 class="conteudo__titulo-principal">Painel do Administrador</h2>
     <p class="conteudo__descricao">Visão geral dos modelos disponíveis para administração.</p>
     <div class="conteudo__admin module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+      {% block object-tools %}
+        {% if change and not is_popup %}
+            <ul class="object-tools">
+                {% block object-tools-items %}
+                {% endblock %}
+            </ul>
+        {% endif %}
+      {% endblock %}
       <div class="conteudo__formulario">
         <form class="formulario" method="post"{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>
           {% csrf_token %}
@@ -51,7 +59,7 @@
           {% endif %}
 
           {% block result_list %}
-            <!-- {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %} -->
+            {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
             {% result_list cl %}
             {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
           {% endblock %}

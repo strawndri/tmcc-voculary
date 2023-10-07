@@ -1,7 +1,7 @@
 :root {
 
   --preto-50: #F9F9F9;
-  --preto-100: rgb(242, 242, 242);
+  --preto-100: #f2f2f2;
   --preto-200: #E3E3E3;
   --preto-300: #D1D1D1;
   --preto-400: #ACACAC;
@@ -26,11 +26,7 @@
   --rosa-300: #EA6387;
   --rosa-400: #E4436E;
 
-  --gradient: linear-gradient(87deg, var(--azul-500) 0%, var(--verde-200) 100%);
-
-  --azul-200-filtro: invert(82%) sepia(5%) saturate(1769%) hue-rotate(187deg) brightness(80%) contrast(87%);
-  --azul-500-filtro: invert(26%) sepia(48%) saturate(768%) hue-rotate(183deg) brightness(96%) contrast(87%);
-  --azul-900-filtro: invert(10%) sepia(64%) saturate(1849%) hue-rotate(207deg) brightness(91%) contrast(94%);
+  --amarelo-400: #e5ce22;
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 

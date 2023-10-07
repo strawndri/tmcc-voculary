@@ -10,6 +10,7 @@
     transform: translateX(calc(100% + 30px));
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
     z-index: 100;
+    width: 24vw;
 }
 
 .mensagem.ativo {
@@ -32,34 +33,65 @@
     border-radius: 50%;
 }
 
-.success .icon {
+.icon {
+    position: relative;
+}
+
+.icon[data-status="success"] {
     background-color: var(--verde-300);
-    position: relative;
-}  
+}
 
-.error .icon {
+.icon[data-status="error"] {
     background-color: var(--rosa-400);
-    position: relative;
-}  
+}
 
-.success .icon::before {
-    content: "✓";
+.icon[data-status="warning"] {
+    background-color: var(--amarelo-400);
+}
+
+.icon[data-status="info"] {
+    background-color: var(--azul-400);
+}
+
+.icon::before {
     position: absolute;
-    font-weight: bold;
     font-family: var(--fonte-titulo);
+    font-weight: bold;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.error .icon::before {
+.icon[data-status="success"]::before {
+    content: "✓";
+}
+
+.icon[data-status="error"]::before {
     content: "X";
-    position: absolute;
-    font-family: var(--fonte-titulo);
-    font-weight: bold;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+
+.icon[data-status="warning"]::before {
+    content: "!";
+}
+
+.icon[data-status="info"]::before {
+    content: "i";
+}
+
+.progresso[data-status="success"]:before {
+    background-color: var(--verde-300);
+}
+
+.progresso[data-status="error"]:before {
+    background-color: var(--rosa-400);
+}
+
+.progresso[data-status="warning"]:before {
+    background-color: var(--amarelo-400);
+}
+
+.progresso[data-status="info"]:before {
+    background-color: var(--azul-400);
 }
 
 .mensagem__conteudo .mensagem__conteudo__texto {
@@ -96,14 +128,6 @@
     right: 0;
     height: 100%;
     width: 100%;
-}
-
-.success .progresso:before {
-    background-color: var(--verde-300);
-}
-
-.error .progresso:before {
-    background-color: var(--rosa-400);
 }
 
 .ativo .progresso:before {

@@ -15,18 +15,22 @@
 
 {% block sidebar %}
 <section class="conteudo padding">
-    <h2 class="conteudo__titulo-principal">Criar usuário</h2>
-    <p class="conteudo__descricao">Visão geral dos modelos disponíveis para administração.</p>
+    <h2 class="conteudo__titulo-principal">
+        {% if request.path == "/admin/usuario/user/add/" %}
+            {% translate "Adicionar Usuário" %}
+        {% else %}
+            {% translate "Alterar Usuário" %}
+        {% endif %}
+    </h2>
+    
+    <p class="conteudo__descricao">
+        {% if request.path == "admin/usuario/user/add/" %}
+            {% translate "Adicione um novo usuário ao sistema." %}
+        {% else %}
+            {% translate "Atualize os detalhes de um usuário existente." %}
+        {% endif %}
+    </p>
     <div class="conteudo__formulario" id="content-main">
-        {% block object-tools %}
-            {% if change and not is_popup %}
-                <ul class="object-tools">
-                    {% block object-tools-items %}
-                        {% change_form_object_tools %}
-                    {% endblock %}
-                </ul>
-            {% endif %}
-        {% endblock %}
         {% if errors %}
         <div class="mensagem ativo error">
             <div class="mensagem__conteudo">
