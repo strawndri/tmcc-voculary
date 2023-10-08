@@ -5,7 +5,6 @@ from django.utils import timezone
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True, verbose_name="ID da Imagem")
     file = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Arquivo")
-    url = models.URLField(blank=True, null=True, verbose_name="URL")
     is_active = models.BooleanField(default=True, verbose_name="Ativo")
 
     user = models.ForeignKey(
@@ -37,10 +36,10 @@ class DigitizedText(models.Model):
         verbose_name="Usuário"
     )
 
-    image = models.ForeignKey(
+    image = models.OneToOneField(
         to=Image,
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.CASCADE,
+        primary_key=True,  
         related_name='digitized_text',
         verbose_name="Imagem"
     )

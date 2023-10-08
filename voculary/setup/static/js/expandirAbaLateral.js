@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let id_imagem = card.getAttribute('data-texto');
             abaLateral.setAttribute('data-texto', id_imagem);
+            abaLateral.classList.add("mostrar");
             
             fetch(`/obter-info-texto/${id_imagem}/`)
                 .then(response => response.json())
@@ -22,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     abaLateral.querySelector(".imagem-display").style.backgroundImage = `url(${data.imagem_url})`
                     abaLateral.querySelector("textarea").textContent = data.texto;
 
-                    abaLateral.classList.add("mostrar");
                 });
         });
     });

@@ -54,7 +54,7 @@
         </a>
         <div class="meus-textos__group">
             {% for texto in textos %}
-            <div data-texto="{{ texto.id }}" class="meus-textos__card">
+            <div data-texto="{{ texto.image_id }}" class="meus-textos__card">
                 <img src="../media/{{ texto.image.file }}">
                 <div class="meus-textos__descricao">
                     <h3>{{texto.name}}</h3>

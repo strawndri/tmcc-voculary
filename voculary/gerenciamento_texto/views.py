@@ -146,10 +146,10 @@ def MeusTextosView(request):
         return render(request, 'gerenciamento_texto/meus_textos.html', {'paginados': paginados})
         
 
-from django.http import JsonResponse
-
 def obter_info_texto(request, id_imagem):
-    texto = DigitizedText.objects.get(imagem__id_imagem=id_image)
+    texto = DigitizedText.objects.get(image__image_id=id_imagem)
+
+    print(id_imagem)
     
     data = {
         'nome': texto.name,
@@ -163,9 +163,9 @@ def obter_info_texto(request, id_imagem):
 from django.views.decorators.http import require_POST
 
 @require_POST
-def desativar_texto(request, texto_id):
+def desativar_texto(request, id):
     try:
-        texto = DigitizedText.objects.get(id=texto_id) 
+        texto = DigitizedText.objects.get(image_id=id) 
         
         texto.is_active = False
         texto.save()
@@ -183,10 +183,10 @@ def desativar_texto(request, texto_id):
 
 from django.http import JsonResponse
 
-def alterar_nome_texto(request, texto_id):
+def alterar_nome_texto(request, id):
     if request.method == 'POST':
         novo_nome = request.POST.get('novo_nome')
-        texto = TextoDigitalizado.objects.get(id=texto_id)
+        texto = TextoDigitalizado.objects.get(image_id=id)
         
         # nome não foi modificado - manter!
         if novo_nome == texto.name:
