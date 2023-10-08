@@ -1,0 +1,21 @@
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.conteudo .conteudo__titulo-principal {
+    font-size: 3rem;
+}
+
+.conteudo .conteudo__descricao {
+    width: 40vw;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.conteudo .imagem-404 {
+    width: 12rem;
+}

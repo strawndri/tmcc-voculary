@@ -1,4 +1,4 @@
-{% if request.path == '/' or request.path == '/home' %}
+{% if request.path == '/' or request.path == '/home' or erro_404 %}
 <header class="cabecalho cabecalho-home">
     <nav class="header__nav">
         {% include 'partials/_logo.html' %}
