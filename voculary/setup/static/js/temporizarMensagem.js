@@ -26,12 +26,13 @@ function mostrarMensagem(mensagem, tipo='success') {
     }
 
     const divMensagem = document.createElement('div');
-    divMensagem.classList.add('mensagem', 'ativo', tipo);
+    divMensagem.classList.add('mensagem', 'ativo');
 
     const divConteudo = document.createElement('div');
     divConteudo.classList.add('mensagem__conteudo');
     const iIcon = document.createElement('i');
     iIcon.classList.add('icon');
+    iIcon.dataset.status = tipo;
     const spanTexto = document.createElement('span');
     spanTexto.classList.add('mensagem__conteudo__texto');
     spanTexto.textContent = mensagem;
@@ -44,6 +45,7 @@ function mostrarMensagem(mensagem, tipo='success') {
 
     const divProgresso = document.createElement('div');
     divProgresso.classList.add('progresso');
+    divProgresso.dataset.status = tipo;
 
     divMensagem.appendChild(divConteudo);
     divMensagem.appendChild(iFechar);

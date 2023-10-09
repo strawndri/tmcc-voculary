@@ -4,7 +4,6 @@ function getCookie(name) {
         let cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -19,8 +18,8 @@ const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config,
 const confirmarAcao = document.getElementById('confirmarAcao');
 const cancelarAcao = document.getElementById('cancelarAcao');
 let csrftoken = getCookie('csrftoken');
-let mensagemConfirmacao = ''; // Armazena a mensagem de confirmação
-let textoIdParaAcao = null; // Armazena o ID do texto para ação
+let mensagemConfirmacao = '';
+let textoIdParaAcao = null;
 
 let perfilForm = document.querySelector('.perfil-form');
 
@@ -28,7 +27,7 @@ let currentForm = null;
 
 btnAcao.forEach(button => {
     button.addEventListener('click', function(event) {
-        event.preventDefault(); // Impedir o comportamento padrão do botão
+        event.preventDefault(); 
 
         modal.style.display = 'block';
         mensagemConfirmacao = this.getAttribute('data-message'); 

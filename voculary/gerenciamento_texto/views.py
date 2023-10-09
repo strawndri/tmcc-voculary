@@ -149,8 +149,6 @@ def MeusTextosView(request):
 def obter_info_texto(request, id_imagem):
     texto = DigitizedText.objects.get(image__image_id=id_imagem)
 
-    print(id_imagem)
-    
     data = {
         'nome': texto.name,
         'data_geracao': texto.creation_date.strftime('%d/%m/%Y'),
@@ -163,14 +161,15 @@ def obter_info_texto(request, id_imagem):
 from django.views.decorators.http import require_POST
 
 @require_POST
-def desativar_texto(request, id):
+def desativar_texto(request, texto_id):
+    print(id)
     try:
-        texto = DigitizedText.objects.get(image_id=id) 
+        texto = DigitizedText.objects.get(image_id=texto_id) 
         
         texto.is_active = False
         texto.save()
 
-        if texto.imagem:  
+        if texto.image:  
             imagem = texto.image
             imagem.is_active = False
             imagem.save()
@@ -183,12 +182,11 @@ def desativar_texto(request, id):
 
 from django.http import JsonResponse
 
-def alterar_nome_texto(request, id):
+def alterar_nome_texto(request, texto_id):
     if request.method == 'POST':
         novo_nome = request.POST.get('novo_nome')
-        texto = TextoDigitalizado.objects.get(image_id=id)
+        texto = DigitizedText.objects.get(image_id=texto_id)
         
-        # nome não foi modificado - manter!
         if novo_nome == texto.name:
             return JsonResponse({'success': True})
 
@@ -201,7 +199,7 @@ def alterar_nome_texto(request, id):
         
             texto.name = novo_nome
             texto.save()
-
+            
             return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
 
     return JsonResponse({'success': False})
