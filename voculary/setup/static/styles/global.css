@@ -294,3 +294,9 @@ h1, h2, h3 {
 .nome-arquivo input::placeholder {
   opacity: 0.7;
 }
+
+.errorlist {
+  color: var(--rosa-400);
+  font-size: .8rem;
+  margin-bottom: 2rem;
+}

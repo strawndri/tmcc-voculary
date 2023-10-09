@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.password_validation import validate_password
 
 class LoginForms(forms.Form):
     email_login = forms.CharField(
@@ -43,7 +44,7 @@ class CadastroForms(forms.Form):
         label='Senha',
         required = True,
         max_length = 255,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(),
     )
 
     senha_2 = forms.CharField(
@@ -53,13 +54,18 @@ class CadastroForms(forms.Form):
         widget=forms.PasswordInput()
     )
 
+    def clean_senha_1(self):
+        senha_1 = self.cleaned_data.get('senha_1')
+        validate_password(senha_1)
+        return senha_1
+
     def clean_senha_2(self):
         senha_1 = self.cleaned_data.get('senha_1')
         senha_2 = self.cleaned_data.get('senha_2')
 
         if senha_1 and senha_2:
             if senha_1 != senha_2:
-                raise forms.ValidationError('Oops! Parece que as senhas estão diferentes. Tente novamente.')
+                raise forms.ValidationError('Os dois campos de senha não correspondem.')
             else:
                 return senha_2
 
@@ -99,12 +105,17 @@ class PerfilSenhaForms(forms.ModelForm):
         model = User
         fields = [] 
 
+    def clean_senha_nova(self):
+        senha_nova = self.cleaned_data.get('senha_nova')
+        validate_password(senha_nova, self.instance) 
+        return senha_nova
+
     def clean(self):
         cleaned_data = super().clean()
         senha_nova = cleaned_data.get('senha_nova')
         senha_nova_confirmacao = cleaned_data.get('senha_nova_confirmacao')
         
         if senha_nova != senha_nova_confirmacao:
-            raise forms.ValidationError('Confirmação de senha não corresponde.')
+            raise forms.ValidationError('Os dois campos de senha não correspondem.')
 
         return cleaned_data

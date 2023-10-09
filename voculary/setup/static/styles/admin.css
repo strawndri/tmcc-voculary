@@ -344,12 +344,6 @@ ul.timelist, .timelist li {
     gap: 2rem;
 }
 
-.errorlist {
-    color: var(--rosa-400);
-    font-size: .8rem;
-    margin-bottom: 2rem;
-}
-
 .lista-filtros {
     background-color: var(--preto-50); 
     border: 1px solid var(--preto-200);

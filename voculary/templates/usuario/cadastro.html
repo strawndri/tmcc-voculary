@@ -26,6 +26,7 @@
                 {% if field.label == 'Senha' or field.label == 'Confirmação de senha' %}
                 <button type="button" class="formulario__botao--senha field.id">
                 </button>
+                {{ field.errors }}
                 {% endif %}
             </label>
             {% if forloop.counter == 2 %}
