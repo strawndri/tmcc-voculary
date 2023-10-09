@@ -3,7 +3,7 @@
 
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
-{% block extrastyle %} <!-- Sobrescrevendo os estilos padrões -->
+{% block extrastyle %} 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
@@ -11,10 +11,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/global.css' %}">
 <link rel="stylesheet" href="{% static 'styles/cabecalho.css' %}">
+<link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
 <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
 <link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
 <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
 <link rel="stylesheet" href="{% static 'styles/mensagem.css' %}">
+{% block estilos %}{% endblock %}
 <script src="{% static 'js/abrirMenu.js' %}"></script>
 <script src="{% static 'js/temporizarMensagem.js' %}"></script>
 {% endblock %}
@@ -37,23 +39,28 @@
 {% block content %}
 <div class="pagina-inicial">
     {% include 'partials/_header.html' %}
-    {% block messages %}
-    {% for message in messages %}
-    <div class="mensagem {% if message.tags %}ativo{% endif %}">
-        <div class="mensagem__conteudo">
-            <i class="icon" data-status="{{ message.tags }}"></i>
-            <span class="mensagem__conteudo__texto">
-                {{ message }}
-            </span>
-        </div>
-        <i class="fechar"></i>
-        <div class="progresso" data-status="{{ message.tags }}"></div>
-    </div>
-    {% endfor %}
-    {% endblock messages %}
     <main class="principal">
+        {% block messages %}
+        {% for message in messages %}
+        <div class="mensagem {% if message.tags %}ativo{% endif %}">
+            <div class="mensagem__conteudo">
+                <i class="icon" data-status="{{ message.tags }}"></i>
+                <span class="mensagem__conteudo__texto">
+                    {{ message }}
+                </span>
+            </div>
+            <i class="fechar"></i>
+            <div class="progresso" data-status="{{ message.tags }}"></div>
+        </div>
+        {% endfor %}
+        {% endblock messages %}
+        {% if user.is_authenticated %}
         {% include 'partials/_menu_lateral.html' %}
+        {% endif %}
+        {% block conteudo %}
+        {% endblock %}
     </main>
+    {% include 'partials/_rodape.html' %}
 </div>
 {% endblock %}
 

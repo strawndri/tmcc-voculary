@@ -1,4 +1,7 @@
-{% if request.path == '/' or request.path == '/home' or erro_404 %}
+{% if request.path == '/login' or request.path == '/cadastro'%}
+<header class="">
+</header>
+{% elif request.path == '/' or request.path == '/home' or user.is_authenticated == False %}
 <header class="cabecalho cabecalho-home">
     <nav class="header__nav">
         {% include 'partials/_logo.html' %}
@@ -12,14 +15,6 @@
             <a class="header__nav__link botao-vazado" href="{% url 'cadastro' %}">Cadastrar</a>
         </div>
     </nav>
-</header>
-{% elif request.path == '/login' or request.path == '/cadastro'%}
-<header class="">
-    <!-- <div class="centralize">
-        <a href="{% url 'home' %}">
-            {% include 'partials/_logo.html' %}
-        </a>
-    </div> -->
 </header>
 {% else %}
 <header class="cabecalho">

@@ -26,7 +26,7 @@
 <div class="pagina-inicial">
     {% include 'partials/_header.html' %}
     <main class="principal">
-        {% if request.path != '/' and request.path != '/home' and request.path != '/cadastro' and request.path != '/login' and request.path != '/admin/login' %}
+        {% if user.is_authenticated %}
         {% include 'partials/_menu_lateral.html' %}
         {% endif %}
         <div class="overlay">

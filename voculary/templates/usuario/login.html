@@ -20,9 +20,8 @@
             {{ field.label }}
             {{ field }}
             {% if field.label == 'Senha' %}
-            <button type="button" class="formulario__botao--senha">
-            </button>
-            <a class="formulario__link senha" href="">Esqueci minha senha</a>
+            <button type="button" class="formulario__botao--senha"></button>
+            <a class="formulario__link senha"  href="{% url 'password_reset' %}">Esqueci minha senha</a>
             {% endif %}
         </label>
         {% endfor %}

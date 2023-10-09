@@ -82,17 +82,23 @@ h1, h2, h3 {
   font-size: 1.2rem;
 }
 
+.conteudo__texto p{
+  margin: 1rem 0;
+  line-height: 1.5rem;
+}
+
 .conteudo__descricao {
   color: var(--preto-500);
   font-size: 0.9rem;
   margin: .5rem 0 3rem 0;
 }
 
-.pagina-principal {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    min-height: 100vh; 
+.pagina-inicial {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  flex: 1;
 }
 
 .botao, .botao-vazado, .botao2 {
@@ -106,6 +112,8 @@ h1, h2, h3 {
   transition: 1s all;
   color: var(--preto-800);
   font-family: var(--font-conteudo);
+  display: inline-block;
+  text-decoration: none;
 }
 
 .botao,

@@ -6,6 +6,7 @@
     padding: 8rem 4rem 2rem 4rem;
     background: url('../assets/backgrounds/bg-footer.svg') no-repeat;
     background-size: cover;
+    margin-top: auto;
 }
 
 .rodape__texto {
