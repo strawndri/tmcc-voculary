@@ -118,9 +118,9 @@ h2 {
 }
 
 .conteudo__contato__paragrafo {
-    color: var(--azul-900);
+    color: var(--preto-800);
     margin-bottom: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 500;
     line-height: 2rem;
 }
@@ -137,8 +137,8 @@ h2 {
 
 .img {
     position: absolute;
-    top: 28rem;
-    right: -16rem;
+    top: 24rem;
+    right: -18rem;
     transform: translate(-50%, -50%);
     overflow: hidden;
 }

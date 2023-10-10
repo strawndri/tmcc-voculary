@@ -46,8 +46,8 @@
     transition: all .5s;
 }
 
-.formulario__label .mensagem {
-    height: 8rem;
+.formulario__label textarea {
+    height: 10rem;
 }
 
 .formulario__label input:hover,
