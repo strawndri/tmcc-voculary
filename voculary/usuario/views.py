@@ -53,18 +53,23 @@ def LoginView(request):
             senha = form['senha'].value()
 
             Usuario = auth.get_user_model()
-            usuario = Usuario.objects.filter(email=email, is_active=True).first()
+            
+            
+            usuario = Usuario.objects.filter(email=email).first()
 
-            if usuario is not None and usuario.check_password(senha):
-                usuario.ultimo_login = datetime.now()
-                usuario.save()
-
-                auth.login(request, usuario)
-                messages.success(request, f'Olá, {usuario.first_name}! O login foi realizado com sucesso.')
-                return redirect('/gerar-textos')
+            if usuario.is_active == False:
+                enviar_email_reativacao(usuario)
             else:
-                messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
-                return redirect('login')
+                if usuario is not None and usuario.check_password(senha):
+                    usuario.ultimo_login = datetime.now()
+                    usuario.save()
+
+                    auth.login(request, usuario)
+                    messages.success(request, f'Olá, {usuario.first_name}! O login foi realizado com sucesso.')
+                    return redirect('/gerar-textos')
+                else:
+                    messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
+                    return redirect('login')
 
     return render(request, 'usuario/login.html', {'form': form})
 
@@ -116,3 +121,26 @@ def LogoutView(request):
     messages.success(request, f'Até mais! O logout foi efetuado com sucesso.')
     auth.logout(request)
     return redirect('/home')
+
+# reativação de conta
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core.mail import send_mail
+
+def enviar_email_reativacao(user):
+    token_generator = PasswordResetTokenGenerator()
+    token = token_generator.make_token(user)
+    link = f"http://127.0.0.1:8000/reactivate/{user.pk}/{token}"
+    send_mail(
+        'Reativar sua conta',
+        f'Clique no link para reativar sua conta: {link}',
+        'voculary.projeto@example.com',
+        [user.email],
+        fail_silently=False,
+    )
+
+def reativar_conta(request, user_id, token):
+    user = User.objects.get(pk=user_id)
+    token_generator = PasswordResetTokenGenerator()
+    if user and not user.is_active and token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
