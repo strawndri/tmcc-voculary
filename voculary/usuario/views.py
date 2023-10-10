@@ -129,18 +129,24 @@ from django.core.mail import send_mail
 def enviar_email_reativacao(user):
     token_generator = PasswordResetTokenGenerator()
     token = token_generator.make_token(user)
-    link = f"http://127.0.0.1:8000/reactivate/{user.pk}/{token}"
+    link = f"http://127.0.0.1:8000/reativar/{user.pk}/{token}"
     send_mail(
         'Reativar sua conta',
-        f'Clique no link para reativar sua conta: {link}',
-        'voculary.projeto@example.com',
-        [user.email],
-        fail_silently=False,
+        f'''Oi, {user.first_name}!
+Clique no link para reativar sua conta: {link}
+Atencionsamente,
+Equipe Voculary''',
+'voculary.projeto@example.com',
+    [user.email],
+    fail_silently=False,
     )
 
 def reativar_conta(request, user_id, token):
     user = User.objects.get(pk=user_id)
     token_generator = PasswordResetTokenGenerator()
+    
     if user and not user.is_active and token_generator.check_token(user, token):
         user.is_active = True
         user.save()
+
+    return render(request, 'usuario/reativar_conta.html')

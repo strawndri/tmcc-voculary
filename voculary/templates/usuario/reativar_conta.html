@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block conteudo %}
+<section class="conteudo padding">
+    <h2 class="conteudo__titulo-principal">Conta reativada</h2>
+    <p class="conteudo__descricao">Sua conta foi reativada. Você já pode fazer login novamente.</p>
+    <a href="{% url 'login' %}" class="botao">Entrar com a minha conta</a>
+</section>
+{% endblock %}
