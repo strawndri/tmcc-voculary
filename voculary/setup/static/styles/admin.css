@@ -384,6 +384,9 @@ ul.timelist, .timelist li {
     border-top: 1px solid var(--preto-200)
 }
 
+.lista-filtros li {
+    list-style-type: none;
+}
 
 .lista-filtros li a{
     display: inline-block;
