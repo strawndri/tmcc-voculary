@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Perfil{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/perfil.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Perfil | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}">
-</head>
 <section class="conteudo padding">
     <h2 class="conteudo__titulo-principal">Meu perfil</h2>
     <p class="conteudo__descricao">Visualize suas informações e as edite quando achar necesssário.</p>

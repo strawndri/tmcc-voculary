@@ -2,38 +2,29 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, password=None):
+    """Gerenciador personalizado para criar usuários e superusuários usando o e-mail como campo de login."""
+
+    def create_user(self, email, first_name, last_name, password=None, **extra_fields):
+        """Cria e retorna um usuário com um e-mail, nome, sobrenome e senha."""
         if not email:
             raise ValueError('O usuário deve ter um endereço de e-mail.')
-        if not first_name:
-            raise ValueError('O usuário deve ter um primeiro nome.')
-        if not last_name:
-            raise ValueError('O usuário deve ter um último nome.')
-
+        
         email = self.normalize_email(email)
+        
         user = self.model(
             email=email,
             first_name=first_name,
             last_name=last_name,
+            **extra_fields
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user
 
     def create_superuser(self, email, first_name, last_name, password=None):
+        """Cria e retorna um superusuário com um e-mail, nome, sobrenome e senha."""
+        return self.create_user(email, first_name, last_name, password, is_staff=True, is_admin=True)
 
-        user = self.create_user(
-            email=email,
-            first_name=first_name,
-            last_name=last_name,
-            password=password
-        )
-
-        user.is_staff = True
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
 
 class User(AbstractBaseUser):
     first_name = models.CharField(max_length=100, verbose_name="Primeiro Nome")
@@ -52,10 +43,17 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
 
+    @property
+    def is_superuser(self):
+        """Determine se o usuário é um superadministrador."""
+        return self.is_admin
+
     def has_perm(self, perm, obj=None):
+        """Verifica se o usuário tem permissão específica."""
         return True
 
     def has_module_perms(self, app_label):
+        """Verifica se o usuário tem permissões para o módulo/app."""
         return True
 
     class Meta:

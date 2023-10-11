@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Cadastro{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Cadastro | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
-</head>
+
 <section class="conteudo padding">
     <section class="conteudo__formulario">
         <form class="formulario" action="{% url 'cadastro' %}" 

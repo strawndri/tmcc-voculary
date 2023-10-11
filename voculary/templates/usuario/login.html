@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Login{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Login | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/usuario.css' %}">
-</head>
 <section class="conteudo padding">
     <section class="conteudo__formulario">
         
@@ -31,5 +33,4 @@
 </section>
 </section>
 <script src="{% static 'js/visualizarSenha.js' %}"></script>
-
 {% endblock %}
