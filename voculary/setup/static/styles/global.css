@@ -57,6 +57,7 @@ body {
     background-color: var(--preto-50);
     color: var(--preto-800);
     font-family: var(--fonte-conteudo);
+    font-size: 16px;
 }
 
 input {
