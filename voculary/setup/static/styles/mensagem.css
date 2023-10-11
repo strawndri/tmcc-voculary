@@ -134,6 +134,11 @@
     animation: progresso 5s linear forwards;
 }
 
+.progresso.finalizado:before {
+    right: 100%;
+    animation: none;
+}
+
 @keyframes progresso {
     100% {
         right: 100%;

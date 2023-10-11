@@ -12,6 +12,6 @@ urlpatterns = [
     path('redefinir-senha/concluido/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('redefinir/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('redefinir/concluido/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path('reativar/<int:user_id>/<str:token>/', views.reativar_conta, name='reactivate_account'),
+    path('reativar/<int:user_id>/<str:token>/', views.ReativarContaView, name='reactivate_account'),
 ]
 

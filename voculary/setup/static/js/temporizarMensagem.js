@@ -12,6 +12,13 @@ function iniciarTemporizadorMensagem(mensagemElement) {
         }, 300);
     });
 
+    const divProgresso = mensagemElement.querySelector('.progresso');
+    
+    // Adicione uma classe 'finalizado' após a animação do progresso
+    divProgresso.addEventListener('animationend', () => {
+        divProgresso.classList.add('finalizado');
+    });
+
     setTimeout(() => {
         mensagemElement.classList.remove('ativo');
         setTimeout(() => {
@@ -19,6 +26,7 @@ function iniciarTemporizadorMensagem(mensagemElement) {
         }, 300);
     }, 5000);
 }
+
 
 function mostrarMensagem(mensagem, tipo='success') {
     if (!mensagem) {

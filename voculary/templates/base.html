@@ -54,9 +54,7 @@
         {% block conteudo %}
         {% endblock %}
     </main>
-    {% if request.path == '/' or request.path == '/home' %}
     {% include 'partials/_rodape.html' %}
-    {% endif %}
 </div>
 <script src="{% static 'js/abrirMenu.js' %}"></script>
 <script src="{% static 'js/habilitarBotoes.js' %}"></script>
