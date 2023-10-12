@@ -10,6 +10,7 @@
         <h2 class="conteudo__inicio__destaque">
             Explore palavras em suas imagens, extraia textos com precisão e facilidade!
         </h2>
+        <img src="{% static '/assets/desenhos/apresentacao.svg' %}">
     </section>
     <section id="sobre-nos" class="conteudo__secao conteudo__sobre-nos padding">
         <h2 class="conteudo__titulo">
@@ -27,24 +28,85 @@
             Nossos serviços
         </h2>
         <div class="conteudo__servicos__itens">
-            <span class="conteudo__servicos__item">
-                <p class="numero">01</p>
-                <p class="texto">Fazer upload e compartilhar links de arquivos de imagem</p>
-            </span>
-            <span class="conteudo__servicos__item">
-                <p class="numero">02</p>
-                <p class="texto">Visualizar conversões dos conteúdos de imagens em texto</p>
-            </span>
-            <span class="conteudo__servicos__item">
-                <p class="numero">03</p>
-                <p class="texto">Salvar, fazer download e copiar textos extraídos de imagens</p>
-            </span>
-            <span class="conteudo__servicos__item">
-                <p class="numero">04</p>
-                <p class="texto">Visualizar o histórico dos últimos textos gerados</p>
-            </span>
+            <div class="coluna esquerda">
+                <span class="conteudo__servicos__item">
+                    <h3 class="titulo">Upload simples</h3>
+                    <p class="texto">Faça o envio de imagens facilmente por upload local ou através de links.</p>
+                </span>
+                <span class="conteudo__servicos__item">
+                    <h3 class="titulo">Armazenamento flexível</h3>
+                    <p class="texto">Após a extração de textos de imagens, você pode salvá-los, baixá-los ou copiá-los.</p>
+                </span>            
+            </div>
+            <div class="centro">
+                <div class="centro__linha"></div>
+                <img class="centro__imagem" src="{% static '/assets/icones/upload.svg' %}"/>
+                <div class="centro__linha"></div>
+                <img class="centro__imagem" src="{% static '/assets/icones/conversao.svg' %}"/>
+                <div class="centro__linha"></div>
+                <img class="centro__imagem" src="{% static '/assets/icones/salvar.svg' %}"/>
+                <div class="centro__linha"></div>
+            </div>            
+            <div class="coluna direita">
+                <span class="conteudo__servicos__item">
+                    <h3 class="titulo">Conversão precisa</h3>
+                    <p class="texto">Realize extração de textos presentes em imagens com alta precisão.</p>
+                </span>
+            </div>
         </div>
     </section>
+    <section id="duvidas" class="conteudo__secao conteudo__duvidas padding">
+        <h2 class="conteudo__titulo">Dúvidas frequentes</h2>
+        <div class="faq-item">
+            <input type="checkbox" id="q1">
+            <label for="q1">
+                <span class="toggle-icon"></span>
+                Como funciona o processo de extração de texto das imagens?
+            </label>
+            <p>Utilizamos uma tecnologia de OCR (Reconhecimento Óptico de Caracteres) avançada que identifica os caracteres presentes em sua imagem e os transforma em texto legível.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q2">
+            <label for="q2">
+                <span class="toggle-icon"></span>
+                Quais formatos de imagem são suportados pelo site?
+            </label>
+            <p>Suportamos os formatos de imagem mais comuns, incluindo JPG, PNG, TIFF, e BMP. Se você tiver um formato específico, entre em contato conosco.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q3">
+            <label for="q3">
+                <span class="toggle-icon"></span>
+                O site é seguro? Minhas imagens serão mantidas em privacidade?
+            </label>
+            <p>Sim, levamos a privacidade de nossos usuários muito a sério. As imagens são processadas e depois removidas de nossos servidores após um curto período de tempo.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q4">
+            <label for="q4">
+                <span class="toggle-icon"></span>
+                Existe um limite de tamanho para o upload de imagens?
+            </label>
+            <p>Não, de todo modo, recomendados um máximo de 10MB por imagem. Se você precisa processar uma imagem maior, considere reduzir seu tamanho ou entrar em contato conosco para soluções personalizadas.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q5">
+            <label for="q5">
+                <span class="toggle-icon"></span>
+                A extração de texto funciona com qualquer tipo de escrita e em qualquer idioma?
+            </label>
+            <p>Nosso sistema é otimizado para reconhecer uma ampla variedade de escritas e idiomas. No entanto, alguns estilos de caligrafia ou idiomas menos comuns podem não ser reconhecidos perfeitamente.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q6">
+            <label for="q6">
+                <span class="toggle-icon"></span>
+                O que acontece se o texto não for extraído corretamente?
+            </label>
+            <p> Embora nosso sistema seja altamente preciso, algumas imagens, especialmente aquelas com baixa qualidade ou com texto sobreposto em fundos complexos, podem não ser perfeitamente processadas. Recomendamos que você verifique o texto extraído e faça ajustes conforme necessário.</p>
+        </div>
+    </section>    
+    
     <section id="contato" class="conteudo__secao conteudo__contato padding">
         <div class="conteudo__contato__box">
             <h2 class="conteudo__titulo">Contato</h2>

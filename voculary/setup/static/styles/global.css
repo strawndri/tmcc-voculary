@@ -30,7 +30,7 @@
 
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  --fonte-titulo: 'Quicksand', sans-serif;
+  --fonte-titulo: 'Lexend', sans-serif;
   --fonte-conteudo: 'Poppins', sans-serif;
 }
 
@@ -67,7 +67,7 @@ input {
 h1, h2, h3 {
     font-family: var(--fonte-titulo);
     color: var(--azul-900);
-    font-weight: 700;
+    font-weight: 500;
     /* margin: 4rem 0 3rem 0; */
 }
 
@@ -102,7 +102,7 @@ h1, h2, h3 {
   flex: 1;
 }
 
-.botao, .botao-vazado, .botao2 {
+.botao, .botao-vazado, .botao2, .botao-neutro {
   display: flex;
   padding: 1em 1.8em;
   border-radius: 10px;
@@ -112,13 +112,15 @@ h1, h2, h3 {
   font-weight: 500;
   transition: 1s all;
   color: var(--preto-800);
+  font-weight: 500;
   font-family: var(--font-conteudo);
   display: inline-block;
   text-decoration: none;
 }
 
 .botao,
-.botao-vazado {
+.botao-vazado,
+.botao-neutro {
   margin: 1rem 0 2rem 0;
 }
 
@@ -134,7 +136,8 @@ h1, h2, h3 {
 
 .botao:hover,
 .botao-vazado,
-.botao2 {
+.botao2,
+.botao-neutro {
     cursor: pointer;
 }
 
@@ -155,7 +158,6 @@ h1, h2, h3 {
 .logo__completa {
   width: 5rem;
 }
-
 
 .grupo__botoes {
   display: flex;
