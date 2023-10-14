@@ -1,28 +1,26 @@
 .cabecalho {
-    padding: 1rem 8rem;
+    padding: 1rem;
 }
 
 .cabecalho-home {
     background-color: var(--azul-50);
-    /* position: sticky; */
-    /* top: 0; */
-    /* z-index: 1; */
 }
 
 .header__nav {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
 }
 
-.header__nav__group a {
-    margin-left: 2.5rem;
-    color: var(--azul-900);
-    font-weight: 500;
+.header__nav__group {
+    display: flex;
+    gap: 5rem;
 }
 
-.header__nav__group a:hover {
-    border-bottom: 1px solid var(--azul-900);
+.header__nav__group a {
+    font-weight: 500;
+    color: var(--azul-900);
 }
 
 .header__nav__link {
@@ -37,4 +35,26 @@
 
 .header__nav__botoes .botao {
     background-color: var(--azul-100);
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 992px) {
+    .header__nav {
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+    
+    .header__nav__group {
+        justify-content: space-around;
+        gap: 0;
+        order: 2;
+        
+        width: 100%;
+        margin: 1rem 0 2rem 0;
+    }
+
+    .header__nav__botoes {
+        order: 1;
+    }
 }

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Home{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Home | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
-</head>
 <section class="conteudo">
     <section class="conteudo__inicio">
         <h2 class="conteudo__inicio__destaque">
@@ -117,14 +119,15 @@
                     </p>
                 </div>
                 <section class="conteudo__formulario">
-                    <form class="formulario" action="">
+                    <form class="formulario" method="POST" action="{% url 'enviar_email' %}">
+                        {% csrf_token %}
                         <label class="formulario__label">
                             E-mail:
-                            <input placeholder="exemplo@exemplo.com" required>
+                            <input name="email" placeholder="exemplo@exemplo.com" required>
                         </label>
                         <label class="formulario__label">
                             Como podemos te ajudar?
-                            <textarea placeholder="Escreva aqui a sua mensagem!"></textarea>
+                            <textarea name="mensagem" placeholder="Escreva aqui a sua mensagem!"></textarea>
                         </label>
                         <input class="formulario__botao botao" type="submit" value="Enviar">
                     </form>

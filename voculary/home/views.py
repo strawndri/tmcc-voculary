@@ -1,4 +1,32 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import redirect
+import re
 
 def home(request):
-    return render(request, 'home/index.html')
+
+    mostra_cabecalho_home = bool(re.match(r'^/?$|^/home/*?$', request.path))
+
+    context = {
+        'mostra_cabecalho_home': mostra_cabecalho_home,
+    }
+
+    return render(request, 'home/index.html', context)
+
+
+def enviar_email(request):
+    if request.method == "POST":
+
+        assunto = 'Mensagem de Usuário da Voculary'
+        mensagem = request.POST['mensagem']
+        destinatarios = ['voculary.projeto@gmail.com']
+        remetente = request.POST['email']
+        
+        mensagem = (
+        f"De: {remetente}\n"
+        f"Mensagem:\n{mensagem}"
+        )
+
+        send_mail(assunto, mensagem, '', destinatarios, fail_silently=False)
+        
+        return redirect('home')

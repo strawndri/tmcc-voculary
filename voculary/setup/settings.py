@@ -138,3 +138,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "voculary.projeto@gmail.com"
 EMAIL_HOST_PASSWORD = "tdlj amtt eiae gglb"
+
+APPEND_SLASH = True

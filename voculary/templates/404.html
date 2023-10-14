@@ -20,7 +20,6 @@
 </head>
 <body>
     <div class="pagina-inicial">
-        {% include 'partials/_cabecalho.html' %}
         <main class="principal">
             <section class="conteudo padding">
                 <img class="imagem-404" src="{% static 'assets/icones/404.svg' %}"/>
@@ -29,7 +28,6 @@
                 <a class="header__nav__link botao" href="{% url 'home' %}">Voltar para a página inicial</a>
             </section>
         </main>
-        {% include 'partials/_rodape.html' %}
     </div>
 </body>
 </html>

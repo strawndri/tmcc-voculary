@@ -104,7 +104,7 @@ h1, h2, h3 {
 
 .botao, .botao-vazado, .botao2, .botao-neutro {
   display: flex;
-  padding: 1em 1.8em;
+  padding: .8em 1.6em;
   border-radius: 10px;
   border: none;
   align-items: center;
@@ -303,3 +303,18 @@ h1, h2, h3 {
   font-size: .8rem;
   margin-bottom: 2rem;
 }
+
+/* Responsividade */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+      font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  body {
+      font-size: 16px;
+  }
+}
+
