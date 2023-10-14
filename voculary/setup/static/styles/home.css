@@ -3,8 +3,8 @@
     align-items: center;
     justify-content: space-around;
 
-    height: 80vh;
-    padding: 0 8rem;
+    height: 72vh;
+    padding: 0 8rem 2rem 8rem;
     border-radius: 0 0 200px 200px;
 
     background-color: var(--azul-50);
@@ -39,7 +39,6 @@
 .conteudo__paragrafo {
     margin: 0 2rem 2rem 2rem;
 
-    text-align: center;
     line-height: 1.8rem;
 }
 
@@ -61,7 +60,6 @@
     flex-direction: column;
     gap: 1rem;
 
-    width: 22rem;
     padding: 1rem .8rem;
     margin-bottom: 2rem;
     border-radius: 5px;
@@ -126,6 +124,7 @@
 }
 
 .texto {
+    word-wrap: break-word;
     box-sizing: border-box;
     border-radius: 5px;
 
@@ -142,6 +141,9 @@ h2 {
 }
 
 .conteudo__contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-top: 7rem;
 
     background: url('../assets/backgrounds/bg-contato.svg') no-repeat;
@@ -154,70 +156,18 @@ h2 {
 
     padding: 2rem 3rem;
     border-radius: 4px;
+    width: auto;
     
     background-color: var(--preto-50);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.conteudo__contato__textos {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.conteudo__contato__paragrafo {
-    margin-bottom: 1rem;
-
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 2rem;
-    color: var(--preto-800);
+    box-shadow: var(--sombra)
 }
 
 .conteudo__formulario form {
-    width: 28rem;
+    width: 100%;
 }
 
 .conteudo__formulario .botao {
     width: 100%;
-    padding: 1rem 1.8rem;
-
-    font-size: 1.1rem;
-}
-
-.img {
-    position: absolute;
-    top: 24rem;
-    right: -18rem;
-
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-}
-
-.img img:first-child {
-    width: 24rem;
-
-    animation: rotate 30s linear infinite;
-}
-
-.img img:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    
-    width: 15rem;
-
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 .conteudo__duvidas .faq-item {
@@ -275,3 +225,42 @@ h2 {
 .conteudo__duvidas .faq-item input[type="checkbox"]:checked + label .toggle-icon {
     transform: rotate(180deg);
 }
+
+/* Responsividade */
+
+@media only screen and (max-width: 1200px) {
+    .conteudo__inicio {
+        height: 50vh;
+        gap: 4rem;
+    }
+
+    .conteudo__inicio img {
+        width: 10rem;
+    }
+
+    .conteudo__inicio__destaque {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .conteudo__inicio {
+        flex-direction: column;
+        height: auto;
+        padding: 0 2rem 2rem 2rem;
+    }
+    .conteudo__inicio img {
+        width: 10rem;
+    }
+
+    .conteudo__inicio__destaque {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    
+}
+

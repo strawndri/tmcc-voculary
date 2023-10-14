@@ -111,32 +111,21 @@
     
     <section id="contato" class="conteudo__secao conteudo__contato padding">
         <div class="conteudo__contato__box">
-            <h2 class="conteudo__titulo">Contato</h2>
-            <div class="conteudo__contato__textos">
-                <div class="conteudo__paragrafos">
-                    <p class="conteudo__contato__paragrafo">
-                        A Voculary está pronta para te ouvir! Dúvidas, sugestões, problemas ou só um "olá", estamos aqui para conversar. Seu feedback é importante para nós, buscamos oferecer um excelente experiência. Contate-nos!
-                    </p>
-                </div>
-                <section class="conteudo__formulario">
-                    <form class="formulario" method="POST" action="{% url 'enviar_email' %}">
-                        {% csrf_token %}
-                        <label class="formulario__label">
-                            E-mail:
-                            <input name="email" placeholder="exemplo@exemplo.com" required>
-                        </label>
-                        <label class="formulario__label">
-                            Como podemos te ajudar?
-                            <textarea name="mensagem" placeholder="Escreva aqui a sua mensagem!"></textarea>
-                        </label>
-                        <input class="formulario__botao botao" type="submit" value="Enviar">
-                    </form>
-                    <div class="img">
-                        <img class="" src="{% static '/assets/desenhos/voculary.svg' %}">
-                        <img class="" src="{% static '/assets/logo/logo-2.svg' %}">
-                    </div>
-                </section>
-            </div>
+            <h2 class="conteudo__titulo">Entre em contato conosco!</h2>
+            <section class="conteudo__formulario">
+                <form class="formulario" method="POST" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <label class="formulario__label">
+                        E-mail:
+                        <input name="email" placeholder="exemplo@exemplo.com" required>
+                    </label>
+                    <label class="formulario__label">
+                        Como podemos te ajudar?
+                        <textarea name="mensagem" placeholder="Escreva aqui a sua mensagem!"></textarea>
+                    </label>
+                    <input class="formulario__botao botao" type="submit" value="Enviar">
+                </form>
+            </section>
         </div>
     </section>
 </section>

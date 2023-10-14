@@ -306,9 +306,13 @@ h1, h2, h3 {
 
 /* Responsividade */
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (max-width: 1023px) {
   body {
       font-size: 15px;
+  }
+
+  .padding {
+    padding: 0 2rem;
   }
 }
 
