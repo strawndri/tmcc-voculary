@@ -144,3 +144,25 @@
     width: auto;
 }
 
+/* Responsividade */
+
+@media only screen and (max-width: 1200px) {
+    .meus-textos__group {
+        flex-wrap: wrap;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .formulario {
+        flex-direction: column;
+    }
+    
+    .reconhecimento-texto__card {
+        width: 100%;
+    }
+
+    .meus-textos__card {
+        width: 100%;
+    }
+}

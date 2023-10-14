@@ -6,7 +6,7 @@
 .conteudo__formulario form {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     width: 24rem;
 }

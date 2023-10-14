@@ -18,7 +18,7 @@
             method="POST">
                 <input type="hidden" name="tipo-form" value="info_geral">
                 {% csrf_token %}
-                {% for field in form_gerais.visible_fields %}
+                {% for field in form_dados_gerais.visible_fields %}
                 <label class="formulario__label">
                     {{ field.label }}
                     {{ field }}
@@ -34,7 +34,7 @@
             <form class="formulario perfil-form" action="{% url 'perfil' %}" 
             method="POST">
                 {% csrf_token %}
-                {% for field in form_senha.visible_fields %}
+                {% for field in form_alterar_senha.visible_fields %}
                 <input type="hidden" name="tipo-form" value="senha">
                 <label class="formulario__label">
                     {{ field.label }}

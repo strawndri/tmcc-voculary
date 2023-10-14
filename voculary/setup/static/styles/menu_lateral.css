@@ -11,7 +11,7 @@
     box-sizing: border-box;
     border: 1px solid var(--preto-200);
     background-color: var(--preto-100);
-    z-index: 1;
+    z-index: 2;
 }
     
 .menu-lateral__navegacao {
@@ -19,7 +19,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
@@ -108,4 +107,12 @@
 
 .menu-lateral.open .menu-label {
     display: inline-block;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 768px) {
+    .menu-lateral.open {
+        width: 100%;
+    }
 }
