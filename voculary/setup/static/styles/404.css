@@ -9,12 +9,13 @@
 
 .conteudo .conteudo__titulo-principal {
     font-size: 3rem;
+    font-weight: 500;
 }
 
 .conteudo .conteudo__descricao {
-    width: 40vw;
     text-align: center;
     line-height: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .conteudo .imagem-404 {

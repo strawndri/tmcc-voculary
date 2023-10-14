@@ -1,5 +1,5 @@
 {% load static %}
-{% if request.path == '/login' or request.path == '/cadastro' %}
+{% if request.path == '/login/' or request.path == '/cadastro/' %}
 <footer></footer>
 {% elif user.is_authenticated == False %}
 <footer class="rodape">

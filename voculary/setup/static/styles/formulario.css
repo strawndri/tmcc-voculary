@@ -99,3 +99,51 @@
 .formulario__botao--senha-ativo {
     background-image: url('../assets/icones/olho-ativo.svg');
 }
+
+/* Estilos base mantidos */
+
+@media only screen and (max-width: 576px) {
+    .conteudo__formulario form {
+        flex-direction: column; 
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+
+    .conteudo__formulario {
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .conteudo__formulario form {
+        flex-direction: column; 
+        width: 100%;
+    }
+
+    .formulario__label {
+        margin-bottom: 1rem;
+    }
+
+    .formulario__botao--senha {
+        right: 1rem;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+    .conteudo__formulario h2 {
+        font-size: 1.4rem; 
+        margin-bottom: 1em;
+    }
+
+    .formulario__label {
+        font-size: 1rem;
+    }
+
+    .formulario__label input,
+    .formulario__label textarea {
+        font-size: 16px;
+    }
+}
