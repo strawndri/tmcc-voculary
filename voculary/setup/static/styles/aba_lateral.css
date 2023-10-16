@@ -91,3 +91,15 @@
 .aba-lateral__secao .botoes {
     margin-top: 1rem;
 }
+
+/* Responsividade */
+
+@media screen and (max-width: 768px) {
+    .aba-lateral {
+        width: 80%; 
+        right: -100%;
+    }
+    .aba-lateral.mostrar {
+        right: 0;
+    }
+}
