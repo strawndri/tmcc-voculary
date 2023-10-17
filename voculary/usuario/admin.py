@@ -48,13 +48,15 @@ class AdminSitePersonalizado(admin.AdminSite):
 
         # Usuários que ingressaram neste mês
         inicio_mes = date.today().replace(day=1)
-        usuarios_mes = User.objects.filter(date_joined__gte=inicio_mes).count()
+        usuarios_mes = User.objects.filter(date_registered=inicio_mes).count()
 
         # Usuários que ingressaram nesta semana
         inicio_semana = date.today() - timedelta(days=date.today().weekday())
-        usuarios_semana = User.objects.filter(date_joined__gte=inicio_semana).count()
+        usuarios_semana = User.objects.filter(date_registered=inicio_semana).count()
 
         context.update({
+            'total_textos': str(DigitizedText.objects.count()).zfill(2),
+            'tempo_medio_processamento': str(round(DigitizedText.objects.aggregate(Avg('processing_time'))['processing_time__avg'], 2 )).zfill(2),
             'total_usuarios_ativos': str(total_usuarios_ativos).zfill(2),
             'usuarios_mes': str(usuarios_mes).zfill(2),
             'usuarios_semana': str(usuarios_semana).zfill(2),

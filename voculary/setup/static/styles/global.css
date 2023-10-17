@@ -18,6 +18,7 @@
 
   --azul-50: #DCEBF2;
   --azul-100: #A8CEDE;
+  --azul-200: #6CAECA;
   --azul-400: #007EB0;
   --azul-500: #006BA6;
   --azul-800: #00406E;
@@ -144,7 +145,8 @@ h1, h2, h3 {
 .botao2 {
   width: 50%;
   background-color: var(--verde-200);
-  margin: 1rem 0 0 0;
+  margin: 1.8rem 0 .5rem 0;
+  padding: .8em 1.6em;
 }
 
 .logo {

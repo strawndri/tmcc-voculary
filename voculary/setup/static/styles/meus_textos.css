@@ -154,7 +154,7 @@
 }
 
 .custom-checkbox {
-    /* position: relative; */
+    position: relative;
     cursor: pointer;
     user-select: none;
     display: flex;
@@ -172,15 +172,16 @@
     height: 1.2rem;
     width: 1.2rem;
     border-radius: 5px;
-    border: 1px solid var(--preto-300)
+    border: 1px solid var(--azul-100)
 }
   
 .custom-checkbox:hover input ~ .checkmark {
-    background-color: var(--preto-50);
+    background-color: var(--azul-50);
 }
 
 .custom-checkbox input:checked ~ .checkmark {
-    background-color: var(--preto-100);
+    background-color: var(--azul-200);
+    border: 1px solid var(--azul-200)
 }
   
 .checkmark:after {
@@ -194,11 +195,11 @@
 }
   
 .custom-checkbox .checkmark:after {
-    left: 6px;
-    top: 3px;
+    left: 7px;
+    top: 4px;
     width: 4px;
     height: 8px;
-    border: solid var(--preto-400);
+    border: solid var(--preto-50);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
@@ -210,6 +211,8 @@
 
 .tabela__acoes__div {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     gap: 2rem;
 }
 

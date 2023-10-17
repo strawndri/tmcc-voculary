@@ -1,3 +1,7 @@
+.conteudo__formulario {
+    width: 30%;
+}
+
 .formulario__label input,
 .formulario__label textarea {
     margin: .5rem 0 .5rem 0;
@@ -17,3 +21,11 @@
 .botao, .botao-vazado {
     margin: .5rem 0 .5rem 0;
 }
+
+/* Responsividade */
+@media only screen and (max-width: 768px) {
+    .conteudo__formulario {
+        width: 100%;
+    }
+}
+

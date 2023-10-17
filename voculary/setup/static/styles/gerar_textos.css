@@ -7,6 +7,7 @@
 
 .reconhecimento-texto__card {
     width: 50%;
+    height: 32rem;
 }
 
 .reconhecimento-texto__imagem {
@@ -32,7 +33,7 @@
 }
 
 .reconhecimento-texto__card .texto {
-    height: 20rem;
+    height: 19.5rem;
     cursor: default;
 }
 
