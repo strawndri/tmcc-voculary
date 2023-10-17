@@ -1,91 +1,91 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Meus textos{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
+<link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Minhas pastas | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}"> -->
-    <link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
-</head>
 <section class="conteudo conteudo__meus-textos padding">
     <h2 class="conteudo__titulo-principal">Meus textos</h2>
     <p class="conteudo__descricao">Espaço único para você guardar e organizar seus textos e suas imagens.</p>
     <table class="tabela">
         <thead class="tabela__header">
             <tr>
-                <th class="tabela__checkbox"></th> <!-- Coluna de checkbox -->
+                <th class="tabela__checkbox"></th>
                 <th class="tabela__imagem"></th>
                 <th class="tabela__nome-arquivo">Nome do texto</th>
                 <th class="tabela__data-criacao">Data de criação</th>
                 <th class="tabela__acoes"></th>
             </tr>
-            </thead>
-                        <tbody class="tabela__body">
-                            {% for texto in paginados %}
-                            <tr>
-                                <td class="tabela__checkbox">
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td> 
-                                <td class="tabela__imagem"><img src="../media/{{ texto.image.file }}"></td>
-                                <td class="tabela__nome-arquivo tabela__body__item nome-arquivo" data-texto="{{ texto.image_id }}" data-title="Nome do texto">{{texto.name}}</td>
-                                <td class="tabela__data-criacao" data-title="Data de criação">{{texto.creation_date|date:"d/m/Y"}}</td>
-                                <td class="tabela__acoes">
-                                    <div class="tabela__acoes__div">
-                                        <button class="botao-excluir" data-texto="{{ texto.image_id }}" data-message="Tem certeza de que deseja excluir este texto e imagem?"></button>
-                                        <button class="botao-renomear tabela__botao-renomear" data-texto="{{ texto.image_id }}"></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody> 
-                    </table>
-                    <div class="tabela__footer">
-
-                        <div class="anterior">
-                            {% if paginados.number > 1 %}
-                            <a class="botao-paginacao anterior" href="{% if paginados.has_previous %}?page={{ paginados.previous_page_number }}{% endif %}">
-                                <img src="{% static 'assets/icones/seta.svg' %}">
-                                <p>Anterior</p>
-                            </a>
-                            {% else %}
-                            <span class="botao-paginacao botao-paginacao--desabilitado">
-                                <img src="{% static 'assets/icones/seta.svg' %}">
-                                <p>Anterior</p>
-                            </span>
-                            {% endif %}
-                        </div>
-                        <div class="paginas" colspan="4">
-                            {% for i in paginados.paginator.page_range %}
-                            {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > paginados.paginator.num_pages|add:"-3" or paginados.number == i %}
-                            {% if paginados.number == i %}
-                            <span class="paginas__numero atual">{{ i }}</span>
-                            {% else %}
-                            <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
-                            {% endif %}
-                            {% elif forloop.counter == 4 or forloop.counter == paginados.paginator.num_pages|add:"-2" %}
-                            <span class="paginas__numero">...</span>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
-                        
-                        <div class="proximo">
-                            {% if paginados.number != paginados.paginator.num_pages%}
-                            <a class="botao-paginacao" href="{% if paginados.has_next %}?page={{ paginados.next_page_number }}{% endif %}">
-                                <p>Próximo</p>
-                                <img src="{% static 'assets/icones/seta.svg' %}">
-                            </a>
-                            {% else %}
-                            <span class="botao-paginacao botao-paginacao--desabilitado">
-                                <p>Próximo</p>
-                                <img src="{% static 'assets/icones/seta.svg' %}">
-                            </span>
-                            {% endif %}
-                        </div>
-                    </div>       
-                    {% include 'partials/_aba_lateral.html' %}
-                </section>
-                {% endblock %}
-                
+        </thead>
+        <tbody class="tabela__body">
+            {% for texto in paginados %}
+            <tr>
+                <td class="tabela__checkbox">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </td> 
+                <td class="tabela__imagem"><img src="../media/{{ texto.image.file }}"></td>
+                <td class="tabela__nome-arquivo tabela__body__item nome-arquivo" data-texto="{{ texto.image_id }}" data-title="Nome do texto">{{texto.name}}</td>
+                <td class="tabela__data-criacao" data-title="Data de criação">{{texto.creation_date|date:"d/m/Y"}}</td>
+                <td class="tabela__acoes">
+                    <div class="tabela__acoes__div">
+                        <button class="botao-excluir" data-texto="{{ texto.image_id }}" data-message="Tem certeza de que deseja excluir este texto e imagem?"></button>
+                        <button class="botao-renomear tabela__botao-renomear" data-texto="{{ texto.image_id }}"></button>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody> 
+    </table>
+    <div class="tabela__footer">
+        
+        <div class="anterior">
+            {% if paginados.number > 1 %}
+            <a class="botao-paginacao anterior" href="{% if paginados.has_previous %}?page={{ paginados.previous_page_number }}{% endif %}">
+                <img src="{% static 'assets/icones/seta.svg' %}">
+                <p>Anterior</p>
+            </a>
+            {% else %}
+            <span class="botao-paginacao botao-paginacao--desabilitado">
+                <img src="{% static 'assets/icones/seta.svg' %}">
+                <p>Anterior</p>
+            </span>
+            {% endif %}
+        </div>
+        <div class="paginas" colspan="4">
+            {% for i in paginados.paginator.page_range %}
+            {% if forloop.first or forloop.last or forloop.counter <= 3 or forloop.counter > paginados.paginator.num_pages|add:"-3" or paginados.number == i %}
+            {% if paginados.number == i %}
+            <span class="paginas__numero atual">{{ i }}</span>
+            {% else %}
+            <a class="paginas__numero" href="?page={{ i }}">{{ i }}</a>
+            {% endif %}
+            {% elif forloop.counter == 4 or forloop.counter == paginados.paginator.num_pages|add:"-2" %}
+            <span class="paginas__numero">...</span>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="proximo">
+            {% if paginados.number != paginados.paginator.num_pages%}
+            <a class="botao-paginacao" href="{% if paginados.has_next %}?page={{ paginados.next_page_number }}{% endif %}">
+                <p>Próximo</p>
+                <img src="{% static 'assets/icones/seta.svg' %}">
+            </a>
+            {% else %}
+            <span class="botao-paginacao botao-paginacao--desabilitado">
+                <p>Próximo</p>
+                <img src="{% static 'assets/icones/seta.svg' %}">
+            </span>
+            {% endif %}
+        </div>
+    </div>       
+    {% include 'partials/_aba_lateral.html' %}
+</section>
+{% endblock %}

@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block tituloPagina %}Gerar textos{% endblock %}
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}">
+<link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-<head>
-    <title>Gerar textos | Voculary</title>
-    <link rel="stylesheet" href="{% static 'styles/gerar_textos.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/aba_lateral.css' %}">
-</head>
 <section class="conteudo padding">
     <section class="conteudo__reconhecimento-texto">
         <h2 class="conteudo__titulo-principal">Novo reconhecimento de texto</h2>
