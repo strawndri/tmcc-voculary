@@ -46,6 +46,8 @@
 
 .tabela__body .tabela__nome-arquivo {
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tabela__body button {
@@ -59,12 +61,12 @@
     cursor: pointer;
 }
 
-.tabela__body .tabela__renomear button {
+.tabela__body .botao-renomear {
     background-image: url('../assets/icones/renomear.svg');
     background-size: cover;
 }
 
-.tabela__body .tabela__excluir button {
+.tabela__acoes .botao-excluir {
     background-image: url('../assets/icones/excluir.svg');
     background-size: cover;
 }
@@ -203,26 +205,94 @@
 
 .tabela {
     width: 100%;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
-.tabela .tabela__checkbox {
-    width: 2%;
+.tabela__acoes__div {
+    display: flex;
+    gap: 2rem;
 }
 
-.tabela .tabela__imagem {
-    width: 5%;
-}
+/* Responsividade */
 
-.tabela .tabela__nome-arquivo {
-    width: 70%;
-}
+@media (max-width: 768px) {
+    .tabela {
+        display: block;
+        background-color: var(--preto-50);
+        border: none;
+    }
 
-.tabela .tabela__data-criacao {
-    width: 15%;
-}
+    .tabela__header {
+        display: none;
+    }
 
-.tabela .tabela__excluir,
-.tabela .tabela__renomear {
-    width: 3%;
-} 
+    .tabela__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tabela__body tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.625rem;
+        border-radius: 5px;
+        position: relative;
+        border: 1px solid var(--preto-200);
+        background-color: #FFF;
+    }
+
+    .tabela__body .tabela__checkbox {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        z-index: 1;
+    }
+
+    .tabela__body td:not(.tabela__checkbox):not(.tabela__imagem) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
+
+    .tabela__body td:not(.tabela__checkbox)::before {
+        content: attr(data-title);
+        font-weight: 500;
+        color: var(--preto-700);
+        font-size: .8rem;
+    }
+    
+    .tabela__body .tabela__checkbox {
+        border: none;
+    }
+    .tabela__body .tabela__imagem {
+        display: flex;
+        justify-content: center; /* Centraliza a imagem */
+        align-items: center;
+        height: 6rem;
+    }
+
+    .tabela__body .tabela__imagem img {
+        display: block;
+        margin: 0.5rem auto;
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .tabela__body .tabela__acoes{
+        width: auto;
+    }
+
+    .tabela__body td:last-child {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    .tabela__body .tabela__acoes__div {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        border-top: none;
+    }
+}

@@ -1,6 +1,3 @@
-.conteudo {
-    width: 60rem;
-}
 .conteudo__admin-header {
     display: flex;
     align-items: center;
@@ -349,7 +346,7 @@ ul.timelist, .timelist li {
     border: 1px solid var(--preto-200);
     padding: 1rem;
     border-radius: 5px;
-    width: 12rem;
+    width: 20rem;
     height: auto;
 }
 
@@ -455,4 +452,22 @@ ul.timelist, .timelist li {
 .acoes select option:focus {
     background-color: var(--azul-50);
     color: var(--azul-800);
+}
+
+/* Responsividade */
+@media only screen and (max-width: 768px) {
+    .conteudo__admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .textos__relatorio {
+        flex-direction: column;
+        height: 5rem;
+    }
+
+    .relatorio__item {
+        width: auto;
+    }
 }

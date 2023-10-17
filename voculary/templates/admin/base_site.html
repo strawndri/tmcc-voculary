@@ -1,16 +1,16 @@
 {% extends "admin/base.html" %}
 {% load static %}
-
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block extrastyle %} 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/jpg" href="{% static 'assets/favicon/favicon.png' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/global.css' %}">
 <link rel="stylesheet" href="{% static 'styles/cabecalho.css' %}">
+<link rel="stylesheet" href="{% static 'styles/formulario.css' %}">
 <link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
 <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
 <link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
@@ -38,7 +38,7 @@
 {% block app_list %}{% endblock %}
 {% block content %}
 <div class="pagina-inicial">
-    {% include 'partials/_header.html' %}
+    {% include 'partials/_cabecalho.html' %}
     <main class="principal">
         {% block messages %}
         {% for message in messages %}

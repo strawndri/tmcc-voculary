@@ -21,7 +21,7 @@
         {% endfor %}
     </tbody>
 </table>
-<section class="tabela__footer">
+<div class="tabela__footer">
 
     <div class="anterior">
     {% if cl.page_num > 1 %}
@@ -63,5 +63,23 @@
         </span>
         {% endif %}
     </div>
-</section>
+</div>
 {% endif %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var headers = document.querySelectorAll("thead.tabela__header th");
+    
+    var headerTexts = Array.prototype.map.call(headers, function(header) {
+        return header.textContent || header.innerText;
+    });
+
+    var rows = document.querySelectorAll("tbody.tabela__body tr");
+    
+    rows.forEach(function(row) {
+        var cells = row.querySelectorAll("td");
+        cells.forEach(function(cell, index) {
+            cell.setAttribute("data-title", headerTexts[index]);
+        });
+    });
+});
+</script>

@@ -1,6 +1,7 @@
 .conteudo__formulario {
     display: flex;
     align-items: center;
+    width: 60%;
 }
 
 .conteudo__formulario form {
@@ -8,7 +9,6 @@
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
-    width: 24rem;
 }
 
 .conteudo__secao-perfil form {
