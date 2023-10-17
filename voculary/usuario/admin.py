@@ -5,6 +5,8 @@ from django.db.models import Count, Avg
 from .models import User
 from gerenciamento_texto.models import DigitizedText
 
+from datetime import date, timedelta
+
 class UsuarioAdmin(admin.ModelAdmin):
     def data_formatada(self, obj):
         return obj.date_registered.strftime('%d/%m/%Y')
@@ -40,10 +42,22 @@ class AdminSitePersonalizado(admin.AdminSite):
 
     def index(self, request, extra_context=None):
         context = extra_context or {}
+
+        # Total de usuários ativos
+        total_usuarios_ativos = User.objects.filter(is_active=True).count()
+
+        # Usuários que ingressaram neste mês
+        inicio_mes = date.today().replace(day=1)
+        usuarios_mes = User.objects.filter(date_joined__gte=inicio_mes).count()
+
+        # Usuários que ingressaram nesta semana
+        inicio_semana = date.today() - timedelta(days=date.today().weekday())
+        usuarios_semana = User.objects.filter(date_joined__gte=inicio_semana).count()
+
         context.update({
-            'total_textos': str(DigitizedText.objects.count()).zfill(2),
-            'tempo_medio_processamento': str(round(DigitizedText.objects.aggregate(Avg('processing_time'))['processing_time__avg'], 2)).zfill(2),
-            'total_usuarios': str(User.objects.count()).zfill(2),
+            'total_usuarios_ativos': str(total_usuarios_ativos).zfill(2),
+            'usuarios_mes': str(usuarios_mes).zfill(2),
+            'usuarios_semana': str(usuarios_semana).zfill(2),
         })
 
         idioma_mais_comum = DigitizedText.objects.values('language').annotate(total=Count('language')).order_by('-total').first()

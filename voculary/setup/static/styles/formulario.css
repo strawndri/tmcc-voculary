@@ -1,7 +1,6 @@
 .conteudo__formulario {
     display: flex;
     align-items: center;
-    width: 60%;
 }
 
 .conteudo__formulario form {

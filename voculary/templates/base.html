@@ -35,9 +35,7 @@
     {% include 'partials/_cabecalho.html' %}
     
     <main class="principal">
-        {% if user.is_authenticated %}
         {% include 'partials/_menu_lateral.html' %}
-        {% endif %}
         
         <div class="overlay">
             <div class="loading">

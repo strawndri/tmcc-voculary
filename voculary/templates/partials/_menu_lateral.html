@@ -1,4 +1,6 @@
 {% load static %}
+{% if user.is_authenticated %}
+{% if not esconde_barra_lateral %}
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
         <a class="menu-lateral__navegacao__link-icone" href="{% url 'home' %}">
@@ -30,3 +32,5 @@
     </nav>
     <button id="toggleMenu" class="toggle-button"></button>
 </section>
+{% endif %}
+{% endif %}

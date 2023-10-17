@@ -1,4 +1,4 @@
-{% if request.path == '/login/' or request.path == '/cadastro/'%}
+{% if mostra_cabecalho_usuario %}
 <header class="">
 </header>
 {% elif mostra_cabecalho_home or user.is_authenticated == False %}

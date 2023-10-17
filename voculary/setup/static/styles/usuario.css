@@ -15,12 +15,13 @@ body {
 .conteudo {
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden; 
 }
 
 .conteudo__formulario {
     justify-content: center;
-    width: 100vw;
+    width: 25rem;
     height: 100vh;
 }
 

@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -15,6 +16,10 @@ def CadastroView(request):
     """
     Permite que um novo usuário se cadastre no sistema.
     """
+
+    if request.user.is_authenticated:
+        return redirect('gerar-textos')
+
     form = CadastroForms(request.POST or None)
 
     if form.is_valid():
@@ -43,7 +48,12 @@ def CadastroView(request):
         messages.success(request, 'Eba! O cadastro foi realizado com sucesso.')
         return redirect('login')
 
-    return render(request, 'usuario/cadastro.html', {'form': form})
+    contexto = {
+        'form': form,
+        'mostra_cabecalho_usuario': bool(re.match(r'^/cadastro/*?$', request.path))
+    }
+
+    return render(request, 'usuario/cadastro.html', contexto)
 
 def LoginView(request):
     """
@@ -81,7 +91,12 @@ def LoginView(request):
         messages.error(request, 'Oops! Usuário ou senha incorretos, tente novamente.')
         return redirect('login')
 
-    return render(request, 'usuario/login.html', {'form': form})
+    contexto = {
+        'form': form,
+        'mostra_cabecalho_usuario': bool(re.match(r'^/login/*?$', request.path))
+    }
+
+    return render(request, 'usuario/login.html', contexto)
 
 @login_required(login_url='/login')
 def PerfilView(request):

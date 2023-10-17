@@ -9,6 +9,7 @@ def home(request):
 
     context = {
         'mostra_cabecalho_home': mostra_cabecalho_home,
+        'esconde_barra_lateral': True
     }
 
     return render(request, 'home/index.html', context)
