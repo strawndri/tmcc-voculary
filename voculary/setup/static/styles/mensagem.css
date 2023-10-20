@@ -145,3 +145,10 @@
     }
 }
 
+/* Responsividade */
+
+@media only screen and (max-width: 768px) {
+    .mensagem {
+        width: 70%;
+    }   
+}
