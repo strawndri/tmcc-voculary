@@ -5,27 +5,34 @@
                 {% for line in fieldset %}
                     <div class="formulario__label{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
                         {% for field in line %}
-                        {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-                        {% if field.is_checkbox %}
-                        <label class="custom-checkbox">
-                            {{ field.field }}
-                            <span class="checkmark"></span>
-                                        {{ field.label_tag }}
-                                    </label>
-                                {% else %}
-                                    {{ field.label_tag }}
-                                    {% if field.is_readonly %}
-                                    <div class="readonly">{{ field.contents }}</div>
-                                    {% else %}
+                            {% if not line.fields|length_is:'1' and not field.is_readonly %}
+                                {{ field.errors }}
+                            {% endif %}
+                            {% if field.is_checkbox %}
+                                <label class="custom-checkbox">
                                     {{ field.field }}
-                                    {% endif %}
-                                    {% endif %}
-                                    {% if field.field.help_text %}
-                                    <div class="help"{% if field.field.id_for_label %} id="{{ field.field.id_for_label }}_helptext"{% endif %}>
-                                        {{ field.field.help_text|safe }}
-                                    </div>
-                                    {% endif %}
-                                    {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+                                    <span class="checkmark"></span>
+                                    {{ field.label_tag }}
+                                </label>
+                            {% else %}
+                                {{ field.label_tag }}
+                                {% if field.field.name == "password" %}
+                                    <input type="password" name="{{ field.field.name }}" value="{{ field.field.value|default:'' }}" id="{{ field.field.id_for_label }}">
+                                    <button type="button" class="formulario__botao--senha"></button>
+                                {% elif field.is_readonly %}
+                                    <div class="readonly">{{ field.contents }}</div>
+                                {% else %}
+                                    {{ field.field }}
+                                {% endif %}
+                            {% endif %}
+                            {% if field.field.help_text %}
+                                <div class="help"{% if field.field.id_for_label %} id="{{ field.field.id_for_label }}_helptext"{% endif %}>
+                                    {{ field.field.help_text|safe }}
+                                </div>
+                            {% endif %}
+                            {% if line.fields|length_is:'1' %}
+                                {{ line.errors }}
+                            {% endif %}
                         {% endfor %}
                     </div>
                 {% endfor %}

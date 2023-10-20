@@ -24,8 +24,9 @@
   --azul-800: #00406E;
   --azul-900: #002558;
 
-  --rosa-300: #EA6387;
-  --rosa-400: #E4436E;
+  --rosa-100: #ffc6d3;
+  --rosa-300: #ff556f;
+  --rosa-400: #ff0049;
 
   --amarelo-400: #e5ce22;
 
@@ -322,5 +323,11 @@ h1, h2, h3 {
   body {
       font-size: 16px;
   }
+}
+
+.lista__item{
+  margin: .5rem 0 0 1.5rem;
+  list-style: disc;
+  color: var(--preto-400);
 }
 

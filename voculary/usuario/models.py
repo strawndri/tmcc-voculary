@@ -31,7 +31,7 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=100, verbose_name="Último Nome")
     email = models.EmailField(max_length=255, unique=True, verbose_name="E-mail")
     is_active = models.BooleanField(default=True, verbose_name="Ativo")
-    date_registered = models.DateTimeField(auto_now_add=True, verbose_name="Data de Registro")
+    date_joined = models.DateTimeField(auto_now_add=True, verbose_name="Data de Registro")
     is_staff = models.BooleanField(default=False, verbose_name="É Staff?")
     is_admin = models.BooleanField(default=False, verbose_name="É Admin?")
 

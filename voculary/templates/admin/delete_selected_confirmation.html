@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    <script src="{% static 'admin/js/cancel.js' %}" async></script>
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation delete-selected-confirmation{% endblock %}
+
+{% block conteudo %}
+<div class="padding">
+    
+    <h2 class="conteudo__titulo-principal">Excluir usuário</h2>
+    <p class="conteudo__descricao">Tem certeza de que deseja apagar o user selecionado? Todos os seguintes objetos e seus itens relacionados serão removidos:</p>
+{% if perms_lacking %}
+    <ul>
+    {% for obj in perms_lacking %}
+        <li>{{ obj }}</li>
+    {% endfor %}
+    </ul>
+{% elif protected %}
+    <p>{% blocktranslate %}Deleting the selected {{ objects_name }} would require deleting the following protected related objects:{% endblocktranslate %}</p>
+    <ul>
+    {% for obj in protected %}
+        <li>{{ obj }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h2 class="conteudo__titulo-secundario">Usuários</h2>
+    {% for deletable_object_list in deletable_objects %}
+    <ul class="lista">
+        {% for email in deletable_object_list %}
+            <li class="lista__item">{{ email|cut:"User: "|cut:"'"|cut:"["|cut:"]"|safe }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+    <form method="post">{% csrf_token %}
+    <div>
+    {% for obj in queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
+    {% endfor %}
+    <input type="hidden" name="action" value="delete_selected">
+    <input type="hidden" name="post" value="yes">
+    <input type="submit" class="botao" value="{% translate 'Yes, I’m sure' %}">
+    <a href="{% url 'admin:index' %}" class="botao-vazado">{% translate "No, take me back" %}</a>
+    </div>
+    </form>
+{% endif %}
+</div>
+{% endblock %}
