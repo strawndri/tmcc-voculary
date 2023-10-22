@@ -89,6 +89,8 @@ confirmarAcao.addEventListener('click', function() {
     }
 });
 
+
+
 cancelarAcao.addEventListener('click', function() {
     modal.style.display = 'none';
 });

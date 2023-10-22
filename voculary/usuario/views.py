@@ -30,9 +30,8 @@ def CadastroView(request):
 
         if usuario:
             if not usuario.is_active:
-                enviar_email_reativacao(usuario)
-                messages.info(request, 'Um e-mail de reativação foi enviado para sua conta desativada.')
-                return redirect('cadastro')
+                messages.info(request, 'Puxa, parece que esse e-mail já existe e foi desativado. Caso queira recuperá-lo, acesse a página de Login.')
+                return redirect('login')
 
             messages.error(request, 'Ops, parece que este e-mail já existe! Tente novamente.')
             return redirect('cadastro')
@@ -65,22 +64,22 @@ def LoginView(request):
         return redirect('gerar-textos')
 
     form = LoginForms(request.POST or None)
+    modal_confirmacao_email = False
 
     if request.method == 'POST' and form.is_valid():
-        email = form.cleaned_data['email_login']
+        email = form.cleaned_data['email']
         senha = form.cleaned_data['senha']
         modeloUsuario = auth.get_user_model()
         usuario = modeloUsuario.objects.filter(email=email).first()
 
-        if usuario:
+        if usuario and usuario.check_password(senha):
             # Se o usuário está inativo, envia o e-mail de reativação
             if not usuario.is_active:
+                modal_confirmacao_email = True
                 enviar_email_reativacao(usuario)
-                messages.info(request, 'Um e-mail de reativação foi enviado para sua conta desativada.')
+                messages.info(request, 'Puxa, parece que esse e-mail já existe e foi desativado. Caso queira reativá-lo, te enviamos um e-mail!')
                 return redirect('login')
-
-            # Se a senha do usuário estiver correta, faz login
-            elif usuario.check_password(senha):
+            else:
                 usuario.ultimo_login = datetime.now()
                 usuario.save()
                 auth.login(request, usuario)
@@ -93,7 +92,8 @@ def LoginView(request):
 
     contexto = {
         'form': form,
-        'mostra_cabecalho_usuario': bool(re.match(r'^/login/*?$', request.path))
+        'mostra_cabecalho_usuario': bool(re.match(r'^/login/*?$', request.path)),
+        'modal_confirmacao_email': modal_confirmacao_email
     }
 
     return render(request, 'usuario/login.html', contexto)

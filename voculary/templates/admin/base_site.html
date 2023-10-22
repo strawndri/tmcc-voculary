@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
 <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
 <link rel="stylesheet" href="{% static 'styles/mensagem.css' %}">
+<link rel="stylesheet" href="{% static 'styles/modal_confirmacao.css' %}">
 {% block estilos %}{% endblock %}
 <script src="{% static 'js/abrirMenu.js' %}"></script>
 <script src="{% static 'js/temporizarMensagem.js' %}"></script>
@@ -59,6 +60,9 @@
         {% if user.is_authenticated %}
         {% include 'partials/_menu_lateral.html' %}
         {% endif %}
+
+        {% include 'partials/_modal_confirmacao.html' %}
+
         {% block conteudo %}
         {% endblock %}
     </main>

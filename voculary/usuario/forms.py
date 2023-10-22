@@ -4,7 +4,7 @@ from .models import User
 
 
 class LoginForms(forms.Form):
-    email_login = forms.CharField(label='E-mail', max_length=255)
+    email = forms.CharField(label='E-mail', max_length=255)
     senha = forms.CharField(label='Senha', max_length=255, widget=forms.PasswordInput())
 
 
