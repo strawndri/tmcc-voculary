@@ -9,7 +9,9 @@ urlpatterns = [
     re_path(r'^logout/?$', views.LogoutView, name='logout'),
     
     # Grupo de redefinição de senha
-    path('redefinir-senha/', auth_views.PasswordResetView.as_view(), name="password_reset"),
+    path('redefinir-senha/', auth_views.PasswordResetView.as_view(
+  html_email_template_name='registration/password_reset_html_email.html'
+), name="password_reset"),
     path('redefinir-senha/concluido/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('redefinir-senha/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('redefinir-senha/concluido/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
