@@ -7,7 +7,7 @@
             <img src="{% static '/assets/logo/logo-2.svg'%}" title="Logo Voculary">
             <span class="menu-label">Voculary</span>
         </a>
-        {% if user.is_admin %}
+        {% if user.is_admin or user.is_staff%}
         <a class="menu-lateral__navegacao__link {% if request.path == '/admin/' %}ativo{% endif %}" href="{% url 'admin:index' %}">
             <img src="{% static '/assets/icones/admin.svg'%}" title="Painel do Administrador">
             <span class="menu-label">Painel do Administrador</span>

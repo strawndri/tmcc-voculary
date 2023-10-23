@@ -16,8 +16,20 @@
             <tr>
                 <th class="tabela__checkbox"></th>
                 <th class="tabela__imagem"></th>
-                <th class="tabela__nome-arquivo">Nome do texto</th>
-                <th class="tabela__data-criacao">Data de criação</th>
+                <th class="tabela__nome-arquivo">
+                    Nome do texto
+                    <a href="?order={% if request.GET.order == "name_asc" %}name_desc{% else %}name_asc{% endif %}">
+                        <img src="{% static 'assets/icones/seta-2.svg' %}" 
+                             class="{% if request.GET.order == "name_desc" %}desc{% endif %}">
+                    </a>
+                </th>
+                <th class="tabela__data-criacao">
+                    Data de criação
+                    <a href="?order={% if request.GET.order == "date_asc" %}date_desc{% else %}date_asc{% endif %}">
+                        <img src="{% static 'assets/icones/seta-2.svg' %}" 
+                             class="{% if request.GET.order == "date_desc" %}desc{% endif %}">
+                    </a>
+                </th>
                 <th class="tabela__acoes"></th>
             </tr>
         </thead>

@@ -165,6 +165,23 @@
     gap: 2rem;
 }
 
+.tabela__nome-arquivo a,
+.tabela__data-criacao a  {
+    vertical-align: sub;
+    margin-left: .5rem;
+}
+
+.tabela__nome-arquivo a img, .tabela__data-criacao a img {
+    transform: rotate(0deg); 
+    width: 1rem;
+    opacity: 0.5;
+}
+
+.tabela__nome-arquivo a img.desc, .tabela__data-criacao a img.desc {
+    transform: rotate(180deg);
+}
+
+
 /* Responsividade */
 
 @media (max-width: 768px) {

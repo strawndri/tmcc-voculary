@@ -133,7 +133,19 @@ def salvar(imagem, nome_arquivo, texto, tempo_processamento, idioma, request):
 @login_required(login_url='/login')
 def MeusTextosView(request):
 
-    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True)
+    order = request.GET.get('order', 'name_asc')  # 'name_asc' é o padrão
+
+    ordering_map = {
+        "name_asc": "name",
+        "name_desc": "-name",
+        "date_asc": "creation_date",
+        "date_desc": "-creation_date"
+    }
+
+    order_by = ordering_map.get(order, 'name')
+    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(order_by)
+
+    # textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True)
 
     if len(textos) == 0:
         mensagem = 'Puxa! Parece que você ainda não salvou nenhum texto.'
