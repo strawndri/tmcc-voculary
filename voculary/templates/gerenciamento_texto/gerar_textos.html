@@ -68,5 +68,7 @@
         {% include 'partials/_aba_lateral.html' %}
     </section>
 </section>
-<script src="{% static 'js/carregarImagem.js' %}"></script>
+{% endblock %}
+{% block scriptsExtras %}
+    <script src="{% static 'js/carregarImagem.js' %}"></script>
 {% endblock %}

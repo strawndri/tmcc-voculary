@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tituloPagina %}Meus textos{% endblock %}
+
+{% block conteudo %}
+<section class="conteudo padding center">
+    <p class="aviso">
+        {{mensagem}}
+    </p>
+</section>
+{% endblock %}

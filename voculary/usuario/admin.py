@@ -10,6 +10,7 @@ from datetime import date, timedelta
 class UsuarioAdmin(admin.ModelAdmin):
     def data_formatada(self, obj):
         return obj.date_joined.strftime('%d/%m/%Y')
+        
     data_formatada.admin_order_field = 'date_joined'
     data_formatada.short_description = 'Data de registro'
 

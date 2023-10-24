@@ -149,7 +149,7 @@ def MeusTextosView(request):
 
     if len(textos) == 0:
         mensagem = 'Puxa! Parece que você ainda não salvou nenhum texto.'
-        return render(request, 'partials/_aviso.html', {'mensagem': mensagem})
+        return render(request, 'gerenciamento_texto/aviso.html', {'mensagem': mensagem})
     else:
         paginator = Paginator(textos, 10)
         page = request.GET.get('page')

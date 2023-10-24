@@ -1,9 +1,9 @@
 {% load static %}
 {% if mostra_cabecalho_usuario %}
-<footer></footer>
+    <footer></footer>
 {% elif user.is_authenticated == False %}
-<footer class="rodape">
-    <p class="rodape__texto">Voculary 2023 | Todos os direitos reservados</p>
-    <p class="rodape__texto">Desenvolvido com carinho por Andrieli Gonçalves</p>
-</footer>
+    <footer class="rodape">
+        <p class="rodape__texto">Voculary 2023 | Todos os direitos reservados</p>
+        <p class="rodape__texto">Desenvolvido com carinho por Andrieli Gonçalves</p>
+    </footer>
 {% endif %}
