@@ -11,10 +11,12 @@
 }
 
 .reconhecimento-texto__imagem {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+    
     transition: 1s all;
 }
 
@@ -46,10 +48,11 @@
 }
 
 .form__icone {
-    padding: .5em;
-    cursor: pointer;
     width: 1.2rem;
     height: 1.5rem;
+    padding: .5em;
+
+    cursor: pointer;
 }
 
 .conteudo__meus-textos {
@@ -58,15 +61,17 @@
 }
 
 .meus-textos__ver-mais {
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
     align-items: center;
     gap: .5rem;
-    color: var(--preto-700);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    
     font-weight: 500;
     text-decoration: none;
+    color: var(--preto-700);
 }
 
 .meus-textos__ver-mais:hover {
@@ -88,16 +93,18 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 1rem;
+
     margin-top: 10px; 
 }
 
 .meus-textos__card {
     display: flex;
     flex-direction: column;
+
     width: 20rem;
     height: 10rem;
-    border: 1px solid #ccc;
     border-radius: 10px;
+    border: 1px solid #ccc;
 }
 
 .meus-textos__card:hover {
@@ -105,10 +112,11 @@
 }
 
 .meus-textos__card img {
-    height: 8rem;
     overflow: hidden;
     object-fit: cover; 
     object-position: center;
+
+    height: 8rem;
     border-radius: 10px 10px 0 0;
 
     filter: brightness(90%)
@@ -118,7 +126,9 @@
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;
+
     max-width: 10rem; 
+
     font-family: var(--fonte-conteudo);
     font-weight: 500;
     color: var(--preto-900)
@@ -137,7 +147,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     margin: 1rem .5rem;
+    
     font-size: 0.8rem;
 }
 
@@ -146,7 +158,6 @@
 }
 
 /* Responsividade */
-
 @media only screen and (max-width: 1200px) {
     .meus-textos__group {
         flex-wrap: wrap;

@@ -3,13 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     padding: 8rem 4rem 2rem 4rem;
-    background-color: var(--azul-800);
     margin-top: auto;
+    background-color: var(--azul-800);
 }
 
 .rodape__texto {
-    color: var(--preto-50);
     padding-top: .5rem;
-    font-size: 0.8rem;;
+
+    font-size: 0.8rem;
+    color: var(--preto-50);
 }

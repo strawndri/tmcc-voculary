@@ -11,11 +11,12 @@
 }
 
 .conteudo__inicio__destaque {
+    width: 40rem;
+
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 4.5rem;
     color: var(--azul-900);
-    width: 40rem;
 }
 
 .conteudo__inicio img {
@@ -55,10 +56,11 @@
 }
 
 .conteudo__servicos__item {
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    position: relative;
 
     padding: 1rem .8rem;
     margin-bottom: 2rem;
@@ -105,7 +107,6 @@
 
     width: 2px;
     height: 40px;
-
     background-image: linear-gradient(to bottom, var(--azul-800) 50%, transparent 50%);
     background-repeat: repeat-y;
     background-size: 100% 4px;
@@ -119,7 +120,6 @@
     padding: .5rem;
     margin: 10px 0;
     border-radius: 50%;
-
     background-color: var(--azul-800);
 }
 
@@ -144,8 +144,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 7rem;
 
+    padding-top: 7rem;
     background: url('../assets/backgrounds/bg-contato.svg') no-repeat;
     background-position: 0 0;
     background-size: cover;
@@ -157,7 +157,6 @@ h2 {
     padding: 2rem 3rem;
     border-radius: 4px;
     width: auto;
-    
     background-color: var(--preto-50);
     box-shadow: var(--sombra)
 }
@@ -173,7 +172,6 @@ h2 {
 .conteudo__duvidas .faq-item {
     position: relative;
     margin-bottom: 1rem;
-
     border-bottom: 1px solid var(--preto-200);
 }
 
@@ -184,14 +182,15 @@ h2 {
 .conteudo__duvidas .faq-item label {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    
     position: relative;
-
-    background-color: var(--preto-50);
-    border-radius: 5px;
     z-index: 1;
+    
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--preto-50);
+    
     cursor: pointer;
-
     transition: background-color 0.3s ease;
 }
 
@@ -210,11 +209,11 @@ h2 {
 }
 
 .toggle-icon {
+    vertical-align: middle;
+
     width: 1rem;
     height: 1rem;
     margin-right: .5rem;
-    vertical-align: middle;
-
     background-image: url('../assets/icones/seta-2.svg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -227,7 +226,6 @@ h2 {
 }
 
 /* Responsividade */
-
 @media only screen and (max-width: 1200px) {
     .conteudo__inicio {
         height: 50vh;
@@ -247,6 +245,7 @@ h2 {
 @media only screen and (max-width: 768px) {
     .conteudo__inicio {
         flex-direction: column;
+        
         height: auto;
         padding: 0 2rem 2rem 2rem;
     }
@@ -255,10 +254,11 @@ h2 {
     }
 
     .conteudo__inicio__destaque {
+        width: 100%;
+
         font-size: 2rem;
         line-height: 2.5rem;
         text-align: center;
-        width: 100%;
     }
 
     

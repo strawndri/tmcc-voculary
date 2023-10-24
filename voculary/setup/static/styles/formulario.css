@@ -15,33 +15,40 @@
 }
 
 .conteudo__formulario h2 {
-    text-align: center;
     width: 100%;
-    font-size: 1.2rem;
     margin-bottom: 1.2em;
+
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .formulario__label {
-    position: relative;
     display: flex;
     flex-direction: column;
-    color: var(--preto-700);
-    font-size: 0.9rem;
+
+    position: relative;
+    
     width: 100%;
+    
+    font-size: 0.9rem;
+    color: var(--preto-700);
 }
 
 .formulario__label input,
 .formulario__label textarea {
+    display: inline;
+    flex-grow: 1;
+
     padding: .6rem;
     margin: .5rem 0 .5rem 0;
     border-radius: 10px;
-    background-color: var(--preto-50);
-    color: var(--preto-700);
     border: 1px solid var(--preto-300);
+    background-color: var(--preto-50);
+    
     font-size: 14px;
-    flex-grow: 1;
-    display: inline;
     font-family: var(--font-conteudo);
+    color: var(--preto-700);
+
     transition: all .5s;
 }
 
@@ -61,10 +68,10 @@
 } 
 
 .formulario__link {
+    font-size: 0.9rem;
+    font-weight: 500;
     text-decoration: none;
     color: var(--azul-500);
-    font-weight: 500;
-    font-size: 0.9rem;
 }
 
 .formulario button[disabled] {
@@ -85,22 +92,23 @@
     position: absolute;
     top: 2rem;
     right: .5rem;
-    background-image: url('../assets/icones/olho.svg');
-    opacity: 0.6;
-    background-size: cover;
+
     width: 1.5rem;
     height: 1.5rem;
     border: none;
-    cursor: pointer;
+    background-size: cover;
     background-color: transparent;
+    background-image: url('../assets/icones/olho.svg');
+    
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 .formulario__botao--senha-ativo {
     background-image: url('../assets/icones/olho-ativo.svg');
 }
 
-/* Estilos base mantidos */
-
+/* Responsividade */
 @media only screen and (max-width: 576px) {
     .conteudo__formulario form {
         flex-direction: column; 
@@ -131,7 +139,6 @@
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-
     .conteudo__formulario h2 {
         font-size: 1.4rem; 
         margin-bottom: 1em;

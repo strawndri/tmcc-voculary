@@ -1,24 +1,28 @@
 .modal-confirmacao {
     display: none;
+
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
+    
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.3);
-    z-index: 100;
 }
 
 .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: var(--preto-50);
+
     width: 80%;
     max-width: 400px;
+    padding: 20px;
     border-radius: 5px;
+    background-color: var(--preto-50);
+    
+    transform: translate(-50%, -50%);
 }
 
 .modal-content p {
@@ -27,7 +31,7 @@
 
 .modal__botoes {
     display:flex;
+    justify-content: flex-end;
     flex-direction: row;
     gap: 1rem;
-    justify-content: flex-end;
 }

@@ -27,19 +27,21 @@
 
 .usuarios__relatorio {
     flex-direction: column;
-    background-color: #FFF;
+
     padding: 1rem;
+    border: 1px solid var(--preto-200);
     border-radius: 5px;
-    border: 1px solid var(--preto-200)
+    background-color: #FFF;
 }
 
 .usuarios__relatorio .relatorio__item {
     display: flex;
-    border-bottom: 1px solid var(--preto-200);
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
     padding: .5rem 0;
+    border-bottom: 1px solid var(--preto-200);
 }
 
 .usuarios__relatorio .relatorio__item h3 {
@@ -47,9 +49,10 @@
 }
 
 .usuarios__relatorio .relatorio__item p {
+    padding: .5rem;
     border: 2px solid var(--preto-200);
     border-radius: 10px;
-    padding: .5rem;
+
     font-size: 1rem;
     font-weight: 600;
 }
@@ -58,21 +61,23 @@
     display: flex;
     justify-content: end;
     flex-direction: column;
+
     width: 18rem;
     height: 10rem;
-    background-color: #FFF;
-    border: 1px solid var(--azul-100);
-    border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
+    border: 1px solid var(--azul-100);
+    border-radius: 5px;
+    background-color: #FFF;
 }
 
 .textos__relatorio  .relatorio__item h4 {
+    margin-bottom: 10px;
+
     font-size: 2.5em;
     font-weight: 600;
     font-family: var(--fonte-titulo);
     color: var(--preto-900);
-    margin-bottom: 10px;
 }
 
 .textos__relatorio  .relatorio__item p {
@@ -101,13 +106,14 @@
 
 /* Estilos para DateTime */
 p.datetime {
-    line-height: 20px;
     margin: 0;
     padding: 0;
+    line-height: 20px;
 }
 
 .datetime span {
     white-space: nowrap;
+
     font-weight: normal;
     font-size: 0.6875rem;
     color: var(--preto-500);
@@ -121,12 +127,12 @@ p.datetime {
 }
 
 table p.datetime {
-    font-size: 0.6875rem;
     margin-left: 0;
     padding-left: 0;
+
+    font-size: 0.6875rem;
 }
 
-/* Estilos para Datetime Shortcuts */
 .datetimeshortcuts .clock-icon, 
 .datetimeshortcuts .date-icon {
     position: relative;
@@ -158,20 +164,22 @@ table p.datetime {
     color: var(--preto-500);
 }
 
-/* Estilos para Calendário */
+/* Calendário */
 .calendarbox, 
 .clockbox {
+    position: relative;
+    overflow: hidden;
+
     margin: 5px auto;
-    font-size: 0.75rem;
     width: 19em;
-    text-align: center;
     background: var(--body-bg);
-    color: var(--body-fg);
     border: 1px solid var(--preto-200);
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    position: relative;
+    
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--body-fg);
 }
 
 .clockbox {
@@ -193,19 +201,21 @@ table p.datetime {
 
 .calendar caption, .calendarbox h2 {
     margin: 0;
-    text-align: center;
-    border-top: none;
-    font-weight: 700;
-    font-size: 0.75rem;
     padding: .5rem 0;
-    color: var(--preto-800);
+    border-top: none;
     background: var(--verde-300);
+
+    color: var(--preto-800);
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .calendar th {
     padding: 8px 5px;
-    background: var(--darkened-bg);
     border-bottom: 1px solid var(--border-color);
+    background: var(--darkened-bg);
+
     font-weight: 400;
     font-size: 0.75rem;
     text-align: center;
@@ -213,12 +223,13 @@ table p.datetime {
 }
 
 .calendar td {
-    font-weight: 400;
-    font-size: 0.75rem;
-    text-align: center;
     padding: 0;
     border-top: 1px solid var(--hairline-color);
     border-bottom: none;
+
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-align: center;
 }
 
 .calendar td.selected a {
@@ -231,15 +242,18 @@ table p.datetime {
 }
 
 .calendar td.today a {
-    font-weight: 700;
     background-color: var(--verde-100);
     border-radius: 5px;
+
+    font-weight: 700;
 }
 
 .calendar td a, .timelist a {
     display: block;
-    font-weight: 400;
+
     padding: 6px;
+
+    font-weight: 400;
     text-decoration: none;
     color: var(--body-quiet-color);
 }
@@ -256,11 +270,12 @@ table p.datetime {
 }
 
 .calendarnav {
+    margin: 0;
+    padding: 1px 3px;
+
     font-size: 0.625rem;
     text-align: center;
     color: #ccc;
-    margin: 0;
-    padding: 1px 3px;
 }
 
 .calendarnav a:link, #calendarnav a:visited,
@@ -269,21 +284,24 @@ table p.datetime {
 }
 
 .calendar-shortcuts {
-    background: var(--body-bg);
-    color: var(--body-quiet-color);
-    font-size: 0.6875rem;
-    line-height: 11px;
-    border-top: 1px solid var(--hairline-color);
     padding: 8px 0;
+    background: var(--body-bg);
+    border-top: 1px solid var(--hairline-color);
+    
+    line-height: 11px;
+    font-size: 0.6875rem;
+    color: var(--body-quiet-color);
 }
 
 .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
     display: block;
+
     position: absolute;
     top: 8px;
+    text-indent: -9999px;
+
     width: 15px;
     height: 15px;
-    text-indent: -9999px;
     padding: 0;
 }
 
@@ -310,9 +328,10 @@ table p.datetime {
 .calendar-cancel {
     margin: 0;
     padding: 4px 0;
-    font-size: 0.75rem;
     background: #eee;
     border-top: 1px solid var(--border-color);
+
+    font-size: 0.75rem;
     color: var(--body-fg);
 }
 
@@ -346,12 +365,12 @@ ul.timelist, .timelist li {
 }
 
 .lista-filtros {
-    background-color: var(--preto-50); 
-    border: 1px solid var(--preto-200);
-    padding: 1rem;
-    border-radius: 5px;
     width: 20rem;
+    padding: 1rem;
     height: auto;
+    border: 1px solid var(--preto-200);
+    border-radius: 5px;
+    background-color: var(--preto-50); 
 }
 
 .lista-filtros h2 {
@@ -360,9 +379,10 @@ ul.timelist, .timelist li {
 }
 
 .lista-filtros__limpar {
-    font-size: 1rem;
     margin-top: 10px;
     margin-bottom: 15px;
+
+    font-size: 1rem;
     font-weight: 500;
 }
 
@@ -391,8 +411,10 @@ ul.timelist, .timelist li {
 
 .lista-filtros li a{
     display: inline-block;
+
     width: 100%;
     padding: .2rem 0 .2rem .5rem; 
+
     text-decoration: none;
     color: var(--preto-600); 
 }
@@ -404,20 +426,22 @@ ul.timelist, .timelist li {
 
 .lista-filtros li.selected a{
     background-color: var(--preto-100); 
-    color: var(--preto-700); 
+
     font-weight: 600;
+    color: var(--preto-700); 
 }
 
 .acoes {
-    border-radius: 5px;
     display: flex;
     align-items: center;
+
     margin: 1rem 0;
+    border-radius: 5px;
 }
 
 .acoes label {
-    color: var(--preto-700);
     margin-right: 10px;
+    color: var(--preto-700);
 }
 
 .acoes .botao {
@@ -426,11 +450,13 @@ ul.timelist, .timelist li {
 }
 
 .acoes select {
-    background-color: var(--preto-100);
-    border: 1px solid var(--preto-300);
-    border-radius: 5px;
     padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--preto-300);
+    background-color: var(--preto-100);
+
     color: var(--preto-700);
+    
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }

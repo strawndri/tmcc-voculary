@@ -38,7 +38,6 @@
 }
 
 /* Responsividade */
-
 @media only screen and (max-width: 992px) {
     .header__nav {
         justify-content: space-between;
