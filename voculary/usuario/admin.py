@@ -1,9 +1,10 @@
 from django.contrib import admin, messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, path
 from django.db.models import Count, Avg
 from .models import User
 from gerenciamento_texto.models import DigitizedText
+from django.shortcuts import get_object_or_404, render
 
 from datetime import date, timedelta
 
@@ -14,11 +15,29 @@ class UsuarioAdmin(admin.ModelAdmin):
     data_formatada.admin_order_field = 'date_joined'
     data_formatada.short_description = 'Data de registro'
 
+    def has_add_permission(self, request):
+        return request.user.is_admin
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_admin
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_admin
+
     def editar_usuarios_selecionados(self, request, queryset):
         if queryset.count() == 1:
             user_id = queryset.first().id
             return HttpResponseRedirect(str(user_id))
         self.message_user(request, "Por favor, selecione apenas um usuário para editar.", level=messages.ERROR)
+
+    def visualizar_usuarios_selecionados(self, request, queryset):
+        if queryset.count() != 1:
+            self.message_user(request, "Por favor, selecione apenas um usuário para visualizar.", level=messages.ERROR)
+            return
+
+        user_id = queryset.first().id
+        return HttpResponseRedirect(reverse('admin:usuario_user_view', args=[user_id]))
+
 
     def delete_model(self, request, obj):
         """
@@ -40,6 +59,26 @@ class UsuarioAdmin(admin.ModelAdmin):
             self.message_user(request, "Usuário(s) desativado(s) com sucesso.", level=messages.SUCCESS)
             return HttpResponseRedirect(reverse('admin:index'))
         return super().response_change(request, obj)
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('<int:user_id>/view/', self.admin_site.admin_view(self.view_user), name='usuario_user_view'),
+        ]
+        return custom_urls + urls
+
+    def view_user(self, request, user_id, *args, **kwargs):
+        usuario = get_object_or_404(User, id=user_id)
+
+        # Aqui, você pode renderizar um template personalizado para visualizar o usuário.
+        # Por exemplo:
+        context = dict(
+            self.admin_site.each_context(request),  # Include common admin context
+            usuario=usuario
+        )
+
+        return render(request, "admin/visualizar_usuario.html", context)
+
 
     def get_fieldsets(self, request, obj=None):
         """
@@ -66,7 +105,8 @@ class UsuarioAdmin(admin.ModelAdmin):
     list_per_page = 6
 
     editar_usuarios_selecionados.short_description = "Editar usuário selecionado"
-    actions = [editar_usuarios_selecionados]
+    visualizar_usuarios_selecionados.short_description = "Visualizar usuário selecionado"
+    actions = [editar_usuarios_selecionados, visualizar_usuarios_selecionados]
 
 class AdminSitePersonalizado(admin.AdminSite):
     site_header = "Painel do Administrador"
