@@ -9,7 +9,9 @@
         <div class="app-{{ app.app_label }} module">
             {% for model in app.models %}
                 <div class="botoes">
+                    {% if user.is_admin %}
                     <button class="botao" onclick="location.href='{{ model.add_url }}'">Adicionar</button>
+                    {% endif %}
                     <button class="botao" onclick="location.href='{{ model.admin_url }}'">Visualizar e editar</button>
                 </div>
             {% endfor %}

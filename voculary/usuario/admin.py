@@ -38,7 +38,6 @@ class UsuarioAdmin(admin.ModelAdmin):
         user_id = queryset.first().id
         return HttpResponseRedirect(reverse('admin:usuario_user_view', args=[user_id]))
 
-
     def delete_model(self, request, obj):
         """
         Sobrescreve o comportamento padrão da exclusão para desativar o usuário em vez de excluir.
@@ -60,20 +59,24 @@ class UsuarioAdmin(admin.ModelAdmin):
             return HttpResponseRedirect(reverse('admin:index'))
         return super().response_change(request, obj)
 
+    def get_actions(self, request):
+        actions = super(UsuarioAdmin, self).get_actions(request)
+        if not request.user.is_admin:
+            if 'editar_usuarios_selecionados' in actions:
+                del actions['editar_usuarios_selecionados']
+        return actions
+
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            path('<int:user_id>/view/', self.admin_site.admin_view(self.view_user), name='usuario_user_view'),
+            path('<int:user_id>/view/', self.admin_site.admin_view(self.visualizarUsuarioView), name='usuario_user_view'),
         ]
         return custom_urls + urls
 
-    def view_user(self, request, user_id, *args, **kwargs):
+    def visualizarUsuarioView(self, request, user_id, *args, **kwargs):
         usuario = get_object_or_404(User, id=user_id)
-
-        # Aqui, você pode renderizar um template personalizado para visualizar o usuário.
-        # Por exemplo:
         context = dict(
-            self.admin_site.each_context(request),  # Include common admin context
+            self.admin_site.each_context(request),
             usuario=usuario
         )
 
@@ -104,6 +107,7 @@ class UsuarioAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'is_staff', 'is_admin')
     list_per_page = 6
 
+    delete_model.short_description = "Deletar usuário(s) selecionado(s)"
     editar_usuarios_selecionados.short_description = "Editar usuário selecionado"
     visualizar_usuarios_selecionados.short_description = "Visualizar usuário selecionado"
     actions = [editar_usuarios_selecionados, visualizar_usuarios_selecionados]

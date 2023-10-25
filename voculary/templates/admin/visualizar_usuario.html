@@ -7,12 +7,16 @@
 <section class="conteudo padding">
     <h2 class="conteudo__titulo-principal">Visualizar usuário</h2>
     <p class="conteudo__descricao">Informações sobre a pessoa usuária {{ usuario.first_name }} {{ usuario.last_name }}.</p>
-    <p>Email: {{ usuario.email }}</p>
-    <p>Data de Registro: {{ usuario.date_joined }}</p>
-    <p>Ativo: {{ usuario.is_active }}</p>
-    <p>É Staff?: {{ usuario.is_staff }}</p>
-    <p>É Admin?: {{ usuario.is_admin }}</p>
 
-    <a href="{% url 'admin:index' %}">Voltar para o Painel do Administrador</a>
+    <ul class="lista">
+        <li class="lista__item">Email: {{ usuario.email }}</li>
+        <li class="lista__item">Data de Registro: {{ usuario.date_joined }}</li>
+        <li class="lista__item">Ativo: {{ usuario.is_active }}</li>
+        <li class="lista__item">É Staff?: {{ usuario.is_staff }}</li>
+        <li class="lista__item">É Admin?: {{ usuario.is_admin }}</li>
+    </ul>
+    <div class="botoes">
+        <a class="botao" href="{% url 'admin:index' %}">Voltar para o Painel do Administrador</a>
+    </div>
 </section>
 {% endblock %}

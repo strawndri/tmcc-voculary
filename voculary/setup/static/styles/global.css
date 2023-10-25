@@ -322,10 +322,14 @@ h1, h2, h3 {
   margin-bottom: 2rem;
 }
 
+.lista {
+  margin-bottom: 2rem;
+}
+
 .lista__item{
   margin: .5rem 0 0 1.5rem;
   list-style: disc;
-  color: var(--preto-400);
+  color: var(--preto-600);
 }
 
 /* Responsividade */
