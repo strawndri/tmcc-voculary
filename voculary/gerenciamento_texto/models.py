@@ -3,6 +3,9 @@ from usuario.models import User
 from django.utils import timezone
 
 class Image(models.Model):
+    """
+    Modelo para armazenar informações acerca das imagens enviadas pelos usuários.
+    """
     image_id = models.AutoField(primary_key=True, verbose_name="ID da Imagem")
     file = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Arquivo")
     is_active = models.BooleanField(default=True, verbose_name="Ativo")
@@ -21,6 +24,9 @@ class Image(models.Model):
         verbose_name_plural = "Imagens"
 
 class DigitizedText(models.Model):
+    """
+    Modelo para armazenar informações relacionadas aos texto gerados a partir de imagens.
+    """
     creation_date = models.DateTimeField(default=timezone.now, verbose_name="Data de Geração")
     text = models.TextField(verbose_name="Texto")
     name = models.CharField(max_length=255, verbose_name="Nome")
