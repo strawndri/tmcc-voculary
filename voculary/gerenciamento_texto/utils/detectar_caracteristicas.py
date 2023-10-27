@@ -1,6 +1,7 @@
-from langdetect import detect
-import pytesseract as pt
 import cv2
+import pytesseract as pt
+from langdetect import detect
+
 
 def detectar_idioma(imagem):
     codigos = {
