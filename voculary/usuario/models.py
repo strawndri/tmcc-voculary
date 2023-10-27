@@ -1,11 +1,22 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db import models
+
 
 class CustomUserManager(BaseUserManager):
-    """Gerenciador personalizado para criar usuários e superusuários usando o e-mail como campo de login."""
+    """
+    Gerenciador personalizado para criar usuários e superusuários usando o 
+    e-mail como campo de login.
+    """
 
     def create_user(self, email, first_name, last_name, password=None, **extra_fields):
-        """Cria e retorna um usuário com um e-mail, nome, sobrenome e senha."""
+        """Cria e retorna um usuário.
+
+        :param email: e-mail do usuário, o qual será utilizado durante a autenticação.
+        :param first_name: primeiro nome do usuário.
+        :param last_name: último nome (sobrenome) do usuário.
+        :param password: senha do usuário, a qual será utilizada durante a autenticação.
+        """
+        
         if not email:
             raise ValueError('O usuário deve ter um endereço de e-mail.')
         
@@ -17,16 +28,27 @@ class CustomUserManager(BaseUserManager):
             last_name=last_name,
             **extra_fields
         )
+
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
 
     def create_superuser(self, email, first_name, last_name, password=None):
-        """Cria e retorna um superusuário com um e-mail, nome, sobrenome e senha."""
+        """Cria e retorna um superusuário (administrador).
+
+        :param email: e-mail do administrador, o qual será utilizado durante a autenticação.
+        :param first_name: primeiro nome do administrador.
+        :param last_name: último nome (sobrenome) do administrador.
+        :param password: senha do administrador, a qual será utilizada durante a autenticação.
+        """
         return self.create_user(email, first_name, last_name, password, is_staff=True, is_admin=True)
 
 
 class User(AbstractBaseUser):
+    """
+    Modelo personalizado de usuário.
+    """
     first_name = models.CharField(max_length=100, verbose_name="Primeiro Nome")
     last_name = models.CharField(max_length=100, verbose_name="Último Nome")
     email = models.EmailField(max_length=255, unique=True, verbose_name="E-mail")
@@ -43,17 +65,20 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
 
+
     @property
     def is_superuser(self):
         """Determine se o usuário é um superadministrador."""
         return self.is_admin
+    
 
     def has_perm(self, perm, obj=None):
         """Verifica se o usuário tem permissão específica."""
         return True
 
+    
     def has_module_perms(self, app_label):
-        """Verifica se o usuário tem permissões para o módulo/app."""
+        """Verifica se o usuário tem permissões para o app."""
         return True
 
     class Meta:
