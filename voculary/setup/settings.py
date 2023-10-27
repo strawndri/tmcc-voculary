@@ -1,26 +1,23 @@
-from pathlib import Path, os
+from pathlib import Path
+import os
 from dotenv import load_dotenv
 
-# importação da SECRET_KEY do arquivo .env
+# Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
+
+# Chave secreta da aplicação
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Diretório base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
+# Configuração de depuração - NÃO ative o modo de depuração em produção!
 DEBUG = True
 
+# Lista de hosts permitidos (neste exemplo, qualquer host é permitido)
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
-
+# Definição das aplicações instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,6 +30,7 @@ INSTALLED_APPS = [
     'gerenciamento_texto',
 ]
 
+# Middleware da aplicação
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -44,12 +42,14 @@ MIDDLEWARE = [
     'usuario.middleware.AdminMiddleware',
 ]
 
+# URL raiz
 ROOT_URLCONF = 'setup.urls'
 
+# Configurações dos templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], # referencia a pasta templates
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Pasta de templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,9 +62,10 @@ TEMPLATES = [
     },
 ]
 
+# Caminho para a aplicação WSGI
 WSGI_APPLICATION = 'setup.wsgi.application'
 
-# conexão com o banco de dados local
+# Configurações do banco de dados
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -76,9 +77,10 @@ DATABASES = {
     }
 }
 
+# Definição de modelo de usuário personalizado
 AUTH_USER_MODEL = 'usuario.User'
 
-
+# Configuração de validadores de senha
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -97,31 +99,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# definição de timezone (para o Brasil)
+# Configurações de idioma e fuso horário
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
-
+# Configurações de arquivos estáticos e mídia
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
-
 
 if DEBUG:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'setup/static')
     ]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'setup/static')   
+    STATIC_ROOT = os.path.join(BASE_DIR, 'setup/static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuração para armazenar as mensagens na sessão com um tempo de expiração de 5 segundos
+# Configurações para armazenar mensagens na sessão com expiração de 15 segundos
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 MESSAGE_TIMEOUT = 15
 
+# Configuração de cache
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
@@ -129,9 +131,8 @@ CACHES = {
     }
 }
 
+# Configurações de e-mail (substitua pelas suas configurações)
 EMAIL_USE_SSL = False
-
-# Configurações de envio do e-mail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -139,4 +140,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "voculary.projeto@gmail.com"
 EMAIL_HOST_PASSWORD = "tdlj amtt eiae gglb"
 
+# Adicionar barra final às URLs
 APPEND_SLASH = True

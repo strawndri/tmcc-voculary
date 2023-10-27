@@ -15,4 +15,4 @@ urlpatterns = [
     path('admin/', admin_site.urls),
 ] + static( settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-handler404 = 'setup.views.erro_404'
+handler404 = 'setup.views.erro_404_view'
