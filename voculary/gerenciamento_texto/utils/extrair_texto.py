@@ -12,7 +12,6 @@ def extrair_texto(img_original):
 
     min_conf = 50
     
-    # img_original = cv2.imread(img_original)
     img_original = cv2.imdecode(np.frombuffer(img_original.read(), np.uint8), -1)
     img_realcada = realcar_detalhes(img_original)
     img_com_brilho = ajustar_brilho(img_realcada)
