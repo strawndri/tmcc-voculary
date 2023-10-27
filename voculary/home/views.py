@@ -1,10 +1,11 @@
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.shortcuts import redirect
 import re
 
-def home(request):
+from django.core.mail import send_mail
+from django.shortcuts import redirect, render
 
+
+def home_view(request):
+    
     mostra_cabecalho_home = bool(re.match(r'^/?$|^/home/*?$', request.path))
 
     context = {
@@ -15,7 +16,7 @@ def home(request):
     return render(request, 'home/index.html', context)
 
 
-def enviar_email(request):
+def enviar_email_reativacao_view(request):
     if request.method == "POST":
 
         assunto = 'Mensagem de Usuário da Voculary'

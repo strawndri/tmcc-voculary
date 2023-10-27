@@ -9,6 +9,7 @@ from django.urls import path, reverse
 from gerenciamento_texto.models import DigitizedText
 from .models import User
 
+
 class UsuarioAdmin(admin.ModelAdmin):
     def data_formatada(self, obj):
         return obj.date_joined.strftime('%d/%m/%Y')
