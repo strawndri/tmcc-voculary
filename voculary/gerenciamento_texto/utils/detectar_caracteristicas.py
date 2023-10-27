@@ -2,6 +2,7 @@ import cv2
 import pytesseract as pt
 from langdetect import detect
 
+
 def detectar_idioma(imagem):
     """
     Detecta o idioma principal de uma imagem.
