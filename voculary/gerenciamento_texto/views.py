@@ -16,85 +16,99 @@ from .utils import obter_extracao, salvar
 @login_required(login_url='/login')
 def geracao_texto_view(request):
     """
+    Processa e exibe os resultados da extração de texto de uma imagem.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
     """
-    cache_key = f"{request.user.id}_texto_e_imagem"
-    cached_data = cache.get(cache_key, {})
+    chave_cache = f"{request.user.id}_texto_e_imagem"
+    dados_cache = cache.get(chave_cache, {})
 
-    texto = cached_data.get("texto", "")
-    nome_arquivo = cached_data.get("nome_arquivo")
-    imagem_data = cached_data.get("imagem_data") 
-    tempo_processamento = cached_data.get("tempo_processamento")
-    idioma = cached_data.get("idioma")
+    texto = dados_cache.get("texto", "")
+    nome_arquivo = dados_cache.get("nome_arquivo")
+    dados_imagem = dados_cache.get("imagem_data") 
+    tempo_processamento = dados_cache.get("tempo_processamento")
+    idioma = dados_cache.get("idioma")
 
+    # Se o método for POST, processa o formulário
     if request.method == 'POST':
-        form = UploadImagemForm(request.POST, request.FILES)
+        formulario = UploadImagemForm(request.POST, request.FILES)
 
-        if form.is_valid():
+        if formulario.is_valid():
             if 'extrair' in request.POST:
-                imagem_data, nome_arquivo, texto, tempo_processamento, idioma = obter_extracao(form, request)
-
-                cache.set(cache_key, {
+                dados_imagem, nome_arquivo, texto, tempo_processamento, idioma = obter_extracao(formulario, request)
+                cache.set(chave_cache, {
                     "texto": texto, 
-                    "imagem_data": imagem_data,  
+                    "imagem_data": dados_imagem,  
                     "nome_arquivo": nome_arquivo,
                     "tempo_processamento": tempo_processamento,
                     "idioma": idioma
                 }, 3600)
 
             elif 'salvar' in request.POST:
-                imagem_model = salvar(imagem_data, nome_arquivo, texto, tempo_processamento, idioma, request) 
+                salvar(dados_imagem, nome_arquivo, texto, tempo_processamento, idioma, request) 
                 return redirect('/gerar-textos')
 
     else:
-        cache.delete(cache_key)
-        imagem_data, texto = None, None
+        cache.delete(chave_cache)
+        dados_imagem, texto = None, None
 
-    textos = DigitizedText.objects.select_related('image').order_by('-creation_date').filter(user=request.user, is_active=True)[:4]
+    # Pega os últimos 4 textos gerados
+    ultimos_textos = DigitizedText.objects.select_related('image').order_by('-creation_date').filter(user=request.user, is_active=True)[:4]
 
+    # Converte imagem em base64 para visualização
     imagem_base64 = None
-    if imagem_data:
-        imagem_base64 = f"data:image/jpeg;base64,{base64.b64encode(imagem_data).decode('utf-8')}"
+    if dados_imagem:
+        imagem_base64 = f"data:image/jpeg;base64,{base64.b64encode(dados_imagem).decode('utf-8')}"
 
-    form = UploadImagemForm()
-    context = {
-        'form': form,
+    formulario = UploadImagemForm()
+    contexto = {
+        'form': formulario,
         'texto': texto,
-        'textos': textos,
+        'textos': ultimos_textos,
         'imagem_base64': imagem_base64
     }
 
-    return render(request, 'gerenciamento_texto/gerar_textos.html', context)
+    return render(request, 'gerenciamento_texto/gerar_textos.html', contexto)
 
 
 @login_required(login_url='/login')
 def meus_textos_view(request):
     """
+    Exibe os textos gerados pelo usuário.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
     """
-    order = request.GET.get('order', 'name_asc')  # 'name_asc' é o padrão
-
-    ordering_map = {
+    # Ordena os textos com base nos parâmetros fornecidos
+    ordem = request.GET.get('order', 'name_asc')  # 'name_asc' é o padrão
+    mapa_ordem = {
         "name_asc": "name",
         "name_desc": "-name",
         "date_asc": "creation_date",
         "date_desc": "-creation_date"
     }
+    ordenado_por = mapa_ordem.get(ordem, 'name')
+    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(ordenado_por)
 
-    order_by = ordering_map.get(order, 'name')
-    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(order_by)
-
-    if len(textos) == 0:
+    # Se o usuário não tiver textos, exibe uma mensagem
+    if not textos:
         mensagem = 'Puxa! Parece que você ainda não salvou nenhum texto.'
         return render(request, 'gerenciamento_texto/aviso.html', {'mensagem': mensagem})
     else:
-        paginator = Paginator(textos, 10)
-        page = request.GET.get('page')
-        paginados = paginator.get_page(page)
+        paginador = Paginator(textos, 10)
+        pagina = request.GET.get('page')
+        textos_paginados = paginador.get_page(pagina)
 
-        return render(request, 'gerenciamento_texto/meus_textos.html', {'paginados': paginados})
-        
+        return render(request, 'gerenciamento_texto/meus_textos.html', {'paginados': textos_paginados})
+
 
 def obter_info_texto_view(request, id_imagem):
-    """"""
+    """
+    Retorna informações sobre um texto gerado a partir de uma imagem.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
+    :param id_imagem: int
+        Chave primária da imagem selecionada.
+    """
     texto = DigitizedText.objects.get(image__image_id=id_imagem)
 
     data = {
@@ -108,15 +122,21 @@ def obter_info_texto_view(request, id_imagem):
 
 
 @require_POST
-def desativar_texto_view(request, texto_id):
-    """"""
-    print(id)
+def desativar_texto_view(request, id_imagem):
+    """
+    Desativa um texto específico.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
+    :param id_imagem: int
+        Chave primária da imagem selecionada.
+    """
     try:
-        texto = DigitizedText.objects.get(image_id=texto_id) 
+        texto = DigitizedText.objects.get(image_id=id_imagem) 
         
         texto.is_active = False
         texto.save()
 
+        # Se o texto estiver associado a uma imagem, desative também a imagem
         if texto.image:  
             imagem = texto.image
             imagem.is_active = False
@@ -125,29 +145,30 @@ def desativar_texto_view(request, texto_id):
         messages.success(request, 'Texto excluído com sucesso!')
         return JsonResponse({"success": True, "message": "Texto excluído com sucesso!"})
     except Exception as e:
-        print(e)
         return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir o texto."})
 
 
-def alterar_nome_texto_view(request, texto_id):
-    """"""
+def alterar_nome_texto_view(request, id_imagem):
+    """
+    Altera o nome de um texto específico.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
+    :param id_imagem: int
+        Chave primária da imagem selecionada.
+    """
     if request.method == 'POST':
         novo_nome = request.POST.get('novo_nome')
-        texto = DigitizedText.objects.get(image_id=texto_id)
+        texto = DigitizedText.objects.get(image_id=id_imagem)
         
+        # Verifica se o nome é válido e salva
         if novo_nome == texto.name:
             return JsonResponse({'success': True})
-
-        elif novo_nome == '':
-            novo_nome = 'Sem título'
-            texto.name = novo_nome
-            texto.save()
-            return JsonResponse({'success': True})
+        elif not novo_nome:
+            texto.name = 'Sem título'
         else:
-        
             texto.name = novo_nome
-            texto.save()
-            
-            return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
+        
+        texto.save()
+        return JsonResponse({'success': True, 'message_type': 'success', 'message': 'Nome atualizado com sucesso!'})
 
     return JsonResponse({'success': False})
