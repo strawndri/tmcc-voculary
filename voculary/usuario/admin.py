@@ -1,12 +1,13 @@
-from django.contrib import admin, messages
-from django.http import HttpResponseRedirect
-from django.urls import reverse, path
-from django.db.models import Count, Avg
-from .models import User
-from gerenciamento_texto.models import DigitizedText
-from django.shortcuts import get_object_or_404, render
-
 from datetime import date, timedelta
+
+from django.contrib import admin, messages
+from django.db.models import Avg, Count
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import path, reverse
+
+from gerenciamento_texto.models import DigitizedText
+from .models import User
 
 class UsuarioAdmin(admin.ModelAdmin):
     def data_formatada(self, obj):
@@ -111,6 +112,7 @@ class UsuarioAdmin(admin.ModelAdmin):
     editar_usuarios_selecionados.short_description = "Editar usuário selecionado"
     visualizar_usuarios_selecionados.short_description = "Visualizar usuário selecionado"
     actions = [editar_usuarios_selecionados, visualizar_usuarios_selecionados]
+
 
 class AdminSitePersonalizado(admin.AdminSite):
     site_header = "Painel do Administrador"

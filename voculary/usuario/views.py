@@ -1,18 +1,18 @@
-from datetime import datetime
 import re
+from datetime import datetime
 
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.tokens import PasswordResetTokenGenerator 
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.shortcuts import redirect, render
 
-from usuario.forms import LoginForms, CadastroForms, PerfilForms, PerfilSenhaForms
+from usuario.forms import (CadastroForms, LoginForms, PerfilForms,
+                           PerfilSenhaForms)
 from usuario.models import User
-
 from .utils.enviar_email_reativacao import enviar_email_reativacao
 
-def CadastroView(request):
+
+def cadastro_view(request):
     """
     Permite que um novo usuário se cadastre no sistema.
     """
@@ -54,11 +54,12 @@ def CadastroView(request):
 
     return render(request, 'usuario/cadastro.html', contexto)
 
-def LoginView(request):
+def login_view(request):
     """
     Faz login do usuário no sistema, identificando se ele realmente possui uma conta 
     ou se é necessario reativá-la. 
     """
+
     # Caso usuário já esteja autenticado, redireciona
     if request.user.is_authenticated:
         return redirect('gerar-textos')
@@ -99,7 +100,7 @@ def LoginView(request):
     return render(request, 'usuario/login.html', contexto)
 
 @login_required(login_url='/login')
-def PerfilView(request):
+def perfil_view(request):
     """
     Permite que o usuário edite seu perfil, altere sua senha ou exclua sua conta.
     """
@@ -140,7 +141,7 @@ def PerfilView(request):
 
     return render(request, 'usuario/perfil.html', contexto)
 
-def ReativarContaView(request, user_id, token):
+def reativar_conta_view(request, user_id, token):
     """
     Realiza a reativação da conta de um usuário que antes a desativou.
     """
@@ -156,7 +157,7 @@ def ReativarContaView(request, user_id, token):
     return render(request, 'usuario/reativar_conta.html')
 
 @login_required(login_url='/login')
-def LogoutView(request):
+def logout_view(request):
     """
     Faz logout do usuário atualmente autenticado e redireciona para a página inicial.
     """
