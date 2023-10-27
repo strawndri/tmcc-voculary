@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.password_validation import validate_password
+
 from .models import User
 
 
@@ -16,11 +17,22 @@ class CadastroForms(forms.Form):
     senha_2 = forms.CharField(label='Confirmação de senha', max_length=255, widget=forms.PasswordInput())
 
     def clean_senha_1(self):
+        """
+        Validar se a senha inserida pelo usuário, durante o Cadastro,
+        cumpre os requisitos mínimos determinados pelo Django.
+        - Tamanho mínimo de 8 caracteres;
+        - Se não possui apenas caracteres numéricos;
+        - Se a senha não é extremamente comum.
+        """
         senha_1 = self.cleaned_data.get('senha_1')
         validate_password(senha_1)
         return senha_1
+    
 
     def clean(self):
+        """
+        Verificação da senha e da confirmação de senha (se são iguais).
+        """
         cleaned_data = super().clean()
         senha_1 = cleaned_data.get('senha_1')
         senha_2 = cleaned_data.get('senha_2')
@@ -46,12 +58,24 @@ class PerfilSenhaForms(forms.ModelForm):
         model = User
         fields = []
 
+
     def clean_senha_nova(self):
+        """
+        Validar se a senha inserida pelo usuário, na página do Perfil, 
+        cumpre os requisitos mínimos determinados pelo Django.
+        - Tamanho mínimo de 8 caracteres;
+        - Se não possui apenas caracteres numéricos;
+        - Se a senha não é extremamente comum.
+        """
         senha_nova = self.cleaned_data.get('senha_nova')
         validate_password(senha_nova, self.instance)
         return senha_nova
+    
 
     def clean(self):
+        """
+        Verificação da senha e da confirmação de senha (se são iguais).
+        """
         cleaned_data = super().clean()
         senha_nova = cleaned_data.get('senha_nova')
         senha_nova_confirmacao = cleaned_data.get('senha_nova_confirmacao')
