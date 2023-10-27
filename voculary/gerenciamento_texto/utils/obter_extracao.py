@@ -12,46 +12,61 @@ from ..utils import extrair_texto
 
 def obter_extracao(form, request):
     """
-    Obter texto.
-    :param form:
-    :param request:
+    Obtém o texto extraído de uma imagem.
+
+    :param form: Form
+        Formulário contendo os dados da requisição.
+    :param request: HttpRequest
+        Objeto de solicitação HTTP.
+    
+    :return: tuple
+        Imagem, nome do arquivo, texto extraído, tempo de processamento e idioma.
     """
+    
     imagem = form.instance
     imagem.usuario = request.user
-    imagem_content = None
+    conteudo_imagem = None
     texto = None
     idioma = None
 
     try:
+        # Se uma URL foi fornecida no formulário.
         if form.cleaned_data['url']:
             url = form.cleaned_data['url']
             nome_arquivo = os.path.basename(url)
-            response = requests.get(url)
-            if response.status_code == 200:
-                imagem_content = response.content
-                imagem_object = io.BytesIO(imagem_content)
+            resposta = requests.get(url)
+            
+            # Se a resposta da requisição foi bem-sucedida.
+            if resposta.status_code == 200:
+                conteudo_imagem = resposta.content
+                objeto_imagem = io.BytesIO(conteudo_imagem)
+                
+                # Calcula o tempo de extração do texto.
                 inicio_tempo = datetime.datetime.now(tz=timezone.utc)
-                texto, idioma = extrair_texto(imagem_object)
+                texto, idioma = extrair_texto(objeto_imagem)
                 fim_tempo = datetime.datetime.now(tz=timezone.utc)
-
         else:
-            imagem_content = form.cleaned_data['arquivo'].read()
+            # Se uma imagem foi enviada.
+            conteudo_imagem = form.cleaned_data['arquivo'].read()
             inicio_tempo = datetime.datetime.now(tz=timezone.utc)
-            texto, idioma = extrair_texto(io.BytesIO(imagem_content))
+            texto, idioma = extrair_texto(io.BytesIO(conteudo_imagem))
             fim_tempo = datetime.datetime.now(tz=timezone.utc)
-            lista = []
-            for f in request.FILES.getlist('arquivo'):
-                nome_arquivo = f.name
-                lista.append(nome_arquivo)
+            
+            lista_arquivos = []
+            for arquivo in request.FILES.getlist('arquivo'):
+                lista_arquivos.append(arquivo.name)
 
-            nome_arquivo = lista[0]
+            nome_arquivo = lista_arquivos[0]
 
-        fim_tempo = datetime.datetime.now(tz=timezone.utc)
+        # Calcula o tempo total de processamento/OCR da imagem.
         tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
-        cache.set(f"{request.user.id}_imagem", imagem_content, 3600)
-        return imagem_content, nome_arquivo, texto, tempo_processamento, idioma
+        # Armazena a imagem no cache por 1 hora.
+        cache.set(f"{request.user.id}_imagem", conteudo_imagem, 3600)
+        
+        return conteudo_imagem, nome_arquivo, texto, tempo_processamento, idioma
+
+    # Caso não seja possível extrair o texto da imagem, é retornado uma mensagem de erro,
     except Exception as e:
-        print(e)  
-        messages.error(request, f'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
-        return None, None, None, None, None  
+        messages.error(request, 'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
+        return None, None, None, None, None
