@@ -4,6 +4,9 @@ from langdetect import detect
 
 
 def detectar_idioma(imagem):
+    """
+    :param imagem:
+    """
     codigos = {
         'en': 'eng',
         'pt': 'por'
@@ -17,6 +20,9 @@ def detectar_idioma(imagem):
     return cod_idioma
 
 def determinar_psm(imagem):
+    """
+    :param imagem:
+    """
     pixels_pretos = imagem.size - cv2.countNonZero(imagem)
     proporcao_preto = pixels_pretos / imagem.size
 
@@ -26,6 +32,9 @@ def determinar_psm(imagem):
         return '1'
 
 def avaliar_qualidade_ocr(imagem):
+    """
+    :param imagem:
+    """
     resultado = pt.image_to_data(imagem, output_type=pt.Output.DICT)
     confiancas = [int(val) for val in resultado['conf'] if str(val).isdigit()]
     if confiancas:

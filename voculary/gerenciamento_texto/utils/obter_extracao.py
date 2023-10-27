@@ -13,6 +13,8 @@ from ..utils import extrair_texto
 def obter_extracao(form, request):
     """
     Obter texto.
+    :param form:
+    :param request:
     """
     imagem = form.instance
     imagem.usuario = request.user

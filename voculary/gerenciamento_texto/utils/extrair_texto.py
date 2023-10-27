@@ -6,6 +6,9 @@ from .tratar_imagem import *
 pt.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
 
 def extrair_texto(img_original):
+    """
+    :param img_original:
+    """
 
     min_conf = 50
     
