@@ -1,96 +1,91 @@
 function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        let cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return decodeURIComponent(parts.pop().split(';').shift());
     }
-    return cookieValue;
+    return null;
+}
+
+function toggleModal(displayStatus) {
+    modal.style.display = displayStatus;
+}
+
+function desativarTexto() {
+    fetch(`/desativar-texto/${textoIdParaExcluir}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            toggleModal('none');
+            window.location.reload();
+        } else {
+            toggleModal('none');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        toggleModal('none');
+    });
+}
+
+function enviarPerfilForm() {
+    fetch('/perfil', {
+        method: 'POST',
+        body: new FormData(currentForm),
+        headers: {
+            'X-CSRFToken': csrftoken
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            toggleModal('none');
+            window.location.reload();
+        } else {
+            alert("Erro: " + data.message);
+            toggleModal('none');
+        }
+    })
+    .catch(() => {
+        toggleModal('none');
+    });
 }
 
 const modal = document.getElementById('modalConfirmacao');
 const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config, .botao-perfil-senha, .botao-perfil-excluir');
 const confirmarAcao = document.getElementById('confirmarAcao');
 const cancelarAcao = document.getElementById('cancelarAcao');
-let csrftoken = getCookie('csrftoken');
-let mensagemConfirmacao = '';
-let textoIdParaAcao = null;
+const csrftoken = getCookie('csrftoken');
 
-let perfilForm = document.querySelector('.perfil-form');
-
+let textoIdParaExcluir = null;
 let currentForm = null;
 
 btnAcao.forEach(button => {
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', event => {
         event.preventDefault(); 
+        toggleModal('block');
 
-        modal.style.display = 'block';
-        mensagemConfirmacao = this.getAttribute('data-message'); 
         const mensagemParagrafo = modal.querySelector('.mensagem-confirmacao');
-        let closestElement = this.closest('[data-texto]');
+        mensagemParagrafo.textContent = button.getAttribute('data-message');
+
+        let closestElement = button.closest('[data-texto]');
         textoIdParaExcluir = closestElement ? closestElement.getAttribute('data-texto') : null;
         
-        currentForm = this.closest('.perfil-form');
-        
-        mensagemParagrafo.textContent = mensagemConfirmacao;
+        currentForm = button.closest('.perfil-form');
     });
 });
 
-
-confirmarAcao.addEventListener('click', function() {
+confirmarAcao.addEventListener('click', () => {
     if (textoIdParaExcluir) {
-        fetch(`/desativar-texto/${textoIdParaExcluir}/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': csrftoken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                modal.style.display = 'none';
-                textoIdParaExcluir = null; 
-                window.location.reload();
-            } else {
-                modal.style.display = 'none';
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            modal.style.display = 'none';
-        });
+        desativarTexto();
     } else {
-        currentForm.submit()
-        fetch('/perfil', {
-            method: 'POST',
-            body: new FormData(currentForm),
-            headers: {
-                'X-CSRFToken': csrftoken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                modal.style.display = 'none';
-                window.location.reload();
-            } else {
-                alert("Erro: " + data.message);
-                modal.style.display = 'none';
-            }
-        })
-        .catch(error => {
-            modal.style.display = 'none';
-        });
+        enviarPerfilForm();
     }
 });
 
-
-
-cancelarAcao.addEventListener('click', function() {
-    modal.style.display = 'none';
-});
+cancelarAcao.addEventListener('click', () => toggleModal('none'));

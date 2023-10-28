@@ -1,31 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Selecionando os elementos
     var button = document.getElementById('toggleMenu');
     var menu = document.querySelector('.menu-lateral');
-    var nav = menu.querySelector('.menu-lateral__navegacao');
     var padding = document.querySelector('.padding');
 
-    var isOpen = localStorage.getItem('menuOpen');
-    if (isOpen === 'true') {
-        menu.classList.add('open');
-        if (window.innerWidth > 768) {
-            padding.style.paddingLeft = '20rem';
+    // Função para atualizar o estado e estilo do menu
+    function updateMenuState(isOpen) {
+        if (isOpen) {
+            menu.classList.add('open');
+            if (window.innerWidth > 768) {
+                padding.style.paddingLeft = '20rem';
+            }
+            localStorage.setItem('menuOpen', 'true');
+        } else {
+            menu.classList.remove('open');
+            padding.style.paddingLeft = '8rem';
+            localStorage.setItem('menuOpen', 'false');
         }
-    } else {
-        menu.classList.remove('open');
-        padding.style.paddingLeft = '8rem';
     }
 
+    // Checar o status inicial do menu no localStorage e atualizar o estado do menu
+    var initialOpenState = localStorage.getItem('menuOpen') === 'true';
+    updateMenuState(initialOpenState);
+
+    // Atualiza o estado do menu quando o botão é clicado
     button.addEventListener('click', function() {
-        menu.classList.toggle('open');
-        
-        if (window.innerWidth > 768) {
-            if (menu.classList.contains('open')) {
-                padding.style.paddingLeft = '20rem';
-                localStorage.setItem('menuOpen', 'true');
-            } else {
-                padding.style.paddingLeft = '8rem';
-                localStorage.setItem('menuOpen', 'false');
-            }
-        }
+        var isOpen = menu.classList.contains('open');
+        updateMenuState(!isOpen);
     });
 });

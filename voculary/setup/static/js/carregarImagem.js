@@ -6,7 +6,6 @@ let zoomBotoes = document.querySelectorAll('.btn-zoom-in, .btn-zoom-out');
 
 let alturaImagem = 100;
 
-// Função para carregar a imagem no display
 inputImagem.addEventListener('change', function() {
     if (this.files && this.files[0]) {
         let reader = new FileReader();
@@ -24,7 +23,6 @@ inputImagem.addEventListener('change', function() {
     }
 });
 
-// Função para atualizar o tamanho da imagem
 function atualizarZoom(tipo, valor) {
     alturaImagem += valor;
     inputImagemDisplays.forEach(inputImagemDisplay => {
@@ -34,7 +32,6 @@ function atualizarZoom(tipo, valor) {
     });
 }
 
-// Adiciona eventListeners para os botões de zoom
 zoomBotoes.forEach(zoomBotao => {
     zoomBotao.addEventListener('click', function() {
         const tipo = this.dataset.tipo;

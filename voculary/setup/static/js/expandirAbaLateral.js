@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const fechar = document.querySelector(".aba-lateral .fechar");
     const overlay = document.querySelector('.overlay');
 
-    // Função para atualizar a aba lateral e mostrar o overlay
     function mostrarAbaLateral(data) {
         overlay.style.display = 'block';
         abaLateral.querySelector("h4").textContent = data.nome;
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         abaLateral.querySelector("textarea").textContent = data.texto;
     }
 
-    // Função para esconder o overlay e a aba lateral
     function esconderAbaLateral() {
         overlay.style.display = 'none';
         abaLateral.classList.remove("mostrar");
