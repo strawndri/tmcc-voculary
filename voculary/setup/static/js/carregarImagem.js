@@ -2,11 +2,11 @@ let inputImagem = document.querySelector('.input-imagem');
 let inputImagemDisplays = document.querySelectorAll('.imagem-display');
 
 let zoomImagemElementos = document.querySelectorAll('.reconhecimento-texto__imagem-zoom')
-let zoomInBotoes = document.querySelectorAll('#btnZoomIn')
-let zoomOutBotoes = document.querySelectorAll('#btnZoomOut')
+let zoomBotoes = document.querySelectorAll('.btn-zoom-in, .btn-zoom-out');
 
 let alturaImagem = 100;
 
+// Função para carregar a imagem no display
 inputImagem.addEventListener('change', function() {
     if (this.files && this.files[0]) {
         let reader = new FileReader();
@@ -24,24 +24,30 @@ inputImagem.addEventListener('change', function() {
     }
 });
 
-zoomInBotoes.forEach(zoomInBotao => {
-    zoomInBotao.addEventListener('click', function() {
-        alturaImagem += 10;
-        inputImagemDisplays.forEach(inputImagemDisplay => {
-            if (!inputImagemDisplay.classList.contains('icone-padrao')) {
-                inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
-            }
-        });
+// Função para atualizar o tamanho da imagem
+function atualizarZoom(tipo, valor) {
+    alturaImagem += valor;
+    inputImagemDisplays.forEach(inputImagemDisplay => {
+        if (!inputImagemDisplay.classList.contains('icone-padrao') && tipo === inputImagemDisplay.dataset.tipo) {
+            inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
+        }
+    });
+}
+
+// Adiciona eventListeners para os botões de zoom
+zoomBotoes.forEach(zoomBotao => {
+    zoomBotao.addEventListener('click', function() {
+        const tipo = this.dataset.tipo;
+        const valor = this.classList.contains("btn-zoom-in") ? 10 : -10;
+        atualizarZoom(tipo, valor);
     });
 });
 
-zoomOutBotoes.forEach(zoomOutBotao => {
-    zoomOutBotao.addEventListener('click', function() {
-        alturaImagem -= 10;
-        inputImagemDisplays.forEach(inputImagemDisplay => {
-            if (!inputImagemDisplay.classList.contains('icone-padrao')) {
-                inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
-            }
-        });
+function resetarZoom() {
+    alturaImagem = 100; 
+    inputImagemDisplays.forEach(inputImagemDisplay => {
+        if (!inputImagemDisplay.classList.contains('icone-padrao')) {
+            inputImagemDisplay.style.backgroundSize = `auto 100%`;
+        }
     });
-});
+}

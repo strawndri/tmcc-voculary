@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function salvarNome(inputElement, textoId) {
+function salvarNome(inputElement, imagemId) {
     let novoNome = inputElement.value;
     csrftoken = getCookie('csrftoken');
     
-    fetch(`/alterar_nome/${textoId}/`, {
+    fetch(`/alterar_nome/${imagemId}/`, {
         method: 'POST',
         body: new URLSearchParams(`novo_nome=${novoNome}`),
         headers: {
@@ -51,7 +51,7 @@ function salvarNome(inputElement, textoId) {
             novoNome = novoNome === '' ? 'Sem título' : novoNome;
             inputElement.parentElement.textContent = novoNome;
             
-            const nomeCelulaTabela = document.querySelector(`.tabela__nome-arquivo[data-texto="${textoId}"], .meus-textos__card[data-texto="${textoId}"] h3 `);
+            const nomeCelulaTabela = document.querySelector(`.tabela__nome-arquivo[data-texto="${imagemId}"], .meus-textos__card[data-texto="${imagemId}"] h3 `);
             if (nomeCelulaTabela) {
                 nomeCelulaTabela.textContent = novoNome;
             }
