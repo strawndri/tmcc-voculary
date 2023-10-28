@@ -16,6 +16,7 @@
     background-color: var(--preto-100);
 }
     
+/* ===== Navegação ===== */
 .menu-lateral__navegacao {
     display: flex;
     flex-direction: column;
@@ -82,6 +83,7 @@
     transform: translateY(-50%);
 }
 
+/* ===== Botão toggle ===== */
 .menu-lateral .toggle-button::before{
     content: '»'
 }
@@ -119,7 +121,7 @@
     display: inline-block;
 }
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 @media only screen and (max-width: 768px) {
     .menu-lateral.open {
         width: 100%;

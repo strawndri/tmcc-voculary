@@ -188,7 +188,7 @@
 }
 
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 @media (max-width: 768px) {
     .tabela {
         display: block;

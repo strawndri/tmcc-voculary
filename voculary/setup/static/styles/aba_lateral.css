@@ -1,3 +1,4 @@
+/* ===== Estilos gerais ===== */
 .aba-lateral {
     position: fixed; 
     top: 0;
@@ -22,39 +23,7 @@
 }
 
 .aba-lateral__secao {
-    margin-bottom: 2rem;
-}
-
-.aba-lateral .fechar {
-    top: 1rem;
-    left: 0;
-
-    width: 1rem;
-}
-
-.aba-lateral .fechar::before {
-    font-size: 1.5rem;
-}
-
-.aba-lateral__botoes{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    gap: 1rem;
-}
-
-.aba-lateral__botoes .botao {
-    padding: .5rem 1rem;
-    border-radius: 20px;
-}
-
-.aba-lateral.mostrar {
-    right: 0;
-    z-index: 5;
-    overflow: auto;
-
-    padding: 0 2rem 5rem 2rem;
+    margin-bottom: .5rem;
 }
 
 .aba-lateral .imagem {
@@ -68,6 +37,23 @@
     cursor: default;
 }
 
+.aba-lateral.mostrar {
+    right: 0;
+    z-index: 5;
+    overflow: auto;
+
+    padding: 0 2rem 5rem 2rem;
+}
+
+/* ===== ícone para fechar aba ===== */
+.aba-lateral .fechar {
+    top: 1rem;
+    left: 0;
+
+    width: 1rem;
+}
+
+/* ===== Títulos e descrições ===== */
 .aba-lateral__titulo {
     font-size: 1.5rem;
     font-weight: 600;
@@ -90,12 +76,25 @@
     margin-bottom: .5rem;
 }
 
-.aba-lateral__secao {
-    margin-bottom: .5rem;
+/* ===== Botões ===== */
+.aba-lateral .fechar::before {
+    font-size: 1.5rem;
 }
 
-/* Responsividade */
+.aba-lateral__botoes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+}
 
+.aba-lateral__botoes .botao {
+    padding: .5rem 1rem;
+    border-radius: 20px;
+}
+
+/* ===== Responsividade ===== */
 @media screen and (max-width: 768px) {
     .aba-lateral {
         right: -100%;

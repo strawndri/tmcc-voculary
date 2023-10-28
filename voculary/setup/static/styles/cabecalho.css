@@ -1,3 +1,4 @@
+/* ===== Estilos gerais ===== */
 .cabecalho {
     padding: 1rem;
 }
@@ -6,6 +7,7 @@
     background-color: var(--azul-50);
 }
 
+/* ===== Navbar ===== */
 .header__nav {
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +29,7 @@
     text-decoration: none;
 }
 
+/* Botões */
 .header__nav__botoes {
     display: flex;
     flex-direction: row;
@@ -37,7 +40,7 @@
     background-color: var(--azul-100);
 }
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 @media only screen and (max-width: 992px) {
     .header__nav {
         justify-content: space-between;

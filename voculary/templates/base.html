@@ -47,7 +47,7 @@
         {% for message in messages %}
             <div class="mensagem {% if message.tags %}ativo{% endif %}">
                 <div class="mensagem__conteudo">
-                    <i class="icon" data-status="{{ message.tags }}"></i>
+                    <i class="icone" data-status="{{ message.tags }}"></i>
                     <span class="mensagem__conteudo__texto">{{ message }}</span>
                 </div>
                 <i class="fechar"></i>

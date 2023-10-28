@@ -483,7 +483,7 @@ ul.timelist, .timelist li {
     color: var(--azul-800);
 }
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 @media only screen and (max-width: 768px) {
     .conteudo__admin-header {
         flex-direction: column;

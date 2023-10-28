@@ -1,3 +1,4 @@
+/* ===== Imagem ===== */
 .imagem-display{
     position: absolute;
     left: 0;
@@ -19,6 +20,7 @@
     position: relative;
 }
 
+/* ===== Zoom ===== */
 .reconhecimento-texto__imagem-zoom {
     display: flex;
     flex-direction: column;

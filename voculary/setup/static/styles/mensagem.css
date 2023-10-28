@@ -1,3 +1,4 @@
+/* ===== Estilos gerais ===== */
 .mensagem {
     position: fixed;
     top: 25px;
@@ -24,7 +25,14 @@
     align-items: center;
 }
 
-.icon {
+.mensagem__conteudo .mensagem__conteudo__texto {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+/* ===== ícone ===== */
+.icone {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,49 +45,34 @@
     color: #fff;
 }
 
-.icon {
+.icone {
     position: relative;
 }
 
-.icon[data-status="success"] {
-    background-color: var(--verde-300);
+.icone[data-status="success"] {
+    background: var(--verde-300) url('../assets/icones/sucesso.svg') no-repeat center / 1rem;
 }
 
-.icon[data-status="error"] {
-    background-color: var(--rosa-400);
+.icone[data-status="error"] {
+    background: var(--rosa-400) url('../assets/icones/erro.svg') no-repeat center / 3rem;
 }
 
-.icon[data-status="warning"] {
-    background-color: var(--amarelo-400);
+.icone[data-status="warning"] {
+    background: var(--amarelo-400) url('../assets/icones/atencao.svg') no-repeat center / 2.5rem;
 }
 
-.icon[data-status="info"] {
-    background-color: var(--azul-400);
+.icone[data-status="info"] {
+    background: var(--azul-400) url('../assets/icones/atencao.svg') no-repeat center / 2.5rem;
+    transform: rotate(180deg);
 }
 
-.icon::before {
+.icone::before {
     position: absolute;
     font-family: var(--fonte-titulo);
     font-weight: bold;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.icon[data-status="success"]::before {
-    content: "✓";
-}
-
-.icon[data-status="error"]::before {
-    content: "X";
-}
-
-.icon[data-status="warning"]::before {
-    content: "!";
-}
-
-.icon[data-status="info"]::before {
-    content: "i";
 }
 
 .progresso[data-status="success"]:before {
@@ -98,12 +91,8 @@
     background-color: var(--azul-400);
 }
 
-.mensagem__conteudo .mensagem__conteudo__texto {
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
-}
 
+/* ===== ícone para fechar mensagem ===== */
 .mensagem .fechar {
     position: absolute;
     top: 10px;
@@ -119,6 +108,7 @@
     opacity: 1;
 }
 
+/* ===== Barra de progresso ===== */
 .progresso {
     position: absolute;
     bottom: 0;
@@ -154,7 +144,7 @@
     }
 }
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 @media only screen and (max-width: 768px) {
     .mensagem {
         width: 70%;

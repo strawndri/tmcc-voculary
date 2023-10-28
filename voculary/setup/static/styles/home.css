@@ -1,3 +1,25 @@
+/* ===== Estilos gerais ===== */
+.conteudo__titulo {
+    text-align: center;
+}
+
+.conteudo__secao {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    margin-top: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.conteudo__paragrafo {
+    margin: 0 2rem 2rem 2rem;
+
+    line-height: 1.8rem;
+}
+
+/* ===== Seção 'Início' ===== */
 .conteudo__inicio {
     display: flex;
     align-items: center;
@@ -23,26 +45,7 @@
     transform: scale(1.4);
 }
 
-.conteudo__titulo {
-    text-align: center;
-}
-
-.conteudo__secao {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    margin-top: 4rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
-
-.conteudo__paragrafo {
-    margin: 0 2rem 2rem 2rem;
-
-    line-height: 1.8rem;
-}
-
+/* ===== Seção 'Serviços' ===== */
 .conteudo__servicos {
     background-color: var(--azul-50);
 }
@@ -67,10 +70,6 @@
     border-radius: 5px;
 }
 
-.conteudo__servicos__item:hover {
-    cursor: pointer;
-}
-
 .conteudo__servicos__item h3 {
     padding-top: 2.8rem;
     
@@ -82,6 +81,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.esquerda, .direita {
+    width: 40%;
 }
 
 .esquerda .conteudo__servicos__item {
@@ -106,7 +109,7 @@
     position: relative;
 
     width: 2px;
-    height: 40px;
+    height: 100%;
     background-image: linear-gradient(to bottom, var(--azul-800) 50%, transparent 50%);
     background-repeat: repeat-y;
     background-size: 100% 4px;
@@ -140,35 +143,7 @@ h2 {
     margin: 1.5rem 0;
 }
 
-.conteudo__contato {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding-top: 7rem;
-    background: url('../assets/backgrounds/bg-contato.svg') no-repeat;
-    background-position: 0 0;
-    background-size: cover;
-}
-
-.conteudo__contato__box {
-    position: relative;
-
-    padding: 2rem 3rem;
-    border-radius: 4px;
-    width: auto;
-    background-color: var(--preto-50);
-    box-shadow: var(--sombra)
-}
-
-.conteudo__formulario form {
-    width: 100%;
-}
-
-.conteudo__formulario .botao {
-    width: 100%;
-}
-
+/* ===== Seção 'Dúvidas frequentes' ===== */
 .conteudo__duvidas .faq-item {
     position: relative;
     margin-bottom: 1rem;
@@ -225,7 +200,37 @@ h2 {
     transform: rotate(180deg);
 }
 
-/* Responsividade */
+/* ===== Seção 'Contato' ===== */
+.conteudo__contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 7rem;
+    background: url('../assets/backgrounds/bg-contato.svg') no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.conteudo__contato__box {
+    position: relative;
+
+    padding: 2rem 3rem;
+    border-radius: 4px;
+    width: auto;
+    background-color: var(--preto-50);
+    box-shadow: var(--sombra)
+}
+
+.conteudo__formulario form {
+    width: 100%;
+}
+
+.conteudo__formulario .botao {
+    width: 100%;
+}
+
+/* ===== Responsividade ===== */
 @media only screen and (max-width: 1200px) {
     .conteudo__inicio {
         height: 50vh;
