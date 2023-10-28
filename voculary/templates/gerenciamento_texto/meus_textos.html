@@ -20,16 +20,16 @@
                 <th class="tabela__imagem"></th>
                 <th class="tabela__nome-arquivo">
                     Nome do texto
-                    <a href="?order={% if request.GET.order == "name_asc" %}name_desc{% else %}name_asc{% endif %}">
+                    <a href="?order={% if request.GET.order == "nome_asc" %}nome_desc{% else %}nome_asc{% endif %}">
                         <img src="{% static 'assets/icones/seta-2.svg' %}" 
-                             class="{% if request.GET.order == "name_desc" %}desc{% endif %}">
+                             class="{% if request.GET.order == "nome_asc" %}asc{% endif %}">
                     </a>
                 </th>
                 <th class="tabela__data-criacao">
                     Data de criação
-                    <a href="?order={% if request.GET.order == "date_asc" %}date_desc{% else %}date_asc{% endif %}">
+                    <a href="?order={% if request.GET.order == "data_asc" %}data_desc{% else %}data_asc{% endif %}">
                         <img src="{% static 'assets/icones/seta-2.svg' %}" 
-                             class="{% if request.GET.order == "date_desc" %}desc{% endif %}">
+                             class="{% if request.GET.order == "data_asc" %}asc{% endif %}">
                     </a>
                 </th>
                 <th class="tabela__acoes"></th>

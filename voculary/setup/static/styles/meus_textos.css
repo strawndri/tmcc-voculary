@@ -112,7 +112,7 @@
     opacity: 0.5;
 }
 
-.tabela__nome-arquivo a img.desc, .tabela__data-criacao a img.desc {
+.tabela__nome-arquivo a img.asc, .tabela__data-criacao a img.asc {
     transform: rotate(180deg);
 }
 

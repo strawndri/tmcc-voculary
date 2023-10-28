@@ -1,7 +1,7 @@
 {% load static %}
 {% if mostra_cabecalho_usuario %}
     <footer></footer>
-{% elif user.is_authenticated == False %}
+{% elif mostra_cabecalho_home or user.is_authenticated == False %}
     <footer class="rodape">
         <p class="rodape__texto">Voculary 2023 | Todos os direitos reservados</p>
         <p class="rodape__texto">Desenvolvido com carinho por Andrieli Gonçalves</p>

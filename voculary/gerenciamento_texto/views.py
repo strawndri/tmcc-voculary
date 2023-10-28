@@ -13,8 +13,6 @@ from gerenciamento_texto.models import DigitizedText
 from gerenciamento_texto.utils.obter_extracao import obter_extracao
 from gerenciamento_texto.utils.salvar import salvar
 
-print(obter_extracao) 
-
 @login_required(login_url='/login')
 def geracao_texto_view(request):
     """
@@ -81,14 +79,14 @@ def meus_textos_view(request):
         Objeto de solicitação HTTP.
     """
     # Ordena os textos com base nos parâmetros fornecidos
-    ordem = request.GET.get('order', 'name_asc')  # 'name_asc' é o padrão
+    ordem = request.GET.get('order', 'nome_desc') 
     mapa_ordem = {
-        "name_asc": "name",
-        "name_desc": "-name",
-        "date_asc": "creation_date",
-        "date_desc": "-creation_date"
+        "nome_asc": "name",
+        "nome_desc": "-name",
+        "data_asc": "creation_date",
+        "data_desc": "-creation_date"
     }
-    ordenado_por = mapa_ordem.get(ordem, 'name')
+    ordenado_por = mapa_ordem.get(ordem, '-name')
     textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(ordenado_por)
 
     # Se o usuário não tiver textos, exibe uma mensagem
