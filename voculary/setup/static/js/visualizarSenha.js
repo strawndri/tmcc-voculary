@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (let i = 0; i < visualizarSenha.length; i++) {
         visualizarSenha[i].addEventListener('click', () => {
-            senhaInput = visualizarSenha[i].previousElementSibling;
+            const senhaInput = visualizarSenha[i].previousElementSibling;
             const tipoSenha = senhaInput.type === 'password' ? 'text' : 'password';
             senhaInput.type = tipoSenha; 
             visualizarSenha[i].classList.toggle('formulario__botao--senha-ativo'); 

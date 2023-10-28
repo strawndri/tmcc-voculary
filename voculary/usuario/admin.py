@@ -75,14 +75,13 @@ class UsuarioAdmin(admin.ModelAdmin):
         """
         obj.is_active = False
         obj.save()
-        messages.success(request, "Usuário desativado com sucesso!")
 
     def delete_queryset(self, request, queryset):
         """
         Sobrescreve o comportamento padrão da exclusão em massa para desativar os usuários em vez de excluir.
         """
         queryset.update(is_active=False)
-        messages.success(request, "Usuários desativados com sucesso!")
+        messages.success(request, "Usuário(s) desativado(s) com sucesso!")
 
     def response_change(self, request, obj):
         """Customiza a resposta após uma mudança."""

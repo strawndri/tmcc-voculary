@@ -1,4 +1,9 @@
 {% load static %}
+
+{% block estilosExtras %}
+<link rel="stylesheet" href="{% static 'styles/meus_textos.css' %}">
+{% endblock %}
+
 {% if results %}
 <table class="tabela">
     <thead class="tabela__header">

@@ -12,7 +12,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configuração de depuração - NÃO ative o modo de depuração em produção!
-DEBUG = False
+DEBUG = True
 
 # Lista de hosts permitidos (neste exemplo, qualquer host é permitido)
 ALLOWED_HOSTS = ['*']
