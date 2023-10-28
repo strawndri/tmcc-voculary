@@ -8,10 +8,12 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
 
-from .forms import UploadImagemForm
-from .models import DigitizedText
-from .utils import obter_extracao, salvar
+from gerenciamento_texto.forms import UploadImagemForm
+from gerenciamento_texto.models import DigitizedText
+from gerenciamento_texto.utils.obter_extracao import obter_extracao
+from gerenciamento_texto.utils.salvar import salvar
 
+print(obter_extracao) 
 
 @login_required(login_url='/login')
 def geracao_texto_view(request):

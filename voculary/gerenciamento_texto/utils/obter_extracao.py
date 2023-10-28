@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core.cache import cache
 from django.utils import timezone
 
-from ..utils import extrair_texto
+from gerenciamento_texto.utils.extrair_texto import extrair_texto
 
 
 def obter_extracao(form, request):
