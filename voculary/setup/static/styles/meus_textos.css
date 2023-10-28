@@ -1,3 +1,4 @@
+/* ===== Estilos gerais ===== */
 .conteudo {
     height: auto;
     position: relative;
@@ -12,6 +13,8 @@
 .tabela {
     overflow: hidden;
 
+    width: 100%;
+    table-layout: auto;
     margin-bottom: .5rem;
     background-color: #FFF;
 
@@ -22,6 +25,7 @@
             border-radius: 10px;
 }
 
+/* ===== Header ===== */
 .tabela__header {
     font-weight: 700;
 }
@@ -35,6 +39,7 @@
     color: var(--preto-700)
 }
 
+/* ===== Body ===== */
 .tabela__body {
     color: var(--preto-600);
 }
@@ -87,83 +92,7 @@
     border-radius: 50%;
 }
 
-.tabela__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid var(--preto-200);
-    background-color: #FFF;
-}
-
-.paginas__numero {
-    margin-right: 2rem;
-}
-
-.botao-paginacao {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-
-    top: .5rem;
-    
-    padding: .5rem 1rem;
-    border-radius: 10px;
-    border: 1px solid var(--preto-300);
-    
-    text-decoration: none;
-
-    transition: all .25s;
-}
-
-.botao-paginacao--habilitado:hover {
-    background-color: var(--preto-100);
-    
-    cursor: pointer;
-}
-
-.botao-paginacao--desabilitado {
-    background-color: var(--preto-100);
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.anterior .botao-paginacao{
-    left: 1rem;
-}
-
-.proximo .botao-paginacao{
-    right: 1rem;
-}
-
-
-.botao-paginacao p {
-    color: var(--preto-700);
-}
-
-.anterior .botao-paginacao img {
-    transform: rotate(180deg);
-}
-
-.paginas__numero {
-    text-decoration: none;
-    color: var(--preto-500);
-    font-size: 0.8rem;
-}
-
-.atual {
-    color: var(--azul-500);
-    font-weight: 600;
-}
-
-.tabela {
-    width: 100%;
-    table-layout: auto;
-}
-
+/* ===== Ações ===== */
 .tabela__acoes__div {
     display: flex;
     align-items: center;
@@ -187,6 +116,78 @@
     transform: rotate(180deg);
 }
 
+/* ===== Footer ===== */
+.tabela__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--preto-200);
+    background-color: #FFF;
+}
+
+/* ===== Paginação ===== */
+.botao-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    
+    top: .5rem;
+    
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--preto-300);
+    
+    text-decoration: none;
+    
+    transition: all .25s;
+}
+
+.botao-paginacao--habilitado:hover {
+    background-color: var(--preto-100);
+    
+    cursor: pointer;
+}
+
+.botao-paginacao--desabilitado {
+    background-color: var(--preto-100);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.anterior .botao-paginacao{
+    left: 1rem;
+}
+
+.proximo .botao-paginacao{
+    right: 1rem;
+}
+
+.paginas__numero {
+    margin-right: 2rem;
+}
+
+.botao-paginacao p {
+    color: var(--preto-700);
+}
+
+.anterior .botao-paginacao img {
+    transform: rotate(180deg);
+}
+
+.paginas__numero {
+    text-decoration: none;
+    color: var(--preto-500);
+    font-size: 0.8rem;
+}
+
+.atual {
+    color: var(--azul-500);
+    font-weight: 600;
+}
 
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
