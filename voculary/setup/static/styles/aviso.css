@@ -1,0 +1,8 @@
+.aviso {
+    width: 40rem;
+  
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3rem;
+    color: var(--azul-900);
+  }
