@@ -36,10 +36,10 @@ function desativarTextos(ids) {
 const modal = document.getElementById('modalConfirmacao');
 const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config, .botao-perfil-senha, .botao-perfil-excluir');
 const confirmarAcao = document.getElementById('confirmarAcao');
-const cancelarAcao = document.getElementById('cancelarAcao');
-const selectAllCheckbox = document.getElementById("selecionar-todos");
+const cancelarAcao = document.querySelectorAll('#cancelarAcao, .fechar');
+const checkboxSelecionarTodos = document.getElementById("selecionar-todos");
 const checkboxElementos = document.querySelectorAll(".tabela__checkbox input");
-const bulkDeleteBtn = document.getElementById("bulk-delete");
+const btnBulk = document.getElementById("botao-bulk");
 const csrftoken = getCookie('csrftoken');
 
 let textoIdParaExcluir = null;
@@ -67,37 +67,49 @@ confirmarAcao.addEventListener('click', () => {
     }
 });
 
-cancelarAcao.addEventListener('click', () => toggleModal('none'));
+cancelarAcao.forEach(botaoCancelarAcao => {
+    botaoCancelarAcao.addEventListener('click', () => toggleModal('none'));
+})
 
-// Logic for bulk delete
-selectAllCheckbox.addEventListener("change", function() {
+checkboxSelecionarTodos.addEventListener("change", function() {
     const checkboxes = document.querySelectorAll('.tabela__checkbox input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.checked = this.checked;
     });
 
-    bulkDeleteBtn.disabled = !this.checked;
+    btnBulk.disabled = !this.checked;
 });
 
 checkboxElementos.forEach(checkbox => {
     checkbox.addEventListener("change", function() {
-        bulkDeleteBtn.disabled = !this.checked;
-    })
-})
+        let selecionados = 0; 
 
-bulkDeleteBtn.addEventListener("click", function() {
-    const selectedItems = Array.from(document.querySelectorAll('input[type="checkbox"][data-texto]:checked'))
+        for (var i = 0; i < checkboxElementos.length; i++) {
+            if (checkboxElementos[i].checked) {
+                selecionados++;
+            }
+        }
+
+        if (selecionados > 0) {
+            btnBulk.disabled = false;
+        } else {
+            btnBulk.disabled = true;
+        }
+    });
+});
+
+btnBulk.addEventListener("click", function() {
+    const itensSelecionados = Array.from(document.querySelectorAll('input[type="checkbox"][data-texto]:checked'))
     .map(checkbox => checkbox.getAttribute('data-texto'));
 
-    if (selectedItems.length) {
+    if (itensSelecionados.length) {
         // Armazena os itens selecionados em uma variável de escopo mais amplo
-        textoIdParaExcluir = selectedItems;
+        textoIdParaExcluir = itensSelecionados;
 
         // Configura a mensagem da modal
         const mensagemParagrafo = modal.querySelector('.mensagem-confirmacao');
         mensagemParagrafo.textContent = "Tem certeza de que deseja excluir os textos selecionados?";
 
-        // Mostra a modal
         toggleModal('block');
     }
 });

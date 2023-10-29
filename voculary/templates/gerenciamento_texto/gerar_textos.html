@@ -24,17 +24,17 @@
                         {% if field.label == 'Imagem' %}
                         {% if imagem_base64 %}
                         <div class="reconhecimento-texto__imagem-zoom">
-                            <button class="btn-zoon-in" data-tipo="upload" type="button">+</button>
+                            <button class="btn-zoom-in" data-tipo="upload" type="button">+</button>
                             <button class="btn-zoom-out" data-tipo="upload" type="button">-</button>
                         </div>
                         
                         <div class="imagem-display" data-tipo="upload" style="background-image: url('{{ imagem_base64 }}');"></div>
                     {% else %}
                         <div class="reconhecimento-texto__imagem-zoom zoom-inativo">
-                            <button class="btn-zoon-in" data-tipo="upload" type="button">+</button>
+                            <button class="btn-zoom-in" data-tipo="upload" type="button">+</button>
                             <button class="btn-zoom-out" data-tipo="upload" type="button">-</button>
                         </div>
-                        <div class="imagem-display icone-padrao"></div>
+                        <div class="imagem-display icone-padrao" data-tipo="upload"></div>
                     {% endif %}
                         {% endif %}
                         {{ field }}

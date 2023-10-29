@@ -26,6 +26,7 @@ inputImagem.addEventListener('change', function() {
 function atualizarZoom(tipo, valor) {
     alturaImagem += valor;
     inputImagemDisplays.forEach(inputImagemDisplay => {
+        console.log(tipo, inputImagemDisplay.dataset.tipo, alturaImagem)
         if (!inputImagemDisplay.classList.contains('icone-padrao') && tipo === inputImagemDisplay.dataset.tipo) {
             inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
         }

@@ -20,7 +20,7 @@ class UploadImagemForm(forms.ModelForm):
     url = forms.URLField(
         label='URL',
         required=False, 
-        widget=forms.TextInput(attrs={'class': 'url input-imagem'})
+        widget=forms.TextInput(attrs={'class': 'url input-imagem', 'data-tipo': 'upload'})
     )
 
     class Meta:

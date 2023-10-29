@@ -25,6 +25,62 @@
             border-radius: 10px;
 }
 
+/* ===== Configurações ===== */
+.meus-textos__configuracoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-pesquisa {
+    display: flex;
+    align-items: center;
+    background-color: var(--preto-50);
+    border-radius: 10px;
+    width: 100%;
+    width: 40vw; 
+    border: 1px solid var(--preto-300);
+    position: relative;
+    transition: all .5s;
+}
+
+.barra-pesquisa, .botao {
+    margin: 1rem 0;
+}
+
+.barra-pesquisa .formulario__label-busca {
+    flex-grow: 1;
+}
+
+.barra-pesquisa input[type="text"] {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    background-color: transparent;
+    outline: none;
+    color: var(--preto-600);
+}
+
+.barra-pesquisa button {
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    background: none;
+    opacity: 0.6;
+    transition: all 50ms;
+}
+
+.barra-pesquisa button:hover {
+    opacity: 1;
+}
+
+.barra-pesquisa button img {
+    width: 20px;
+    height: 20px;
+}
+
 /* ===== Header ===== */
 .tabela__header {
     font-weight: 700;

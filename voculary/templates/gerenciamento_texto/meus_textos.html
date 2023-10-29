@@ -13,15 +13,18 @@
 <section class="conteudo conteudo__meus-textos padding">
     <h2 class="conteudo__titulo-principal">Meus textos</h2>
     <p class="conteudo__descricao">Espaço único para você guardar e organizar seus textos e suas imagens.</p>
-
-    <form method="get" class="barra-pesquisa">
-        <label class="formulario__label-busca">
-            <input type="text" name="busca" placeholder="Buscar texto" value="{{ request.GET.busca }}">
-        </label>
-        <button type="submit"></button>
-        <a href="{% url 'meus-textos' %}">Limpar</a>
-    </form>     
-    <button id="bulk-delete" class="btn btn-danger" disabled>Excluir Selecionados</button>
+    
+    <div class="meus-textos__configuracoes">
+        <form method="get" class="barra-pesquisa">
+            <label class="formulario__label-busca">
+                <input type="text" name="busca" placeholder="Buscar texto" value="{{ request.GET.busca }}">
+            </label>
+            <button type="submit">
+                <img src="{% static 'assets/icones/busca.svg' %}" />
+            </button>
+        </form> 
+        <button class="botao" id="botao-bulk" disabled>Excluir Selecionados</button>
+    </div>    
     <table class="tabela">
         <thead class="tabela__header">
             <tr>
