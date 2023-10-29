@@ -21,6 +21,12 @@
                                     <button type="button" class="formulario__botao--senha"></button>
                                 {% elif field.is_readonly %}
                                     <div class="readonly">{{ field.contents }}</div>
+                                {% elif field.field.name == "last_login" %}
+                                <p class="datetime">
+                                    Data: <input type="date" name="last_login_0" class="vDateField" id="id_last_login_0">
+                                  <br>
+                                    Hora: <input type="time" name="last_login_1" class="vTimeField" id="id_last_login_1">
+                                </p>
                                 {% else %}
                                     {{ field.field }}
                                 {% endif %}

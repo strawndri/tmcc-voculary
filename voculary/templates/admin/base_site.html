@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="{% static 'styles/reset.css' %}">
     <link rel="stylesheet" href="{% static 'styles/global.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
     <link rel="stylesheet" href="{% static 'styles/formulario.css' %}">
     <link rel="stylesheet" href="{% static 'styles/menu_lateral.css' %}">
     <link rel="stylesheet" href="{% static 'styles/mensagem.css' %}">
@@ -24,6 +23,7 @@
     <link rel="stylesheet" href="{% static 'styles/rodape.css' %}">
     <link rel="stylesheet" href="{% static 'styles/loading.css' %}">
     <link rel="stylesheet" href="{% static 'styles/modal_confirmacao.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
 
     {% block estilosExtras %}{% endblock %}
 
@@ -63,7 +63,6 @@
     {% include 'partials/_rodape.html' %}
 </div>
 <script src="{% static 'js/abrirMenu.js' %}"></script>
-<script src="{% static 'js/habilitarBotoes.js' %}"></script>
 <script src="{% static 'js/temporizarMensagem.js' %}"></script>
 <script src="{% static 'js/modalConfirmacao.js' %}"></script>
 {% block scriptsExtras %}{% endblock %}
