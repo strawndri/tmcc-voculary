@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="{% static 'styles/formulario.css' %}">
 {% endblock %}
 
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Início</a>
+        &rsaquo; {% if has_view_permission %}<a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+        &rsaquo; {% if add %}{% blocktranslate with name=opts.verbose_name %}Add {{ name }}{% endblocktranslate %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+    </div>
+{% endblock %}
+
 {% block conteudo %}
 <section class="conteudo padding">
     <h2 class="conteudo__titulo-principal">

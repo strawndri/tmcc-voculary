@@ -112,6 +112,55 @@
     background-image: url('../assets/icones/olho-ativo.svg');
 }
 
+.barra-pesquisa {
+    display: flex;
+    align-items: center;
+    background-color: var(--preto-50);
+    border: 1px solid var(--preto-300);
+    border-radius: 25px;
+    padding: .5rem;
+    width: 20vw;
+    margin: 1rem 0;
+}
+
+.formulario__label-busca {
+    flex-grow: 1;
+}
+
+.formulario__label-busca input[type="text"] {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.barra-pesquisa button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.barra-pesquisa button::before {
+    content: '🔍';
+}
+
+.barra-pesquisa a {
+    text-decoration: none;
+    margin-left: 10px;
+    color: #007bff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.barra-pesquisa a:hover {
+    text-decoration: underline;
+}
+
+
 /* ===== Responsividade ===== */
 @media only screen and (max-width: 576px) {
     .conteudo__formulario form {

@@ -27,7 +27,7 @@
 
 .usuarios__relatorio {
     flex-direction: column;
-
+    
     padding: 1rem;
     border: 1px solid var(--preto-200);
     border-radius: 5px;
@@ -39,7 +39,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
+    
     padding: .5rem 0;
     border-bottom: 1px solid var(--preto-200);
 }
@@ -52,7 +52,7 @@
     padding: .5rem;
     border: 2px solid var(--preto-200);
     border-radius: 10px;
-
+    
     font-size: 1rem;
     font-weight: 600;
 }
@@ -61,7 +61,7 @@
     display: flex;
     justify-content: end;
     flex-direction: column;
-
+    
     width: 18rem;
     height: 10rem;
     padding: 15px;
@@ -73,7 +73,7 @@
 
 .textos__relatorio  .relatorio__item h4 {
     margin-bottom: 10px;
-
+    
     font-size: 2.5em;
     font-weight: 600;
     font-family: var(--fonte-titulo);
@@ -114,6 +114,23 @@
     gap: 2rem;
 }
 
+.breadcrumbs {
+    width: 30%;
+    border-bottom: 1px solid var(--preto-200);
+    padding-bottom: .5rem;
+    font-size: .8rem;
+}
+
+.breadcrumbs a {
+    color: var(--azul-500);
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}  
+
 .lista-filtros {
     width: 20rem;
     padding: 1rem;
@@ -131,7 +148,7 @@
 .lista-filtros__limpar {
     margin-top: 10px;
     margin-bottom: 15px;
-
+    
     font-size: 1rem;
     font-weight: 500;
 }
@@ -161,10 +178,10 @@
 
 .lista-filtros li a{
     display: inline-block;
-
+    
     width: 100%;
     padding: .2rem 0 .2rem .5rem; 
-
+    
     text-decoration: none;
     color: var(--preto-600); 
 }
@@ -176,7 +193,7 @@
 
 .lista-filtros li.selected a{
     background-color: var(--preto-100); 
-
+    
     font-weight: 600;
     color: var(--preto-700); 
 }
@@ -184,7 +201,7 @@
 .acoes {
     display: flex;
     align-items: center;
-
+    
     margin: 1rem 0;
     border-radius: 5px;
 }
@@ -204,7 +221,7 @@
     border-radius: 5px;
     border: 1px solid var(--preto-300);
     background-color: var(--preto-100);
-
+    
     color: var(--preto-700);
     
     cursor: pointer;
@@ -240,12 +257,12 @@
         align-items: flex-start;
         gap: 1rem;
     }
-
+    
     .textos__relatorio {
         flex-direction: column;
         height: 5rem;
     }
-
+    
     .relatorio__item {
         width: auto;
     }

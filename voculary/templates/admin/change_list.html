@@ -4,7 +4,7 @@
 {% block tituloPagina %}Visualizar e editar{% endblock %}
 
 {% if cl.formset or action_form %}
-  <script src="{% url 'admin:jsi18n' %}"></script>
+<script src="{% url 'admin:jsi18n' %}"></script>
 {% endif %}
 
 {% block extrahead %}
@@ -15,61 +15,64 @@
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
 
-{% if not is_popup %}
-  {% block breadcrumbs %}{% endblock %}
-{% endif %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Início</a>
+  &rsaquo; {{ cl.opts.verbose_name_plural|capfirst }}
+</div>
+{% endblock %}
 
 {% block coltype %}{% endblock %}
 
 {% block conteudo %}
-  <div class="padding">
-    
-    <h2 class="conteudo__titulo-principal">Visualizar e editar usuários</h2>
-    <p class="conteudo__descricao">Visão geral acerca dos usuários</p>
-    <div class="conteudo__admin {% if cl.has_filters %} filtered{% endif %}" id="changelist">
-      {% block object-tools %}
-        {% if change and not is_popup %}
-            <ul class="object-tools">
-                {% block object-tools-items %}
-                {% endblock %}
-            </ul>
-        {% endif %}
+<div class="padding">
+  
+  <h2 class="conteudo__titulo-principal">Visualizar e editar usuários</h2>
+  <p class="conteudo__descricao">Visão geral acerca dos usuários</p>
+  <div class="conteudo__admin {% if cl.has_filters %} filtered{% endif %}" id="changelist">
+    {% block object-tools %}
+    {% if change and not is_popup %}
+    <ul class="object-tools">
+      {% block object-tools-items %}
       {% endblock %}
-      <div class="conteudo__formulario">
-        <form class="formulario" method="post"{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>
-          {% csrf_token %}
-          
-          {% if cl.formset %}
-            <div>{{ cl.formset.management_form }}</div>
-          {% endif %}
-
-          {% block result_list %}
-            {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
-            {% result_list cl %}
-            {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
-          {% endblock %}
-          
-          {% block pagination %}{% endblock %}
-        </form>
-      </div>
-      
-      {% block filters %}
-        {% if cl.has_filters %}
-          <div class="lista-filtros">
-            <h2>{% translate 'Filter' %}</h2>
-            
-            {% if cl.has_active_filters %}
-              <h3 class="lista-filtros__limpar" id="changelist-filter-clear">
-                <a href="{{ cl.clear_all_filters_qs }}">&#10006; {% translate "Clear all filters" %}</a>
-              </h3>
-            {% endif %}
-            
-            {% for spec in cl.filter_specs %}
-              {% admin_list_filter cl spec %}
-            {% endfor %}
-          </div>
+    </ul>
+    {% endif %}
+    {% endblock %}
+    <div class="conteudo__formulario">
+      <form class="formulario" method="post"{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>
+        {% csrf_token %}
+        
+        {% if cl.formset %}
+        <div>{{ cl.formset.management_form }}</div>
         {% endif %}
-      {% endblock %}
+        
+        {% block result_list %}
+        {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
+        {% result_list cl %}
+        {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
+        {% endblock %}
+        
+        {% block pagination %}{% endblock %}
+      </form>
     </div>
+    
+    {% block filters %}
+    {% if cl.has_filters %}
+    <div class="lista-filtros">
+      <h2>{% translate 'Filter' %}</h2>
+      
+      {% if cl.has_active_filters %}
+      <h3 class="lista-filtros__limpar" id="changelist-filter-clear">
+        <a href="{{ cl.clear_all_filters_qs }}">&#10006; {% translate "Clear all filters" %}</a>
+      </h3>
+      {% endif %}
+      
+      {% for spec in cl.filter_specs %}
+      {% admin_list_filter cl spec %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endblock %}
   </div>
+</div>
 {% endblock %}

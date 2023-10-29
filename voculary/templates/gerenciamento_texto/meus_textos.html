@@ -13,23 +13,34 @@
 <section class="conteudo conteudo__meus-textos padding">
     <h2 class="conteudo__titulo-principal">Meus textos</h2>
     <p class="conteudo__descricao">Espaço único para você guardar e organizar seus textos e suas imagens.</p>
+
+    <form method="get" class="barra-pesquisa">
+        <label class="formulario__label-busca">
+            <input type="text" name="busca" placeholder="Buscar texto" value="{{ request.GET.busca }}">
+        </label>
+        <button type="submit"></button>
+        <a href="{% url 'meus-textos' %}">Limpar</a>
+    </form>     
+    <button id="bulk-delete" class="btn btn-danger" disabled>Excluir Selecionados</button>
     <table class="tabela">
         <thead class="tabela__header">
             <tr>
-                <th class="tabela__checkbox"></th>
+                <th class="tabela__checkbox">
+                    <input type="checkbox" id="selecionar-todos">
+                </th>
                 <th class="tabela__imagem"></th>
                 <th class="tabela__nome-arquivo">
                     Nome do texto
                     <a href="?order={% if request.GET.order == "nome_asc" %}nome_desc{% else %}nome_asc{% endif %}">
                         <img src="{% static 'assets/icones/seta-2.svg' %}" 
-                             class="{% if request.GET.order == "nome_asc" %}asc{% endif %}">
+                        class="{% if request.GET.order == "nome_asc" %}asc{% endif %}">
                     </a>
                 </th>
                 <th class="tabela__data-criacao">
                     Data de criação
                     <a href="?order={% if request.GET.order == "data_asc" %}data_desc{% else %}data_asc{% endif %}">
                         <img src="{% static 'assets/icones/seta-2.svg' %}" 
-                             class="{% if request.GET.order == "data_asc" %}asc{% endif %}">
+                        class="{% if request.GET.order == "data_asc" %}asc{% endif %}">
                     </a>
                 </th>
                 <th class="tabela__acoes"></th>
@@ -38,11 +49,8 @@
         <tbody class="tabela__body">
             {% for texto in paginados %}
             <tr>
-                <td class="tabela__checkbox">
-                    <label class="custom-checkbox">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+                <td class="tabela__checkbox tabela__checkbox__texto">
+                    <input type="checkbox" data-texto="{{ texto.image_id }}">
                 </td> 
                 <td class="tabela__imagem"><img src="../media/{{ texto.image.file }}"></td>
                 <td class="tabela__nome-arquivo tabela__body__item nome-arquivo" data-texto="{{ texto.image_id }}" data-title="Nome do texto">{{texto.name}}</td>
@@ -104,5 +112,5 @@
 </section>
 {% endblock %}
 {% block scriptsExtras %}
-    <script src="{% static 'js/carregarImagem.js' %}"></script>
+<script src="{% static 'js/carregarImagem.js' %}"></script>
 {% endblock %}

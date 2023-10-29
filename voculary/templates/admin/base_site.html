@@ -24,13 +24,16 @@
     <link rel="stylesheet" href="{% static 'styles/loading.css' %}">
     <link rel="stylesheet" href="{% static 'styles/modal_confirmacao.css' %}">
     <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/responsive.css' %}">
 
     {% block estilosExtras %}{% endblock %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <div class="container">
-    {% include 'partials/_cabecalho.html' %}
+    <header class="cabecalho padding">
+        {% block breadcrumbs %}{% endblock %}
+    </header>
     
     <main class="principal">
         {% include 'partials/_menu_lateral.html' %}
@@ -56,7 +59,6 @@
         {% endfor %}
 
         {% include 'partials/_modal_confirmacao.html' %}
-
         {% block conteudo %}
         {% endblock %}
     </main>

@@ -87,7 +87,13 @@ def meus_textos_view(request):
         "data_desc": "-creation_date"
     }
     ordenado_por = mapa_ordem.get(ordem, '-name')
-    textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(ordenado_por)
+
+    busca = request.GET.get('busca', None)
+
+    if busca:
+        textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True, name__iregex=rf'.*{busca}.*').order_by(ordenado_por)
+    else: 
+        textos = DigitizedText.objects.select_related('image').filter(user=request.user, is_active=True).order_by(ordenado_por)
 
     # Se o usuário não tiver textos, exibe uma mensagem
     if not textos:
@@ -121,31 +127,28 @@ def obter_info_texto_view(request, id_imagem):
     return JsonResponse(data)
 
 
-@require_POST
-def desativar_texto_view(request, id_imagem):
+def desativar_textos_view(request):
     """
-    Desativa um texto específico.
-    :param request: HttpRequest
-        Objeto de solicitação HTTP.
-    :param id_imagem: int
-        Chave primária da imagem selecionada.
+    Desativa múltiplos textos.
     """
     try:
-        texto = DigitizedText.objects.get(image_id=id_imagem) 
+        ids_imagem = request.POST.getlist('ids_imagem')  # Obtem a lista de IDs das imagens.
+        textos = DigitizedText.objects.filter(image_id__in=ids_imagem)
+
+        for texto in textos:
+            texto.is_active = False
+            texto.save()
+            
+            # Se o texto estiver associado a uma imagem, desative também a imagem
+            if texto.image:
+                imagem = texto.image
+                imagem.is_active = False
+                imagem.save()
         
-        texto.is_active = False
-        texto.save()
-
-        # Se o texto estiver associado a uma imagem, desative também a imagem
-        if texto.image:  
-            imagem = texto.image
-            imagem.is_active = False
-            imagem.save()
-
-        messages.success(request, 'Texto excluído com sucesso!')
-        return JsonResponse({"success": True, "message": "Texto excluído com sucesso!"})
+        messages.success(request, f'{len(textos)} texto(s) excluído(s) com sucesso!')
+        return JsonResponse({"success": True, "message": f'Texto(s) excluído(s) com sucesso!'})
     except Exception as e:
-        return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir o texto."})
+        return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir os textos."})
 
 
 def alterar_nome_texto_view(request, id_imagem):

@@ -68,21 +68,34 @@ class UsuarioAdmin(admin.ModelAdmin):
             return
         user_id = queryset.first().id
         return HttpResponseRedirect(reverse('admin:usuario_user_view', args=[user_id]))
-
+    
     def delete_model(self, request, obj):
         """
         Sobrescreve o comportamento padrão da exclusão para desativar o usuário em vez de excluir.
         """
-        obj.is_active = False
-        obj.save()
+        if not obj.is_active:
+            messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
+        else:
+            obj.is_active = False
+            obj.save()
+            messages.success(request, "Usuário desativado com sucesso!")
 
     def delete_queryset(self, request, queryset):
         """
         Sobrescreve o comportamento padrão da exclusão em massa para desativar os usuários em vez de excluir.
         """
-        queryset.update(is_active=False)
-        messages.success(request, "Usuário(s) desativado(s) com sucesso!")
+        # Verifica se algum dos usuários selecionados já está desativado
+        if queryset.filter(is_active=False).exists():
+            messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
+        else:
+            queryset.update(is_active=False)
+            messages.success(request, "Usuário(s) desativado(s) com sucesso!")
 
+    def response_delete(self, request, obj_display, obj_id):
+        # Personalize a mensagem de sucesso aqui
+        messages.success(request, "Objeto(s) excluído(s) com sucesso.")
+        return super().response_delete(request, obj_display, obj_id)
+    
     def response_change(self, request, obj):
         """Customiza a resposta após uma mudança."""
         if "_deactivate" in request.POST:
