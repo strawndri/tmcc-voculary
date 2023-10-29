@@ -24,12 +24,12 @@ function handleBotaoClick(event, action) {
 
 btnCopiarList.forEach(btn => {
     btn.addEventListener('click', function(event) {
-        handleButtonClick.call(this, event, 'copy');
+        handleBotaoClick.call(this, event, 'copy');
     });
 });
 
 btnDownloadList.forEach(btn => {
     btn.addEventListener('click', function(event) {
-        handleButtonClick.call(this, event, 'download');
+        handleBotaoClick.call(this, event, 'download');
     });
 });

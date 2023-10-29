@@ -33,6 +33,29 @@ function desativarTextos(ids) {
     });
 }
 
+function enviarPerfilForm() {
+    fetch('/perfil', {
+        method: 'POST',
+        body: new FormData(currentForm),
+        headers: {
+            'X-CSRFToken': csrftoken
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            toggleModal('none');
+            window.location.reload();
+        } else {
+            alert("Erro: " + data.message);
+            toggleModal('none');
+        }
+    })
+    .catch(() => {
+        toggleModal('none');
+    });
+}
+
 const modal = document.getElementById('modalConfirmacao');
 const btnAcao = document.querySelectorAll('.botao-excluir, .botao-perfil-config, .botao-perfil-senha, .botao-perfil-excluir');
 const confirmarAcao = document.getElementById('confirmarAcao');
