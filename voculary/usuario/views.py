@@ -4,11 +4,12 @@ from datetime import datetime
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
-
 from usuario.forms import (CadastroForms, LoginForms, PerfilForms,
                            PerfilSenhaForms)
 from usuario.models import User
+
 from .utils.enviar_email_reativacao import enviar_email_reativacao
 
 
@@ -137,24 +138,29 @@ def perfil_view(request):
     # Verifica se a requisição é do tipo POST e processa os formulários
     if request.method == "POST":
         tipo_de_formulario = request.POST.get('tipo-form')
-
+        
         # Formulário de informações gerais
         if tipo_de_formulario == 'info_geral' and form_dados_gerais.is_valid():
             form_dados_gerais.save()
             messages.success(request, 'Dados atualizados com sucesso.')
+            return JsonResponse({"success": True, "message": f'Dados atualizados com sucesso.'})
 
         # Formulário de alteração de senha
         elif tipo_de_formulario == 'senha':
             if form_alterar_senha.is_valid():
+                print(form_alterar_senha)
                 if usuario_atual.check_password(form_alterar_senha.cleaned_data['senha_antiga']):
                     usuario_atual.set_password(form_alterar_senha.cleaned_data['senha_nova'])
                     usuario_atual.save()
                     messages.success(request, 'Senha atualizada com sucesso.')
+                    return JsonResponse({"success": True, "message": f'Senha atualizada com sucesso.'})
                 else:
                     messages.error(request, 'Senha antiga incorreta.')
+                    return JsonResponse({"success": False, "message": f'Senha antiga incorreta.'})
             else:
                 for erro in form_alterar_senha.non_field_errors():
                     messages.error(request, erro)
+                    return JsonResponse({"success": False, "message": 'Não foi possível atualizar a senha.'})
 
         # Opção de exclusão de conta
         elif tipo_de_formulario == 'excluir':

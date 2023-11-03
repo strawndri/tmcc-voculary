@@ -1,12 +1,13 @@
 from datetime import date, timedelta
 
 from django.contrib import admin, messages
+from django.contrib.auth.hashers import make_password
 from django.db.models import Avg, Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import path, reverse
-
 from gerenciamento_texto.models import DigitizedText
+
 from .models import User
 
 
@@ -119,6 +120,18 @@ class UsuarioAdmin(admin.ModelAdmin):
     def visualizarUsuarioView(self, request, user_id, *args, **kwargs):
         """Renderiza a visualização de um usuário."""
         usuario = get_object_or_404(User)
+
+    def save_model(self, request, obj, form, change):
+        """
+        Sobrescreve o método para criar ou atualizar um usuário.
+        """
+        # Verifica se a senha foi fornecida no formulário e se não está criptografada
+        if 'password' in form.cleaned_data and not form.cleaned_data['password'].startswith(('pbkdf2_sha256$', 'bcrypt', 'argon2')):
+            # Criptografa a senha fornecida antes de salvar
+            obj.password = make_password(form.cleaned_data['password'])
+
+        # Salva o usuário
+        obj.save()
 
 class AdminSitePersonalizado(admin.AdminSite):
     # Atributo da classe

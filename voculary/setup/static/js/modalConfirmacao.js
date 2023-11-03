@@ -47,8 +47,8 @@ function enviarPerfilForm() {
             toggleModal('none');
             window.location.reload();
         } else {
-            alert("Erro: " + data.message);
             toggleModal('none');
+            window.location.reload();
         }
     })
     .catch(() => {

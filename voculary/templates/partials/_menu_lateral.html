@@ -8,20 +8,20 @@
             <span class="menu-label">Voculary</span>
         </a>
         {% if user.is_admin or user.is_staff%}
-        <a class="menu-lateral__navegacao__link {% if request.path == '/admin/' %}ativo{% endif %}" href="{% url 'admin:index' %}">
+        <a class="menu-lateral__navegacao__link {% if request.path == '/admin' %}ativo{% endif %}" href="{% url 'admin:index' %}">
             <img src="{% static '/assets/icones/admin.svg'%}" title="Painel do Administrador">
             <span class="menu-label">Painel do Administrador</span>
         </a>
         {% endif %}
-        <a class="menu-lateral__navegacao__link {% if request.path == '/perfil/' %}ativo{% endif %}" href="{% url 'perfil' %}">
+        <a class="menu-lateral__navegacao__link {% if request.path == '/perfil' %}ativo{% endif %}" href="{% url 'perfil' %}">
             <img src="{% static '/assets/icones/perfil.svg'%}" title="Perfil do Usuário">
             <span class="menu-label">Perfil do Usuário</span>
         </a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/gerar-textos/' %}ativo{% endif %}" href="{% url 'gerar-textos' %}">
+        <a class="menu-lateral__navegacao__link {% if request.path == '/gerar-textos' %}ativo{% endif %}" href="{% url 'gerar-textos' %}">
             <img src="{% static '/assets/icones/home.svg'%}" title="Geração de textos">
             <span class="menu-label">Geração de textos</span>
         </a>
-        <a class="menu-lateral__navegacao__link {% if request.path == '/meus-textos/' %}ativo{% endif %}" href="{% url 'meus-textos' %}">
+        <a class="menu-lateral__navegacao__link {% if request.path == '/meus-textos' %}ativo{% endif %}" href="{% url 'meus-textos' %}">
             <img src="{% static '/assets/icones/pasta.svg'%}" title="Meus textos">
             <span class="menu-label">Meus textos</span>
         </a>

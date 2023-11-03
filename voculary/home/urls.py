@@ -9,5 +9,5 @@ urlpatterns = [
     re_path(r'^home/?$', views.home_view, name='home'),
 
     # URL de reativação de conta
-    path('enviar_email/', views.enviar_email_reativacao_view, name='enviar_email'),
+    path('enviar_email/', views.enviar_email_contato_view, name='enviar_email'),
 ]

@@ -34,7 +34,6 @@
 
   /* Outras variáveis */
   --sombra: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --fonte-titulo: 'Lexend', sans-serif;
   --fonte-conteudo: 'Poppins', sans-serif;
 }
 
@@ -81,7 +80,7 @@ input {
 }
 
 h1, h2, h3 {
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-conteudo);
     color: var(--azul-900);
     font-weight: 500;
 }

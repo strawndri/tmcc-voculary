@@ -22,7 +22,7 @@ def home_view(request):
     return render(request, 'home/index.html', contexto)
 
 
-def enviar_email_reativacao_view(request):
+def enviar_email_contato_view(request):
     """
     Trata o envio de e-mail de reativação.
     Se o método da requisição for POST, a função extrai as informações
@@ -38,13 +38,24 @@ def enviar_email_reativacao_view(request):
         destinatarios = ['voculary.projeto@gmail.com']
         remetente = request.POST['email']
         
-        # Formatação da mensagem que será enviada.
-        mensagem_formatada = (
+        # Mensagem simples
+        mensagem = (
             f"De: {remetente}\n"
             f"Mensagem:\n{mensagem_usuario}"
         )
 
+        # Mensagem formatada em HTML
+        mensagem_html = f"""
+        <html>
+            <body style="font-family: Arial, sans-serif; font-size: 14px; color: black;">
+                <p><strong>De:</strong> {remetente}</p>
+                <hr>
+                <p>{mensagem_usuario}</p>
+            </body>
+        </html>
+        """
+
         # Envia o e-mail.
-        send_mail(assunto, mensagem_formatada, '', destinatarios, fail_silently=False)
+        send_mail(assunto, mensagem, '', destinatarios, fail_silently=False, html_message=mensagem_html)
         
         return redirect('home')
