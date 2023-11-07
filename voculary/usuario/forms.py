@@ -17,17 +17,17 @@ class CadastroForms(forms.Form):
     senha_1 = forms.CharField(label='Senha', max_length=255, widget=forms.PasswordInput())
     senha_2 = forms.CharField(label='Confirmação de senha', max_length=255, widget=forms.PasswordInput())
 
-    def clean_senha_1(self):
-        """Validação da senha inserida pelo usuário no cadastro."""
-        senha_1 = self.cleaned_data.get('senha_1')
-        validate_password(senha_1)
-        return senha_1
-
     def clean(self):
         """Verificação da correspondência entre senha e confirmação de senha."""
         cleaned_data = super().clean()
         senha_1 = cleaned_data.get('senha_1')
         senha_2 = cleaned_data.get('senha_2')
+
+        if senha_1:
+            try:
+                validate_password(senha_1)
+            except forms.ValidationError as error:
+                self.add_error('senha_1', error)
 
         if senha_1 and senha_1 != senha_2:
             raise forms.ValidationError('Os dois campos de senha não correspondem.')
@@ -50,20 +50,14 @@ class PerfilSenhaForms(forms.ModelForm):
         model = User
         fields = []
 
-    # def clean_senha_nova(self):
-    #     """Validação da nova senha inserida pelo usuário na página de perfil."""
-    #     senha_nova = self.cleaned_data.get('senha_nova')
-    #     validate_password(senha_nova, self.instance)
-    #     return senha_nova
-
     def clean(self):
         """Verificação da correspondência entre a nova senha e sua confirmação."""
         cleaned_data = super().clean()
         senha_nova = cleaned_data.get('senha_nova')
         senha_nova_confirmacao = cleaned_data.get('senha_nova_confirmacao')
-        print(senha_nova, senha_nova_confirmacao)
+
+        if senha_nova:
+            validate_password(senha_nova, self.instance)
 
         if senha_nova and senha_nova != senha_nova_confirmacao:
             raise forms.ValidationError('Os dois campos de senha não correspondem.')
-
-        return cleaned_data

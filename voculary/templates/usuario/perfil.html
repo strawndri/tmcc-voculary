@@ -41,6 +41,7 @@
                     {{ field }}
                     <button type="button" class="formulario__botao--senha">
                     </button>
+                    {{ field.errors }}
                 </label>
                 {% endfor %}
                 <button type="submit" class="botao botao-perfil-senha" data-message="Deseja mesmo atualizar a sua senha?">Alterar senha</button>
