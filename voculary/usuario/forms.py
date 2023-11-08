@@ -30,7 +30,7 @@ class CadastroForms(forms.Form):
                 self.add_error('senha_1', error)
 
         if senha_1 and senha_1 != senha_2:
-            raise forms.ValidationError('Os dois campos de senha não correspondem.')
+            self.add_error('senha_2', 'Os dois campos de senha não correspondem.')
 
         return cleaned_data
 
