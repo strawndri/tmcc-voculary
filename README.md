@@ -1,11 +1,13 @@
 # 👁️| Voculary: reconhecimento de textos com visão computacional
 
 ![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-f5b5ca.svg)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-F8EE77.svg)
+![Status](https://img.shields.io/badge/Status-Concluído-abf285.svg)
 
 ## Índice
 
 - [Sobre o projeto](#sobre-o-projeto)
+- [Como acessar o projeto?](#como-acessar-o-projeto)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Licença](#licença)
 
 ## Sobre o projeto
@@ -16,9 +18,39 @@ A obtenção de textos presentes em imagens é um processo que desempenha um pap
 
 A Voculary é uma continuação do [Tsi.py](https://github.com/strawndri/tca-tsi.py), projeto desenvolvido em 2022 para a disciplina de Linguagem de Programação.
 
-Para visualizar o layout do projeto, acesse o link abaixo: 
+## Como acessar o projeto?
 
-* [Layout da Voculary no Figma](https://www.figma.com/file/JwB58YmC2m3m94hesgOZK1/Voculary?type=design&node-id=603%3A158&mode=design&t=Bck9ZXaS4JUd4292-1)
+1. Instalar, em seu computador, o [Tesseract OCR](https://sourceforge.net/projects/tesseract-ocr.mirror/);
+2. Baixar o arquivo [`por.traineddata`](https://tesseract-ocr.github.io/tessdoc/Data-Files#data-files-for-version-400-november-29-2016) e adicioná-lo à pasta `TESSERACT-OCR/tessdata`;
+3. Clonar o repositório
+```
+git clone git@github.com:strawndri/tmcc-voculary.git
+```
+4. Acessar, a partir do terminal, a pasta `tmcc-voculary`
+5. Acessar a pasta `voculary`:
+```
+cd voculary
+```
+6. Instalar as dependências do projeto:
+```
+pip install -r requirements.txt
+```
+7. Em `voculary/gerenciamento_texto/utils/extrair_texto.py`, atualizar o caminho de `pt.pytesseract.tesseract_cmd` para corresponder ao local da pasta `tesseract` em seu computador. Exemplo:
+```
+# Configuração do caminho para o executável Tesseract-OCR
+pt.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+```
+8. Inicializar o servidor:
+```
+py manage.py runserver
+```
+
+## Tecnologias utilizadas
+* Softwares:
+* Linguagens:
+* Bibliotecas: 
+
+⭐ Observação: antes de realizar a instalação, recomenda-se criar um ambiente virtual, evitando inconsistências e possíveis imcompactibilidades entre as tecnologias presentes em seu computador. 
 
 ## Licença
 
