@@ -58,15 +58,18 @@ def obter_extracao(form, request):
 
             nome_arquivo = lista_arquivos[0]
 
-        # Calcula o tempo total de processamento/OCR da imagem.
+        # Calcula o tempo total de processamento/OCR da imagem
         tempo_processamento = (fim_tempo - inicio_tempo).seconds
 
-        # Armazena a imagem no cache por 1 hora.
+        # Armazena a imagem no cache por 1 hora
         cache.set(f"{request.user.id}_imagem", conteudo_imagem, 3600)
         
-        return conteudo_imagem, nome_arquivo, texto, tempo_processamento, idioma
+        if len(texto) <= 2:
+            messages.error(request, 'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
+        else:
+            return conteudo_imagem, nome_arquivo, texto, tempo_processamento, idioma
 
-    # Caso não seja possível extrair o texto da imagem, é retornado uma mensagem de erro,
+    # Caso não seja possível extrair o texto da imagem, é retornado uma mensagem de erro
     except Exception as e:
         messages.error(request, 'Puxa, parece que não foi possível extrair o texto. Tente novamente com outra imagem.')
         return None, None, None, None, None

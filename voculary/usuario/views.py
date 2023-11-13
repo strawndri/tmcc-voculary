@@ -198,8 +198,11 @@ def reativar_conta_view(request, id_usuario, token):
     
     # Verifica se o usuário existe, está inativo e se o token fornecido é válido
     if usuario and not usuario.is_active and PasswordResetTokenGenerator().check_token(usuario, token):
-        usuario.is_active = True
-        usuario.save()
+        if usuario.is_admin or usuario.is_staff:
+            messages.error(request, 'Administradores e staffs não podem ter usas contas reativadas.')
+        else:
+            usuario.is_active = True
+            usuario.save()
 
     return render(request, 'usuario/reativar_conta.html')
 
