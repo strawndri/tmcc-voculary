@@ -45,12 +45,12 @@ pt.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
 py manage.py runserver
 ```
 
+⭐ Observação: antes de realizar a instalação, recomenda-se criar um ambiente virtual, evitando inconsistências e possíveis imcompactibilidades entre as tecnologias presentes em seu computador. 
+
 ## Tecnologias utilizadas
 * Softwares:
 * Linguagens:
 * Bibliotecas: 
-
-⭐ Observação: antes de realizar a instalação, recomenda-se criar um ambiente virtual, evitando inconsistências e possíveis imcompactibilidades entre as tecnologias presentes em seu computador. 
 
 ## Licença
 
