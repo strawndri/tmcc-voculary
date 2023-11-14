@@ -32,7 +32,7 @@
         <p class="conteudo__descricao">Se você acredita que sua senha pode ter sido comprometida ou apenas deseja atualizá-la, você pode fazê-lo aqui.</p>
         <div class="conteudo__formulario">
             <form class="formulario perfil-form" action="{% url 'perfil' %}" 
-            method="POST">
+            method="POST" autocomplete="off">
                 {% csrf_token %}
                 {% for field in form_alterar_senha.visible_fields %}
                 <input type="hidden" name="tipo-form" value="senha">
