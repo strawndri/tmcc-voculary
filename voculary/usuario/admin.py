@@ -77,6 +77,18 @@ class UsuarioAdmin(admin.ModelAdmin):
         if not obj.is_active:
             messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
         else:
+            textos = DigitizedText.objects.filter(usuario=obj)
+
+            for texto in textos:
+                texto.is_active = True
+                texto.save()
+                
+                # Se o texto estiver associado a uma imagem, desative também a imagem
+                if texto.image:
+                    imagem = texto.image
+                    imagem.is_active = True
+                    imagem.save()
+
             obj.is_active = False
             obj.save()
             messages.success(request, "Usuário desativado com sucesso!")
@@ -129,6 +141,18 @@ class UsuarioAdmin(admin.ModelAdmin):
         if 'password' in form.cleaned_data and not form.cleaned_data['password'].startswith(('pbkdf2_sha256$', 'bcrypt', 'argon2')):
             # Criptografa a senha fornecida antes de salvar
             obj.password = make_password(form.cleaned_data['password'])
+
+        # Verifica se o campo is_active foi alterado
+        if 'is_active' in form.changed_data:
+            textos = DigitizedText.objects.filter(usuario=obj)
+            for texto in textos:
+                texto.is_active = obj.is_active
+                texto.save()
+
+                if texto.image:
+                    imagem = texto.image
+                    imagem.is_active = obj.is_active
+                    imagem.save()
 
         # Salva o usuário
         obj.save()

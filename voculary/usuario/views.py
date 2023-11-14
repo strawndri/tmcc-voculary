@@ -9,6 +9,7 @@ from django.shortcuts import redirect, render
 from usuario.forms import (CadastroForms, LoginForms, PerfilForms,
                            PerfilSenhaForms)
 from usuario.models import User
+from gerenciamento_texto.models import DigitizedText
 
 from .utils.enviar_email_reativacao import enviar_email_reativacao
 
@@ -162,9 +163,22 @@ def perfil_view(request):
                     messages.error(request, erro)
                     return JsonResponse({"success": False, "message": 'Não foi possível atualizar a senha.'})
 
-        # Opção de exclusão de conta
+        # Opção de 'exclusão' de conta
         elif tipo_de_formulario == 'excluir':
             usuario_atual.is_active = False
+
+            textos = DigitizedText.objects.filter(usuario=usuario_atual)
+
+            for texto in textos:
+                texto.is_active = False
+                texto.save()
+                
+                # Se o texto estiver associado a uma imagem, desative também a imagem
+                if texto.image:
+                    imagem = texto.image
+                    imagem.is_active = False
+                    imagem.save()
+
             usuario_atual.save()
             messages.success(request, 'Conta excluída com sucesso.')
             auth.logout(request)
@@ -202,6 +216,18 @@ def reativar_conta_view(request, id_usuario, token):
             messages.error(request, 'Administradores e staffs não podem ter usas contas reativadas.')
         else:
             usuario.is_active = True
+            textos = DigitizedText.objects.filter(usuario=usuario)
+
+            for texto in textos:
+                texto.is_active = True
+                texto.save()
+                
+                # Se o texto estiver associado a uma imagem, desative também a imagem
+                if texto.image:
+                    imagem = texto.image
+                    imagem.is_active = True
+                    imagem.save()
+
             usuario.save()
 
     return render(request, 'usuario/reativar_conta.html')
