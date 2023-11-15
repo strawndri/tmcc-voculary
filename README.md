@@ -7,7 +7,6 @@
 
 - [Sobre o projeto](#sobre-o-projeto)
 - [Como acessar o projeto?](#como-acessar-o-projeto)
-- [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Licença](#licença)
 
 ## Sobre o projeto
@@ -46,11 +45,6 @@ py manage.py runserver
 ```
 
 ⭐ Observação: antes de realizar a instalação, recomenda-se criar um ambiente virtual, evitando inconsistências e possíveis incompatibilidades entre as tecnologias presentes em seu computador. 
-
-## Tecnologias utilizadas
-* Softwares:
-* Linguagens:
-* Bibliotecas: 
 
 ## Licença
 
