@@ -10,7 +10,7 @@
 <section class="conteudo padding">
     <section class="conteudo__formulario">
         <form class="formulario" action="{% url 'cadastro' %}" 
-        method="POST" autocomplete="off">
+        method="POST" autocomplete="off" novalidate>
             <a href="{% url 'home' %}">
                 {% include 'partials/_logo.html' %}
             </a>
@@ -25,10 +25,10 @@
             <label class="formulario__label {{ field.name }}">
                 {{ field.label }}
                 {{ field }}
+                {{ field.errors }}
                 {% if field.label == 'Senha' or field.label == 'Confirmação de senha' %}
                 <button type="button" class="formulario__botao--senha field.id">
                 </button>
-                {{ field.errors }}
                 {% endif %}
             </label>
             {% if forloop.counter == 2 %}

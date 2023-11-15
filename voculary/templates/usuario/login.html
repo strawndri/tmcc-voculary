@@ -11,7 +11,7 @@
     <section class="conteudo__formulario">
         
         <form class="formulario" action="{% url 'login' %}" 
-        method="POST" autocomplete="off">
+        method="POST" autocomplete="off" novalidate>
         <a href="{% url 'home' %}">
             {% include 'partials/_logo.html' %}
         </a>
@@ -21,6 +21,7 @@
         <label class="formulario__label">
             {{ field.label }}
             {{ field }}
+            {{ field.errors }}
             {% if field.label == 'Senha' %}
             <button type="button" class="formulario__botao--senha"></button>
             <a class="formulario__link senha"  href="{% url 'password_reset' %}">Esqueci minha senha</a>

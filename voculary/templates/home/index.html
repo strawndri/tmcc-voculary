@@ -113,7 +113,7 @@
         <div class="conteudo__contato__box">
             <h2 class="conteudo__titulo">Entre em contato conosco!</h2>
             <section class="conteudo__formulario">
-                <form class="formulario" method="POST" action="{% url 'enviar_email' %}">
+                <form class="formulario" method="POST" action="{% url 'enviar_email' %}" autocomplete="off">
                     {% csrf_token %}
                     <label class="formulario__label">
                         E-mail:
@@ -121,7 +121,7 @@
                     </label>
                     <label class="formulario__label">
                         Como podemos te ajudar?
-                        <textarea name="mensagem" placeholder="Escreva aqui a sua mensagem!"></textarea>
+                        <textarea name="mensagem" placeholder="Escreva aqui a sua mensagem!" required></textarea>
                     </label>
                     <input class="formulario__botao botao" type="submit" value="Enviar">
                 </form>

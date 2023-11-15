@@ -167,7 +167,7 @@ def perfil_view(request):
         elif tipo_de_formulario == 'excluir':
             usuario_atual.is_active = False
 
-            textos = DigitizedText.objects.filter(usuario=usuario_atual)
+            textos = DigitizedText.objects.filter(user=usuario_atual)
 
             for texto in textos:
                 texto.is_active = False
@@ -180,6 +180,7 @@ def perfil_view(request):
                     imagem.save()
 
             usuario_atual.save()
+            
             messages.success(request, 'Conta excluída com sucesso.')
             auth.logout(request)
             return redirect('/home')

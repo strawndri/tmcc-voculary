@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block tituloPagina %}{% endblock %} | Voculary</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <link rel="shortcut icon" type="image/jpg" href="{% static 'assets/favicon/favicon.png' %}"/>
-
+    
     <link rel="stylesheet" href="{% static 'styles/reset.css' %}">
     <link rel="stylesheet" href="{% static 'styles/global.css' %}">
     <link rel="stylesheet" href="{% static 'styles/formulario.css' %}">
@@ -25,15 +25,20 @@
     <link rel="stylesheet" href="{% static 'styles/modal_confirmacao.css' %}">
     <link rel="stylesheet" href="{% static 'styles/admin.css' %}">
     <link rel="stylesheet" href="{% static 'admin/css/responsive.css' %}">
-
+    
     {% block estilosExtras %}{% endblock %}
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <div class="container">
+    
+    {% if user.is_admin or user.is_staff %}
     <header class="cabecalho padding">
         {% block breadcrumbs %}{% endblock %}
     </header>
+    {% else %}
+    {% include 'partials/_cabecalho.html' %}
+    {% endif %}
     
     <main class="principal">
         {% include 'partials/_menu_lateral.html' %}
@@ -57,7 +62,7 @@
             <div class="progresso" data-status="{{ message.tags }}"></div>
         </div>
         {% endfor %}
-
+        
         {% include 'partials/_modal_confirmacao.html' %}
         {% block conteudo %}
         {% endblock %}

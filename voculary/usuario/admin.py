@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+from django.shortcuts import render, redirect
 from django.contrib import admin, messages
 from django.contrib.auth.hashers import make_password
 from django.db.models import Avg, Count
@@ -13,7 +14,7 @@ from .models import User
 
 class UsuarioAdmin(admin.ModelAdmin):
     # Atributos da classe
-    list_display = ('is_active', 'id', 'email', 'first_name', 'last_name', 'data_formatada')
+    list_display = ('is_active', 'id', 'email', 'first_name', 'last_name', 'data_de_registro')
     list_display_links = None
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('is_active', 'is_staff', 'is_admin')
@@ -77,7 +78,7 @@ class UsuarioAdmin(admin.ModelAdmin):
         if not obj.is_active:
             messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
         else:
-            textos = DigitizedText.objects.filter(usuario=obj)
+            textos = DigitizedText.objects.filter(user=obj)
 
             for texto in textos:
                 texto.is_active = True
@@ -117,7 +118,7 @@ class UsuarioAdmin(admin.ModelAdmin):
         return super().response_change(request, obj)
 
     # Métodos relacionados à visualização
-    def data_formatada(self, obj):
+    def data_de_registro(self, obj):
         """Formata a data de registro do usuário."""
         return obj.date_joined.strftime('%d/%m/%Y')
 
@@ -131,7 +132,8 @@ class UsuarioAdmin(admin.ModelAdmin):
 
     def visualizarUsuarioView(self, request, user_id, *args, **kwargs):
         """Renderiza a visualização de um usuário."""
-        usuario = get_object_or_404(User)
+        usuario = get_object_or_404(User, id=user_id)
+        return render(request, 'admin/visualizar_usuario.html', {'usuario': usuario})
 
     def save_model(self, request, obj, form, change):
         """
@@ -144,7 +146,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 
         # Verifica se o campo is_active foi alterado
         if 'is_active' in form.changed_data:
-            textos = DigitizedText.objects.filter(usuario=obj)
+            textos = DigitizedText.objects.filter(user=obj)
             for texto in textos:
                 texto.is_active = obj.is_active
                 texto.save()

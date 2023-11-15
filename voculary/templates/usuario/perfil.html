@@ -15,13 +15,14 @@
         <p class="conteudo__descricao">Faça modificações nas informações principais da sua conta e defina suas preferências</p>
         <div class="conteudo__formulario">
             <form class="formulario perfil-form perfil-config" action="{% url 'perfil' %}" 
-            method="POST">
+            method="POST" autocomplete="off" novalidate>
                 <input type="hidden" name="tipo-form" value="info_geral">
                 {% csrf_token %}
                 {% for field in form_dados_gerais.visible_fields %}
                 <label class="formulario__label">
                     {{ field.label }}
                     {{ field }}
+                    {{ field.errors }}
                 </label>
                 {% endfor %}
                 <button type="submit" class="botao botao-perfil-config" data-message="Deseja mesmo atualizar suas informações?">Salvar alterações</button>
