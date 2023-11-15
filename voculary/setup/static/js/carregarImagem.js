@@ -9,7 +9,6 @@ let alturaImagem = 100;
 function atualizarZoom(tipo, valor) {
     alturaImagem += valor;
     inputImagemDisplays.forEach(inputImagemDisplay => {
-        console.log(tipo, inputImagemDisplay.dataset.tipo, alturaImagem)
         if (!inputImagemDisplay.classList.contains('icone-padrao') && tipo === inputImagemDisplay.dataset.tipo) {
             inputImagemDisplay.style.backgroundSize = `auto ${alturaImagem}%`;
         }
@@ -24,6 +23,14 @@ function resetarZoom() {
         }
     });
 }
+
+zoomBotoes.forEach(zoomBotao => {
+    zoomBotao.addEventListener('click', function() {
+        const tipo = this.dataset.tipo;
+        const valor = this.classList.contains("btn-zoom-in") ? 10 : -10;
+        atualizarZoom(tipo, valor);
+    });
+});
 
 inputImagem.addEventListener('change', function() {
     if (this.files && this.files[0]) {
@@ -40,12 +47,4 @@ inputImagem.addEventListener('change', function() {
         
         reader.readAsDataURL(this.files[0]);
     }
-});
-
-zoomBotoes.forEach(zoomBotao => {
-    zoomBotao.addEventListener('click', function() {
-        const tipo = this.dataset.tipo;
-        const valor = this.classList.contains("btn-zoom-in") ? 10 : -10;
-        atualizarZoom(tipo, valor);
-    });
 });

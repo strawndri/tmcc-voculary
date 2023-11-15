@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views.decorators.http import require_POST
 
 from gerenciamento_texto.forms import UploadImagemForm
@@ -132,10 +132,11 @@ def desativar_textos_view(request):
     Desativa múltiplos textos.
     """
     try:
-        ids_imagem = request.POST.getlist('ids_imagem')  # Obtem a lista de IDs das imagens.
-        textos = DigitizedText.objects.filter(image_id__in=ids_imagem)
+        ids_imagem_str = request.POST.get('ids_imagem', '')  # Obtém a string de IDs (pode ser uma string vazia se não houver IDs)
+        ids_imagem = [int(id) for id in ids_imagem_str.split(',') if id]
 
-        for texto in textos:
+        for id in ids_imagem:
+            texto = get_object_or_404(DigitizedText, image_id=id)
             texto.is_active = False
             texto.save()
             
@@ -145,7 +146,7 @@ def desativar_textos_view(request):
                 imagem.is_active = False
                 imagem.save()
         
-        messages.success(request, f'{len(textos)} texto(s) excluído(s) com sucesso!')
+        messages.success(request, f'{len(ids_imagem)} texto(s) excluído(s) com sucesso!')
         return JsonResponse({"success": True, "message": f'Texto(s) excluído(s) com sucesso!'})
     except Exception as e:
         return JsonResponse({"success": False, "message": "Ocorreu um erro ao tentar excluir os textos."})

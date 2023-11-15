@@ -183,7 +183,7 @@ def perfil_view(request):
             
             messages.success(request, 'Conta excluída com sucesso.')
             auth.logout(request)
-            return redirect('/home')
+            return JsonResponse({"success": True, "message": 'Conta excluída com sucesso.'})
 
     # Configura o contexto para renderizar o template de perfil
     contexto = {

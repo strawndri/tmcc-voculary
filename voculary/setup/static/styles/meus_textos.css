@@ -45,7 +45,8 @@
     transition: all .5s;
 }
 
-.barra-pesquisa, .botao {
+.meus-textos__configuracoes .barra-pesquisa, 
+.meus-textos__configuracoes .botao {
     margin: 1rem 0;
 }
 
