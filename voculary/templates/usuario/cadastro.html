@@ -25,11 +25,11 @@
             <label class="formulario__label {{ field.name }}">
                 {{ field.label }}
                 {{ field }}
-                {{ field.errors }}
                 {% if field.label == 'Senha' or field.label == 'Confirmação de senha' %}
                 <button type="button" class="formulario__botao--senha field.id">
                 </button>
                 {% endif %}
+                {{ field.errors }}
             </label>
             {% if forloop.counter == 2 %}
             </field>
