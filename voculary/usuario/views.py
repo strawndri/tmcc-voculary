@@ -193,7 +193,7 @@ def perfil_view(request):
 
     return render(request, 'usuario/perfil.html', contexto)
 
-def reativar_conta_view(request, id_usuario, token):
+def reativar_conta_view(request, user_id, token):
     """
     Realiza a reativação da conta de um usuário que antes a desativou.
 
@@ -207,7 +207,7 @@ def reativar_conta_view(request, id_usuario, token):
 
     # Tentativa de obter o usuário pelo ID fornecido
     try:
-        usuario = User.objects.get(pk=id_usuario)
+        usuario = User.objects.get(id=user_id)
     except User.DoesNotExist:
         usuario = None
     
@@ -217,7 +217,7 @@ def reativar_conta_view(request, id_usuario, token):
             messages.error(request, 'Administradores e staffs não podem ter usas contas reativadas.')
         else:
             usuario.is_active = True
-            textos = DigitizedText.objects.filter(usuario=usuario)
+            textos = DigitizedText.objects.filter(user=usuario)
 
             for texto in textos:
                 texto.is_active = True
