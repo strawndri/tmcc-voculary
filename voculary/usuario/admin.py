@@ -77,6 +77,8 @@ class UsuarioAdmin(admin.ModelAdmin):
         """
         if not obj.is_active:
             messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
+        elif obj.is_admin:
+            messages.error(request, 'Não é possível desativar um usuário administrador.')
         else:
             textos = DigitizedText.objects.filter(user=obj)
 
@@ -101,6 +103,8 @@ class UsuarioAdmin(admin.ModelAdmin):
         # Verifica se algum dos usuários selecionados já está desativado
         if queryset.filter(is_active=False).exists():
             messages.error(request, "Para desativar um usuário, ele deve estar ativo no sistema.")
+        elif queryset.filter(is_admin=True):
+            messages.error(request, 'Não é possível desativar um usuário administrador.')
         else:
             queryset.update(is_active=False)
             messages.success(request, "Usuário(s) desativado(s) com sucesso!")

@@ -1,6 +1,8 @@
 {% extends "admin/base_site.html" %}
 {% load i18n l10n admin_urls static %}
 
+{% block tituloPagina %}Excluir usuário{% endblock %}
+
 {% block extrahead %}
 {{ block.super }}
 {{ media }}
@@ -51,4 +53,17 @@
     </form>
     {% endif %}
 </div>
+{% endblock %}
+{% block scriptsExtras %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var listaItems = document.querySelectorAll('.lista__item');
+
+        listaItems.forEach(function(item) {
+            if (item.textContent.startsWith('Entrada de log:')) {
+                item.remove();
+            }
+        });
+    });
+</script>
 {% endblock %}
