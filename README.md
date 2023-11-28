@@ -19,7 +19,7 @@ A Voculary é uma continuação do [Tsi.py](https://github.com/strawndri/tca-tsi
 
 ## Como acessar o projeto?
 
-1. Instalar, em seu computador, o [Tesseract OCR](https://sourceforge.net/projects/tesseract-ocr.mirror/);
+1. Instalar, em seu computador, o [Python](https://www.python.org/downloads/), o [PostgreSQL](https://www.postgresql.org/download/) e o [Tesseract OCR](https://sourceforge.net/projects/tesseract-ocr.mirror/);
 2. Baixar o arquivo [`por.traineddata`](https://tesseract-ocr.github.io/tessdoc/Data-Files#data-files-for-version-400-november-29-2016) e adicioná-lo à pasta `TESSERACT-OCR/tessdata`;
 3. Clonar o repositório
 ```
@@ -39,7 +39,12 @@ pip install -r requirements.txt
 # Configuração do caminho para o executável Tesseract-OCR
 pt.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
 ```
-8. Inicializar o servidor:
+8. Realizar as migrações para o Banco de Dados:
+```
+py manage.py makemigrations
+py manage.py migrate
+```
+9. Inicializar o servidor:
 ```
 py manage.py runserver
 ```
